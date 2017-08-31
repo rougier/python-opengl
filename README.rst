@@ -4,6 +4,7 @@ Python & OpenGL for Scientific Visualization
 | Copyright (c) 2017 Nicolas P. Rougier
 | **License**: Creative Commons Attribution 4.0 International (CC BY-NC-SA 4.0)
 | **Website**: http://www.labri.fr/perso/nrougier/python+opengl
+|
 
 Python and OpenGL have a long but complicated story. It used to be really easy
 to program something using the fixed-pipeline and libraries such as Pyglet but
@@ -21,4 +22,5 @@ arbitrary transformations but there are actually many more techniques to be
 discovered and explained in this open-access book. And of course, everything
 will be fast and beautiful.
 
+.. image:: data/polar-projection.png
 
