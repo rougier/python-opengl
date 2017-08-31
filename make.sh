@@ -2,6 +2,5 @@
               --cloak-email-addresses      \
               --toc-top-backlinks          \
               --stylesheet book.css        \
-              --template book-template.txt \
               --stylesheet-dirs .          \
               book.rst book.html

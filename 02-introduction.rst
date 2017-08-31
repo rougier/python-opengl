@@ -460,6 +460,12 @@ Libraries
        http://www.vtk.org
 .. _VPython:
        http://vpython.org
+.. _numpy:
+       http://www.numpy.org
+.. _glumpy:
+       http://glumpy.github.io
+.. _vispy:
+       http://vispy.org
 .. _OpenGL wiki:
        https://www.khronos.org/opengl/wiki/History_of_OpenGL
 .. _deprecated:

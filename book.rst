@@ -81,9 +81,9 @@
 .. include:: 09-meshes.rst
 .. include:: 10-text.rst
 .. include:: 11-framebuffer.rst
-.. include:: 12-techniques.rst
+.. include:: 12-special.rst
 .. include:: 13-conclusion.rst
-.. include:: 14-references.rst
+.. include:: 14-glsl-reference.rst
 .. include:: 15-bibliography.rst
 
 ..
