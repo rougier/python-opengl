@@ -70,20 +70,21 @@
       :depth: 2
 
 .. ----------------------------------------------------------------------------
-.. include:: preface.rst
-.. include:: introduction.rst
-.. include:: quickstart.rst
-.. include:: maths.rst
-.. include:: cube.rst
-.. include:: points.rst
-.. include:: lines.rst
-.. include:: polygons.rst
-.. include:: meshes.rst
-.. include:: text.rst
-.. include:: framebuffer.rst
-.. include:: techniques.rst
-.. include:: conclusion.rst
-.. include:: references.rst
-.. include:: bibliography.rst
+.. include:: 01-preface.rst
+.. include:: 02-introduction.rst
+.. include:: 03-quickstart.rst
+.. include:: 04-maths.rst
+.. include:: 05-cube.rst
+.. include:: 06-points.rst
+.. include:: 07-lines.rst
+.. include:: 08-polygons.rst
+.. include:: 09-meshes.rst
+.. include:: 10-text.rst
+.. include:: 11-framebuffer.rst
+.. include:: 12-techniques.rst
+.. include:: 13-conclusion.rst
+.. include:: 14-references.rst
+.. include:: 15-bibliography.rst
 
-.. include:: links.rst
+..
+   .. include:: links.rst
