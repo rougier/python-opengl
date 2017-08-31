@@ -1,6 +1,6 @@
 .. meta::
-   :description: An open-source book Python and OpenGL for Scientific
-                 Visualizationbased on experience, practice and
+   :description: An open-source book about Python and OpenGL for Scientific
+                 Visualization based on experience, practice and
                  descriptive examples
 .. |date| date::  %B %Y
 .. default-role:: code
@@ -61,7 +61,7 @@
 |
 |
            
-.. sidebar:: `Python & OpenGL <#title>`_
+.. sidebar:: `Python & OpenGL <#python-opengl-for-scientific-visualization>`_
              :subtitle:`for Scientific Visualization`
              :small:`by Nicolas P. Rougier, © 2017`
 

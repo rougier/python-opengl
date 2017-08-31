@@ -1,6 +1,6 @@
 /* --- Import -------------------------------------------------------------- */
-@import "sidebar.css";
-@import "code.css";
+/*@import "sidebar.css";*/
+/*@import "code.css";*/
 
 
 /* --- Structure ----------------------------------------------------------- */
@@ -9,7 +9,7 @@ body {
     background-color: #f9f9f9;
     font-size: 18px;
     font-family: "Georgia", serif; //'Source Sans Pro', sans-serif;
-    font-weight: 400;
+    font-weight: 40>0;
     line-height: 1.35em;
     margin: 0;
     padding: 0;
@@ -37,6 +37,108 @@ body {
     width: 250px;
     padding: 0;
     overflow-y: scroll;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.sidebar-title {
+    margin: 0;
+    padding: 0;
+    padding: 1em 1em;
+}
+
+.sidebar-title a,
+.sidebar-title a:visited {
+    color: #000;
+    font-variant: small-caps;
+    font-weight: 700;
+}
+
+.sidebar-title a:hover {
+    text-decoration: none;
+    border: 0;
+}
+
+.sidebar .small,
+.sidebar .subtitle {
+    display: block;
+    font-size: 75%;
+    margin-top: -0.5em;
+}
+
+.sidebar .subtitle {
+    font-variant: small-caps;
+    font-weight: 500;
+}
+
+
+.sidebar ul {
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar li ul {
+    margin-bottom: 0.5em;
+}
+
+.sidebar li {
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.sidebar li li {
+    line-height: 1.25em;
+    margin: 0;
+    font-size: 90%;
+    font-weight: 300;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.sidebar li p {
+    margin: 0;
+    padding: 0;
+}
+.sidebar li a {
+    color: #000;
+    padding-left: 20px;
+    display: block;
+    text-decoration: none;
+    padding-bottom: .25em;
+    padding-top: .25em;
+    padding-left: 1em;
+}
+
+.sidebar li li a {
+    padding-left: 20px;
+    display: block;
+    text-decoration: none;
+    padding-bottom: 0em;
+    padding-top: 0em;
+    padding-left: 2em;
+}
+
+.sidebar li a:hover,
+.sidebar li a:active,
+.sidebar li a:focus,
+.sidebar li a:target {
+    display: block;
+    border: 0;
+    text-decoration: none;
+    background-color: #f9f9f9;
 }
 
 
@@ -488,3 +590,123 @@ img {
 .figure .legend p {
     margin: 0;
 }
+
+
+
+
+
+/* --- Math ---------------------------------------------------------------- */
+span.formula,
+div.formula {
+    color: #955;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+}
+
+/* --- Code ---------------------------------------------------------------- */
+.proto {
+    display: inline-block;
+    background-color: #f5f5ff;
+    font-size:   90%;
+    font-weight: normal;
+    font-family: 'Source Code Pro';
+    padding: 0px 8px;
+    margin-top: 2px;
+    border-radius: 3px;
+    border: 1px solid #c0c0ff;
+}
+
+code {
+    font-size:   90%;
+    font-weight: 500;
+    font-family: 'Source Code Pro';
+}
+
+pre.code {
+    display:        block;
+    font-size:      90%;
+    font-family:    'Source Code Pro', monospace;
+    font-weight:    400;
+    line-height:    125%;
+    padding-left:   2.0em;
+    padding-top:    0.5em;
+    padding-bottom: 0.5em;
+    overflow-x:     auto;
+}
+pre.code {
+    background:     #fcfcfc;
+    border-top:     .5px solid #ccc;
+    border-bottom:  .5px solid #ccc;
+
+    line-height:   1.35em;
+    font-size:     75%;
+    border-radius: 5.0px;
+    border:        0.5px solid #ccc;
+}
+
+
+pre.neutral {
+    background: none;
+    border: none;
+}
+
+pre.output:before {
+    display: block;
+    color: #ccc;
+    font-weight: bold;
+    content: "OUTPUT";
+    float: right;
+    margin-right: 1em;
+}
+pre.output {
+    background-color: #f9f9f9;
+}
+
+
+pre.math:before {
+    display: block;
+    color: #ccc;
+    font-weight: bold;
+    content: "MATH";
+    float: right;
+    margin-right: 1em;
+}
+pre.math {
+    background-color: #f9f9f9;
+}
+
+
+pre.glsl:before {
+    display: block;
+    color: #ccf;
+    font-weight: bold;
+    content: "GLSL";
+    float: right;
+    margin-right: 1em;
+}
+pre.glsl {
+    background-color: #f9f9ff;
+}
+
+pre.python:before {
+    display: block;
+    color: #dd9;
+    font-weight: bold;
+    content: "PYTHON";
+    float: right;
+    margin-right: 1em;
+}
+pre.python {
+    background-color: #fffff9;
+}
+
+
+
+.function, .class {
+    font-weight: 400;
+}
+.comment, .string {
+    color: #459;
+}
+
+
