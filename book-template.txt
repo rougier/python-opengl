@@ -1,0 +1,21 @@
+%(head_prefix)s
+%(head)s
+%(stylesheet)s
+</head>
+
+<html>
+<body>
+%(header)s
+
+<div class="content">
+<div class="title" id="title">
+%(html_title)s
+%(html_subtitle)s
+</div>
+%(fragment)s
+</div>
+
+%(footer)s
+
+</body>
+</html>

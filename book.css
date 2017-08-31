@@ -1,0 +1,490 @@
+/* --- Import -------------------------------------------------------------- */
+@import "sidebar.css";
+@import "code.css";
+
+
+/* --- Structure ----------------------------------------------------------- */
+body {
+    color: #222;
+    background-color: #f9f9f9;
+    font-size: 18px;
+    font-family: "Georgia", serif; //'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    line-height: 1.35em;
+    margin: 0;
+    padding: 0;
+    counter-reset: h1 h2 h3 figure;
+}
+
+
+.content {
+    margin-left: 250px;
+    max-width:   800px;
+    padding-left: 2em;
+    padding-right: 2em;
+    background-color: #ffffff;
+    border-right: 1px solid #e9e9e9;
+}
+
+.sidebar {
+    font-family: 'Source Sans Pro', sans-serif;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #f0f0f0;
+    border-right: 1px solid #e9e9e9;
+    width: 250px;
+    padding: 0;
+    overflow-y: scroll;
+}
+
+
+/* --- Title --------------------------------------------------------------- */
+h1.title::before {
+    content: none;
+}
+h1.title {
+    text-align: center;
+    color: #993333;
+    font-size: 1.9em;
+    font-variant: small-caps;
+    font-weight: 800;
+    line-height: 1.0em;
+    margin: 0;
+    padding: 0;
+    padding-top: 0.5em;
+    border: none;
+}
+p.subtitle {
+    font-size: 1.em;
+    margin: 0;
+    padding: 0;
+    margin-top: .5em;
+}
+
+h2.subtitle::before { content: none; }
+h2.subtitle, h2.subtitle a {
+    text-align: center;
+    color: #000;
+    font-size: 1.0em;
+    font-weight: 400;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 0.5em;
+}
+
+.title-logos {
+    /* opacity: 0.15; */
+    font-size: 80%;
+    text-align: center;
+    display: block;
+    padding: 0;
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2.0em;
+}
+.title-logos p {
+    text-align: center;
+}
+.title-logos img {
+    padding: 0;
+    margin: 0;
+}
+img.teaser {
+    display: block;
+    width:90%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+    border-radius: 3px;
+/*    margin-top: 5px;
+    margin-bottom: 250px;*/
+}
+
+.book-abstract {
+    background-color: #f9f9f9;
+    text-align: justify;
+    margin: 2em;
+    padding: 1em;
+    margin-top: 0em;
+    border: 1px solid black;
+}
+
+
+
+/* --- Headers ------------------------------------------------------------- */
+h1::before {
+    display: block-inline;
+    font-size: 65%;
+    content: "Chapter " counter(h1) " ";
+    counter-increment: h1;
+    color: #999;
+    font-weight: 400;
+    font-variant: small-caps;
+    letter-spacing: 0.10em;
+    float: right;
+    margin: 0;
+    padding: 0;
+}
+h2::before {
+    counter-increment: h2;
+    content: counter(h1) "." counter(h2) " ";
+}
+h3::before {
+    counter-increment: h3;
+    content: counter(h1) "." counter(h2) "." counter(h3) " ";
+}
+
+
+h1, h2, h3, h4 {
+    font-family: 'Source Sans Pro', sans-serif;
+    padding: 15px 0 3px;
+    clear: both;
+    font-weight: 600;
+}
+h1 {
+    font-size: 1.75em;
+    counter-reset: h2 figure;
+    padding-top: 1em;
+    padding-bottom: 8px;
+    border-bottom: 1.5px solid black;
+    margin-top: 3em;
+}
+h2 { font-size: 1.50em;
+     counter-reset: h3;
+     padding-top: 1.5em;
+   }
+h3 {
+    font-size: 1.25em;
+    counter-reset: h4;
+    padding-top: 1.25em;
+/*    font-weight: 400;*/
+}
+h4 {
+    font-size: 1.1em;
+    counter-reset: h5;
+    padding-top: 1.0em;
+/*    font-weight: 400;*/
+}
+h1 a, h1 a:visited, h1 a:hover,
+h2 a, h2 a:visited, h2 a:hover,
+h3 a, h3 a:visited, h3 a:hover,
+h4 a, h4 a:visited, h4 a:hover {
+    color: black;
+    decoration: none;
+    border: none;
+}
+
+.section {
+    padding-bottom: 2em;
+}
+.section .section {
+    padding-bottom: 0em;
+}
+
+
+/* --- Links --------------------------------------------------------------- */
+a {
+    color: #059;
+    text-decoration: none;
+}
+a:visited {
+    color: #059;
+}
+a:hover {
+    color: #059;
+    border-bottom: 1px solid #059;
+}
+a:active {
+    color:#000000;
+}
+
+:target {
+    border: none;
+}
+::selection {
+    background-color: #f0f0f0;
+}
+
+/* --- Minitoc ------------------------------------------------------------- */
+
+.toc {
+    padding-bottom: 1em;
+/*    width: 65%;*/
+/*    clear:both;*/
+    font-family: Source Sans Pro, sans;
+
+    display: flex;
+}
+
+.toc ul.simple:before {
+    display: block;
+    color: #ccc;
+    font-weight: bold;
+    font-family: Source Sans Pro, sans;
+    content: "CONTENTS";
+    float: right;
+}
+
+.toc ul.simple {
+    font-size: 95%;
+    margin: 0;
+    padding: 1em;
+    padding-left: 2em;
+    background: #f9f9f9;
+    border: 1px solid #555;
+    border-radius: 5px;
+    border-radius: 0px 5px 5px 0px;
+    flex: 1;
+    order: 1;
+}
+
+.topic-title {
+    display: block;
+    flex: 2;
+    order: 0;
+    
+    background: #f9f9f9;
+    border: 1px solid #555;
+    border-right: none;
+    border-radius: 5px 0px 0px 5px;
+    padding: 0;
+    margin: 0;
+    margin-right: 0.0em;
+
+    /* Hide the text */
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+.preface .topic-title {
+    background: url("data/brain.png") no-repeat center;
+    background-size: 100%;
+}
+.introduction .topic-title {
+    background: url("data/wolfenstein.jpg") no-repeat center;
+    background-size: 100%;
+}
+.quickstart .topic-title {
+    background: url("data/glumpy-quad-source.png") no-repeat center;
+    background-size: 100%;
+}
+.maths .topic-title {
+    background: url("data/geometry-wikipedia.jpg") no-repeat center;
+    background-size: 125%;
+}
+.cube .topic-title {
+    background: url("data/light-cube-simple.png") no-repeat center;
+    background-size: 100%;
+}
+.points .topic-title {
+    background: url("data/card-markers.png") no-repeat center;
+    background-size: 100%;
+}
+.lines .topic-title {
+    background: url("data/spiral.png") no-repeat center;
+    background-size: 120%;
+}
+.polygons .topic-title {
+    background: url("data/tiger.png") no-repeat center;
+    background-size: 100%;
+}
+.mesh .topic-title {
+    background: url("data/klein-bottle.png") no-repeat center;
+    background-size: 100%;
+}
+.text .topic-title {
+    background: url("data/text.png") no-repeat center;
+    background-size: 100%;
+}
+.references .topic-title {
+    background: url("data/snail.png") no-repeat center;
+    background-size: 175%;
+}
+
+.techniques .topic-title {
+    background: url("data/lena.png") no-repeat center;
+    background-size: 125%;
+}
+.bibliography .topic-title {
+    background: url("data/books.jpg") no-repeat center;
+    background-size: 125%;
+}
+
+
+
+.toc p {
+    /*
+    padding: 0;
+    margin: 0;
+   */
+}
+
+.toc ul.simple ul {
+    padding-left: 1.5em;
+}
+
+.toc ul.simple li {
+    color: #000;
+/*    font-weight: 500;*/
+    /*    list-style-type: none; */
+    color: #059;
+    padding-left: 0em;
+}
+
+.toc ul.simple li li {
+    font-size: 90%;
+    line-height: 1.5em;
+/*    font-weight: normal; */
+/*    list-style-type: none;*/
+    padding-left: 0em;
+}
+
+strong {
+    font-weight: 600;
+}
+
+
+
+
+/* --- Bibliography -------------------------------------------------------- */
+.abstract {
+    border-left: 1px solid #ddd;
+    padding-left: 1em;
+    font-size:    85%;
+    line-height: 125%;
+}
+.line-block {
+    line-height: 125%;
+}
+
+
+/* --- Tables -------------------------------------------------------------- */
+table {
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 33%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: none;
+    border-bottom: .5px solid #999999;
+}
+
+.fullwidth {
+    min-width: 100%;
+}
+.align-left {
+    margin-left: 0;
+}
+
+td, th {
+    border: none;
+}
+th {
+    text-align: left; 
+    font-weight: 400; /* Make sure they're bold */
+    border-bottom: 1px solid black;
+}
+td {
+    text-align: left; 
+    border: none;
+}
+tr:nth-child(even) td {
+    background: #f0f0f0;
+}
+
+table p {
+    margin: 0;
+}
+
+/* --- Admonitions --------------------------------------------------------- */
+
+.admonition {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 85%;
+    line-height: 1.25em;
+    background-color: #ffffdd;
+    padding: 0;
+    margin: 0;
+    width:33%;
+    float: right;
+    margin-left: 1em;
+    margin-bottom: 1em;
+}
+.admonition p {
+    margin: 0;
+    padding: .5em 1em;
+}
+p.admonition-title {
+    background-color: #eeeeaa;
+    font-weight: 600;
+    padding: 0.1em 1em;
+    padding-bottom: .25em;
+}
+
+
+hr {
+    border: none;
+    clear: both;
+}
+
+
+/* --- Images, Videos & Figures -------------------------------------------- */
+img {
+    margin: 1em 0;
+}
+
+.right {
+    float: right;
+    margin-left: .5em;
+}
+
+.align-right {
+    float: right;
+    margin-left: .5em;
+}
+
+
+.figure {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 85%;
+    line-height: 1.25em;
+    margin: 0;
+    padding: 0;
+    counter-increment: figure;
+    overflow:auto;
+/*    border: 1px solid #ccc;*/
+    float: right;
+    margin-left: 1em;
+    padding-bottom: 1em;
+}
+.figure img, .figure video {
+    width: 100%;
+    background-color: #fff;
+    margin: 0;
+}
+
+.figure .caption {
+    color: #fff;
+    background-color: #000;
+    margin: 0;
+    padding: 0.25em 0.75em;
+    display: block;
+    font-weight: 600;
+}
+.figure .caption::after {
+    content: " " counter(h1) "." counter(figure);
+}
+
+.figure .legend {
+    background-color: #f0f0f0;
+    padding: 0.5em 0.75em;
+}
+
+.figure .legend p {
+    margin: 0;
+}
