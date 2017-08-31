@@ -24,3 +24,12 @@ will be fast and beautiful.
 
 .. image:: data/polar-projection.png
 
+This book is open-access (i.e. it's free to read at `this address
+<http://www.labri.fr/perso/nrougier/python+opengl>`_) because I believe
+knowledge should be free. However, *if you think the book is worth a few
+dollars* (`5€ <https://www.paypal.me/NicolasPRougier/5>`_ or `10€
+<https://www.paypal.me/NicolasPRougier/10>`_), you can use `Paypal
+<https://www.paypal.me/NicolasPRougier/>`_ to make payment. This money will
+help me to travel to Python conferences and to write other books as well.  If
+you don't have money, it's fine as well, just enjoy the book and spread the
+word about it.
