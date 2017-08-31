@@ -14,7 +14,7 @@ dollars* (`5€ <https://www.paypal.me/NicolasPRougier/5>`_ or `10€
 <https://www.paypal.me/NicolasPRougier/10>`_), you can use `Paypal
 <https://www.paypal.me/NicolasPRougier/>`_ to make payment. This money will
 help me to travel to Python conferences and to write other books as well.  If
-you don't have money, it's fine as well, just enjoy the book and spread the
+you don't have money, it's fine. Just enjoy the book and spread the
 word about it. The teaser image above comes from the `artwork section
 <http://www.labri.fr/perso/nrougier/artwork/index.html>`_ of my website. It has
 been made some years ago using the `Povray <http://www.povray.org>`_
