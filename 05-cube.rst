@@ -481,7 +481,7 @@ the fragment to either the black color or the v_color. Starting from the `color
 cube code <code/chapter-03/color-cube.py>`_, try to modify only the shader code
 (both vertex and fragment) to achieve the result on the right.
 
-**Solution**: `<code/chapter-03/color-border-cube-1.py>`_
+**Solution**: `<code/border-cube.py>`_
 
 ----
 
@@ -504,7 +504,7 @@ instructs OpenGL to not display the fragment at all and to terminate the
 program frot this shader. Since nothing will be rendered, there is no need to
 process the rest of program.
 
-**Solution**: `<code/chapter-03/color-border-cube-2.py>`_
+**Solution**: `<code/hollow-cube.py>`_
 
 
 
