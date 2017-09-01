@@ -1,5 +1,5 @@
 # -----------------------------------------------------------------------------
-# Python, OpenGL & Scientific Visualization
+# Python and OpenGL for Scientific Visualization
 # www.labri.fr/perso/nrougier/python+opengl
 # Copyright (c) 2017, Nicolas P. Rougier
 # Distributed under the 2-Clause BSD License.
@@ -9,7 +9,8 @@ from PIL import Image
 from glumpy import app, gl, glm, gloo, data
 
 def cube():
-    vtype = [('a_position', np.float32, 3), ('a_texcoord', np.float32, 2)]
+    vtype = [('position', np.float32, 3),
+             ('texcoord', np.float32, 2)]
     itype = np.uint32
 
     # Vertices positions
@@ -25,8 +26,8 @@ def cube():
                3, 2, 1, 0,  0, 1, 2, 3,   0, 1, 2, 3]
 
     vertices = np.zeros(24, vtype)
-    vertices['a_position'] = p[faces_p]
-    vertices['a_texcoord'] = t[faces_t]
+    vertices['position'] = p[faces_p]
+    vertices['texcoord'] = t[faces_t]
 
     filled = np.resize(
        np.array([0, 1, 2, 0, 2, 3], dtype=itype), 6 * (2 * 3))
@@ -40,30 +41,30 @@ def cube():
 
 
 vertex = """
-uniform mat4   u_model;      // Model matrix
-uniform mat4   u_view;       // View matrix
-uniform mat4   u_projection; // Projection matrix
-attribute vec3 a_position;   // Vertex position
-attribute vec2 a_texcoord;   // Vertex texture coordinates
+uniform mat4   model;      // Model matrix
+uniform mat4   view;       // View matrix
+uniform mat4   projection; // Projection matrix
+attribute vec3 position;   // Vertex position
+attribute vec2 texcoord;   // Vertex texture coordinates
 varying vec2   v_texcoord;   // Interpolated fragment texture coordinates (out)
 
 void main()
 {
     // Assign varying variables
-    v_texcoord  = a_texcoord;
+    v_texcoord  = texcoord;
 
     // Final position
-    gl_Position = u_projection * u_view * u_model * vec4(a_position,1.0);
+    gl_Position = projection * view * model * vec4(position,1.0);
 }
 """
 
 fragment = """
-uniform sampler2D u_texture;  // Texture 
+uniform sampler2D texture;    // Texture 
 varying vec2      v_texcoord; // Interpolated fragment texture coordinates (in)
 void main()
 {
     // Final color
-    gl_FragColor = texture2D(u_texture, v_texcoord);
+    gl_FragColor = texture2D(texture, v_texcoord);
 }
 """
 
@@ -86,11 +87,11 @@ def on_draw(dt):
     model = np.eye(4, dtype=np.float32)
     glm.rotate(model, theta, 0, 0, 1)
     glm.rotate(model, phi, 0, 1, 0)
-    cube['u_model'] = model
+    cube['model'] = model
 
 @window.event
 def on_resize(width, height):
-    cube['u_projection'] = glm.perspective(45.0, width / float(height), 2.0, 100.0)
+    cube['projection'] = glm.perspective(45.0, width / float(height), 2.0, 100.0)
 
 @window.event
 def on_init():
@@ -101,9 +102,9 @@ V,I = cube()
 cube = gloo.Program(vertex, fragment)
 cube.bind(V)
 
-cube['u_texture'] = np.array(Image.open("./crate.png"))
-cube['u_model'] = np.eye(4, dtype=np.float32)
-cube['u_view'] = glm.translation(0, 0, -5)
+cube['texture'] = np.array(Image.open("./crate.png"))
+cube['model'] = np.eye(4, dtype=np.float32)
+cube['view'] = glm.translation(0, 0, -5)
 phi, theta = 40, 30
 
 app.run(framerate=60, framecount=360)

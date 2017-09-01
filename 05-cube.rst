@@ -282,7 +282,7 @@ But we could also have written
    cube["position"] = V["position"]
    cube["color"] = V["color"]
 
-Complete source: `<code/color-cube.py>`_
+Complete source code: `<code/color-cube.py>`_
    
    
 
@@ -354,6 +354,7 @@ are drawn "above" the cube because we paint a line on a surface:
        glm.rotate(model, phi, 0, 1, 0)
        cube['model'] = model
 
+Complete source code: `<code/outlined-cube.py>`_
 
 
 Textured cube
@@ -368,7 +369,7 @@ Textured cube
             
    Figure
 
-   A `textured cube <code/chapter-03/texture-cube.py>`_.
+   A textured cube.
 
 For making a textured cube, we need a texture (a.k.a. an image) and some
 coordinates to tell OpenGL how to map it to the cube faces. Texture coordinates
@@ -453,7 +454,7 @@ Now, inside the fragment shader, we have access to the texture:
    } """
 
 
-   
+Complete source code: `<code/textured-cube.py>`_
 
 Exercises
 -------------------------------------------------------------------------------
