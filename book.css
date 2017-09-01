@@ -1,6 +1,11 @@
-/* --- Import -------------------------------------------------------------- */
-/*@import "sidebar.css";*/
-/*@import "code.css";*/
+/* 
+ * Warning 
+ * 
+ * This file is a mess and badly needs reformatin and structuring. 
+ * It's not responsive at all and it may beneficiate from a deep refactoring.
+ *
+ */
+
 
 
 /* --- Structure ----------------------------------------------------------- */
@@ -363,57 +368,56 @@ a:active {
 }
 
 
-.preface .topic-title {
-    background: url("data/brain.png") no-repeat center;
+.chapter-01 .topic-title {
+    background: url("data/chapter-01.png") no-repeat center;
     background-size: 100%;
 }
-.introduction .topic-title {
-    background: url("data/wolfenstein.jpg") no-repeat center;
+.chapter-02 .topic-title {
+    background: url("data/chapter-02.jpg") no-repeat center;
     background-size: 100%;
 }
-.quickstart .topic-title {
-    background: url("data/glumpy-quad-source.png") no-repeat center;
+.chapter-03 .topic-title {
+    background: url("data/chapter-03.png") no-repeat center;
     background-size: 100%;
 }
-.maths .topic-title {
-    background: url("data/geometry-wikipedia.jpg") no-repeat center;
+.chapter-04 .topic-title {
+    background: url("data/chapter-04.jpg") no-repeat center;
     background-size: 125%;
 }
-.cube .topic-title {
-    background: url("data/light-cube-simple.png") no-repeat center;
+.chapter-05 .topic-title {
+    background: url("data/chapter-05.png") no-repeat center;
     background-size: 100%;
 }
-.points .topic-title {
-    background: url("data/card-markers.png") no-repeat center;
+.chapter-06 .topic-title {
+    background: url("data/chapter-06.png") no-repeat center;
     background-size: 100%;
 }
-.lines .topic-title {
-    background: url("data/spiral.png") no-repeat center;
+.chapter-07 .topic-title {
+    background: url("data/chapter-07.png") no-repeat center;
     background-size: 120%;
 }
-.polygons .topic-title {
-    background: url("data/tiger.png") no-repeat center;
+.chapter-08 .topic-title {
+    background: url("data/chapter-08.png") no-repeat center;
     background-size: 100%;
 }
-.mesh .topic-title {
-    background: url("data/klein-bottle.png") no-repeat center;
+.chapter-09 .topic-title {
+    background: url("data/chapter-09.png") no-repeat center;
     background-size: 100%;
 }
-.text .topic-title {
-    background: url("data/text.png") no-repeat center;
+.chapter-10 .topic-title {
+    background: url("data/chapter-10.png") no-repeat center;
     background-size: 100%;
 }
-.references .topic-title {
-    background: url("data/snail.png") no-repeat center;
-    background-size: 175%;
-}
-
-.techniques .topic-title {
-    background: url("data/lena.png") no-repeat center;
+.chapter-12 .topic-title {
+    background: url("data/chapter-12.png") no-repeat center;
     background-size: 125%;
 }
-.bibliography .topic-title {
-    background: url("data/books.jpg") no-repeat center;
+.chapter-14 .topic-title {
+    background: url("data/chapter-14.png") no-repeat center;
+    background-size: 175%;
+}
+.chapter-15 .topic-title {
+    background: url("data/chapter-15.jpg") no-repeat center;
     background-size: 125%;
 }
 

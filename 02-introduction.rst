@@ -4,7 +4,7 @@ Introduction
 .. contents:: .
    :local:
    :depth: 2
-   :class: toc introduction
+   :class: toc chapter-02
 
 Before diving into OpenGL programming, it is important to have a look at the
 whole GL landscape because it is actually quite complex and you can easily lose

@@ -4,7 +4,8 @@ Rendering a polygon
 .. contents:: .
    :local:
    :depth: 2
-   :class: toc polygons
+   :class: toc chapter-08
+           
 
 Triangulation
 -------------------------------------------------------------------------------

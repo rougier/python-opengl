@@ -4,7 +4,7 @@ Rendering a cube
 .. contents:: .
    :local:
    :depth: 2
-   :class: toc cube
+   :class: toc chapter-05
 
 We now have all the pieces needed to render a simple 3D scene, that is, a
 rotating cube as show in the teaser image above. But we first need to create

@@ -85,6 +85,3 @@
 .. include:: 13-conclusion.rst
 .. include:: 14-glsl-reference.rst
 .. include:: 15-bibliography.rst
-
-..
-   .. include:: links.rst

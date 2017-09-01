@@ -4,7 +4,7 @@ Basic Mathematics
 .. contents:: .
    :local:
    :depth: 2
-   :class: toc maths
+   :class: toc chapter-04
 
 
 

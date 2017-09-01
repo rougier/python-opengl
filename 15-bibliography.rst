@@ -5,7 +5,7 @@ Bibliography
 .. contents:: .
    :local:
    :depth: 2
-   :class: toc bibliography
+   :class: toc chapter-15
 
 
 This is a curated list of some computer graphics resources (peoole, articles,

@@ -4,7 +4,7 @@ Preface
 .. contents:: .
    :local:
    :depth: 2
-   :class: toc preface
+   :class: toc chapter-01
 
 
 This book is open-access (i.e. it's free to read at `this address

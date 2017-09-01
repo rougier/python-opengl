@@ -4,7 +4,7 @@ Rendering lines
 .. contents:: .
    :local:
    :depth: 2
-   :class: toc lines
+   :class: toc chapter-07
 
 Segments
 --------

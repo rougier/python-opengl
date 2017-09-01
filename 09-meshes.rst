@@ -4,7 +4,7 @@ Rendering a mesh
 .. contents:: .
    :local:
    :depth: 2
-   :class: toc mesh
+   :class: toc chapter-09
 
            
 Implicit surfaces

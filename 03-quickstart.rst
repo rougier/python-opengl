@@ -4,7 +4,7 @@ Quickstart
 .. contents:: .
    :local:
    :depth: 2
-   :class: toc quickstart
+   :class: toc chapter-03
 
 
 For the **really** impatient, you can try to run the code in the `teaser image
@@ -859,5 +859,10 @@ angle theta around the origin (0,0) for a point (x,y):
 Solution: `<code/quad-rotate.py>`_
 
 
-
-----
+.. _GLUT:   http://freeglut.sourceforge.net 		
+.. _GLFW:   http://www.glfw.org		
+.. _GTK:    https://www.gtk.org		
+.. _QT:     https://www.qt.io		
+.. _WX:     https://www.wxwidgets.org		
+.. _TK:     https://docs.python.org/3/library/tk.html		
+.. _ffmpeg: https://www.ffmpeg.org

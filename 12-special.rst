@@ -4,7 +4,7 @@ Special techniques
 .. contents:: .
    :local:
    :depth: 2
-   :class: toc techniques
+   :class: toc chapter-12
 
 
 Colormaps

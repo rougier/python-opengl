@@ -4,7 +4,7 @@ Rendering text
 .. contents:: .
    :local:
    :depth: 2
-   :class: toc text
+   :class: toc chapter-10
 
            
 Failsafe text

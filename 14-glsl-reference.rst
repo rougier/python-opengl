@@ -6,7 +6,7 @@ GLSL References
 .. contents:: .
    :local:
    :depth: 2
-   :class: toc references
+   :class: toc chapter-14
 
 
 The information below has been directly extracted and reformated from the `GLES
