@@ -9,21 +9,34 @@ Rendering points
 If you have read the previous chapters, you may have noticed that there exists
 actually a `gl.GL_POINTS` drawing primitive and you might have concluded (quite
 logically) that displaying points in OpenGL is straightforward. This is partly
-true. This primitive can be used to display "point", but the concept of point
-for OpenGL is just ugly (and I mean really ugly, it is mostly a non-antialiased
-non-rotated square). If we want to display points as in the teaser image above,
-we'll need to take care of pretty much everything.
+true. This primitive can be actually used to display points, but the concept of
+point for OpenGL is roughly a non-antialiased, non-rotated, boring and ugly
+square. Consequently, if we want to display points like in the teaser image
+above (each symbol is a shader-transformed point), we'll need to take care of
+pretty much everything.
 
 
 Antialiasing
 -------------------------------------------------------------------------------
 
-.. figure:: data/antialiasing.png
-   :figwidth: 100%
+.. figure:: data/disc-spiral-aa.png
+   :figwidth: 35%
 
    Figure
 
-   Aliased and non aliased rendering example.
+   Aliased (left part) and anti-aliased (right part) circle. Source:
+   `<code/disc-spiral-aa.py>`_
+
+Aliasing is a well known problem in signal processing where it can occurs in
+time (temporal aliasing) or in space (spatial aliasing). In computer graphics,
+we're mostly interested in spatial aliasing (such a `Moiré pattern
+<https://en.wikipedia.org/wiki/Moiré_pattern>`_ of `jaggies
+<https://en.wikipedia.org/wiki/Jaggies>`_) and the way to attenuate it as show
+on the image on the right. But let first explain the origin of the problem from
+a practical point of view (have a look at wikipedia for the `background theory
+<https://en.wikipedia.org/wiki/Aliasing>`_).
+
+
 
 
 Sample based methods
@@ -41,8 +54,8 @@ See reddit discussion: `Antialiasing modes explained
 * NFAA_: Normal filter antialiasing
 * HRAA_: High-Resolution antialiasing
 * TXAA_: Temporal antialiasing
-* EQAA : Enhanced quality antialiasing
-* CSAA : Coverage Sample antialiasing
+* EQAA_: Enhanced quality antialiasing
+* CSAA_: Coverage Sample antialiasing
 
 .. _CSAA: http://www.anandtech.com/show/2116/9
 .. _EQAA: http://www.anandtech.com/show/4061/amds-radeon-hd-6970-radeon-hd-6950/10

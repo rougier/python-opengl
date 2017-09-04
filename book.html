@@ -2388,18 +2388,25 @@ process the rest of program.</p>
 <p>If you have read the previous chapters, you may have noticed that there exists
 actually a <code>gl.GL_POINTS</code> drawing primitive and you might have concluded (quite
 logically) that displaying points in OpenGL is straightforward. This is partly
-true. This primitive can be used to display &quot;point&quot;, but the concept of point
-for OpenGL is just ugly (and I mean really ugly, it is mostly a non-antialiased
-non-rotated square). If we want to display points as in the teaser image above,
-we'll need to take care of pretty much everything.</p>
+true. This primitive can be actually used to display points, but the concept of
+point for OpenGL is roughly a non-antialiased, non-rotated, boring and ugly
+square. Consequently, if we want to display points like in the teaser image
+above (each symbol is a shader-transformed point), we'll need to take care of
+pretty much everything.</p>
 <div class="section" id="antialiasing">
 <h2><a class="toc-backref" href="#id25">Antialiasing</a></h2>
-<div class="figure" id="figure-data/antialiasing.png" style="width: 100%">
-<img alt="data/antialiasing.png" src="data/antialiasing.png" />
+<div class="figure" id="figure-data/disc-spiral-aa.png" style="width: 35%">
+<img alt="data/disc-spiral-aa.png" src="data/disc-spiral-aa.png" />
 <p class="caption">Figure</p>
 <div class="legend">
-Aliased and non aliased rendering example.</div>
+Aliased (left part) and anti-aliased (right part) circle. Source:
+<a class="reference external" href="code/disc-spiral-aa.py">code/disc-spiral-aa.py</a></div>
 </div>
+<p>Aliasing is a well known problem in signal processing where it can occurs in
+time (temporal aliasing) or in space (spatial aliasing). In computer graphics,
+we're mostly interested in spatial aliasing (such a <a class="reference external" href="https://en.wikipedia.org/wiki/Moiré_pattern">Moiré pattern</a> of <a class="reference external" href="https://en.wikipedia.org/wiki/Jaggies">jaggies</a>) and the way to attenuate it as show
+on the image on the right. But let first explain the origin of the problem from
+a practical point of view (have a look at wikipedia for the <a class="reference external" href="https://en.wikipedia.org/wiki/Aliasing">background theory</a>).</p>
 <div class="section" id="sample-based-methods">
 <h3><a class="toc-backref" href="#id25">Sample based methods</a></h3>
 <p>See reddit discussion: <a class="reference external" href="https://www.reddit.com/r/Games/comments/1rb964/antialiasing_modes_explained/">Antialiasing modes explained</a></p>
@@ -2413,8 +2420,8 @@ Aliased and non aliased rendering example.</div>
 <li><a class="reference external" href="https://www.gamedev.net/forums/topic/580517-nfaa---a-post-process-anti-aliasing-filter-results-implementation-details/">NFAA</a>: Normal filter antialiasing</li>
 <li><a class="reference external" href="http://www.nvidia.com/object/feature_hraa.html">HRAA</a>: High-Resolution antialiasing</li>
 <li><a class="reference external" href="https://www.geforce.com/hardware/technology/txaa">TXAA</a>: Temporal antialiasing</li>
-<li>EQAA : Enhanced quality antialiasing</li>
-<li>CSAA : Coverage Sample antialiasing</li>
+<li><a class="reference external" href="http://www.anandtech.com/show/4061/amds-radeon-hd-6970-radeon-hd-6950/10">EQAA</a>: Enhanced quality antialiasing</li>
+<li><a class="reference external" href="http://www.anandtech.com/show/2116/9">CSAA</a>: Coverage Sample antialiasing</li>
 </ul>
 </div>
 <div class="section" id="coverage-methods">
