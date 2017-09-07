@@ -233,7 +233,7 @@ package. Here is a minimal setup that should open a window with garbage on it
 
    You won't have access to any GL command before the `glutInit()` has been
    executed because no OpenGL context will be available before this command is
-   exectued.
+   executed.
 
 The `glutInitDisplayMode` tells OpenGL what are the GL context properties. At
 this stage, we only need a swap buffer (we draw on one buffer while the other
