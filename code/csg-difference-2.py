@@ -40,7 +40,7 @@ fragment = """
       float d1 = circle(p, vec2(256.0-64.0, 256.0), 128.0);
       float d2 = circle(p, vec2(256.0+64.0, 256.0), 128.0);
       float d = csg_difference(d2,d1);
-      gl_FragColor = color(-d/128.0);
+      gl_FragColor = color(d/128.0);
     } """
 
 # Create a window with a valid GL context

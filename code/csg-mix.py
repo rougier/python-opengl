@@ -32,8 +32,8 @@ fragment = """
       vec2 p = gl_FragCoord.xy;
       float d1 = circle(p, vec2(256.0-64.0, 256.0), 128.0);
       float d2 = circle(p, vec2(256.0+64.0, 256.0), 128.0);
-      vec4 color1 = color(-d1/128.0);
-      vec4 color2 = color(-d2/128.0);
+      vec4 color1 = color(d1/128.0);
+      vec4 color2 = color(d2/128.0);
       float d = abs(d1)/(abs(d1)+abs(d2));
       gl_FragColor = mix(color1, color2, d);
     } """

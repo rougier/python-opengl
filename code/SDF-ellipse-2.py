@@ -16,30 +16,40 @@ vertex = """
     } """
 
 fragment = """
-  float SDF_triangle(vec2 p, vec2 p0, vec2 p1, vec2 p2)
+  const float M_PI = 3.14159265358979323846264338327950288;
+  const float M_PI_2 = 1.57079632679489661923132169163975144;
+
+  float SDF_ellipse(vec2 p, vec2 ab)
   {
-      vec2 e0 = p1 - p0;
-      vec2 e1 = p2 - p1;
-      vec2 e2 = p0 - p2;
+     float t = M_PI / 4.0;
+     float a = ab.x;
+     float b = ab.y;
+     float x, y;
+     int i;
 
-      vec2 v0 = p - p0;
-      vec2 v1 = p - p1;
-      vec2 v2 = p - p2;
+     for(i=0; i<3; i++) {
+         x = a * cos(t);
+         y = b * sin(t);
 
-      vec2 pq0 = v0 - e0*clamp( dot(v0,e0)/dot(e0,e0), 0.0, 1.0 );
-      vec2 pq1 = v1 - e1*clamp( dot(v1,e1)/dot(e1,e1), 0.0, 1.0 );
-      vec2 pq2 = v2 - e2*clamp( dot(v2,e2)/dot(e2,e2), 0.0, 1.0 );
+         float ex = (a*a - b*b) * pow(cos(t),3) / a;
+         float ey = (b*b - a*a) * pow(sin(t),3) / b;
 
-      float s = sign( e0.x*e2.y - e0.y*e2.x );
-      vec2 d = min( min( vec2( dot( pq0, pq0 ), s*(v0.x*e0.y-v0.y*e0.x) ),
-                         vec2( dot( pq1, pq1 ), s*(v1.x*e1.y-v1.y*e1.x) )),
-                         vec2( dot( pq2, pq2 ), s*(v2.x*e2.y-v2.y*e2.x) ));
-      return -sqrt(d.x)*sign(d.y);
-  }
+         float rx = x - ex;
+         float ry = y - ey;
 
-  float SDF_round_triangle(vec2 p, vec2 p0, vec2 p1, vec2 p2, float radius)
-  {
-      return SDF_triangle(p, p0, p1, p2) - radius;
+         float qx = abs(p.x) - ex;
+         float qy = abs(p.y) - ey;
+
+         float r = length(vec2(ry, rx));
+         float q = length(vec2(qy, qx));
+
+         float delta_c = r * asin((rx*qy - ry*qx)/(r*q));
+         float delta_t = delta_c / sqrt(a*a + b*b - x*x - y*y);
+
+         t += delta_t;
+         t = min(M_PI_2, max(0., t));
+     }
+     return length(vec2(p.x - x*sign(p.x), p.y - y*sign(p.y)));
   }
 
   vec4 color(float d)
@@ -53,12 +63,10 @@ fragment = """
   }
 
   varying vec2 v_position;
-  uniform vec2 p1, p2, p3;
+  uniform vec2 size;
   void main()
   {
-      float radius = 0.1;
-
-      float d = SDF_round_triangle(v_position, p1, p2, p3, radius);
+      float d = SDF_ellipse(v_position, size);
       gl_FragColor = color(d);
   } """
 
@@ -67,21 +75,14 @@ window = app.Window(512, 512)
 quad = gloo.Program(vertex, fragment, count=4)
 quad['position'] = (-1,+1), (+1,+1), (-1,-1), (+1,-1)
 
-
 phi = 0
 @window.event
 def on_draw(dt):
     global phi
-
-    phi1 = np.pi*phi/180.0
-    phi2 = np.pi*(phi+120)/180.0
-    phi3 = np.pi*(phi+240)/180.0
-    rho1 = rho2 = rho3 = 0.75;
-    quad["p1"] = rho1*np.cos(phi1), rho1*np.sin(phi1)
-    quad["p2"] = rho2*np.cos(phi2), rho2*np.sin(phi2)
-    quad["p3"] = rho3*np.cos(phi3), rho3*np.sin(phi3)
     
     window.clear()
+    phi0 = np.pi*phi/180.0
+    quad["size"] = 0.5+0.25*np.cos(phi0), 0.5+0.25*np.sin(2*phi0)
     quad.draw(gl.GL_TRIANGLE_STRIP)
     phi += 1.0
 

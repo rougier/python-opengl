@@ -506,7 +506,7 @@ process the rest of program.
 
 **Solution**: `<code/hollow-cube.py>`_
 
-
+----
 
 .. --- Links ------------------------------------------------------------------
 .. _GLUT:   http://freeglut.sourceforge.net 

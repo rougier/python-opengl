@@ -4,24 +4,24 @@
 # Copyright (c) 2017, Nicolas P. Rougier
 # Distributed under the 2-Clause BSD License.
 # -----------------------------------------------------------------------------
+import numpy as np
 from glumpy import app, gloo, gl
 
 vertex = """
     attribute vec2 position;
-    void main(){ gl_Position = vec4(position, 0.0, 1.0); } """
+    varying vec2 v_position;
+    void main(){
+        v_position = position;
+        gl_Position = vec4(position, 0.0, 1.0);
+    } """
 
 fragment = """
-  // Union (A or B)
-  float csg_union(float d1, float d2)
+  float SDF_fake_ellipse(vec2 p, vec2 size)
   {
-      return min(d1,d2);
-  }
-
-  // Signed distance to a circle
-  float circle(vec2 p, vec2 center, float radius)
-  {
-      float d = length(p-center) - radius;
-      return d;
+      float r = 0.2;
+      float f = length( p*size );
+      f = length(p*size);
+      return f*(f-r)/length(p*size*size);
   }
 
   vec4 color(float d)
@@ -32,31 +32,30 @@ fragment = """
       color *= (1.0 - exp(-4.0*abs(d))) * (0.8 + 0.2*cos(140.0*d));
       color = mix(color, white, 1.0-smoothstep(0.0,0.02,abs(d)) );
       return vec4(color, 1.0);
-  
   }
 
-  void main() {
-      vec2 p = gl_FragCoord.xy;
-      float d1 = circle(p, vec2(256.0-64.0, 256.0), 128.0);
-      float d2 = circle(p, vec2(256.0+64.0, 256.0), 128.0);
-      float d = csg_union(d1,d2);
-      gl_FragColor = color(d/128.0);
-    } """
+  varying vec2 v_position;
+  uniform vec2 size;
+  void main()
+  {
+      float d = SDF_fake_ellipse(v_position, size);
+      gl_FragColor = color(d);
+  } """
 
-# Create a window with a valid GL context
-window = app.Window(512, 512, color=(1,1,1,1))
 
-# Build the program and corresponding buffers (with 4 vertices)
+window = app.Window(512, 512)
 quad = gloo.Program(vertex, fragment, count=4)
-
-# Upload data into GPU
 quad['position'] = (-1,+1), (+1,+1), (-1,-1), (+1,-1)
 
-# Tell glumpy what needs to be done at each redraw
+phi = 0
 @window.event
 def on_draw(dt):
+    global phi
+    
     window.clear()
+    phi0 = np.pi*phi/180.0
+    quad["size"] = 0.5+0.25*np.cos(phi0), 0.5+0.25*np.sin(2*phi0)
     quad.draw(gl.GL_TRIANGLE_STRIP)
+    phi += 1.0
 
-# Run the app
-app.run()
+app.run(framerate=60, framecount=360)

@@ -280,6 +280,8 @@ of my knowledge):
 Circle
 ~~~~~~
 
+Distance to a circle is the easiest to compute.
+
 .. figure:: data/SDF-circle.mp4
    :loop:
    :autoplay:
@@ -304,6 +306,10 @@ Circle
 Plane
 ~~~~~
 
+The distance from a point P to a plane (line in 2d) is the distance from P to
+the projection of P onto the place.
+
+
 .. figure:: data/SDF-plane.mp4
    :loop:
    :autoplay:
@@ -313,7 +319,7 @@ Plane
 
    Figure
 
-   `SDF plane <code/SDF-plane.py>`_
+   `SDF-plane.py <code/SDF-plane.py>`_
 
    
 .. code:: glsl
@@ -330,6 +336,9 @@ Plane
 True Box
 ~~~~~~~~
 
+When computing distance to a box, one has to take care of the distance to the
+vertices defining the box.
+
 .. figure:: data/SDF-box.mp4
    :loop:
    :autoplay:
@@ -339,7 +348,7 @@ True Box
 
    Figure
 
-   `SDF box <code/SDF-box.py>`_
+   `SDF-box.py <code/SDF-box.py>`_
 
 
    
@@ -353,6 +362,34 @@ True Box
         return min(max(d.x,d.y),0.0) + length(max(d,0.0));
    }
 
+
+Rounded Box
+~~~~~~~~~~~
+
+.. figure:: data/SDF-round-box.mp4
+   :loop:
+   :autoplay:
+   :controls:
+   :figwidth: 25%
+   :figclass: right
+
+   Figure
+
+   `SDF-round-box.py <code/SDF-round-box.py>`_
+
+
+Distance to a round can be immediately derived from the distance to a box by
+subtracting the corner radius.
+   
+.. code:: glsl
+
+   // Code derived from the true triangle code by Inigo Quilez
+   // See https://www.shadertoy.com/view/4llXD7
+   float SDF_round_box(vec2 p, vec2 size, float radius)
+   {
+       return SDF_box(p, size) - radius;
+   }
+   
 
 Fake Box
 ~~~~~~~~
@@ -369,6 +406,9 @@ Fake Box
    `SDF-fake-box.py <code/SDF-fake-box.py>`_
 
 
+A faster way to compute a SDF box is to consider it to be delimited by lines
+(instead of line segments). We save the time of computing the distance to the
+box vertices.
    
 .. code:: glsl
 
@@ -390,7 +430,13 @@ True triangle
 
    Figure
 
-   `SDF true triangle <code/SDF-triangle.py>`_
+   `SDF-triangle.py <code/SDF-triangle.py>`_
+
+Computing the distance to a triangle is not totally straightfoward because a
+triangle is made of three line segments, meaning we have to take into account
+both the distance to the side of the triangle and the distance to the triangle
+vertices.
+
    
 .. code:: glsl
 
@@ -418,6 +464,33 @@ True triangle
        return -sqrt(d.x)*sign(d.y);
    }
 
+Round triangle
+~~~~~~~~~~~~~~
+
+.. figure:: data/SDF-round-triangle.mp4
+   :loop:
+   :autoplay:
+   :controls:
+   :figwidth: 25%
+   :figclass: right
+
+   Figure
+
+   `SDF-round-triangle.py <code/SDF-round-triangle.py>`_
+
+Round triangle is very easy to obtain from the triangle above. We just
+substract the radius of the corner such that the border of the triangle is on
+the oustide part of the SDF triangle.
+
+.. code:: glsl
+
+   // Code derived from the true triangle code by Inigo Quilez
+   // See https://www.shadertoy.com/view/XsXSz4
+   float SDF_round_triangle(vec2 p, vec2 p0, vec2 p1, vec2 p2, float radius)
+   {
+       return SDF_triangle(p, p0, p1, p2) - radius;
+   }
+
 
 Fake triangle
 ~~~~~~~~~~~~~
@@ -431,7 +504,12 @@ Fake triangle
 
    Figure
 
-   `SDF fake triangle <code/SDF-fake-triangle.py>`_
+   `SDF-fake-triangle.py <code/SDF-fake-triangle.py>`_
+
+What I call a fake SDF triangle is a triangle made of lines instead of line
+segments. If you look at the corner (outside part), you will notice the
+different compared to the real triangle. This fake triangle will used later for
+markers because it is faster to compute than the regular SDF triangle.
    
 .. code:: glsl
 
@@ -454,37 +532,108 @@ Fake triangle
 
 
           
+True ellipse
+~~~~~~~~~~~~
 
-Ellipse
-~~~~~~~
+.. figure:: data/SDF-ellipse.mp4
+   :loop:
+   :autoplay:
+   :controls:
+   :figwidth: 25%
+   :figclass: right
+
+   Figure
+
+   `SDF-ellipse.py <code/SDF-ellipse.py>`_
+
+Computing the distance from an arbitrary point to an ellipse is surprinsingly
+difficult if you compare it to the distance to a circle. If you want to read
+the details, I would advise to read the paper `Quick computation of the
+distance between a point and an ellipse
+<https://www.spaceroots.org/documents/distance/distance-to-ellipse.pdf>`_ by
+Luc Maisonobe. The good news for us is that Íñigo Quílez already solved the
+problem for us. We will re-use his formula.
+   
+.. code:: glsl
+
+   // Code by Inigo Quilez
+   // See https://www.shadertoy.com/view/4sS3zz
+   float SDF_ellipse(vec2 p, vec2 ab)
+   {
+       // The function does not like circles
+       if (ab.x == ab.y) ab.x = ab.x*0.9999;
+
+       p = abs( p ); if( p.x > p.y ){ p=p.yx; ab=ab.yx; }
+       float l = ab.y*ab.y - ab.x*ab.x;
+       float m = ab.x*p.x/l; 
+       float n = ab.y*p.y/l; 
+       float m2 = m*m;
+       float n2 = n*n;
+       float c = (m2 + n2 - 1.0)/3.0; 
+       float c3 = c*c*c;
+       float q = c3 + m2*n2*2.0;
+       float d = c3 + m2*n2;
+       float g = m + m*n2;
+       float co;
+
+       if( d<0.0 ) {
+           float p = acos(q/c3)/3.0;
+           float s = cos(p);
+           float t = sin(p)*sqrt(3.0);
+           float rx = sqrt( -c*(s + t + 2.0) + m2 );
+           float ry = sqrt( -c*(s - t + 2.0) + m2 );
+           co = ( ry + sign(l)*rx + abs(g)/(rx*ry) - m)/2.0;
+       } else {
+           float h = 2.0*m*n*sqrt( d );
+           float s = sign(q+h)*pow( abs(q+h), 1.0/3.0 );
+           float u = sign(q-h)*pow( abs(q-h), 1.0/3.0 );
+           float rx = -s - u - c*4.0 + 2.0*m2;
+           float ry = (s - u)*sqrt(3.0);
+           float rm = sqrt( rx*rx + ry*ry );
+           float p = ry/sqrt(rm-rx);
+           co = (p + 2.0*g/rm - m)/2.0;
+       }
+       float si = sqrt( 1.0 - co*co );
+       vec2 r = vec2( ab.x*co, ab.y*si );
+       return length(r - p ) * sign(p.y-r.y);
+   }
+
+          
+Fake ellipse
+~~~~~~~~~~~~
+
+.. figure:: data/SDF-fake-ellipse.mp4
+   :loop:
+   :autoplay:
+   :controls:
+   :figwidth: 25%
+   :figclass: right
+
+   Figure
+
+   `SDF-fake-ellipse.py <code/SDF-fake-ellipse.py>`_
+
+Íñigo Quílez also provided a very fast apprximation of the ellipse
+distance. Some artifacts can be clearly seen but we'll see later that if our ellipse is not too thick, this approximation will do the job.
+
+   
+.. code:: glsl
+
+   // Code by Inigo Quilez
+   // See https://www.shadertoy.com/view/MdfGWn
+   float SDF_fake_ellipse(vec2 p, vec2 size)
+   {
+       float r = 0.2;
+       float f = length( p*size );
+       f = length(p*size);
+       return f*(f-r)/length(p*size*size);
+   }
 
 
 Constructive Solid Geometry
 +++++++++++++++++++++++++++
 
-See also `Truth function <https://en.wikipedia.org/wiki/Truth_function>`_.
 
-
-.. figure:: data/bolts.jpg
-   :figwidth: 30%
-   :figclass: right
-              
-   Figure
-
-   Still life with bolts by `Jaime Vives Piqueres
-   <http://www.ignorancia.org/>`_.
-
-
-Constructive solid geometry (CSG) is a technique used for modeling in order to
-create a complex object by using Boolean operators to combine simpler objects
-(primitives). Resulting objects appear visually complex but are actually a
-cleverly combined or decombined objects as shown on the right image that has
-been coded by `Jaime Vives Piqueres <http://www.ignorancia.org/>`_. All the
-objects on this image (including the table) results from clever and complex
-constructive geometry in 3D. The final image has been rendered with PovRay
-using the light system developed by Jaime.
-
-----
 
 .. figure:: data/CSG.png
    :figwidth: 50%
@@ -496,8 +645,44 @@ using the light system developed by Jaime.
    Boolean operators to combine simpler objects.
 
 
-----
+Constructive solid geometry (CSG) is a technique used for modeling in order to
+create a complex object by using Boolean operators to combine simpler objects
+(primitives). Resulting objects appear visually complex but are actually a
+cleverly combined or decombined objects. The teaser image in the `GLSL
+References`_ chapter is the result of `complex constructive geometry in 3D
+<http://iquilezles.org/www/articles/distfunctions/distfunctions.htm>`_. See
+also the Wikipedia entry on `Truth function
+<https://en.wikipedia.org/wiki/Truth_function>`_.
 
+This is the reason we did not bother to try to render complex shapes in the
+previous section. Using constructive solid geometry, we are free to model
+pretty much anything and we'll see that in the markers section below. In the
+meantime, we need to define our CSG operations in glsl. The good news is that
+it is incredibly simple, just read:
+
+.. code:: glsl
+
+   // Union (A or B)
+   float csg_union(float d1, float d2)
+   { return min(d1,d2); }
+
+   // Difference (A not B)
+   float csg_difference(float d1, float d2)
+   { return max(d1,-d2); }
+
+   // Intersection (A and B)
+   float csg_intersection(float d1, float d2)
+   {  return max(d1,d2); }
+
+   // Exclusion (A xor B)
+   float csg_exclusion(float d1, float d2) 
+   { return min(max(d1,-d2), max(-d1,d2)); }
+
+
+And we can check for the result using two circles (the shadertoy link for each
+example allows you to play online with them):
+
+   
 .. figure:: data/CSG-intersection.png
    :figwidth: 30%
    :figclass: right
@@ -571,6 +756,15 @@ __  https://www.shadertoy.com/view/4llyWn
    
 Dots & markers
 -------------------------------------------------------------------------------
+
+
+.. figure:: data/CSG-markers.png
+   :figwidth: 50%
+   :figclass: right
+
+   Figure
+
+   Some example of markers constructed using CSG.
 
 
 Arrows & fields

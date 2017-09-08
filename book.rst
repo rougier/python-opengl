@@ -60,7 +60,8 @@
 |
 |
 |
-           
+
+
 .. sidebar:: `Python & OpenGL <#python-opengl-for-scientific-visualization>`_
              :subtitle:`for Scientific Visualization`
              :small:`by Nicolas P. Rougier, © 2017`
