@@ -276,6 +276,18 @@ of my knowledge):
        return vec4(color, 1.0);
    }
 
+.. note::
+
+   The `#include` directive is not part ot the glsl specification and is only
+   available from within glumpy.
+
+However, we don't want to copy this code in all the example. We can instead
+write a `palette.glsl <code/palette.glsl>`_ shader and include it in each of
+the example.
+
+
+
+   
 
 Circle
 ~~~~~~
@@ -599,8 +611,8 @@ problem for us. We will re-use his formula.
    }
 
           
-Fake ellipse
-~~~~~~~~~~~~
+Fake (but fast) ellipse
+~~~~~~~~~~~~~~~~~~~~~~~
 
 .. figure:: data/SDF-fake-ellipse.mp4
    :loop:
@@ -753,8 +765,51 @@ __  https://www.shadertoy.com/view/XtsyWn
 __  https://www.shadertoy.com/view/4llyWn
 
 
+
+Dots 
+-------------------------------------------------------------------------------
+
+We've gone through a lot of theory and we're almost ready to render our first
+dots (what? it is not yet finished? no!). We have our signed distance functions
+but we need to exploit them in order to do the proper antialiasing. If you
+remember that a SDF function gives the distance to the border of the shape, we
+still need to compute the right color according to this distance. When we are
+fully inside or outside the shape, it is easy: let's say black for the inside
+and white for the oustide (or nothing using the transaprency level). The
+interesting part is located in the vicinity of the border, it is not fully
+black nor fully white but grey. What amount of grey you might ask? Well, it is
+directly correlated with the distance to the border. But first, let's have a
+look at the figure below that show the different situations:
+
+.. figure:: data/circle-aa.png
+
+   Figure
+
+   For a given shape, we might want to draw only the outline of the shape
+   (left), the interior only (left) or both of them (middle).
+
+
+For all these cases, we need to define the thickness of the antialiased area,
+that is, the area where the estimated coverage will go from 0 (outside) to 1
+(inside). If this area is too large, the shape will appear blurry, it the area
+is too narrow, the shape will have hard egdes. The degenerated case, when the
+area is null, results in no antialias at all. Finally, we need to define a
+function that gives the coverage according to the distance. As illustrated
+below, we have the choice between several solutions and we'll choose the last
+one for the rest of this book.
    
-Dots & markers
+.. figure:: data/antialias-function.png
+
+   Figure
+
+   Antialiasing functions: **Left**: None, **Middle**: linear, **Right**:
+   exponential.
+
+
+
+
+
+Markers
 -------------------------------------------------------------------------------
 
 
@@ -767,9 +822,9 @@ Dots & markers
    Some example of markers constructed using CSG.
 
 
-Arrows & fields
+Arrows
 -------------------------------------------------------------------------------
 
 
-Spheres & impostors
+Spheres
 -------------------------------------------------------------------------------

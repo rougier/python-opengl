@@ -92,63 +92,64 @@ open-access book. And of course, everything will be fast and beautiful.</div>
 <li><a class="reference internal" href="#rendering-points" id="id68">Rendering points</a><ul>
 <li><a class="reference internal" href="#antialiasing" id="id69">Antialiasing</a></li>
 <li><a class="reference internal" href="#signed-distance-fields" id="id70">Signed distance fields</a></li>
-<li><a class="reference internal" href="#dots-markers" id="id71">Dots &amp; markers</a></li>
-<li><a class="reference internal" href="#arrows-fields" id="id72">Arrows &amp; fields</a></li>
-<li><a class="reference internal" href="#spheres-impostors" id="id73">Spheres &amp; impostors</a></li>
+<li><a class="reference internal" href="#dots" id="id71">Dots</a></li>
+<li><a class="reference internal" href="#markers" id="id72">Markers</a></li>
+<li><a class="reference internal" href="#arrows" id="id73">Arrows</a></li>
+<li><a class="reference internal" href="#spheres" id="id74">Spheres</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#rendering-lines" id="id74">Rendering lines</a><ul>
-<li><a class="reference internal" href="#segments" id="id75">Segments</a></li>
-<li><a class="reference internal" href="#polylines" id="id76">Polylines</a></li>
-<li><a class="reference internal" href="#bezier-curves" id="id77">Bézier curves</a></li>
+<li><a class="reference internal" href="#rendering-lines" id="id75">Rendering lines</a><ul>
+<li><a class="reference internal" href="#segments" id="id76">Segments</a></li>
+<li><a class="reference internal" href="#polylines" id="id77">Polylines</a></li>
+<li><a class="reference internal" href="#bezier-curves" id="id78">Bézier curves</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#rendering-a-polygon" id="id78">Rendering a polygon</a><ul>
-<li><a class="reference internal" href="#id34" id="id79">Triangulation</a></li>
-<li><a class="reference internal" href="#odd-fill-rule" id="id80">Odd-fill rule</a></li>
-<li><a class="reference internal" href="#holes" id="id81">Holes</a></li>
+<li><a class="reference internal" href="#rendering-a-polygon" id="id79">Rendering a polygon</a><ul>
+<li><a class="reference internal" href="#id34" id="id80">Triangulation</a></li>
+<li><a class="reference internal" href="#odd-fill-rule" id="id81">Odd-fill rule</a></li>
+<li><a class="reference internal" href="#holes" id="id82">Holes</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#rendering-a-mesh" id="id82">Rendering a mesh</a><ul>
-<li><a class="reference internal" href="#implicit-surfaces" id="id83">Implicit surfaces</a></li>
-<li><a class="reference internal" href="#height-fields" id="id84">Height fields</a></li>
-<li><a class="reference internal" href="#mesh-models" id="id85">Mesh models</a></li>
+<li><a class="reference internal" href="#rendering-a-mesh" id="id83">Rendering a mesh</a><ul>
+<li><a class="reference internal" href="#implicit-surfaces" id="id84">Implicit surfaces</a></li>
+<li><a class="reference internal" href="#height-fields" id="id85">Height fields</a></li>
+<li><a class="reference internal" href="#mesh-models" id="id86">Mesh models</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#rendering-text" id="id86">Rendering text</a><ul>
-<li><a class="reference internal" href="#failsafe-text" id="id87">Failsafe text</a></li>
-<li><a class="reference internal" href="#d-text" id="id88">2D text</a></li>
-<li><a class="reference internal" href="#id37" id="id89">3D text</a></li>
+<li><a class="reference internal" href="#rendering-text" id="id87">Rendering text</a><ul>
+<li><a class="reference internal" href="#failsafe-text" id="id88">Failsafe text</a></li>
+<li><a class="reference internal" href="#d-text" id="id89">2D text</a></li>
+<li><a class="reference internal" href="#id37" id="id90">3D text</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#framebuffer" id="id90">Framebuffer</a><ul>
-<li><a class="reference internal" href="#post-processing" id="id91">Post-processing</a></li>
-<li><a class="reference internal" href="#general-computation" id="id92">General computation</a></li>
-<li><a class="reference internal" href="#color-picking" id="id93">Color picking</a></li>
+<li><a class="reference internal" href="#framebuffer" id="id91">Framebuffer</a><ul>
+<li><a class="reference internal" href="#post-processing" id="id92">Post-processing</a></li>
+<li><a class="reference internal" href="#general-computation" id="id93">General computation</a></li>
+<li><a class="reference internal" href="#color-picking" id="id94">Color picking</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#special-techniques" id="id94">Special techniques</a><ul>
-<li><a class="reference internal" href="#colormaps" id="id95">Colormaps</a></li>
-<li><a class="reference internal" href="#contours" id="id96">Contours</a></li>
-<li><a class="reference internal" href="#transparency" id="id97">Transparency</a></li>
-<li><a class="reference internal" href="#generic-transformation" id="id98">Generic transformation</a></li>
-<li><a class="reference internal" href="#grids" id="id99">Grids</a></li>
+<li><a class="reference internal" href="#special-techniques" id="id95">Special techniques</a><ul>
+<li><a class="reference internal" href="#colormaps" id="id96">Colormaps</a></li>
+<li><a class="reference internal" href="#contours" id="id97">Contours</a></li>
+<li><a class="reference internal" href="#transparency" id="id98">Transparency</a></li>
+<li><a class="reference internal" href="#generic-transformation" id="id99">Generic transformation</a></li>
+<li><a class="reference internal" href="#grids" id="id100">Grids</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#conclusion" id="id100">Conclusion</a></li>
-<li><a class="reference internal" href="#glsl-references" id="id101">GLSL References</a><ul>
-<li><a class="reference internal" href="#types" id="id102">Types</a></li>
-<li><a class="reference internal" href="#qualifiers" id="id103">Qualifiers</a></li>
-<li><a class="reference internal" href="#built-in-variables" id="id104">Built-in variables</a></li>
-<li><a class="reference internal" href="#built-in-constants" id="id105">Built-in constants</a></li>
-<li><a class="reference internal" href="#built-in-functions" id="id106">Built-in functions</a></li>
+<li><a class="reference internal" href="#conclusion" id="id101">Conclusion</a></li>
+<li><a class="reference internal" href="#glsl-references" id="id102">GLSL References</a><ul>
+<li><a class="reference internal" href="#types" id="id103">Types</a></li>
+<li><a class="reference internal" href="#qualifiers" id="id104">Qualifiers</a></li>
+<li><a class="reference internal" href="#built-in-variables" id="id105">Built-in variables</a></li>
+<li><a class="reference internal" href="#built-in-constants" id="id106">Built-in constants</a></li>
+<li><a class="reference internal" href="#built-in-functions" id="id107">Built-in functions</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#bibliography" id="id107">Bibliography</a><ul>
-<li><a class="reference internal" href="#people" id="id108">People</a></li>
-<li><a class="reference internal" href="#tutorials" id="id109">Tutorials</a></li>
-<li><a class="reference internal" href="#articles" id="id110">Articles</a></li>
-<li><a class="reference internal" href="#books" id="id111">Books</a></li>
+<li><a class="reference internal" href="#bibliography" id="id108">Bibliography</a><ul>
+<li><a class="reference internal" href="#people" id="id109">People</a></li>
+<li><a class="reference internal" href="#tutorials" id="id110">Tutorials</a></li>
+<li><a class="reference internal" href="#articles" id="id111">Articles</a></li>
+<li><a class="reference internal" href="#books" id="id112">Books</a></li>
 </ul>
 </li>
 </ul>
@@ -160,17 +161,17 @@ open-access book. And of course, everything will be fast and beautiful.</div>
 <div class="contents toc chapter-01 local topic" id="id1">
 <p class="topic-title first">.</p>
 <ul class="simple">
-<li><a class="reference internal" href="#about-the-author" id="id112">About the author</a></li>
-<li><a class="reference internal" href="#about-this-book" id="id113">About this book</a><ul>
-<li><a class="reference internal" href="#prerequisites" id="id114">Prerequisites</a></li>
-<li><a class="reference internal" href="#conventions" id="id115">Conventions</a></li>
-<li><a class="reference internal" href="#how-to-contribute" id="id116">How to contribute</a></li>
-<li><a class="reference internal" href="#publishing" id="id117">Publishing</a></li>
+<li><a class="reference internal" href="#about-the-author" id="id113">About the author</a></li>
+<li><a class="reference internal" href="#about-this-book" id="id114">About this book</a><ul>
+<li><a class="reference internal" href="#prerequisites" id="id115">Prerequisites</a></li>
+<li><a class="reference internal" href="#conventions" id="id116">Conventions</a></li>
+<li><a class="reference internal" href="#how-to-contribute" id="id117">How to contribute</a></li>
+<li><a class="reference internal" href="#publishing" id="id118">Publishing</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#license" id="id118">License</a><ul>
-<li><a class="reference internal" href="#book" id="id119">Book</a></li>
-<li><a class="reference internal" href="#code" id="id120">Code</a></li>
+<li><a class="reference internal" href="#license" id="id119">License</a><ul>
+<li><a class="reference internal" href="#book" id="id120">Book</a></li>
+<li><a class="reference internal" href="#code" id="id121">Code</a></li>
 </ul>
 </li>
 </ul>
@@ -320,17 +321,17 @@ Alike 4.0 International License</a>. You are free to:</p>
 <div class="contents toc chapter-02 local topic" id="id5">
 <p class="topic-title first">.</p>
 <ul class="simple">
-<li><a class="reference internal" href="#a-bit-of-history" id="id121">A bit of history</a></li>
-<li><a class="reference internal" href="#modern-opengl" id="id122">Modern OpenGL</a><ul>
-<li><a class="reference internal" href="#the-graphic-pipeline" id="id123">The graphic pipeline</a></li>
-<li><a class="reference internal" href="#buffers" id="id124">Buffers</a></li>
-<li><a class="reference internal" href="#variables" id="id125">Variables</a></li>
+<li><a class="reference internal" href="#a-bit-of-history" id="id122">A bit of history</a></li>
+<li><a class="reference internal" href="#modern-opengl" id="id123">Modern OpenGL</a><ul>
+<li><a class="reference internal" href="#the-graphic-pipeline" id="id124">The graphic pipeline</a></li>
+<li><a class="reference internal" href="#buffers" id="id125">Buffers</a></li>
+<li><a class="reference internal" href="#variables" id="id126">Variables</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#state-of-the-union" id="id126">State of the union</a><ul>
-<li><a class="reference internal" href="#bindings" id="id127">Bindings</a></li>
-<li><a class="reference internal" href="#engines" id="id128">Engines</a></li>
-<li><a class="reference internal" href="#libraries" id="id129">Libraries</a></li>
+<li><a class="reference internal" href="#state-of-the-union" id="id127">State of the union</a><ul>
+<li><a class="reference internal" href="#bindings" id="id128">Bindings</a></li>
+<li><a class="reference internal" href="#engines" id="id129">Engines</a></li>
+<li><a class="reference internal" href="#libraries" id="id130">Libraries</a></li>
 </ul>
 </li>
 </ul>
@@ -797,28 +798,28 @@ vispy is independent of glumpy and vice-versa.</li>
 <div class="contents toc chapter-03 local topic" id="id7">
 <p class="topic-title first">.</p>
 <ul class="simple">
-<li><a class="reference internal" href="#preliminaries" id="id130">Preliminaries</a><ul>
-<li><a class="reference internal" href="#normalize-device-coordinates" id="id131">Normalize Device Coordinates</a></li>
-<li><a class="reference internal" href="#triangulation" id="id132">Triangulation</a></li>
-<li><a class="reference internal" href="#gl-primitives" id="id133">GL Primitives</a></li>
-<li><a class="reference internal" href="#interpolation" id="id134">Interpolation</a></li>
+<li><a class="reference internal" href="#preliminaries" id="id131">Preliminaries</a><ul>
+<li><a class="reference internal" href="#normalize-device-coordinates" id="id132">Normalize Device Coordinates</a></li>
+<li><a class="reference internal" href="#triangulation" id="id133">Triangulation</a></li>
+<li><a class="reference internal" href="#gl-primitives" id="id134">GL Primitives</a></li>
+<li><a class="reference internal" href="#interpolation" id="id135">Interpolation</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#the-hard-way" id="id135">The hard way</a><ul>
-<li><a class="reference internal" href="#writing-shaders" id="id136">Writing shaders</a></li>
-<li><a class="reference internal" href="#compiling-the-program" id="id137">Compiling the program</a></li>
-<li><a class="reference internal" href="#uploading-data-to-the-gpu" id="id138">Uploading data to the GPU</a></li>
-<li><a class="reference internal" href="#rendering" id="id139">Rendering</a></li>
-<li><a class="reference internal" href="#uniform-color" id="id140">Uniform color</a></li>
-<li><a class="reference internal" href="#varying-color" id="id141">Varying color</a></li>
+<li><a class="reference internal" href="#the-hard-way" id="id136">The hard way</a><ul>
+<li><a class="reference internal" href="#writing-shaders" id="id137">Writing shaders</a></li>
+<li><a class="reference internal" href="#compiling-the-program" id="id138">Compiling the program</a></li>
+<li><a class="reference internal" href="#uploading-data-to-the-gpu" id="id139">Uploading data to the GPU</a></li>
+<li><a class="reference internal" href="#rendering" id="id140">Rendering</a></li>
+<li><a class="reference internal" href="#uniform-color" id="id141">Uniform color</a></li>
+<li><a class="reference internal" href="#varying-color" id="id142">Varying color</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#the-easy-way" id="id142">The easy way</a><ul>
-<li><a class="reference internal" href="#id9" id="id143">Uniform color</a></li>
-<li><a class="reference internal" href="#id10" id="id144">Varying color</a></li>
+<li><a class="reference internal" href="#the-easy-way" id="id143">The easy way</a><ul>
+<li><a class="reference internal" href="#id9" id="id144">Uniform color</a></li>
+<li><a class="reference internal" href="#id10" id="id145">Varying color</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#exercises" id="id145">Exercises</a></li>
+<li><a class="reference internal" href="#exercises" id="id146">Exercises</a></li>
 </ul>
 </div>
 <p>For the <strong>really</strong> impatient, you can try to run the code in the <a class="reference external" href="code/glumpy-quad-solid.py">teaser image</a> above. If this works, a window should open on your
@@ -1528,22 +1529,22 @@ angle theta around the origin (0,0) for a point (x,y):</p>
 <div class="contents toc chapter-04 local topic" id="id11">
 <p class="topic-title first">.</p>
 <ul class="simple">
-<li><a class="reference internal" href="#id12" id="id146">Projective Geometry</a><ul>
-<li><a class="reference internal" href="#id13" id="id147">Homogeneous coordinates</a></li>
-<li><a class="reference internal" href="#projections" id="id148">Projections</a></li>
+<li><a class="reference internal" href="#id12" id="id147">Projective Geometry</a><ul>
+<li><a class="reference internal" href="#id13" id="id148">Homogeneous coordinates</a></li>
+<li><a class="reference internal" href="#projections" id="id149">Projections</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#transformations" id="id149">Transformations</a><ul>
-<li><a class="reference internal" href="#translation" id="id150">Translation</a></li>
-<li><a class="reference internal" href="#scaling" id="id151">Scaling</a></li>
-<li><a class="reference internal" href="#rotation" id="id152">Rotation</a></li>
-<li><a class="reference internal" href="#a-word-of-caution" id="id153">A word of caution</a></li>
+<li><a class="reference internal" href="#transformations" id="id150">Transformations</a><ul>
+<li><a class="reference internal" href="#translation" id="id151">Translation</a></li>
+<li><a class="reference internal" href="#scaling" id="id152">Scaling</a></li>
+<li><a class="reference internal" href="#rotation" id="id153">Rotation</a></li>
+<li><a class="reference internal" href="#a-word-of-caution" id="id154">A word of caution</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id14" id="id154">Projections</a><ul>
-<li><a class="reference internal" href="#orthographic" id="id155">Orthographic</a></li>
-<li><a class="reference internal" href="#perspective" id="id156">Perspective</a></li>
-<li><a class="reference internal" href="#model-and-view-matrices" id="id157">Model and view matrices</a></li>
+<li><a class="reference internal" href="#id14" id="id155">Projections</a><ul>
+<li><a class="reference internal" href="#orthographic" id="id156">Orthographic</a></li>
+<li><a class="reference internal" href="#perspective" id="id157">Perspective</a></li>
+<li><a class="reference internal" href="#model-and-view-matrices" id="id158">Model and view matrices</a></li>
 </ul>
 </li>
 </ul>
@@ -1941,16 +1942,16 @@ chapter carefully, you may have guessed the corresponding GLSL shader:</p>
 <div class="contents toc chapter-05 local topic" id="id15">
 <p class="topic-title first">.</p>
 <ul class="simple">
-<li><a class="reference internal" href="#object-creation" id="id158">Object creation</a></li>
-<li><a class="reference internal" href="#scene-setup" id="id159">Scene setup</a></li>
-<li><a class="reference internal" href="#actual-rendering" id="id160">Actual rendering</a></li>
-<li><a class="reference internal" href="#variations" id="id161">Variations</a><ul>
-<li><a class="reference internal" href="#colored-cube" id="id162">Colored cube</a></li>
-<li><a class="reference internal" href="#outlined-cube" id="id163">Outlined cube</a></li>
-<li><a class="reference internal" href="#textured-cube" id="id164">Textured cube</a></li>
+<li><a class="reference internal" href="#object-creation" id="id159">Object creation</a></li>
+<li><a class="reference internal" href="#scene-setup" id="id160">Scene setup</a></li>
+<li><a class="reference internal" href="#actual-rendering" id="id161">Actual rendering</a></li>
+<li><a class="reference internal" href="#variations" id="id162">Variations</a><ul>
+<li><a class="reference internal" href="#colored-cube" id="id163">Colored cube</a></li>
+<li><a class="reference internal" href="#outlined-cube" id="id164">Outlined cube</a></li>
+<li><a class="reference internal" href="#textured-cube" id="id165">Textured cube</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id16" id="id165">Exercises</a></li>
+<li><a class="reference internal" href="#id16" id="id166">Exercises</a></li>
 </ul>
 </div>
 <p>We now have all the pieces needed to render a simple 3D scene, that is, a
@@ -2370,20 +2371,21 @@ process the rest of program.</p>
 <div class="contents toc chapter-06 local topic" id="id25">
 <p class="topic-title first">.</p>
 <ul class="simple">
-<li><a class="reference internal" href="#antialiasing" id="id166">Antialiasing</a><ul>
-<li><a class="reference internal" href="#sample-based-methods" id="id167">Sample based methods</a></li>
-<li><a class="reference internal" href="#coverage-methods" id="id168">Coverage methods</a></li>
+<li><a class="reference internal" href="#antialiasing" id="id167">Antialiasing</a><ul>
+<li><a class="reference internal" href="#sample-based-methods" id="id168">Sample based methods</a></li>
+<li><a class="reference internal" href="#coverage-methods" id="id169">Coverage methods</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#signed-distance-fields" id="id169">Signed distance fields</a><ul>
-<li><a class="reference internal" href="#signed-distance-function" id="id170">Signed distance function</a></li>
-<li><a class="reference internal" href="#geometrical-primitives" id="id171">Geometrical primitives</a></li>
-<li><a class="reference internal" href="#constructive-solid-geometry" id="id172">Constructive Solid Geometry</a></li>
+<li><a class="reference internal" href="#signed-distance-fields" id="id170">Signed distance fields</a><ul>
+<li><a class="reference internal" href="#signed-distance-function" id="id171">Signed distance function</a></li>
+<li><a class="reference internal" href="#geometrical-primitives" id="id172">Geometrical primitives</a></li>
+<li><a class="reference internal" href="#constructive-solid-geometry" id="id173">Constructive Solid Geometry</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#dots-markers" id="id173">Dots &amp; markers</a></li>
-<li><a class="reference internal" href="#arrows-fields" id="id174">Arrows &amp; fields</a></li>
-<li><a class="reference internal" href="#spheres-impostors" id="id175">Spheres &amp; impostors</a></li>
+<li><a class="reference internal" href="#dots" id="id174">Dots</a></li>
+<li><a class="reference internal" href="#markers" id="id175">Markers</a></li>
+<li><a class="reference internal" href="#arrows" id="id176">Arrows</a></li>
+<li><a class="reference internal" href="#spheres" id="id177">Spheres</a></li>
 </ul>
 </div>
 <p>If you have read the previous chapters, you may have noticed that there exists
@@ -2598,6 +2600,14 @@ of my knowledge):</p>
     <span class="keyword">return</span> <span class="keyword">vec4</span><span class="punctuation">(</span><span class="name">color</span><span class="punctuation">,</span> <span class="literal number float">1.0</span><span class="punctuation">);</span>
 <span class="punctuation">}</span>
 </pre>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <code>#include</code> directive is not part ot the glsl specification and is only
+available from within glumpy.</p>
+</div>
+<p>However, we don't want to copy this code in all the example. We can instead
+write a <a class="reference external" href="code/palette.glsl">palette.glsl</a> shader and include it in each of
+the example.</p>
 <div class="section" id="circle">
 <h4>Circle</h4>
 <p>Distance to a circle is the easiest to compute.</p>
@@ -2855,8 +2865,8 @@ problem for us. We will re-use his formula.</p>
 <span class="punctuation">}</span>
 </pre>
 </div>
-<div class="section" id="fake-ellipse">
-<h4>Fake ellipse</h4>
+<div class="section" id="fake-but-fast-ellipse">
+<h4>Fake (but fast) ellipse</h4>
 <div class="right figure" id="figure-data/SDF-fake-ellipse.mp4" style="width: 25%">
 <video autoplay="True" controls="True" loop="True">
 <source src="data/SDF-fake-ellipse.mp4"></source>
@@ -2982,8 +2992,44 @@ example allows you to play online with them):</p>
 </div>
 </div>
 </div>
-<div class="section" id="dots-markers">
-<h2><a class="toc-backref" href="#id25">Dots &amp; markers</a></h2>
+<div class="section" id="dots">
+<h2><a class="toc-backref" href="#id25">Dots</a></h2>
+<p>We've gone through a lot of theory and we're almost ready to render our first
+dots (what? it is not yet finished? no!). We have our signed distance functions
+but we need to exploit them in order to do the proper antialiasing. If you
+remember that a SDF function gives the distance to the border of the shape, we
+still need to compute the right color according to this distance. When we are
+fully inside or outside the shape, it is easy: let's say black for the inside
+and white for the oustide (or nothing using the transaprency level). The
+interesting part is located in the vicinity of the border, it is not fully
+black nor fully white but grey. What amount of grey you might ask? Well, it is
+directly correlated with the distance to the border. But first, let's have a
+look at the figure below that show the different situations:</p>
+<div class="figure" id="figure-data/circle-aa.png">
+<img alt="data/circle-aa.png" src="data/circle-aa.png" />
+<p class="caption">Figure</p>
+<div class="legend">
+For a given shape, we might want to draw only the outline of the shape
+(left), the interior only (left) or both of them (middle).</div>
+</div>
+<p>For all these cases, we need to define the thickness of the antialiased area,
+that is, the area where the estimated coverage will go from 0 (outside) to 1
+(inside). If this area is too large, the shape will appear blurry, it the are
+is too narrow, the shape will have hard egdes up to the degenerated cases when
+the area is null, meaning no antialias will be applied. Finally, we need to
+define a funtion that gives the coverage according to the distance. As
+illustrated below, we have the choice between several solutions and we'll
+choose the last one for the rest of this book.</p>
+<div class="figure" id="figure-data/antialias-function.png">
+<img alt="data/antialias-function.png" src="data/antialias-function.png" />
+<p class="caption">Figure</p>
+<div class="legend">
+Antialiasing functions: <strong>Left</strong>: None, <strong>Middle</strong>: linear, <strong>Right</strong>:
+exponential.</div>
+</div>
+</div>
+<div class="section" id="markers">
+<h2><a class="toc-backref" href="#id25">Markers</a></h2>
 <div class="right figure" id="figure-data/CSG-markers.png" style="width: 50%">
 <img alt="data/CSG-markers.png" src="data/CSG-markers.png" />
 <p class="caption">Figure</p>
@@ -2991,11 +3037,11 @@ example allows you to play online with them):</p>
 Some example of markers constructed using CSG.</div>
 </div>
 </div>
-<div class="section" id="arrows-fields">
-<h2><a class="toc-backref" href="#id25">Arrows &amp; fields</a></h2>
+<div class="section" id="arrows">
+<h2><a class="toc-backref" href="#id25">Arrows</a></h2>
 </div>
-<div class="section" id="spheres-impostors">
-<h2><a class="toc-backref" href="#id25">Spheres &amp; impostors</a></h2>
+<div class="section" id="spheres">
+<h2><a class="toc-backref" href="#id25">Spheres</a></h2>
 </div>
 </div>
 <div class="section" id="rendering-lines">
@@ -3003,9 +3049,9 @@ Some example of markers constructed using CSG.</div>
 <div class="contents toc chapter-07 local topic" id="id32">
 <p class="topic-title first">.</p>
 <ul class="simple">
-<li><a class="reference internal" href="#segments" id="id176">Segments</a></li>
-<li><a class="reference internal" href="#polylines" id="id177">Polylines</a></li>
-<li><a class="reference internal" href="#bezier-curves" id="id178">Bézier curves</a></li>
+<li><a class="reference internal" href="#segments" id="id178">Segments</a></li>
+<li><a class="reference internal" href="#polylines" id="id179">Polylines</a></li>
+<li><a class="reference internal" href="#bezier-curves" id="id180">Bézier curves</a></li>
 </ul>
 </div>
 <div class="section" id="segments">
@@ -3031,9 +3077,9 @@ parameterization is given by −d ≤ u ≤ ∥AB∥ + d and −d ≤ v ≤ +d.<
 <div class="contents toc chapter-08 local topic" id="id33">
 <p class="topic-title first">.</p>
 <ul class="simple">
-<li><a class="reference internal" href="#id34" id="id179">Triangulation</a></li>
-<li><a class="reference internal" href="#odd-fill-rule" id="id180">Odd-fill rule</a></li>
-<li><a class="reference internal" href="#holes" id="id181">Holes</a></li>
+<li><a class="reference internal" href="#id34" id="id181">Triangulation</a></li>
+<li><a class="reference internal" href="#odd-fill-rule" id="id182">Odd-fill rule</a></li>
+<li><a class="reference internal" href="#holes" id="id183">Holes</a></li>
 </ul>
 </div>
 <div class="section" id="id34">
@@ -3051,9 +3097,9 @@ parameterization is given by −d ≤ u ≤ ∥AB∥ + d and −d ≤ v ≤ +d.<
 <div class="contents toc chapter-09 local topic" id="id35">
 <p class="topic-title first">.</p>
 <ul class="simple">
-<li><a class="reference internal" href="#implicit-surfaces" id="id182">Implicit surfaces</a></li>
-<li><a class="reference internal" href="#height-fields" id="id183">Height fields</a></li>
-<li><a class="reference internal" href="#mesh-models" id="id184">Mesh models</a></li>
+<li><a class="reference internal" href="#implicit-surfaces" id="id184">Implicit surfaces</a></li>
+<li><a class="reference internal" href="#height-fields" id="id185">Height fields</a></li>
+<li><a class="reference internal" href="#mesh-models" id="id186">Mesh models</a></li>
 </ul>
 </div>
 <div class="section" id="implicit-surfaces">
@@ -3071,9 +3117,9 @@ parameterization is given by −d ≤ u ≤ ∥AB∥ + d and −d ≤ v ≤ +d.<
 <div class="contents toc chapter-10 local topic" id="id36">
 <p class="topic-title first">.</p>
 <ul class="simple">
-<li><a class="reference internal" href="#failsafe-text" id="id185">Failsafe text</a></li>
-<li><a class="reference internal" href="#d-text" id="id186">2D text</a></li>
-<li><a class="reference internal" href="#id37" id="id187">3D text</a></li>
+<li><a class="reference internal" href="#failsafe-text" id="id187">Failsafe text</a></li>
+<li><a class="reference internal" href="#d-text" id="id188">2D text</a></li>
+<li><a class="reference internal" href="#id37" id="id189">3D text</a></li>
 </ul>
 </div>
 <div class="section" id="failsafe-text">
@@ -3091,9 +3137,9 @@ parameterization is given by −d ≤ u ≤ ∥AB∥ + d and −d ≤ v ≤ +d.<
 <div class="contents toc chapter-11 local topic" id="id38">
 <p class="topic-title first">.</p>
 <ul class="simple">
-<li><a class="reference internal" href="#post-processing" id="id188">Post-processing</a></li>
-<li><a class="reference internal" href="#general-computation" id="id189">General computation</a></li>
-<li><a class="reference internal" href="#color-picking" id="id190">Color picking</a></li>
+<li><a class="reference internal" href="#post-processing" id="id190">Post-processing</a></li>
+<li><a class="reference internal" href="#general-computation" id="id191">General computation</a></li>
+<li><a class="reference internal" href="#color-picking" id="id192">Color picking</a></li>
 </ul>
 </div>
 <div class="section" id="post-processing">
@@ -3111,14 +3157,14 @@ parameterization is given by −d ≤ u ≤ ∥AB∥ + d and −d ≤ v ≤ +d.<
 <div class="contents toc chapter-12 local topic" id="id39">
 <p class="topic-title first">.</p>
 <ul class="simple">
-<li><a class="reference internal" href="#colormaps" id="id191">Colormaps</a></li>
-<li><a class="reference internal" href="#contours" id="id192">Contours</a></li>
-<li><a class="reference internal" href="#transparency" id="id193">Transparency</a></li>
-<li><a class="reference internal" href="#generic-transformation" id="id194">Generic transformation</a></li>
-<li><a class="reference internal" href="#grids" id="id195">Grids</a><ul>
-<li><a class="reference internal" href="#cartesian-grid" id="id196">Cartesian grid</a></li>
-<li><a class="reference internal" href="#hexagonal-grid" id="id197">Hexagonal grid</a></li>
-<li><a class="reference internal" href="#polar-grid" id="id198">Polar grid</a></li>
+<li><a class="reference internal" href="#colormaps" id="id193">Colormaps</a></li>
+<li><a class="reference internal" href="#contours" id="id194">Contours</a></li>
+<li><a class="reference internal" href="#transparency" id="id195">Transparency</a></li>
+<li><a class="reference internal" href="#generic-transformation" id="id196">Generic transformation</a></li>
+<li><a class="reference internal" href="#grids" id="id197">Grids</a><ul>
+<li><a class="reference internal" href="#cartesian-grid" id="id198">Cartesian grid</a></li>
+<li><a class="reference internal" href="#hexagonal-grid" id="id199">Hexagonal grid</a></li>
+<li><a class="reference internal" href="#polar-grid" id="id200">Polar grid</a></li>
 </ul>
 </li>
 </ul>
@@ -3180,33 +3226,33 @@ the color depending on the distance using the GLSL <code>mix</code> function. (<
 <div class="contents toc chapter-14 local topic" id="id40">
 <p class="topic-title first">.</p>
 <ul class="simple">
-<li><a class="reference internal" href="#types" id="id199">Types</a><ul>
-<li><a class="reference internal" href="#scalar" id="id200">Scalar</a></li>
-<li><a class="reference internal" href="#vector" id="id201">Vector</a></li>
-<li><a class="reference internal" href="#matrix" id="id202">Matrix</a></li>
-<li><a class="reference internal" href="#texture" id="id203">Texture</a></li>
+<li><a class="reference internal" href="#types" id="id201">Types</a><ul>
+<li><a class="reference internal" href="#scalar" id="id202">Scalar</a></li>
+<li><a class="reference internal" href="#vector" id="id203">Vector</a></li>
+<li><a class="reference internal" href="#matrix" id="id204">Matrix</a></li>
+<li><a class="reference internal" href="#texture" id="id205">Texture</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#qualifiers" id="id204">Qualifiers</a><ul>
-<li><a class="reference internal" href="#storage" id="id205">Storage</a></li>
-<li><a class="reference internal" href="#parameters" id="id206">Parameters</a></li>
-<li><a class="reference internal" href="#precision" id="id207">Precision</a></li>
+<li><a class="reference internal" href="#qualifiers" id="id206">Qualifiers</a><ul>
+<li><a class="reference internal" href="#storage" id="id207">Storage</a></li>
+<li><a class="reference internal" href="#parameters" id="id208">Parameters</a></li>
+<li><a class="reference internal" href="#precision" id="id209">Precision</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#built-in-variables" id="id208">Built-in variables</a><ul>
-<li><a class="reference internal" href="#vertex-shader" id="id209">Vertex shader</a></li>
-<li><a class="reference internal" href="#fragment-shader" id="id210">Fragment shader</a></li>
+<li><a class="reference internal" href="#built-in-variables" id="id210">Built-in variables</a><ul>
+<li><a class="reference internal" href="#vertex-shader" id="id211">Vertex shader</a></li>
+<li><a class="reference internal" href="#fragment-shader" id="id212">Fragment shader</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#built-in-constants" id="id211">Built-in constants</a></li>
-<li><a class="reference internal" href="#built-in-functions" id="id212">Built-in functions</a><ul>
-<li><a class="reference internal" href="#angle-and-trigonometry-functions" id="id213">Angle and trigonometry functions</a></li>
-<li><a class="reference internal" href="#exponential-functions" id="id214">Exponential functions</a></li>
-<li><a class="reference internal" href="#common-functions" id="id215">Common functions</a></li>
-<li><a class="reference internal" href="#geometric-functions" id="id216">Geometric functions</a></li>
-<li><a class="reference internal" href="#matrix-functions" id="id217">Matrix functions</a></li>
-<li><a class="reference internal" href="#vector-relational-functions" id="id218">Vector Relational Functions</a></li>
-<li><a class="reference internal" href="#texture-lookup-functions" id="id219">Texture lookup functions</a></li>
+<li><a class="reference internal" href="#built-in-constants" id="id213">Built-in constants</a></li>
+<li><a class="reference internal" href="#built-in-functions" id="id214">Built-in functions</a><ul>
+<li><a class="reference internal" href="#angle-and-trigonometry-functions" id="id215">Angle and trigonometry functions</a></li>
+<li><a class="reference internal" href="#exponential-functions" id="id216">Exponential functions</a></li>
+<li><a class="reference internal" href="#common-functions" id="id217">Common functions</a></li>
+<li><a class="reference internal" href="#geometric-functions" id="id218">Geometric functions</a></li>
+<li><a class="reference internal" href="#matrix-functions" id="id219">Matrix functions</a></li>
+<li><a class="reference internal" href="#vector-relational-functions" id="id220">Vector Relational Functions</a></li>
+<li><a class="reference internal" href="#texture-lookup-functions" id="id221">Texture lookup functions</a></li>
 </ul>
 </li>
 </ul>
@@ -3390,13 +3436,13 @@ The example values below are the minimum values allowed for these maximums.</p>
 <h2><a class="toc-backref" href="#id40">Built-in functions</a></h2>
 <div class="contents toc local topic" id="id42">
 <ul class="simple">
-<li><a class="reference internal" href="#angle-and-trigonometry-functions" id="id220">Angle and trigonometry functions</a></li>
-<li><a class="reference internal" href="#exponential-functions" id="id221">Exponential functions</a></li>
-<li><a class="reference internal" href="#common-functions" id="id222">Common functions</a></li>
-<li><a class="reference internal" href="#geometric-functions" id="id223">Geometric functions</a></li>
-<li><a class="reference internal" href="#matrix-functions" id="id224">Matrix functions</a></li>
-<li><a class="reference internal" href="#vector-relational-functions" id="id225">Vector Relational Functions</a></li>
-<li><a class="reference internal" href="#texture-lookup-functions" id="id226">Texture lookup functions</a></li>
+<li><a class="reference internal" href="#angle-and-trigonometry-functions" id="id222">Angle and trigonometry functions</a></li>
+<li><a class="reference internal" href="#exponential-functions" id="id223">Exponential functions</a></li>
+<li><a class="reference internal" href="#common-functions" id="id224">Common functions</a></li>
+<li><a class="reference internal" href="#geometric-functions" id="id225">Geometric functions</a></li>
+<li><a class="reference internal" href="#matrix-functions" id="id226">Matrix functions</a></li>
+<li><a class="reference internal" href="#vector-relational-functions" id="id227">Vector Relational Functions</a></li>
+<li><a class="reference internal" href="#texture-lookup-functions" id="id228">Texture lookup functions</a></li>
 </ul>
 </div>
 <div class="section" id="angle-and-trigonometry-functions">
@@ -3882,10 +3928,10 @@ which face to do a 2- dimensional texture lookup in, as described in section
 <div class="contents toc chapter-15 local topic" id="id43">
 <p class="topic-title first">.</p>
 <ul class="simple">
-<li><a class="reference internal" href="#people" id="id227">People</a></li>
-<li><a class="reference internal" href="#tutorials" id="id228">Tutorials</a></li>
-<li><a class="reference internal" href="#articles" id="id229">Articles</a></li>
-<li><a class="reference internal" href="#books" id="id230">Books</a></li>
+<li><a class="reference internal" href="#people" id="id229">People</a></li>
+<li><a class="reference internal" href="#tutorials" id="id230">Tutorials</a></li>
+<li><a class="reference internal" href="#articles" id="id231">Articles</a></li>
+<li><a class="reference internal" href="#books" id="id232">Books</a></li>
 </ul>
 </div>
 <p>This is a curated list of some computer graphics resources (peoole, articles,
