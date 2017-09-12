@@ -1,3 +1,4 @@
+
 Basic Mathematics
 ===============================================================================
 
@@ -6,6 +7,7 @@ Basic Mathematics
    :depth: 2
    :class: toc chapter-04
 
+.. ----------------------------------------------------------------------------
 
 
 There is no way around mathematics. If you want to understand computer

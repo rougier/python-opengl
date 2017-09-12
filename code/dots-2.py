@@ -29,6 +29,7 @@ fragment = """
       vec2 p = gl_FragCoord.xy - v_center;
       float a = 1.0;
       float d = length(p) - v_radius + 1.0;
+      d = abs(d); // Outline
       if(d > 0.0) a = exp(-d*d);
       gl_FragColor = vec4(vec3(0.0), a);
   } """
