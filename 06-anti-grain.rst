@@ -12,8 +12,7 @@ The late Maxim Shemanarev (1966-2013) designed the `anti-grain library
 <http://www.antigrain.com/>`_, a (very) high quality rendering engine written
 in C++. The library is both nicely written (one of the best C++ library I've
 seen so far, and I tend to hate C++) and heavily documented, but the strongest
-feature is the quality of the output that is probably one of the best, even 10
-years after the library has been released (have look at the `demos
+feature is the quality of the output that is probably one of the best, even 10 years after the library has been released (have look at the `demos
 <http://www.antigrain.com/demo/index.html>`_).  This is the level of quality we
 target in this book. However, OpenGL anti-aliasing techniques won't do the job
 and we'll need to take care of pretty much everything.
