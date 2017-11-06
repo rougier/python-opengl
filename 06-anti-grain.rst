@@ -8,14 +8,18 @@ Anti-grain geometry
    :class: toc chapter-06
 
 
-The late Maxim Shemanarev (1966-2013) designed the `anti-grain library
-<http://www.antigrain.com/>`_, a (very) high quality rendering engine written
-in C++. The library is both nicely written (one of the best C++ library I've
-seen so far, and I tend to hate C++) and heavily documented, but the strongest
-feature is the quality of the output that is probably one of the best, even 10 years after the library has been released (have look at the `demos
-<http://www.antigrain.com/demo/index.html>`_).  This is the level of quality we
-target in this book. However, OpenGL anti-aliasing techniques won't do the job
-and we'll need to take care of pretty much everything.
+The late Maxim Shemanarev (1966-2013) designed the anti-grain_ library, a
+(very) high quality rendering engine written in C++. The library is both nicely
+written (one of the best C++ library I've seen with the Eigen_ library) and
+heavily documented, but the strongest feature is the quality of the rendering
+output that is probably one of the best, even 10 years after the library has
+been released (have look at the demos_). This is the level of quality we target
+in this book. However, OpenGL anti-aliasing techniques (even latest ones) won't
+do the job and we'll need to take care of pretty much everything.
+
+.. _anti-grain: http://www.antigrain.com/
+.. _eigen:      http://eigen.tuxfamily.org/
+.. _demos:      http://www.antigrain.com/demo/
 
 
 Antialiasing
@@ -33,19 +37,17 @@ Antialiasing
 
 Aliasing is a well known problem in signal processing where it can occur in
 time (temporal aliasing) or in space (spatial aliasing). In computer graphics,
-we're mostly interested in spatial aliasing (such a `Moiré pattern
-<https://en.wikipedia.org/wiki/Moiré_pattern>`_ of `jaggies
-<https://en.wikipedia.org/wiki/Jaggies>`_) and the way to attenuate it. But
-let's first examine the origin of the problem from a practical point of view
-(have a look at wikipedia for the `background theory
-<https://en.wikipedia.org/wiki/Aliasing>`_).
+we're mostly interested in spatial aliasing (such a `Moiré pattern`_ or
+jaggies_) and the way to attenuate it.  Let's first examine the origin of the
+problem from a practical point of view (have a look at wikipedia for the
+`background theory`_).
 
 The figure on the right illustrates the problem when we wants to render a disc
 onto a small area. The very first thing to be noticed is that pixels are
 **not** mathematical points and the center of the pixel is usually associated
 with the center of the pixel. This means that if we consider a pair of integer
 coordinates `(i,j)`, then `(i+Δx, j+Δy)` designates the same pixel (with `-0.5
-< Δx, Δy < 0.5`). In order to rasterize the mathematical description of our
+< Δx, Δy < 0.5`).  In order to rasterize the mathematical description of our
 circle (center and radius), the rasterizer examine the center of each pixel to
 determine if it falls inside or outside the shape. The result is illustrated on
 the right part of the figure. Even if the center of a pixel is very close but
@@ -53,6 +55,10 @@ outside of the circle, it is not painted as it is shown for the thicker square
 on the figure. More generally, without antia-aliasing, a pixel will be only on
 (inside) or off (outside), leading to very hard jagged edges and a very
 approximate shape for small sizes as well.
+
+.. _Moiré pattern: https://en.wikipedia.org/wiki/Moiré_pattern
+.. _jaggies: https://en.wikipedia.org/wiki/Jaggies
+.. _background theory: https://en.wikipedia.org/wiki/Aliasing
 
 
 Sample based methods
@@ -99,10 +105,22 @@ and speed) one method might be better than the other. However, you cannot
 expect to achieve top quality due to inherent limitations of all these
 methods. If they are great for real-time rendering such as video games (and
 some of them are really good), they are hardly sufficient for any scientific
-visualization. This is the reason why we won't use them in the rest of this
-book. If you want more details on these techniques, you can have a look at this
-reddit discussion explaining `antialiasing modes
-<https://www.reddit.com/r/Games/comments/1rb964/antialiasing_modes_explained/>`_.
+visualization as illustrated on the figure below.
+
+.. figure:: data/ssaa-sdf.png
+   :figwidth: 100%
+
+   Figure
+
+   Supersampling applied to a rasterized triangle, using various sub-pixel
+   patterns. The more samples , the better the output but even using 64
+   samples, the rendering quality does not match the SDF rendering, especially
+   if you consider triangle sharp vertices.  Supersampled triangles have been
+   rendered using a dedicated shader (see `<code/triangle-ssaa.py>`_) and the
+   SDF triangle has been rendered using a fake signed-distance triangle
+   function (see below) and a stroke anti-alias function (see
+   `<code/triangle-sdf.py>`_)
+
 
 .. _CSAA: http://www.anandtech.com/show/2116/9
 .. _EQAA: http://www.anandtech.com/show/4061/amds-radeon-hd-6970-radeon-hd-6950/10
@@ -115,6 +133,17 @@ reddit discussion explaining `antialiasing modes
 .. _DLAA: http://and.intercon.ru/releases/talks/dlaagdc2011/slides/
 .. _NFAA: https://www.gamedev.net/forums/topic/580517-nfaa---a-post-process-anti-aliasing-filter-results-implementation-details/
 .. _TXAA: https://www.geforce.com/hardware/technology/txaa
+
+This is the reason why we won't use them in the rest of this book. If you want
+more details on these techniques, you can have a look at this reddit discussion
+explaining `antialiasing modes`_ or this nice `overview of MSAA`_
+
+.. _antialiasing modes:
+    https://www.reddit.com/r/Games/comments/1rb964/antialiasing_modes_explained/
+.. _overview of MSAA:
+    https://mynameismjp.wordpress.com/2012/10/24/msaa-overview/
+
+
 
 Coverage methods
 ++++++++++++++++
@@ -163,6 +192,7 @@ have a look at the `subpixel zoo
 <https://geometrian.com/programming/reference/subpixelzoo/index.php>`_
 maintained by Ian Mallett and you'll understand our assumption is not so bad
 overall. 
+
 
 
 Signed distance fields
@@ -223,7 +253,6 @@ origin is given by:
    See `<code/circle-sdf-distances.py>`_
 
 
-   
 As an exercise, you can check that `d(x,y)` is null if `(x,y)` is on the
 border, strictly negative if `(x,y)` is inside the circle and strictly positive
 outside the circle.
@@ -253,7 +282,6 @@ border (with some tolerance of we won't see anything).
            gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
    }
    
-
 
 
 Geometrical primitives
@@ -644,128 +672,47 @@ distance. Some artifacts can be clearly seen but we'll see later that if our ell
        return f*(f-r)/length(p*size*size);
    }
 
-
-Constructive Solid Geometry
--------------------------------------------------------------------------------
-
-
-.. figure:: data/CSG.png
-   :figwidth: 50%
-   :figclass: right
-              
-   Figure
-
-   Constructive solid geometry (CSG) allows a to create a complex object by using
-   Boolean operators to combine simpler objects.
-
-
-Constructive solid geometry (CSG) is a technique used for modeling in order to
-create a complex object by using Boolean operators to combine simpler objects
-(primitives). Resulting objects appear visually complex but are actually a
-cleverly combined or decombined objects. The teaser image in the `GLSL
-References`_ chapter is the result of `complex constructive geometry in 3D
-<http://iquilezles.org/www/articles/distfunctions/distfunctions.htm>`_. See
-also the Wikipedia entry on `Truth function
-<https://en.wikipedia.org/wiki/Truth_function>`_.
-
-This is the reason we did not bother to try to render complex shapes in the
-previous section. Using constructive solid geometry, we are free to model
-pretty much anything and we'll see that in the markers section below. In the
-meantime, we need to define our CSG operations in glsl. The good news is that
-it is incredibly simple, just read:
-
-.. code:: glsl
-
-   // Union (A or B)
-   float csg_union(float d1, float d2)
-   { return min(d1,d2); }
-
-   // Difference (A not B)
-   float csg_difference(float d1, float d2)
-   { return max(d1,-d2); }
-
-   // Intersection (A and B)
-   float csg_intersection(float d1, float d2)
-   {  return max(d1,d2); }
-
-   // Exclusion (A xor B)
-   float csg_exclusion(float d1, float d2) 
-   { return min(max(d1,-d2), max(-d1,d2)); }
-
-
-And we can check for the result using two circles (the shadertoy link for each
-example allows you to play online with them):
-
-   
-.. figure:: data/CSG-intersection.png
-   :figwidth: 30%
-   :figclass: right
-
-   Figure
-
-   | Intersection (A and B)
-   | `CSG-intersection.py <code/csg-intersection.py>`_ / `Shadertoy`__
-
-__  https://www.shadertoy.com/view/XllyWn
-
-.. figure:: data/CSG-union.png
-   :figwidth: 30%
-   :figclass: right
-
-   Figure
-
-   | Union (A or B)
-   | `CSG-union.py <code/csg-union.py>`_ / `Shadertoy`__
-
-__  https://www.shadertoy.com/view/4tlyWn
-
-.. figure:: data/CSG-mix.png
-   :figwidth: 30%
-   :figclass: right
-
-   Figure
-
-   | Two SDF circles (A, B)
-   | `CSG-mix.py <code/csg-mix.py>`_ / `Shadertoy`__
-
-__  https://www.shadertoy.com/view/MtfcDr
-
-----
-
-.. figure:: data/CSG-exclusion.png
-   :figwidth: 30%
-   :figclass: right
-
-   Figure
-
-   | Exclusion (A xor B)
-   | `CSG-exclusion.py <code/csg-exclusion.py>`_ / `Shadertoy`__
-
-__  https://www.shadertoy.com/view/4tsyWn
    
 
-.. figure:: data/CSG-difference-2.png
-   :figwidth: 30%
-   :figclass: right
-
-   Figure
-
-   | Difference (A not B)
-   | `CSG-difference-2.py <code/csg-difference-2.py>`_ / `Shadertoy`__
-
-__  https://www.shadertoy.com/view/XtsyWn
-
-.. figure:: data/CSG-difference-1.png
-   :figwidth: 30%
-   :figclass: right
-
-   Figure
-
-   | Difference (B not A)
-   | `CSG-difference-1.py <code/csg-difference-1.py>`_ / `Shadertoy`__
-
-__  https://www.shadertoy.com/view/4llyWn
-
-
-Boundings boxes
+Distance based anti-aliasing
 -------------------------------------------------------------------------------
+
+We have our signed distance functions but we need to exploit them in order to
+do the proper antialiasing. If you remember that a SDF function gives the
+distance to the border of the shape, we still need to compute the right color
+according to this distance. When we are fully inside or outside the shape, it
+is easy: let's say black for the inside and white for the oustide (or nothing
+using the transaprency level). The interesting part is located in the vicinity
+of the border, it is not fully black nor fully white but grey. What amount of
+grey you might ask? Well, it is directly correlated with the distance to the
+border. But first, let's have a look at the figure below that show the
+different situations:
+
+.. figure:: data/circle-aa.png
+
+   Figure
+
+   For a given shape, we might want to draw only the outline of the shape
+   (left), the interior only (left) or both of them (middle).
+
+
+For all these cases, we need to define the thickness of the antialiased area,
+(that is, the area where the estimated coverage will go from 0 (outside) to 1
+(inside)) and the line thickness for the stroke and outline cases. This means
+that wen we compute the actual size of the circle, we have to take this into
+account (2*antialias + linewidth). The antialias area is usually 1.0 pixel.
+If it is larger, the shape will appear blurry, and it it is too narrow, the
+shape will have hard egdes. The degenerated case being a null area that results
+in no antialias at all.
+   
+.. figure:: data/antialias-function.png
+
+   Figure
+
+   Antialiasing functions: **Left**: None, **Middle**: linear, **Right**:
+   exponential.
+
+Finally, we need to define a function that gives the coverage according to the
+distance. As illustrated above, we have the choice between several solutions
+(you're also free to design your own) but we'll mostly use the last one for the
+rest of this book because it appears to be the nicest (to me).

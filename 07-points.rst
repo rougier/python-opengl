@@ -20,48 +20,6 @@ above , we'll need to take care of pretty much everything.
 Dots, discs, circles
 -------------------------------------------------------------------------------
 
-We've gone through a lot of theory and we're almost ready to render our first
-dots (what? it is not yet finished? no!). We have our signed distance functions
-but we need to exploit them in order to do the proper antialiasing. If you
-remember that a SDF function gives the distance to the border of the shape, we
-still need to compute the right color according to this distance. When we are
-fully inside or outside the shape, it is easy: let's say black for the inside
-and white for the oustide (or nothing using the transaprency level). The
-interesting part is located in the vicinity of the border, it is not fully
-black nor fully white but grey. What amount of grey you might ask? Well, it is
-directly correlated with the distance to the border. But first, let's have a
-look at the figure below that show the different situations:
-
-.. figure:: data/circle-aa.png
-
-   Figure
-
-   For a given shape, we might want to draw only the outline of the shape
-   (left), the interior only (left) or both of them (middle).
-
-
-For all these cases, we need to define the thickness of the antialiased area,
-(that is, the area where the estimated coverage will go from 0 (outside) to 1
-(inside)) and the line thickness for the stroke and outline cases. This means
-that wen we compute the actual size of the circle, we have to take this into
-account (2*antialias + linewidth). The antililias area is usually 1.0 pixel.
-If it is larger, the shape will appear blurry, and it it is too narrow, the
-shape will have hard egdes. The degenerated case being a null area that results
-in no antialias at all. Finally, we need to define a function that gives the
-coverage according to the distance. As illustrated below, we have the choice
-between several solutions (you're free to design your own) and we'll mostly use
-the last one for the rest of this book because it appears to be the nicest to
-me.
-   
-.. figure:: data/antialias-function.png
-
-   Figure
-
-   Antialiasing functions: **Left**: None, **Middle**: linear, **Right**:
-   exponential.
-
-Ok, we're done with the theory. Let's draw some dots (at last).
-
 We'll use the `gl.GL_POINTS` primitive that actually display a quad whose size
 (in pixels) can be specified within the vertex shader` using the `gl_PointSize`
 method. If the point is supposed to have a given radius, the quad size must be
@@ -204,4 +162,130 @@ Arrows
 
 
 Spheres
+-------------------------------------------------------------------------------
+
+
+Constructive Solid Geometry
+-------------------------------------------------------------------------------
+
+
+.. figure:: data/CSG.png
+   :figwidth: 50%
+   :figclass: right
+              
+   Figure
+
+   Constructive solid geometry (CSG) allows a to create a complex object by using
+   Boolean operators to combine simpler objects.
+
+
+Constructive solid geometry (CSG) is a technique used for modeling in order to
+create a complex object by using Boolean operators to combine simpler objects
+(primitives). Resulting objects appear visually complex but are actually a
+cleverly combined or decombined objects. The teaser image in the `GLSL
+References`_ chapter is the result of `complex constructive geometry in 3D
+<http://iquilezles.org/www/articles/distfunctions/distfunctions.htm>`_. See
+also the Wikipedia entry on `Truth function
+<https://en.wikipedia.org/wiki/Truth_function>`_.
+
+This is the reason we did not bother to try to render complex shapes in the
+previous section. Using constructive solid geometry, we are free to model
+pretty much anything and we'll see that in the markers section below. In the
+meantime, we need to define our CSG operations in glsl. The good news is that
+it is incredibly simple, just read:
+
+.. code:: glsl
+
+   // Union (A or B)
+   float csg_union(float d1, float d2)
+   { return min(d1,d2); }
+
+   // Difference (A not B)
+   float csg_difference(float d1, float d2)
+   { return max(d1,-d2); }
+
+   // Intersection (A and B)
+   float csg_intersection(float d1, float d2)
+   {  return max(d1,d2); }
+
+   // Exclusion (A xor B)
+   float csg_exclusion(float d1, float d2) 
+   { return min(max(d1,-d2), max(-d1,d2)); }
+
+
+And we can check for the result using two circles (the shadertoy link for each
+example allows you to play online with them):
+
+   
+.. figure:: data/CSG-intersection.png
+   :figwidth: 30%
+   :figclass: right
+
+   Figure
+
+   | Intersection (A and B)
+   | `CSG-intersection.py <code/csg-intersection.py>`_ / `Shadertoy`__
+
+__  https://www.shadertoy.com/view/XllyWn
+
+.. figure:: data/CSG-union.png
+   :figwidth: 30%
+   :figclass: right
+
+   Figure
+
+   | Union (A or B)
+   | `CSG-union.py <code/csg-union.py>`_ / `Shadertoy`__
+
+__  https://www.shadertoy.com/view/4tlyWn
+
+.. figure:: data/CSG-mix.png
+   :figwidth: 30%
+   :figclass: right
+
+   Figure
+
+   | Two SDF circles (A, B)
+   | `CSG-mix.py <code/csg-mix.py>`_ / `Shadertoy`__
+
+__  https://www.shadertoy.com/view/MtfcDr
+
+----
+
+.. figure:: data/CSG-exclusion.png
+   :figwidth: 30%
+   :figclass: right
+
+   Figure
+
+   | Exclusion (A xor B)
+   | `CSG-exclusion.py <code/csg-exclusion.py>`_ / `Shadertoy`__
+
+__  https://www.shadertoy.com/view/4tsyWn
+   
+
+.. figure:: data/CSG-difference-2.png
+   :figwidth: 30%
+   :figclass: right
+
+   Figure
+
+   | Difference (A not B)
+   | `CSG-difference-2.py <code/csg-difference-2.py>`_ / `Shadertoy`__
+
+__  https://www.shadertoy.com/view/XtsyWn
+
+.. figure:: data/CSG-difference-1.png
+   :figwidth: 30%
+   :figclass: right
+
+   Figure
+
+   | Difference (B not A)
+   | `CSG-difference-1.py <code/csg-difference-1.py>`_ / `Shadertoy`__
+
+__  https://www.shadertoy.com/view/4llyWn
+
+
+Boundings boxes
 -------------------------------------------------------------------------------
