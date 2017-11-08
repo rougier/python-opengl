@@ -10,23 +10,24 @@
 
 /* --- Structure ----------------------------------------------------------- */
 body {
-    color: #222;
+    color: #555555;
     background-color: #f9f9f9;
-    font-size: 18px;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 19px;
+    /* font-family: 'Source Sans Pro', sans-serif; */
+    font-family: 'Georgia', serif;
     font-weight: 40>0;
-    line-height: 1.35em;
+    line-height: 1.4em;
     margin: 0;
     padding: 0;
-    counter-reset: h1 h2 h3 figure;
+    counter-reset: h1 h2 h3 figure chapter-sidebar;
 }
 
 
 .document {
-    margin-left: 250px;
+    margin-left: 300px;
     max-width:   800px;
-    padding-left: 2em;
-    padding-right: 2em;
+    padding-left: 8em;
+    padding-right: 6em;
     background-color: #ffffff;
     border-right: 1px solid #e9e9e9;
 }
@@ -40,25 +41,17 @@ body {
     background: #f0f0f0;
 
     border-right: 1px solid #e9e9e9;
-    width: 250px;
+    width: 300px;
     padding: 0;
     overflow-y: scroll;
+
+
+    background-color: rgb(47, 34, 48);
+    color: rgb(255,255,255);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 .sidebar-title {
+    background-color: #DF3651;
     margin: 0;
     padding: 0;
     padding: 1em 1em;
@@ -66,7 +59,7 @@ body {
 
 .sidebar-title a,
 .sidebar-title a:visited {
-    color: #000;
+    color: #ffffff;
     font-variant: small-caps;
     font-weight: 700;
 }
@@ -98,20 +91,50 @@ body {
     margin-bottom: 0.5em;
 }
 
-.sidebar li {
+#id54 {
+    padding-top: .25em;
+    padding-bottom: .25em;
+    color: #ffffff;
+    background-color: #DF3651;
+}
+
+.sidebar ul.simple > li > a::before {
+    display: block;
+    content: "chapter " counter(chapter-sidebar);
+    counter-increment: chapter-sidebar;
+    font-size: 85%;
     font-weight: 500;
+    letter-spacing: 0.10em;
+    color: #bbbbbb;
+    border-bottom: 1px solid #777777;
+    width:40%;
+    margin-left: -5px;
+    padding-left: +5px;
+}
+
+.sidebar li {
+    font-weight: 700;
+    font-variant: small-caps;
     margin: 0;
     padding: 0;
+    line-height: 1em;
     list-style-type: none;
+    margin-top: 1.5em;
 }
 
 .sidebar li li {
     line-height: 1.25em;
     margin: 0;
     font-size: 90%;
-    font-weight: 300;
+    font-variant: none;
+    font-weight: 500;
     margin-top: 0;
     margin-bottom: 0;
+    border: 0px;
+}
+
+.sidebar li li a {
+    color: #aaaaaa;
 }
 
 .sidebar li p {
@@ -119,13 +142,14 @@ body {
     padding: 0;
 }
 .sidebar li a {
-    color: #000;
+    color: #ffffff;
     padding-left: 20px;
     display: block;
     text-decoration: none;
     padding-bottom: .25em;
     padding-top: .25em;
     padding-left: 1em;
+    transition: all 1.0s ease;
 }
 
 .sidebar li li a {
@@ -135,6 +159,7 @@ body {
     padding-bottom: 0em;
     padding-top: 0em;
     padding-left: 2em;
+    
 }
 
 .sidebar li a:hover,
@@ -144,7 +169,8 @@ body {
     display: block;
     border: 0;
     text-decoration: none;
-    background-color: #f9f9f9;
+    color: #ffffff;
+    background-color: #443344;
 }
 
 
@@ -154,14 +180,14 @@ h1.title::before {
 }
 h1.title {
     text-align: center;
-    color: #993333;
+    color: #DF3651;
     font-size: 1.9em;
     font-variant: small-caps;
     font-weight: 800;
     line-height: 1.0em;
     margin: 0;
     padding: 0;
-    padding-top: 0.5em;
+    padding-top: 1.5em;
     border: none;
 }
 p.subtitle {
@@ -217,7 +243,7 @@ img.teaser {
     margin: 2em;
     padding: 1em;
     margin-top: 0em;
-    border: 1px solid black;
+    border: 1px solid #cccccc;
 }
 
 
@@ -225,10 +251,11 @@ img.teaser {
 /* --- Headers ------------------------------------------------------------- */
 h1::before {
     display: block-inline;
-    font-size: 65%;
+    font-size: 75%;
     content: "Chapter " counter(h1) " ";
     counter-increment: h1;
-    color: #999;
+    /* color: #999; */
+    color: #DF3651; 
     font-weight: 400;
     font-variant: small-caps;
     letter-spacing: 0.10em;
@@ -236,14 +263,43 @@ h1::before {
     margin: 0;
     padding: 0;
 }
+
+h2::before, h3::before {
+    color: #DF3651; 
+    float:left;
+    text-align: left;
+    font-weight: 500;
+}
 h2::before {
+    text-align: right;
+    width: 80px;
+    padding-right: 10px;
     counter-increment: h2;
     content: counter(h1) "." counter(h2) " ";
+    background-color: #DF3651;
+    color: white;
+    margin-bottom: -10px;
+    padding-bottom: 10px;
+    margin-top: -10px;
+    padding-top: 10px;
+    margin-right: 10px;
 }
 h3::before {
+    text-align: right;
+    width: 90px;
+    padding-right: 10px;
     counter-increment: h3;
     content: counter(h1) "." counter(h2) "." counter(h3) " ";
 }
+h2 {
+    left: 100px;
+    margin-left: -100px;
+}
+h3 {
+    left: 100px;
+    margin-left: -100px;
+}
+
 
 
 h1, h2, h3, h4 {
@@ -253,12 +309,12 @@ h1, h2, h3, h4 {
     font-weight: 600;
 }
 h1 {
-    font-size: 1.75em;
+    font-size: 2.em;
     counter-reset: h2 figure;
     padding-top: 1em;
     padding-bottom: 8px;
     border-bottom: 1.5px solid black;
-    margin-top: 3em;
+    margin-top: 6em;
 }
 h2 { font-size: 1.50em;
      counter-reset: h3;
@@ -297,13 +353,15 @@ h4 a, h4 a:visited, h4 a:hover {
 a {
     color: #059;
     text-decoration: none;
+    transition: all 1.0s ease;
 }
 a:visited {
     color: #059;
 }
 a:hover {
-    color: #059;
-    border-bottom: 1px solid #059;
+/*    color: #059;*/
+    color: #DF3651; 
+/*    border-bottom: 1px solid #059;*/
 }
 a:active {
     color:#000000;
@@ -323,8 +381,10 @@ a:active {
 /*    width: 65%;*/
 /*    clear:both;*/
     font-family: Source Sans Pro, sans;
-
+    font-variant: small-caps;
     display: flex;
+    font-size: 90%;
+    line-height: 120%;
 }
 
 .toc ul.simple:before {
@@ -333,6 +393,7 @@ a:active {
     font-weight: bold;
     font-family: Source Sans Pro, sans;
     content: "CONTENTS";
+    font-size: 80%;
     float: right;
 }
 
@@ -593,6 +654,8 @@ img {
 }
 
 .figure .legend {
+    font-size: 90%;
+    line-height: 120%;
     background-color: #f0f0f0;
     padding: 0.5em 0.75em;
 }
@@ -720,3 +783,35 @@ pre.python {
 }
 
 
+
+/* --- List buttons -------------------------------------------------------- */
+ul.button {
+    display: table;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    border-spacing: 3px;
+}
+ul.button li {
+    display: table-cell;
+    text-align: center;
+    list-style-type: none;
+    background-color: #DF3651;
+    margin: 0;
+    width:20em;
+    border-radius: 4px;
+/*    border: 1px solid black;*/
+}
+
+ul.button li a {
+    font-size: 150%;
+    font-family: 'Source Sans Pro', sans-serif;
+    display:block;
+    padding: 0.5em 0.0em 0.5em 0.0em;
+    color: #ffffff;
+    transition: all 1.0s ease;
+    border-radius: 4px;
+}
+ul.button li a:hover {
+    background-color: #000000;
+}

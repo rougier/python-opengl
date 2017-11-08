@@ -75,8 +75,8 @@ of camera we want to use and ultimately, where do we look at. In this simple
 example, we'll use the model-view-projection model that requires 3 matrices:
 
 * `model:` maps from an object's local coordinate space into world space
-* `view` maps from world space to camera space
-* `projection` maps from camera to screen space
+* `view:` maps from world space to camera space
+* `projection:` maps from camera to screen space
 
 The corresponding vertex shader code is then:
 

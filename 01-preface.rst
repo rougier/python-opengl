@@ -39,11 +39,11 @@ national center for scientific research (CNRS_).
 I've been using Python for more than 15 years and numpy for more than 10 years
 for modeling in neuroscience, machine learning and for advanced visualization
 (OpenGL). I'm the author of several online resources and tutorials (Matplotlib,
-numpy, OpenGL) and he's teaching Python, numpy and scientific visualization at
-the University of Bordeaux and in various conferences and schools worldwide
-(SciPy, EuroScipy, etc). He's also the author of the popular article `Ten
-Simple Rules for Better Figures`_ , a popular `matplotlib tutorial`_ and an
-open access book `From Python To Numpy`_.
+numpy, OpenGL) and I've been teaching Python, numpy and scientific
+visualization at the University of Bordeaux and in various conferences and
+schools worldwide (SciPy, EuroScipy, etc). I'm also the author of the popular
+article `Ten Simple Rules for Better Figures`_ , a popular `matplotlib
+tutorial`_ and an open access book `From Python To Numpy`_.
 
 
 
@@ -62,7 +62,6 @@ If you want to rebuild the html output, from the top directory, type:
                    --cloak-email-addresses      \
                    --toc-top-backlinks          \
                    --stylesheet book.css        \
-                   --template book-template.txt \
                    --stylesheet-dirs .          \
                    book.rst book.html
 
@@ -164,6 +163,41 @@ Code
 
 The code is licensed under the `OSI-approved BSD 2-Clause License
 <LICENSE-code.txt>`_.
+
+
+
+Buy the book
+-------------------------------------------------------------------------------
+
+As you may have realized by now, the book is free for you to read
+online. However, some people prefer to have a PDF version or even a dead-tree
+version. For this to happen, I need to design a latex template for producing a
+nice PDF. That's a lot of work and I don't really have time since I'm also (and
+mainly) a researcher with several students to supervise, researches to do,
+grants to write, talks to prepare, etc.
+
+Consequently, if you really want to have a PDF version, you'll have to
+explicitely express your interest by contributing a small amount of
+money. Then,
+
+* if the total reach **5,000 euros**, I'll produce the PDF
+* if the total reach **10,000 euros**, I'll have the book printed and sold (20 euros).
+
+However, be warned that you won't get refund if the first goal is not
+reached. In such case, consider your payment as a donation to the online
+version. If you find this unfair, remember you have the choice to give or not
+and the online version is free and open source...
+
+.. image:: crowdfunding.png
+   :width: 100%
+
+
+.. class:: button
+   
+* `5€ <https://www.paypal.me/NicolasPRougier/5>`_ 
+* `10€ <https://www.paypal.me/NicolasPRougier/10>`_
+* `25€ <https://www.paypal.me/NicolasPRougier/25>`_
+* `50€ <https://www.paypal.me/NicolasPRougier/50>`_
 
 
 .. --- Links ------------------------------------------------------------------

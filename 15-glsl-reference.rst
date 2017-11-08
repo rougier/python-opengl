@@ -241,12 +241,6 @@ The example values below are the minimum values allowed for these maximums.
 Built-in functions
 ------------------
 
-.. contents::
-   :local:
-   :class: toc
-   :depth: 1
-
-
 Angle and trigonometry functions
 ++++++++++++++++++++++++++++++++
 
