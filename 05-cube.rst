@@ -169,7 +169,7 @@ by compositing a rotation the z axis (`theta`), then around the y axis (`phi`):
 Actual rendering
 -------------------------------------------------------------------------------
 
-.. figure:: data/solid-cube.mp4
+.. figure:: movies/chapter-05/solid-cube.mp4
    :loop:
    :autoplay:
    :controls:
@@ -202,7 +202,7 @@ endless animation:
 
    app.run(framerate=60, framecount=360)
 
-Complete source code: `<code/solid-cube.py>`_
+Complete source code: `<code/chapter-05/solid-cube.py>`_
 
 
    
@@ -253,7 +253,7 @@ shader.
    } """
 
 
-.. figure:: data/color-cube.mp4
+.. figure:: movies/chapter-05/color-cube.mp4
    :loop:
    :autoplay:
    :controls:
@@ -282,14 +282,14 @@ But we could also have written
    cube["position"] = V["position"]
    cube["color"] = V["color"]
 
-Complete source code: `<code/color-cube.py>`_
+Complete source code: `<code/chapter-05/color-cube.py>`_
    
    
 
 Outlined cube
 +++++++++++++
 
-.. figure:: data/outline-cube.mp4
+.. figure:: movies/chapter-05/outline-cube.mp4
    :loop:
    :autoplay:
    :controls:
@@ -354,13 +354,13 @@ are drawn "above" the cube because we paint a line on a surface:
        glm.rotate(model, phi, 0, 1, 0)
        cube['model'] = model
 
-Complete source code: `<code/outlined-cube.py>`_
+Complete source code: `<code/chapter-05/outlined-cube.py>`_
 
 
 Textured cube
 +++++++++++++
 
-.. figure:: data/texture-cube.mp4
+.. figure:: movies/chapter-05/texture-cube.mp4
    :loop:
    :autoplay:
    :controls:
@@ -454,12 +454,12 @@ Now, inside the fragment shader, we have access to the texture:
    } """
 
 
-Complete source code: `<code/textured-cube.py>`_
+Complete source code: `<code/chapter-05/textured-cube.py>`_
 
 Exercises
 -------------------------------------------------------------------------------
 
-.. figure:: data/color-border-cube-1.mp4
+.. figure:: movies/chapter-05/color-border-cube-1.mp4
    :loop:
    :autoplay:
    :controls:
@@ -478,14 +478,14 @@ is possible to get more or less the same results from within the shader in a
 single pass. The trick is to pass the (untransformed) position from the vertex
 shader to the fragment shader and to use this information to set the color of
 the fragment to either the black color or the v_color. Starting from the `color
-cube code <code/chapter-03/color-cube.py>`_, try to modify only the shader code
+cube code <code/chapter-05/color-cube.py>`_, try to modify only the shader code
 (both vertex and fragment) to achieve the result on the right.
 
-**Solution**: `<code/border-cube.py>`_
+**Solution**: `<code/chapter-05/border-cube.py>`_
 
 ----
 
-.. figure:: data/color-border-cube-2.mp4
+.. figure:: movies/chapter-05/color-border-cube-2.mp4
    :loop:
    :autoplay:
    :controls:
@@ -504,7 +504,7 @@ instructs OpenGL to not display the fragment at all and to terminate the
 program frot this shader. Since nothing will be rendered, there is no need to
 process the rest of program.
 
-**Solution**: `<code/hollow-cube.py>`_
+**Solution**: `<code/chapter-05/hollow-cube.py>`_
 
 ----
 

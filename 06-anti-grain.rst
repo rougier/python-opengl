@@ -1,4 +1,3 @@
-
 Anti-grain geometry
 ===============================================================================
 
@@ -8,7 +7,7 @@ Anti-grain geometry
    :class: toc chapter-06
 
 
-.. image:: data/mcseem.jpg
+.. image:: images/chapter-06/mcseem.jpg
    :class: right
    :width: 20%
       
@@ -29,7 +28,7 @@ do the job and we'll need to take care of pretty much everything.
 Antialiasing
 -------------------------------------------------------------------------------
 
-.. figure:: data/circle-aa-none.png
+.. figure:: images/chapter-06/circle-aa-none.png
    :figwidth: 50%
    :figclass: right
 
@@ -68,7 +67,7 @@ approximate shape for small sizes as well.
 Sample based methods
 ++++++++++++++++++++
 
-.. figure:: data/circle-aa-multisample.png
+.. figure:: images/chapter-06/circle-aa-multisample.png
    :figwidth: 45%
    :figclass: right
 
@@ -111,7 +110,7 @@ methods. If they are great for real-time rendering such as video games (and
 some of them are really good), they are hardly sufficient for any scientific
 visualization as illustrated on the figure below.
 
-.. figure:: data/ssaa-sdf.png
+.. figure:: images/chapter-06/ssaa-sdf.png
    :figwidth: 100%
 
    Figure
@@ -120,10 +119,10 @@ visualization as illustrated on the figure below.
    patterns. The more samples , the better the output but even using 64
    samples, the rendering quality does not match the SDF rendering, especially
    if you consider triangle sharp vertices.  Supersampled triangles have been
-   rendered using a dedicated shader (see `<code/triangle-ssaa.py>`_) and the
+   rendered using a dedicated shader (see `<code/chapter-06/triangle-ssaa.py>`_) and the
    SDF triangle has been rendered using a fake signed-distance triangle
    function (see below) and a stroke anti-alias function (see
-   `<code/triangle-sdf.py>`_)
+   `<code/chapter-06/triangle-sdf.py>`_)
 
 
 .. _CSAA: http://www.anandtech.com/show/2116/9
@@ -152,7 +151,7 @@ explaining `antialiasing modes`_ or this nice `overview of MSAA`_
 Coverage methods
 ++++++++++++++++
 
-.. figure:: data/circle-aa-exact.png
+.. figure:: images/chapter-06/circle-aa-exact.png
    :figwidth: 50%
    :figclass: right
 
@@ -175,7 +174,7 @@ the `Anti-grain geometry
 <http://www.antigrain.com/doc/introduction/introduction.agdoc.html>`_ library
 that constitutes the quality standard we aim at.
 
-.. figure:: data/coverage.png
+.. figure:: images/chapter-06/coverage.png
    :figwidth: 40%
    :figclass: right
               
@@ -246,7 +245,7 @@ origin is given by:
    d(x,y) = sqrt(x*x+y*y) - r
 
 
-.. figure:: data/circle-sdf-distances.png
+.. figure:: images/chapter-06/circle-sdf-distances.png
    :figwidth: 30%
    :figclass: right
               
@@ -254,7 +253,7 @@ origin is given by:
 
    Signed distance to a circle. Inside is red, outside is blue, border is white.
    
-   See `<code/circle-sdf-distances.py>`_
+   See `<code/chapter-06/circle-sdf-distances.py>`_
 
 
 As an exercise, you can check that `d(x,y)` is null if `(x,y)` is on the
@@ -317,8 +316,8 @@ of my knowledge):
    available from within glumpy.
 
 However, we don't want to copy this code in all the example. We can instead
-write a `palette.glsl <code/palette.glsl>`_ shader and include it in each of
-the example.
+write a `palette.glsl <code/chapter-06/palette.glsl>`_ shader and include it in
+each of the example.
 
 
 
@@ -329,7 +328,7 @@ Circle
 
 Distance to a circle is the easiest to compute.
 
-.. figure:: data/SDF-circle.mp4
+.. figure:: movies/chapter-06/SDF-circle.mp4
    :loop:
    :autoplay:
    :controls:
@@ -338,7 +337,7 @@ Distance to a circle is the easiest to compute.
 
    Figure
 
-   `SDF-circle.py <code/SDF-circle.py>`_
+   `SDF-circle.py <code/chapter-06/SDF-circle.py>`_
 
    
 .. code:: glsl
@@ -357,7 +356,7 @@ The distance from a point P to a plane (line in 2d) is the distance from P to
 the projection of P onto the place.
 
 
-.. figure:: data/SDF-plane.mp4
+.. figure:: movies/chapter-06/SDF-plane.mp4
    :loop:
    :autoplay:
    :controls:
@@ -366,7 +365,7 @@ the projection of P onto the place.
 
    Figure
 
-   `SDF-plane.py <code/SDF-plane.py>`_
+   `SDF-plane.py <code/chapter-06/SDF-plane.py>`_
 
    
 .. code:: glsl
@@ -386,7 +385,7 @@ True Box
 When computing distance to a box, one has to take care of the distance to the
 vertices defining the box.
 
-.. figure:: data/SDF-box.mp4
+.. figure:: movies/chapter-06/SDF-box.mp4
    :loop:
    :autoplay:
    :controls:
@@ -395,7 +394,7 @@ vertices defining the box.
 
    Figure
 
-   `SDF-box.py <code/SDF-box.py>`_
+   `SDF-box.py <code/chapter-06/SDF-box.py>`_
 
 
    
@@ -422,7 +421,7 @@ Rounded Box
 
    Figure
 
-   `SDF-round-box.py <code/SDF-round-box.py>`_
+   `SDF-round-box.py <code/chapter-06/SDF-round-box.py>`_
 
 
 Distance to a round can be immediately derived from the distance to a box by
@@ -441,7 +440,7 @@ subtracting the corner radius.
 Fake Box
 ~~~~~~~~
 
-.. figure:: data/SDF-fake-box.mp4
+.. figure:: movies/chapter-06/SDF-fake-box.mp4
    :loop:
    :autoplay:
    :controls:
@@ -450,7 +449,7 @@ Fake Box
 
    Figure
 
-   `SDF-fake-box.py <code/SDF-fake-box.py>`_
+   `SDF-fake-box.py <code/chapter-06/SDF-fake-box.py>`_
 
 
 A faster way to compute a SDF box is to consider it to be delimited by lines
@@ -468,7 +467,7 @@ box vertices.
 True triangle
 ~~~~~~~~~~~~~
 
-.. figure:: data/SDF-triangle.mp4
+.. figure:: movies/chapter-06/SDF-triangle.mp4
    :loop:
    :autoplay:
    :controls:
@@ -477,7 +476,7 @@ True triangle
 
    Figure
 
-   `SDF-triangle.py <code/SDF-triangle.py>`_
+   `SDF-triangle.py <code/chapter-06/SDF-triangle.py>`_
 
 Computing the distance to a triangle is not totally straightfoward because a
 triangle is made of three line segments, meaning we have to take into account
@@ -514,7 +513,7 @@ vertices.
 Round triangle
 ~~~~~~~~~~~~~~
 
-.. figure:: data/SDF-round-triangle.mp4
+.. figure:: movies/chapter-06/SDF-round-triangle.mp4
    :loop:
    :autoplay:
    :controls:
@@ -523,7 +522,7 @@ Round triangle
 
    Figure
 
-   `SDF-round-triangle.py <code/SDF-round-triangle.py>`_
+   `SDF-round-triangle.py <code/chapter-06/SDF-round-triangle.py>`_
 
 Round triangle is very easy to obtain from the triangle above. We just
 substract the radius of the corner such that the border of the triangle is on
@@ -542,7 +541,7 @@ the oustide part of the SDF triangle.
 Fake triangle
 ~~~~~~~~~~~~~
 
-.. figure:: data/SDF-fake-triangle.mp4
+.. figure:: movies/chapter-06/SDF-fake-triangle.mp4
    :loop:
    :autoplay:
    :controls:
@@ -551,7 +550,7 @@ Fake triangle
 
    Figure
 
-   `SDF-fake-triangle.py <code/SDF-fake-triangle.py>`_
+   `SDF-fake-triangle.py <code/chapter-06/SDF-fake-triangle.py>`_
 
 What I call a fake SDF triangle is a triangle made of lines instead of line
 segments. If you look at the corner (outside part), you will notice the
@@ -582,7 +581,7 @@ markers because it is faster to compute than the regular SDF triangle.
 True ellipse
 ~~~~~~~~~~~~
 
-.. figure:: data/SDF-ellipse.mp4
+.. figure:: movies/chapter-06/SDF-ellipse.mp4
    :loop:
    :autoplay:
    :controls:
@@ -591,7 +590,7 @@ True ellipse
 
    Figure
 
-   `SDF-ellipse.py <code/SDF-ellipse.py>`_
+   `SDF-ellipse.py <code/chapter-06/SDF-ellipse.py>`_
 
 Computing the distance from an arbitrary point to an ellipse is surprinsingly
 difficult if you compare it to the distance to a circle. If you want to read
@@ -649,7 +648,7 @@ problem for us. We will re-use his formula.
 Fake (but fast) ellipse
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-.. figure:: data/SDF-fake-ellipse.mp4
+.. figure:: movies/chapter-06/SDF-fake-ellipse.mp4
    :loop:
    :autoplay:
    :controls:
@@ -658,7 +657,7 @@ Fake (but fast) ellipse
 
    Figure
 
-   `SDF-fake-ellipse.py <code/SDF-fake-ellipse.py>`_
+   `SDF-fake-ellipse.py <code/chapter-06/SDF-fake-ellipse.py>`_
 
 Íñigo Quílez also provided a very fast apprximation of the ellipse
 distance. Some artifacts can be clearly seen but we'll see later that if our ellipse is not too thick, this approximation will do the job.
@@ -692,7 +691,7 @@ grey you might ask? Well, it is directly correlated with the distance to the
 border. But first, let's have a look at the figure below that show the
 different situations:
 
-.. figure:: data/circle-aa.png
+.. figure:: images/chapter-06/circle-aa.png
 
    Figure
 
@@ -709,7 +708,7 @@ If it is larger, the shape will appear blurry, and it it is too narrow, the
 shape will have hard egdes. The degenerated case being a null area that results
 in no antialias at all.
    
-.. figure:: data/antialias-function.png
+.. figure:: images/chapter-06/antialias-function.png
 
    Figure
 

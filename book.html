@@ -1632,8 +1632,8 @@ points onto the X-axis. This will make everything clearer hopefully.</p>
 <code>[-2,+2]</code> that represent the screen (any point projected outside this segment
 is discared and won't be visible into the final projection) The question now is
 how do we project the points onto the screen?</p>
-<div class="right figure" id="figure-data/1D-H-Coordinates.png" style="width: 50%">
-<img alt="data/1D-H-Coordinates.png" src="data/1D-H-Coordinates.png" />
+<div class="right figure" id="figure-images/chapter-04/1D-H-Coordinates.png" style="width: 50%">
+<img alt="images/chapter-04/1D-H-Coordinates.png" src="images/chapter-04/1D-H-Coordinates.png" />
 <p class="caption">Figure</p>
 <div class="legend">
 5 sets of homogeneous coordinates, each of them corresponding to the set of
@@ -1650,8 +1650,8 @@ point <code>(x,w)</code> in projective space corresponds to the point <code>x/w<
 in our unidimensional Euclidean space. From this conversion, we can see
 immediately that there exist actually an infinite set of homogenous coordinates
 that correspond to a single Cartesian coordinate as illustrated on the figure.</p>
-<div class="figure" id="figure-data/1D-Projection.png" style="width: 100%">
-<img alt="data/1D-Projection.png" src="data/1D-Projection.png" />
+<div class="figure" id="figure-images/chapter-04/1D-Projection.png" style="width: 100%">
+<img alt="images/chapter-04/1D-Projection.png" src="images/chapter-04/1D-Projection.png" />
 <p class="caption">Figure</p>
 <div class="legend">
 Different one dimensional projections using homogeneous coordinates.</div>
@@ -1704,8 +1704,8 @@ by Sam Hocevar:</p>
 </div>
 <div class="section" id="transformations">
 <h2><a class="toc-backref" href="#id14">Transformations</a></h2>
-<div class="right figure" id="figure-data/composition.png" style="width: 50%">
-<img alt="data/composition.png" src="data/composition.png" />
+<div class="right figure" id="figure-images/chapter-04/composition.png" style="width: 50%">
+<img alt="images/chapter-04/composition.png" src="images/chapter-04/composition.png" />
 <p class="caption">Figure</p>
 <div class="legend">
 Transformation are not commutative, hence R*T*V (up) is different from T*R*V
@@ -2140,9 +2140,9 @@ by compositing a rotation the z axis (<code>theta</code>), then around the y axi
 </div>
 <div class="section" id="actual-rendering">
 <h2><a class="toc-backref" href="#id18">Actual rendering</a></h2>
-<div class="left figure" id="figure-data/solid-cube.mp4" style="width: 35%">
+<div class="left figure" id="figure-movies/chapter-05/solid-cube.mp4" style="width: 35%">
 <video autoplay="True" controls="True" loop="True">
-<source src="data/solid-cube.mp4"></source>
+<source src="movies/chapter-05/solid-cube.mp4"></source>
 </video>
 <p class="caption">Figure</p>
 <div class="legend">
@@ -2164,7 +2164,7 @@ endless animation:</p>
 <pre class="code python literal-block">
 <span class="name">app</span><span class="operator">.</span><span class="name">run</span><span class="punctuation">(</span><span class="name">framerate</span><span class="operator">=</span><span class="literal number integer">60</span><span class="punctuation">,</span> <span class="name">framecount</span><span class="operator">=</span><span class="literal number integer">360</span><span class="punctuation">)</span>
 </pre>
-<p>Complete source code: <a class="reference external" href="code/solid-cube.py">code/solid-cube.py</a></p>
+<p>Complete source code: <a class="reference external" href="code/chapter-05/solid-cube.py">code/chapter-05/solid-cube.py</a></p>
 </div>
 <div class="section" id="variations">
 <h2><a class="toc-backref" href="#id18">Variations</a></h2>
@@ -2206,9 +2206,9 @@ shader.</p>
     <span class="name">gl_FragColor</span> <span class="operator">=</span> <span class="name">v_color</span><span class="punctuation">;</span>
 <span class="punctuation">}</span> <span class="error">&quot;&quot;&quot;</span>
 </pre>
-<div class="left figure" id="figure-data/color-cube.mp4" style="width: 35%">
+<div class="left figure" id="figure-movies/chapter-05/color-cube.mp4" style="width: 35%">
 <video autoplay="True" controls="True" loop="True">
-<source src="data/color-cube.mp4"></source>
+<source src="movies/chapter-05/color-cube.mp4"></source>
 </video>
 <p class="caption">Figure</p>
 <div class="legend">
@@ -2226,13 +2226,13 @@ attributes, we can directly bind it:</p>
 <span class="name">cube</span><span class="punctuation">[</span><span class="literal string double">&quot;position&quot;</span><span class="punctuation">]</span> <span class="operator">=</span> <span class="name">V</span><span class="punctuation">[</span><span class="literal string double">&quot;position&quot;</span><span class="punctuation">]</span>
 <span class="name">cube</span><span class="punctuation">[</span><span class="literal string double">&quot;color&quot;</span><span class="punctuation">]</span> <span class="operator">=</span> <span class="name">V</span><span class="punctuation">[</span><span class="literal string double">&quot;color&quot;</span><span class="punctuation">]</span>
 </pre>
-<p>Complete source code: <a class="reference external" href="code/color-cube.py">code/color-cube.py</a></p>
+<p>Complete source code: <a class="reference external" href="code/chapter-05/color-cube.py">code/chapter-05/color-cube.py</a></p>
 </div>
 <div class="section" id="outlined-cube">
 <h3><a class="toc-backref" href="#id18">Outlined cube</a></h3>
-<div class="left figure" id="figure-data/outline-cube.mp4" style="width: 35%">
+<div class="left figure" id="figure-movies/chapter-05/outline-cube.mp4" style="width: 35%">
 <video autoplay="True" controls="True" loop="True">
-<source src="data/outline-cube.mp4"></source>
+<source src="movies/chapter-05/outline-cube.mp4"></source>
 </video>
 <p class="caption">Figure</p>
 <div class="legend">
@@ -2287,13 +2287,13 @@ are drawn &quot;above&quot; the cube because we paint a line on a surface:</p>
     <span class="name">glm</span><span class="operator">.</span><span class="name">rotate</span><span class="punctuation">(</span><span class="name">model</span><span class="punctuation">,</span> <span class="name">phi</span><span class="punctuation">,</span> <span class="literal number integer">0</span><span class="punctuation">,</span> <span class="literal number integer">1</span><span class="punctuation">,</span> <span class="literal number integer">0</span><span class="punctuation">)</span>
     <span class="name">cube</span><span class="punctuation">[</span><span class="literal string single">'model'</span><span class="punctuation">]</span> <span class="operator">=</span> <span class="name">model</span>
 </pre>
-<p>Complete source code: <a class="reference external" href="code/outlined-cube.py">code/outlined-cube.py</a></p>
+<p>Complete source code: <a class="reference external" href="code/chapter-05/outlined-cube.py">code/chapter-05/outlined-cube.py</a></p>
 </div>
 <div class="section" id="textured-cube">
 <h3><a class="toc-backref" href="#id18">Textured cube</a></h3>
-<div class="left figure" id="figure-data/texture-cube.mp4" style="width: 35%">
+<div class="left figure" id="figure-movies/chapter-05/texture-cube.mp4" style="width: 35%">
 <video autoplay="True" controls="True" loop="True">
-<source src="data/texture-cube.mp4"></source>
+<source src="movies/chapter-05/texture-cube.mp4"></source>
 </video>
 <p class="caption">Figure</p>
 <div class="legend">
@@ -2374,14 +2374,14 @@ void main()
     gl_FragColor = texture2D(texture, v_texcoord);
 } &quot;&quot;&quot;
 </pre>
-<p>Complete source code: <a class="reference external" href="code/textured-cube.py">code/textured-cube.py</a></p>
+<p>Complete source code: <a class="reference external" href="code/chapter-05/textured-cube.py">code/chapter-05/textured-cube.py</a></p>
 </div>
 </div>
 <div class="section" id="id19">
 <h2><a class="toc-backref" href="#id18">Exercises</a></h2>
-<div class="left figure" id="figure-data/color-border-cube-1.mp4" style="width: 35%">
+<div class="left figure" id="figure-movies/chapter-05/color-border-cube-1.mp4" style="width: 35%">
 <video autoplay="True" controls="True" loop="True">
-<source src="data/color-border-cube-1.mp4"></source>
+<source src="movies/chapter-05/color-border-cube-1.mp4"></source>
 </video>
 <p class="caption">Figure</p>
 <div class="legend">
@@ -2393,14 +2393,14 @@ twice, one for the cube itself and a second time for the outline. However, it
 is possible to get more or less the same results from within the shader in a
 single pass. The trick is to pass the (untransformed) position from the vertex
 shader to the fragment shader and to use this information to set the color of
-the fragment to either the black color or the v_color. Starting from the <a class="reference external" href="code/chapter-03/color-cube.py">color
+the fragment to either the black color or the v_color. Starting from the <a class="reference external" href="code/chapter-05/color-cube.py">color
 cube code</a>, try to modify only the shader code
 (both vertex and fragment) to achieve the result on the right.</p>
-<p><strong>Solution</strong>: <a class="reference external" href="code/border-cube.py">code/border-cube.py</a></p>
+<p><strong>Solution</strong>: <a class="reference external" href="code/chapter-05/border-cube.py">code/chapter-05/border-cube.py</a></p>
 <hr class="docutils" />
-<div class="left figure" id="figure-data/color-border-cube-2.mp4" style="width: 35%">
+<div class="left figure" id="figure-movies/chapter-05/color-border-cube-2.mp4" style="width: 35%">
 <video autoplay="True" controls="True" loop="True">
-<source src="data/color-border-cube-2.mp4"></source>
+<source src="movies/chapter-05/color-border-cube-2.mp4"></source>
 </video>
 <p class="caption">Figure</p>
 <div class="legend">
@@ -2412,7 +2412,7 @@ need to use the <code>discard</code> instruction from within the fragment shader
 instructs OpenGL to not display the fragment at all and to terminate the
 program frot this shader. Since nothing will be rendered, there is no need to
 process the rest of program.</p>
-<p><strong>Solution</strong>: <a class="reference external" href="code/hollow-cube.py">code/hollow-cube.py</a></p>
+<p><strong>Solution</strong>: <a class="reference external" href="code/chapter-05/hollow-cube.py">code/chapter-05/hollow-cube.py</a></p>
 <hr class="docutils" />
 <!-- - - - Links - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
@@ -2436,7 +2436,7 @@ process the rest of program.</p>
 <li><a class="reference internal" href="#distance-based-anti-aliasing" id="id183">Distance based anti-aliasing</a></li>
 </ul>
 </div>
-<img alt="data/mcseem.jpg" class="right" src="data/mcseem.jpg" style="width: 20%;" />
+<img alt="images/chapter-06/mcseem.jpg" class="right" src="images/chapter-06/mcseem.jpg" style="width: 20%;" />
 <p>The late Maxim Shemanarev (1966-2013) designed the <a class="reference external" href="http://www.antigrain.com/">anti-grain</a> library, a
 (very) high quality rendering engine written in C++. The library is both nicely
 written (one of the best C++ library I've seen with the <a class="reference external" href="http://eigen.tuxfamily.org/">Eigen</a> library) and
@@ -2447,8 +2447,8 @@ in this book. However, OpenGL anti-aliasing techniques (even latest ones) won't
 do the job and we'll need to take care of pretty much everything.</p>
 <div class="section" id="antialiasing">
 <h2><a class="toc-backref" href="#id28">Antialiasing</a></h2>
-<div class="right figure" id="figure-data/circle-aa-none.png" style="width: 50%">
-<img alt="data/circle-aa-none.png" src="data/circle-aa-none.png" />
+<div class="right figure" id="figure-images/chapter-06/circle-aa-none.png" style="width: 50%">
+<img alt="images/chapter-06/circle-aa-none.png" src="images/chapter-06/circle-aa-none.png" />
 <p class="caption">Figure</p>
 <div class="legend">
 Rendering of a non-aliased disc. Even if the center of a pixel is very close
@@ -2476,8 +2476,8 @@ on the figure. More generally, without antia-aliasing, a pixel will be only on
 approximate shape for small sizes as well.</p>
 <div class="section" id="sample-based-methods">
 <h3><a class="toc-backref" href="#id28">Sample based methods</a></h3>
-<div class="right figure" id="figure-data/circle-aa-multisample.png" style="width: 45%">
-<img alt="data/circle-aa-multisample.png" src="data/circle-aa-multisample.png" />
+<div class="right figure" id="figure-images/chapter-06/circle-aa-multisample.png" style="width: 45%">
+<img alt="images/chapter-06/circle-aa-multisample.png" src="images/chapter-06/circle-aa-multisample.png" />
 <p class="caption">Figure</p>
 <div class="legend">
 Rendering of a disc using multisample anti-aliasing. By mutisampling the
@@ -2515,18 +2515,18 @@ expect to achieve top quality due to inherent limitations of all these
 methods. If they are great for real-time rendering such as video games (and
 some of them are really good), they are hardly sufficient for any scientific
 visualization as illustrated on the figure below.</p>
-<div class="figure" id="figure-data/ssaa-sdf.png" style="width: 100%">
-<img alt="data/ssaa-sdf.png" src="data/ssaa-sdf.png" />
+<div class="figure" id="figure-images/chapter-06/ssaa-sdf.png" style="width: 100%">
+<img alt="images/chapter-06/ssaa-sdf.png" src="images/chapter-06/ssaa-sdf.png" />
 <p class="caption">Figure</p>
 <div class="legend">
 Supersampling applied to a rasterized triangle, using various sub-pixel
 patterns. The more samples , the better the output but even using 64
 samples, the rendering quality does not match the SDF rendering, especially
 if you consider triangle sharp vertices.  Supersampled triangles have been
-rendered using a dedicated shader (see <a class="reference external" href="code/triangle-ssaa.py">code/triangle-ssaa.py</a>) and the
+rendered using a dedicated shader (see <a class="reference external" href="code/chapter-06/triangle-ssaa.py">code/chapter-06/triangle-ssaa.py</a>) and the
 SDF triangle has been rendered using a fake signed-distance triangle
 function (see below) and a stroke anti-alias function (see
-<a class="reference external" href="code/triangle-sdf.py">code/triangle-sdf.py</a>)</div>
+<a class="reference external" href="code/chapter-06/triangle-sdf.py">code/chapter-06/triangle-sdf.py</a>)</div>
 </div>
 <p>This is the reason why we won't use them in the rest of this book. If you want
 more details on these techniques, you can have a look at this reddit discussion
@@ -2534,8 +2534,8 @@ explaining <a class="reference external" href="https://www.reddit.com/r/Games/co
 </div>
 <div class="section" id="coverage-methods">
 <h3><a class="toc-backref" href="#id28">Coverage methods</a></h3>
-<div class="right figure" id="figure-data/circle-aa-exact.png" style="width: 50%">
-<img alt="data/circle-aa-exact.png" src="data/circle-aa-exact.png" />
+<div class="right figure" id="figure-images/chapter-06/circle-aa-exact.png" style="width: 50%">
+<img alt="images/chapter-06/circle-aa-exact.png" src="images/chapter-06/circle-aa-exact.png" />
 <p class="caption">Figure</p>
 <div class="legend">
 Rendering of a disc using exact coverage anti-aliasing.</div>
@@ -2553,8 +2553,8 @@ computation of the final shape too complex. In two dimensions however, this is
 probably the best method we can use and this is also the method that is used in
 the <a class="reference external" href="http://www.antigrain.com/doc/introduction/introduction.agdoc.html">Anti-grain geometry</a> library
 that constitutes the quality standard we aim at.</p>
-<div class="right figure" id="figure-data/coverage.png" style="width: 40%">
-<img alt="data/coverage.png" src="data/coverage.png" />
+<div class="right figure" id="figure-images/chapter-06/coverage.png" style="width: 40%">
+<img alt="images/chapter-06/coverage.png" src="images/chapter-06/coverage.png" />
 <p class="caption">Figure</p>
 <div class="legend">
 Actual versus approximated coverage.</div>
@@ -2610,12 +2610,12 @@ origin is given by:</p>
 <pre class="code math literal-block">
 d(x,y) = sqrt(x*x+y*y) - r
 </pre>
-<div class="right figure" id="figure-data/circle-sdf-distances.png" style="width: 30%">
-<img alt="data/circle-sdf-distances.png" src="data/circle-sdf-distances.png" />
+<div class="right figure" id="figure-images/chapter-06/circle-sdf-distances.png" style="width: 30%">
+<img alt="images/chapter-06/circle-sdf-distances.png" src="images/chapter-06/circle-sdf-distances.png" />
 <p class="caption">Figure</p>
 <div class="legend">
 <p>Signed distance to a circle. Inside is red, outside is blue, border is white.</p>
-<p>See <a class="reference external" href="code/circle-sdf-distances.py">code/circle-sdf-distances.py</a></p>
+<p>See <a class="reference external" href="code/chapter-06/circle-sdf-distances.py">code/chapter-06/circle-sdf-distances.py</a></p>
 </div>
 </div>
 <p>As an exercise, you can check that <code>d(x,y)</code> is null if <code>(x,y)</code> is on the
@@ -2671,18 +2671,18 @@ of my knowledge):</p>
 available from within glumpy.</p>
 </div>
 <p>However, we don't want to copy this code in all the example. We can instead
-write a <a class="reference external" href="code/palette.glsl">palette.glsl</a> shader and include it in each of
-the example.</p>
+write a <a class="reference external" href="code/chapter-06/palette.glsl">palette.glsl</a> shader and include it in
+each of the example.</p>
 <div class="section" id="circle">
 <h4>Circle</h4>
 <p>Distance to a circle is the easiest to compute.</p>
-<div class="right figure" id="figure-data/SDF-circle.mp4" style="width: 25%">
+<div class="right figure" id="figure-movies/chapter-06/SDF-circle.mp4" style="width: 25%">
 <video autoplay="True" controls="True" loop="True">
-<source src="data/SDF-circle.mp4"></source>
+<source src="movies/chapter-06/SDF-circle.mp4"></source>
 </video>
 <p class="caption">Figure</p>
 <div class="legend">
-<a class="reference external" href="code/SDF-circle.py">SDF-circle.py</a></div>
+<a class="reference external" href="code/chapter-06/SDF-circle.py">SDF-circle.py</a></div>
 </div>
 <pre class="code glsl literal-block">
 <span class="keyword">float</span> <span class="name">SDF_circle</span><span class="punctuation">(</span><span class="keyword">vec2</span> <span class="name">p</span><span class="punctuation">,</span> <span class="keyword">float</span> <span class="name">radius</span><span class="punctuation">)</span>
@@ -2695,13 +2695,13 @@ the example.</p>
 <h4>Plane</h4>
 <p>The distance from a point P to a plane (line in 2d) is the distance from P to
 the projection of P onto the place.</p>
-<div class="right figure" id="figure-data/SDF-plane.mp4" style="width: 25%">
+<div class="right figure" id="figure-movies/chapter-06/SDF-plane.mp4" style="width: 25%">
 <video autoplay="True" controls="True" loop="True">
-<source src="data/SDF-plane.mp4"></source>
+<source src="movies/chapter-06/SDF-plane.mp4"></source>
 </video>
 <p class="caption">Figure</p>
 <div class="legend">
-<a class="reference external" href="code/SDF-plane.py">SDF-plane.py</a></div>
+<a class="reference external" href="code/chapter-06/SDF-plane.py">SDF-plane.py</a></div>
 </div>
 <pre class="code glsl literal-block">
 <span class="keyword">float</span> <span class="name">SDF_plane</span><span class="punctuation">(</span><span class="keyword">vec2</span> <span class="name">p</span><span class="punctuation">,</span> <span class="keyword">vec2</span> <span class="name">p0</span><span class="punctuation">,</span> <span class="keyword">vec2</span> <span class="name">p1</span><span class="punctuation">)</span>
@@ -2716,13 +2716,13 @@ the projection of P onto the place.</p>
 <h4>True Box</h4>
 <p>When computing distance to a box, one has to take care of the distance to the
 vertices defining the box.</p>
-<div class="right figure" id="figure-data/SDF-box.mp4" style="width: 25%">
+<div class="right figure" id="figure-movies/chapter-06/SDF-box.mp4" style="width: 25%">
 <video autoplay="True" controls="True" loop="True">
-<source src="data/SDF-box.mp4"></source>
+<source src="movies/chapter-06/SDF-box.mp4"></source>
 </video>
 <p class="caption">Figure</p>
 <div class="legend">
-<a class="reference external" href="code/SDF-box.py">SDF-box.py</a></div>
+<a class="reference external" href="code/chapter-06/SDF-box.py">SDF-box.py</a></div>
 </div>
 <pre class="code glsl literal-block">
 <span class="comment single">// Code by Inigo Quilez</span>
@@ -2742,7 +2742,7 @@ vertices defining the box.</p>
 </video>
 <p class="caption">Figure</p>
 <div class="legend">
-<a class="reference external" href="code/SDF-round-box.py">SDF-round-box.py</a></div>
+<a class="reference external" href="code/chapter-06/SDF-round-box.py">SDF-round-box.py</a></div>
 </div>
 <p>Distance to a round can be immediately derived from the distance to a box by
 subtracting the corner radius.</p>
@@ -2757,13 +2757,13 @@ subtracting the corner radius.</p>
 </div>
 <div class="section" id="fake-box">
 <h4>Fake Box</h4>
-<div class="right figure" id="figure-data/SDF-fake-box.mp4" style="width: 25%">
+<div class="right figure" id="figure-movies/chapter-06/SDF-fake-box.mp4" style="width: 25%">
 <video autoplay="True" controls="True" loop="True">
-<source src="data/SDF-fake-box.mp4"></source>
+<source src="movies/chapter-06/SDF-fake-box.mp4"></source>
 </video>
 <p class="caption">Figure</p>
 <div class="legend">
-<a class="reference external" href="code/SDF-fake-box.py">SDF-fake-box.py</a></div>
+<a class="reference external" href="code/chapter-06/SDF-fake-box.py">SDF-fake-box.py</a></div>
 </div>
 <p>A faster way to compute a SDF box is to consider it to be delimited by lines
 (instead of line segments). We save the time of computing the distance to the
@@ -2777,13 +2777,13 @@ box vertices.</p>
 </div>
 <div class="section" id="true-triangle">
 <h4>True triangle</h4>
-<div class="right figure" id="figure-data/SDF-triangle.mp4" style="width: 25%">
+<div class="right figure" id="figure-movies/chapter-06/SDF-triangle.mp4" style="width: 25%">
 <video autoplay="True" controls="True" loop="True">
-<source src="data/SDF-triangle.mp4"></source>
+<source src="movies/chapter-06/SDF-triangle.mp4"></source>
 </video>
 <p class="caption">Figure</p>
 <div class="legend">
-<a class="reference external" href="code/SDF-triangle.py">SDF-triangle.py</a></div>
+<a class="reference external" href="code/chapter-06/SDF-triangle.py">SDF-triangle.py</a></div>
 </div>
 <p>Computing the distance to a triangle is not totally straightfoward because a
 triangle is made of three line segments, meaning we have to take into account
@@ -2817,13 +2817,13 @@ vertices.</p>
 </div>
 <div class="section" id="round-triangle">
 <h4>Round triangle</h4>
-<div class="right figure" id="figure-data/SDF-round-triangle.mp4" style="width: 25%">
+<div class="right figure" id="figure-movies/chapter-06/SDF-round-triangle.mp4" style="width: 25%">
 <video autoplay="True" controls="True" loop="True">
-<source src="data/SDF-round-triangle.mp4"></source>
+<source src="movies/chapter-06/SDF-round-triangle.mp4"></source>
 </video>
 <p class="caption">Figure</p>
 <div class="legend">
-<a class="reference external" href="code/SDF-round-triangle.py">SDF-round-triangle.py</a></div>
+<a class="reference external" href="code/chapter-06/SDF-round-triangle.py">SDF-round-triangle.py</a></div>
 </div>
 <p>Round triangle is very easy to obtain from the triangle above. We just
 substract the radius of the corner such that the border of the triangle is on
@@ -2839,13 +2839,13 @@ the oustide part of the SDF triangle.</p>
 </div>
 <div class="section" id="fake-triangle">
 <h4>Fake triangle</h4>
-<div class="right figure" id="figure-data/SDF-fake-triangle.mp4" style="width: 25%">
+<div class="right figure" id="figure-movies/chapter-06/SDF-fake-triangle.mp4" style="width: 25%">
 <video autoplay="True" controls="True" loop="True">
-<source src="data/SDF-fake-triangle.mp4"></source>
+<source src="movies/chapter-06/SDF-fake-triangle.mp4"></source>
 </video>
 <p class="caption">Figure</p>
 <div class="legend">
-<a class="reference external" href="code/SDF-fake-triangle.py">SDF-fake-triangle.py</a></div>
+<a class="reference external" href="code/chapter-06/SDF-fake-triangle.py">SDF-fake-triangle.py</a></div>
 </div>
 <p>What I call a fake SDF triangle is a triangle made of lines instead of line
 segments. If you look at the corner (outside part), you will notice the
@@ -2872,13 +2872,13 @@ markers because it is faster to compute than the regular SDF triangle.</p>
 </div>
 <div class="section" id="true-ellipse">
 <h4>True ellipse</h4>
-<div class="right figure" id="figure-data/SDF-ellipse.mp4" style="width: 25%">
+<div class="right figure" id="figure-movies/chapter-06/SDF-ellipse.mp4" style="width: 25%">
 <video autoplay="True" controls="True" loop="True">
-<source src="data/SDF-ellipse.mp4"></source>
+<source src="movies/chapter-06/SDF-ellipse.mp4"></source>
 </video>
 <p class="caption">Figure</p>
 <div class="legend">
-<a class="reference external" href="code/SDF-ellipse.py">SDF-ellipse.py</a></div>
+<a class="reference external" href="code/chapter-06/SDF-ellipse.py">SDF-ellipse.py</a></div>
 </div>
 <p>Computing the distance from an arbitrary point to an ellipse is surprinsingly
 difficult if you compare it to the distance to a circle. If you want to read
@@ -2932,13 +2932,13 @@ problem for us. We will re-use his formula.</p>
 </div>
 <div class="section" id="fake-but-fast-ellipse">
 <h4>Fake (but fast) ellipse</h4>
-<div class="right figure" id="figure-data/SDF-fake-ellipse.mp4" style="width: 25%">
+<div class="right figure" id="figure-movies/chapter-06/SDF-fake-ellipse.mp4" style="width: 25%">
 <video autoplay="True" controls="True" loop="True">
-<source src="data/SDF-fake-ellipse.mp4"></source>
+<source src="movies/chapter-06/SDF-fake-ellipse.mp4"></source>
 </video>
 <p class="caption">Figure</p>
 <div class="legend">
-<a class="reference external" href="code/SDF-fake-ellipse.py">SDF-fake-ellipse.py</a></div>
+<a class="reference external" href="code/chapter-06/SDF-fake-ellipse.py">SDF-fake-ellipse.py</a></div>
 </div>
 <p>Íñigo Quílez also provided a very fast apprximation of the ellipse
 distance. Some artifacts can be clearly seen but we'll see later that if our ellipse is not too thick, this approximation will do the job.</p>
@@ -2968,8 +2968,8 @@ of the border, it is not fully black nor fully white but grey. What amount of
 grey you might ask? Well, it is directly correlated with the distance to the
 border. But first, let's have a look at the figure below that show the
 different situations:</p>
-<div class="figure" id="figure-data/circle-aa.png">
-<img alt="data/circle-aa.png" src="data/circle-aa.png" />
+<div class="figure" id="figure-images/chapter-06/circle-aa.png">
+<img alt="images/chapter-06/circle-aa.png" src="images/chapter-06/circle-aa.png" />
 <p class="caption">Figure</p>
 <div class="legend">
 For a given shape, we might want to draw only the outline of the shape
@@ -2983,8 +2983,8 @@ account (2*antialias + linewidth). The antialias area is usually 1.0 pixel.
 If it is larger, the shape will appear blurry, and it it is too narrow, the
 shape will have hard egdes. The degenerated case being a null area that results
 in no antialias at all.</p>
-<div class="figure" id="figure-data/antialias-function.png">
-<img alt="data/antialias-function.png" src="data/antialias-function.png" />
+<div class="figure" id="figure-images/chapter-06/antialias-function.png">
+<img alt="images/chapter-06/antialias-function.png" src="images/chapter-06/antialias-function.png" />
 <p class="caption">Figure</p>
 <div class="legend">
 Antialiasing functions: <strong>Left</strong>: None, <strong>Middle</strong>: linear, <strong>Right</strong>:
