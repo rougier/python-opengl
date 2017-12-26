@@ -1,4 +1,3 @@
-
 Quickstart
 ===============================================================================
 
@@ -29,7 +28,7 @@ simple colored quad (i.e. a red square).
 Normalize Device Coordinates
 ++++++++++++++++++++++++++++
 
-.. figure:: data/NDC.png
+.. figure:: images/chapter-03/NDC.png
    :figwidth: 40%
    :figclass: left
             
@@ -58,7 +57,7 @@ some problems, especially when you're dealing with the mouse pointer whose
 Triangulation
 +++++++++++++
 
-.. figure:: data/triangulation.png
+.. figure:: images/chapter-03/triangulation.png
    :figwidth: 35%
    :figclass: left
             
@@ -104,7 +103,7 @@ is exactly what we need to tell OpenGL.
 GL Primitives
 +++++++++++++
 
-.. figure:: data/gl-primitives.png
+.. figure:: images/chapter-03/gl-primitives.png
    :figwidth: 40%
    :figclass: left
 
@@ -143,7 +142,7 @@ structure.
 Interpolation
 +++++++++++++
 
-.. figure:: data/interpolation.png
+.. figure:: images/chapter-03/interpolation.png
    :figwidth: 40%
    :figclass: left
             
@@ -457,7 +456,7 @@ We're done, we can now rewrite the display function:
        gl.glDrawArrays(gl.GL_TRIANGLE_STRIP, 0, 4)
        glut.glutSwapBuffers()
 
-.. figure:: data/glumpy-quad-solid.png
+.. figure:: images/chapter-03/glumpy-quad-solid.png
    :figwidth: 30%
    :figclass: left
             
@@ -469,7 +468,7 @@ We're done, we can now rewrite the display function:
 The `0,4` arguments in the `glDrawArrays` tells OpenGL we want to display 4
 vertices from our current active buffer and we start at vertex 0. You should
 obtain the figure on the right with the same red (boring) color. The whole
-source ia available from `<code/glut-quad-solid.py>`_.
+source ia available from `<code/chapter-03/glut-quad-solid.py>`_.
 
 All these operations are necessary for displaying a single colored quad on
 screen and complexity can escalate pretty badly if you add more objects,
@@ -483,7 +482,7 @@ Python applications.
 Uniform color
 +++++++++++++
 
-.. figure:: data/glumpy-quad-uniform-color.png
+.. figure:: images/chapter-03/glumpy-quad-uniform-color.png
    :figwidth: 30%
    :figclass: left
             
@@ -527,7 +526,7 @@ Varying color
 +++++++++++++
 
 
-.. figure:: data/glumpy-quad-varying-color.png
+.. figure:: images/chapter-03/glumpy-quad-varying-color.png
    :figwidth: 30%
    :figclass: left
             
@@ -812,7 +811,7 @@ the rendering is now a matter of writing the proper shader. We'll get a first
 taste in the three exercises below but we'll see much more powerful shader
 tricks in the next chapters.
 
-.. figure:: data/quad-scale.mp4
+.. figure:: movies/chapter-03/quad-scale.mp4
    :loop:
    :autoplay:
    :controls:
@@ -831,11 +830,11 @@ order for the quad to be animated and to scale with time as shown in the figure
 on the right. You will need to update the scale factor within the Python
 program, for example in the `draw` function.
 
-Solution: `<code/quad-scale.py>`_
+Solution: `<code/chapter-03/quad-scale.py>`_
 
 ----
 
-.. figure:: data/quad-rotate.mp4
+.. figure:: movies/chapter-03/quad-rotate.mp4
    :loop:
    :autoplay:
    :controls:

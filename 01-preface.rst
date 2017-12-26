@@ -127,8 +127,8 @@ If you want to contribute to this book, you can:
 * Suggest improvements (https://github.com/rougier/python+opengl/pulls)
 * Correct English (https://github.com/rougier/python+opengl/issues)
 * Star the project (https://github.com/rougier/python+opengl)
-* Suggest a more responvise design for the HTML Book
-* Design a nice latex template for a PDF version
+* Suggest a more responsive design for the HTML Book
+* Spread the word about this book (Reddit, Hacker News, etc.)
 
 Publishing
 ++++++++++
@@ -158,6 +158,17 @@ Alike 4.0 International License <https://creativecommons.org/licenses/by-nc-sa/4
 
 The licensor cannot revoke these freedoms as long as you follow the license terms.
 
+Under the following terms:
+
+* **Attribution** — You must give appropriate credit, provide a link to the
+  license, and indicate if changes were made. You may do so in any reasonable
+  manner, but not in any way that suggests the licensor endorses you or your
+  use.
+* **NonCommercial** — You may not use the material for commercial purposes.
+* **ShareAlike** — If you remix, transform, or build upon the material, you
+  must distribute your contributions under the same license as the original.
+
+
 Code
 ++++
 
@@ -177,7 +188,7 @@ mainly) a researcher with several students to supervise, researches to do,
 grants to write, talks to prepare, etc.
 
 Consequently, if you really want to have a PDF version, you'll have to
-explicitely express your interest by contributing a small amount of
+explicitly express your interest by contributing a small amount of
 money. Then,
 
 * if the total reach **5,000 euros**, I'll produce the PDF
@@ -188,7 +199,7 @@ reached. In such case, consider your payment as a donation to the online
 version. If you find this unfair, remember you have the choice to give or not
 and the online version is free and open source...
 
-.. image:: crowdfunding.png
+.. image:: images/chapter-01/crowdfunding.png
    :width: 100%
 
 

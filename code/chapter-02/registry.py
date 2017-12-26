@@ -1,7 +1,7 @@
 # -----------------------------------------------------------------------------
 # Python, OpenGL & Scientific Visualization
 # www.labri.fr/perso/nrougier/python+opengl
-# Copyright (c) 2017, Nicolas P. Rougier
+# Copyright (c) 2018, Nicolas P. Rougier
 # Distributed under the 2-Clause BSD License.
 # -----------------------------------------------------------------------------
 # OpenGL registry parser

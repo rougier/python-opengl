@@ -8,6 +8,10 @@ Anti-grain geometry
    :class: toc chapter-06
 
 
+.. image:: data/mcseem.jpg
+   :class: right
+   :width: 20%
+      
 The late Maxim Shemanarev (1966-2013) designed the anti-grain_ library, a
 (very) high quality rendering engine written in C++. The library is both nicely
 written (one of the best C++ library I've seen with the Eigen_ library) and

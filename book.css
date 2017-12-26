@@ -110,6 +110,8 @@ body {
     width:40%;
     margin-left: -5px;
     padding-left: +5px;
+    padding-bottom: .15em;
+    margin-bottom: .25em;
 }
 
 .sidebar li {
@@ -228,24 +230,37 @@ h2.subtitle, h2.subtitle a {
 }
 img.teaser {
     display: block;
-    width:90%;
+    width:100%;
     margin-left: auto;
     margin-right: auto;
-    border: 1px solid black;
-    border-radius: 3px;
-/*    margin-top: 5px;
-    margin-bottom: 250px;*/
 }
 
 .book-abstract {
-    background-color: #f9f9f9;
+    font-family: 'Source Sans Pro', sans-serif; 
     text-align: justify;
-    margin: 2em;
-    padding: 1em;
-    margin-top: 0em;
-    border: 1px solid #cccccc;
+    margin: 0.0em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border-top: 1px solid #555555;
+    border-bottom: 1px solid #555555;
 }
 
+.book-colophon {
+    font-size: 75%;
+    line-height: 1.1em;
+    font-family: 'Source Sans Pro', sans-serif; 
+    text-align: justify;
+    padding:0;
+    margin:0;
+    /*    margin: 0.5em;*/
+    margin-top: 0em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid #555555;
+}
+.book-colophon .line {
+    text-align: center;
+}
 
 
 /* --- Headers ------------------------------------------------------------- */
@@ -431,60 +446,64 @@ a:active {
 
 
 .chapter-01 .topic-title {
-    background: url("data/chapter-01.png") no-repeat center;
+    background: url("images/chapter-01/chapter-01.png") no-repeat center;
     background-size: 100%;
 }
 .chapter-02 .topic-title {
-    background: url("data/chapter-02.jpg") no-repeat center;
+    background: url("images/chapter-02/chapter-02.jpg") no-repeat center;
     background-size: 100%;
 }
 .chapter-03 .topic-title {
-    background: url("data/chapter-03.png") no-repeat center;
+    background: url("images/chapter-03/chapter-03.png") no-repeat center;
     background-size: 100%;
 }
 .chapter-04 .topic-title {
-    background: url("data/chapter-04.jpg") no-repeat center;
+    background: url("images/chapter-04/chapter-04.jpg") no-repeat center;
     background-size: 125%;
 }
 .chapter-05 .topic-title {
-    background: url("data/chapter-05.png") no-repeat center;
+    background: url("images/chapter-05/chapter-05.png") no-repeat center;
     background-size: 100%;
 }
 .chapter-06 .topic-title {
-    background: url("data/chapter-06.jpg") no-repeat center;
+    background: url("images/chapter-06/chapter-06.jpg") no-repeat center;
     background-size: 100%;
     background-position: center 25%;
 }
 .chapter-07 .topic-title {
-    background: url("data/chapter-07.png") no-repeat center;
+    background: url("images/chapter-07/chapter-07.png") no-repeat center;
     background-size: 100%;
 }
 .chapter-08 .topic-title {
-    background: url("data/chapter-08.png") no-repeat center;
+    background: url("images/chapter-08/chapter-08.png") no-repeat center;
     background-size: 120%;
 }
 .chapter-09 .topic-title {
-    background: url("data/chapter-09.png") no-repeat center;
+    background: url("images/chapter-09/chapter-09.png") no-repeat center;
     background-size: 100%;
 }
 .chapter-10 .topic-title {
-    background: url("data/chapter-10.png") no-repeat center;
+    background: url("images/chapter-10/chapter-10.png") no-repeat center;
     background-size: 100%;
 }
 .chapter-11 .topic-title {
-    background: url("data/chapter-11.png") no-repeat center;
+    background: url("images/chapter-11/chapter-11.png") no-repeat center;
     background-size: 100%;
 }
 .chapter-13 .topic-title {
-    background: url("data/chapter-13.png") no-repeat center;
+    background: url("images/chapter-13/chapter-13.png") no-repeat center;
     background-size: 125%;
 }
+.chapter-14 .topic-title {
+    background: url("images/chapter-15/chapter-15.png") no-repeat center;
+    background-size: 175%;
+}
 .chapter-15 .topic-title {
-    background: url("data/chapter-15.png") no-repeat center;
+    background: url("images/chapter-15/chapter-15.png") no-repeat center;
     background-size: 175%;
 }
 .chapter-16 .topic-title {
-    background: url("data/chapter-16.jpg") no-repeat center;
+    background: url("images/chapter-16/chapter-16.jpg") no-repeat center;
     background-size: 125%;
 }
 

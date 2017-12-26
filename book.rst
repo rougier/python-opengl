@@ -11,7 +11,7 @@
                    Python & OpenGL for Scientific Visualization
 ===============================================================================
 -------------------------------------------------------------------------------
-      Copyright (c) 2017 - Nicolas P. Rougier <Nicolas.Rougier@inria.fr> 
+      Copyright (c) 2018 - Nicolas P. Rougier <Nicolas.Rougier@inria.fr> 
 -------------------------------------------------------------------------------
 
 .. container:: title-logos
@@ -32,31 +32,38 @@
 .. _website: http://www.labri.fr/perso/nrougier/python+opengl
 
 
-.. image:: data/teaser-2.png
+.. image:: data/teaser.png
    :class: teaser
 
-|
-|
 |
 
 .. container:: book-abstract
 
-    Python and OpenGL have a long but complicated story. It used to be really
-    easy to program something using the fixed-pipeline and libraries such as
-    Pyglet but things have became more difficult with the introduction of the
-    dynamic graphic pipeline in 2004. The goal of this book is to reconciliate
-    Python programmers with OpenGL, providing both an introduction to modern
-    OpenGL and a set of basic and advanced techniques in order to achieve both
-    fast, scalable & beautiful scientific visualizations. The book uses the
-    GLES 2.0 API which is the most simple API for accessing the programmable
-    graphic pipeline. It does not cover up-to-date OpenGL techniques but it is
-    sufficient to achieve great visualisation. In fact, modern OpenGL allows to
-    control pretty much everything in the pipeline and the goal of this book is
-    to explain several techniques dedicated to scientific visualisation such as
-    isolines, markers, colormaps, arbitrary transformations but there are
-    actually many more techniques to be discovered and explained in this
-    open-access book. And of course, everything will be fast and beautiful.
-    
+   **Python and OpenGL** have a long but complicated story. It used to be
+   really easy to program something using the fixed-pipeline and libraries such
+   as Pyglet but things have became more difficult with the introduction of the
+   dynamic graphic pipeline in 2004. The goal of this book is to reconcile
+   Python programmers with OpenGL, providing both an introduction to modern
+   OpenGL and a set of basic and advanced techniques in order to achieve both
+   fast, scalable & beautiful scientific visualizations. The book uses the GLES
+   2.0 API which is the most simple API for accessing the programmable graphic
+   pipeline. It does not cover up-to-date OpenGL techniques but it is
+   sufficient to achieve great visualisation. In fact, modern OpenGL allows to
+   control pretty much everything in the pipeline and the goal of this book is
+   to explain several techniques dedicated to scientific visualisation such as
+   isolines, markers, colormaps, arbitrary transformations but there are
+   actually many more techniques to be discovered and explained in this
+   open-access book. And of course, everything will be fast and beautiful.
+
+
+.. container:: book-colophon
+
+   | Copyright (c) 2018 by Nicolas P. Rougier
+   | This work is licensed under a Creative Commons
+   | Attribution-Non Commercial-Share Alike 4.0 International License
+   | First published online in 2018, Bordeaux, France
+   | ISBN: X-XXXXX-XXX-X
+
 |
 |
 |

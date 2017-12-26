@@ -1,4 +1,3 @@
-
 Basic Mathematics
 ===============================================================================
 
@@ -49,7 +48,7 @@ Let us consider for example a simple set of point `[-1.0, -0.5, 0.0, +0.5,
 is discared and won't be visible into the final projection) The question now is
 how do we project the points onto the screen?
 
-.. figure:: data/1D-H-Coordinates.png
+.. figure:: images/chapter-04/1D-H-Coordinates.png
    :figwidth: 50%
    :figclass: right
 
@@ -70,7 +69,7 @@ in our unidimensional Euclidean space. From this conversion, we can see
 immediately that there exist actually an infinite set of homogenous coordinates
 that correspond to a single Cartesian coordinate as illustrated on the figure.
 
-.. figure:: data/1D-Projection.png
+.. figure:: images/chapter-04/1D-Projection.png
    :figwidth: 100%
 
    Figure
@@ -135,7 +134,7 @@ by Sam Hocevar:
 Transformations
 -------------------------------------------------------------------------------
 
-.. figure:: data/composition.png
+.. figure:: images/chapter-04/composition.png
    :figwidth: 50%
    :figclass: right
 

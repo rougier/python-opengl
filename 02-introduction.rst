@@ -21,7 +21,7 @@ OpenGL is 25 years old! Since the first release in 1992, a lot has happened
 (and is still happening actually, with the newly released Vulkan_ API and the
 4.6 GL release) and consequently, before diving into the book, it is important
 to understand OpenGL API evolution over the years. If the first API (1.xx) has
-not changed too much in the first twelve years, a big change occured in 2004
+not changed too much in the first twelve years, a big change occurred in 2004
 with the introduction of the dynamic pipeline (OpenGL 2.x), i.e. the use of
 shaders that allow to have direct access to the GPU. Before this version,
 OpenGL was using a fixed pipeline that made it easy to rapidly prototype some
@@ -130,8 +130,8 @@ API).
 .. note::
 
   The number of functions and constants have been computed using the
-  `<code/registry.py>`_ program that parses the gl.xml_ file that defines the
-  OpenGL and OpenGL API Registry
+  `<code/chapter-02/registry.py>`_ program that parses the gl.xml_ file that
+  defines the OpenGL and OpenGL API Registry
  
 ======== ========= ========= === ============ ========= =========
 Version  Constants Functions     Version      Constants Functions
@@ -167,7 +167,7 @@ The graphic pipeline
 .. Note::
 
    The shader language is called glsl.  There are many versions that goes from 1.0
-   to 1.5 and subsequents version get the number of OpenGL version. Last version
+   to 1.5 and subsequent version get the number of OpenGL version. Last version
    is 4.6 (June 2017).
 
 If you want to understand modern OpenGL, you have to understand the graphic
@@ -178,7 +178,7 @@ depending on the version of OpenGL you're using), they will act at different
 stage of the rendering pipeline. To simplify this tutorial, we'll use only
 **vertex** and **fragment** shaders as shown below:
 
-.. image:: data/gl-pipeline.png
+.. image:: images/chapter-02/gl-pipeline.png
    :width: 100%
 
 A vertex shader acts on vertices and is supposed to output the vertex
@@ -207,7 +207,7 @@ output the null vertex (`gl_Position` is a special variable) while the second
 will only output the black color for any fragment (`gl_FragColor` is also a
 special variable). We'll see later how to make them to do more useful things.
 
-One question remains: when are those shaders exectuted exactly ? The vertex
+One question remains: when are those shaders executed exactly ? The vertex
 shader is executed for each vertex that is given to the rendering pipeline
 (we'll see what does that mean exactly later) and the fragment shader is
 executed on each fragment (= pixel) that is generated after the vertex
@@ -246,7 +246,7 @@ structured array using numpy_:
 
 We just created a CPU buffer with 4 vertices, each of them having a
 `position` (3 floats for x,y,z coordinates) and a `color` (4 floats for
-red, blue, green and alpha channels). Note that we explicitely chose to have 3
+red, blue, green and alpha channels). Note that we explicitly chose to have 3
 coordinates for `position` but we may have chosen to have only 2 if were to
 work in two-dimensions. Same holds true for `color`. We could have used
 only 3 channels (r,g,b) if we did not want to use transparency. This would save
@@ -263,8 +263,8 @@ using 2 floats for position and 4 floats for color:
 
 .. code:: python
 
-  data = numpy.zeros(4, dtype = [ ("position", np.float32, 2),
-                                  ("color",    np.float32, 4)] )
+   data = numpy.zeros(4, dtype = [ ("position", np.float32, 2),
+                                   ("color",    np.float32, 4)] )
 
 We need to tell the vertex shader that it will have to handle vertices where a
 position is a tuple of 2 floats and color is a tuple of 4 floats. This is
@@ -273,19 +273,19 @@ vertex shader:
 
 .. code:: glsl
 
-  attribute vec2 position;
-  attribute vec4 color;
-  void main()
-  {
-      gl_Position = vec4(position, 0.0, 1.0);
-  }
+   attribute vec2 position;
+   attribute vec4 color;
+   void main()
+   {
+       gl_Position = vec4(position, 0.0, 1.0);
+   }
 
 This vertex shader now expects a vertex to possess 2 attributes, one named
 `position` and one named `color` with specified types (vec3 means tuple of
 3 floats and vec4 means tuple of 4 floats). It is important to note that even
 if we labeled the first attribute `position`, this attribute is not yet bound
 to the actual `position` in the numpy array. We'll need to do it explicitly
-at some point in our program and there is no omagic that will bind the numpy
+at some point in our program and there is no magic that will bind the numpy
 array field to the right attribute, you'll have to do it yourself, but we'll
 see that later.
 
@@ -296,13 +296,13 @@ we would thus write:
 
 .. code:: glsl
 
-  uniform float scale;
-  attribute vec2 position;
-  attribute vec4 color;
-  void main()
-  {
-      gl_Position = vec4(position*scale, 0.0, 1.0);
-  }
+   uniform float scale;
+   attribute vec2 position;
+   attribute vec4 color;
+   void main()
+   {
+       gl_Position = vec4(position*scale, 0.0, 1.0);
+   }
 
 Last type is the varying type that is used to pass information between the
 vertex stage and the fragment stage. So let us suppose (again) we want to pass
@@ -310,30 +310,30 @@ the vertex color to the fragment shader, we now write:
 
 .. code:: glsl
 
-  uniform float scale;
-  attribute vec2 position;
-  attribute vec4 color;
-  varying vec4 v_color;
+   uniform float scale;
+   attribute vec2 position;
+   attribute vec4 color;
+   varying vec4 v_color;
 
-  void main()
-  {
-      gl_Position = vec4(position*scale, 0.0, 1.0);
-      v_color = color;
-  }
+   void main()
+   {
+       gl_Position = vec4(position*scale, 0.0, 1.0);
+       v_color = color;
+   }
 
 and then in the fragment shader, we write:
 
 .. code:: glsl
 
-  varying vec4 v_color;
+   varying vec4 v_color;
 
-  void main()
-  {
-      gl_FragColor = v_color;
-  }
+   void main()
+   {
+       gl_FragColor = v_color;
+   }
 
 The question is what is the value of `v_color` inside the fragment shader ?
-If you look at the figure that introduced the gl pipleline, we have 3 vertices
+If you look at the figure that introduced the gl pipeline, we have 3 vertices
 and 21 fragments. What is the color of each individual fragment ?
 
 The answer is *the interpolation of all 3 vertices color*. This interpolation
@@ -350,7 +350,7 @@ State of the union
 Last, but not least, we need to access the OpenGL library from within Python
 and we have mostly two solutions at our disposal. Either we use pure bindings
 and we have to program everything (see next chapter) or we use an engine that
-provide a lot oc convenient functions that ease the development. We'll first
+provide a lot of convenient functions that ease the development. We'll first
 use the PyOpenGL bindings before using the glumpy_ library that offers a tight
 integration with numpy.
 
@@ -476,6 +476,6 @@ Libraries
 .. _gl.xml:
        https://github.com/KhronosGroup/OpenGL-Registry/blob/master/xml/gl.xml
 .. _registry.py:
-       code/registry.py
+       code/chapter-02/registry.py
 
 .. ----------------------------------------------------------------------------
