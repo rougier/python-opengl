@@ -67,7 +67,7 @@ Note that there is a new `gl_FragCoord` variable in this fragment shader. This
 variable gives the coordinate of the current fragment in window coordinates
 (bottom-left is (0,0)). Without it, the `gl.GL_POINTS` would be useless.
 
-Last, we setup our python program (see `dots-1.py <code/dots-1.py>`_).
+Last, we setup our python program (see `dots-1.py <code/chapter-07/dots-1.py>`_).
 
 .. code:: python
 
@@ -93,15 +93,16 @@ Last, we setup our python program (see `dots-1.py <code/dots-1.py>`_).
    app.run()
 
 
-.. figure:: data/dots-1.png
+.. figure:: images/chapter-07/dots-1.png
    :figwidth: 50%
    :figclass: right
 
    Figure
 
    Discs positionned vertically with a 0.2 pixel increase.
+   See `code/chapter-07/discs-aligned.py`_
 
-.. figure:: data/dots-2.png
+.. figure:: images/chapter-07/dots-2.png
    :figwidth: 50%
    :figclass: right
 
@@ -117,7 +118,7 @@ pixels compared to its left neightbour. However, you cannot see any artefacts
 
 ----
 
-.. figure:: data/triangles.mp4
+.. figure:: movies/chapter-07/triangles.mp4
    :loop:
    :autoplay:
    :controls:
@@ -126,7 +127,7 @@ pixels compared to its left neightbour. However, you cannot see any artefacts
 
    Figure
 
-.. figure:: data/ellipses.mp4
+.. figure:: movies/chapter-07/ellipses.mp4
    :loop:
    :autoplay:
    :controls:
@@ -135,7 +136,7 @@ pixels compared to its left neightbour. However, you cannot see any artefacts
 
    Figure
 
-.. figure:: data/spiral.png
+.. figure:: images/chapter-07/spiral.png
    :figwidth: 30%
    :figclass: right
 
@@ -147,7 +148,7 @@ Markers
 -------------------------------------------------------------------------------
 
 
-.. figure:: data/CSG-markers.png
+.. figure:: images/chapter-07/CSG-markers.png
    :figwidth: 50%
    :figclass: right
 
@@ -168,7 +169,7 @@ Constructive Solid Geometry
 -------------------------------------------------------------------------------
 
 
-.. figure:: data/CSG.png
+.. figure:: images/chapter-07/CSG.png
    :figwidth: 50%
    :figclass: right
               
@@ -216,72 +217,72 @@ And we can check for the result using two circles (the shadertoy link for each
 example allows you to play online with them):
 
    
-.. figure:: data/CSG-intersection.png
+.. figure:: images/chapter-07/CSG-intersection.png
    :figwidth: 30%
    :figclass: right
 
    Figure
 
    | Intersection (A and B)
-   | `CSG-intersection.py <code/csg-intersection.py>`_ / `Shadertoy`__
+   | `CSG-intersection.py <code/chapter-07/csg-intersection.py>`_ / `Shadertoy`__
 
 __  https://www.shadertoy.com/view/XllyWn
 
-.. figure:: data/CSG-union.png
+.. figure:: images/chapter-07/CSG-union.png
    :figwidth: 30%
    :figclass: right
 
    Figure
 
    | Union (A or B)
-   | `CSG-union.py <code/csg-union.py>`_ / `Shadertoy`__
+   | `CSG-union.py <code/chapter-07/csg-union.py>`_ / `Shadertoy`__
 
 __  https://www.shadertoy.com/view/4tlyWn
 
-.. figure:: data/CSG-mix.png
+.. figure:: images/chapter-07/CSG-mix.png
    :figwidth: 30%
    :figclass: right
 
    Figure
 
    | Two SDF circles (A, B)
-   | `CSG-mix.py <code/csg-mix.py>`_ / `Shadertoy`__
+   | `CSG-mix.py <code/chapter-07/csg-mix.py>`_ / `Shadertoy`__
 
 __  https://www.shadertoy.com/view/MtfcDr
 
 ----
 
-.. figure:: data/CSG-exclusion.png
+.. figure:: images/chapter-07/CSG-exclusion.png
    :figwidth: 30%
    :figclass: right
 
    Figure
 
    | Exclusion (A xor B)
-   | `CSG-exclusion.py <code/csg-exclusion.py>`_ / `Shadertoy`__
+   | `CSG-exclusion.py <code/chapter-07/csg-exclusion.py>`_ / `Shadertoy`__
 
 __  https://www.shadertoy.com/view/4tsyWn
    
 
-.. figure:: data/CSG-difference-2.png
+.. figure:: images/chapter-07/CSG-difference-2.png
    :figwidth: 30%
    :figclass: right
 
    Figure
 
    | Difference (A not B)
-   | `CSG-difference-2.py <code/csg-difference-2.py>`_ / `Shadertoy`__
+   | `CSG-difference-2.py <code/chapter-07/csg-difference-2.py>`_ / `Shadertoy`__
 
 __  https://www.shadertoy.com/view/XtsyWn
 
-.. figure:: data/CSG-difference-1.png
+.. figure:: images/chapter-07/CSG-difference-1.png
    :figwidth: 30%
    :figclass: right
 
    Figure
 
    | Difference (B not A)
-   | `CSG-difference-1.py <code/csg-difference-1.py>`_ / `Shadertoy`__
+   | `CSG-difference-1.py <code/chapter-07/csg-difference-1.py>`_ / `Shadertoy`__
 
 __  https://www.shadertoy.com/view/4llyWn
 

@@ -376,8 +376,8 @@ Bindings
 * Ctypes_ bindings can also be generated quite easily thanks to the gl.xml_
   file provided by the Khronos group that defines the OpenGL and OpenGL API
   Registry. The number of functions and constants given in the table above have
-  been computed using the `<code/registry.py>`_ program that parses the gl.xml
-  file for each API and version and count the relevant features.
+  been computed using the `<code/chapter-02/registry.py>`_ program that parses
+  the gl.xml file for each API and version and count the relevant features.
 
   
 Engines

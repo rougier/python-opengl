@@ -16,13 +16,13 @@
 
 .. container:: title-logos
                
-   .. image:: data/cc.large.png
+   .. image:: images/cc.large.png
       :width: 32px
-   .. image:: data/by.large.png
+   .. image:: images/by.large.png
       :width: 32px
-   .. image:: data/sa.large.png
+   .. image:: images/sa.large.png
       :width: 32px
-   .. image:: data/nc.large.png
+   .. image:: images/nc.large.png
       :width: 32px
 
    | Latest version - |date|
@@ -32,7 +32,7 @@
 .. _website: http://www.labri.fr/perso/nrougier/python+opengl
 
 
-.. image:: data/teaser.png
+.. image:: images/teaser.png
    :class: teaser
 
 |

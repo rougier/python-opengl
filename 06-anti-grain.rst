@@ -412,7 +412,7 @@ vertices defining the box.
 Rounded Box
 ~~~~~~~~~~~
 
-.. figure:: data/SDF-round-box.mp4
+.. figure:: movies/chapter-06/SDF-round-box.mp4
    :loop:
    :autoplay:
    :controls:

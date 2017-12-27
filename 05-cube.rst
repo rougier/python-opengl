@@ -109,7 +109,7 @@ matrices as well as rotation, translation and scaling operations). This default
 perspective matrix is located at the origin and look in the negative z
 direction with the up direction pointing toward the positive y-axis. If we
 leave our cube at the origin, the camera would be inside the cube and we woudl
-not see much. So let first crate a view matrix that is a translation along the
+not see much. So let first create a view matrix that is a translation along the
 z-axis:
 
 .. code:: python

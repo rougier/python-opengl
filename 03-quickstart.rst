@@ -8,9 +8,9 @@ Quickstart
 
 
 For the **really** impatient, you can try to run the code in the `teaser image
-<code/glumpy-quad-solid.py>`_ above. If this works, a window should open on your
-desktop with a red color in the background. If you now want to understand how
-this works, you'll have to read the text below.
+<code/chapter-03/glumpy-quad-solid.py>`_ above. If this works, a window should
+open on your desktop with a red color in the background. If you now want to
+understand how this works, you'll have to read the text below.
            
            
 Preliminaries
@@ -688,7 +688,7 @@ shader program, using the proper mode.
    # Run the app
    app.run()
 
-The whole source is available in `<code/glumpy-quad-solid.py>`_.
+The whole source is available in `<code/chapter-03/glumpy-quad-solid.py>`_.
 
 If you run this program using the `--debug` switch, you should obtain the
 following output that show what is being done in the background. More
@@ -728,7 +728,7 @@ Uniform color
 
 Adding a `uniform` specified color like is only a matter of modifying the
 fragment shader as in the previous section an directly assigning the color to
-the quad program (see `<code/glumpy-quad-uniform-color.py>`_):
+the quad program (see `<code/chapter-03/glumpy-quad-uniform-color.py>`_):
 
 .. code:: python
 
@@ -741,7 +741,7 @@ Varying color
 
 Adding a per-vertex color like is also and only a matter of modifying the
 fragment shader as in the previous section an directly assigning the color to
-the quad program (see `<code/glumpy-quad-varying-color.py>`_):
+the quad program (see `<code/chapter-03/glumpy-quad-varying-color.py>`_):
 
 .. code:: python
 
@@ -822,10 +822,10 @@ tricks in the next chapters.
 
    Basic animation with the quad.
 
-**Scaling the quad** We've been using previously a `uniform` to pass a
-color to the fragment shader, but we could have used also in the vertex shader
-to pass any kind of information. In this exercise, try to modify the vertex
-shader in the `varying color example <code/glumpy-quad-varying-color.py>`_ in
+**Scaling the quad** We've been using previously a `uniform` to pass a color to
+the fragment shader, but we could have used also in the vertex shader to pass
+any kind of information. In this exercise, try to modify the vertex shader in
+the `varying color example <code/chapter-03/glumpy-quad-varying-color.py>`_ in
 order for the quad to be animated and to scale with time as shown in the figure
 on the right. You will need to update the scale factor within the Python
 program, for example in the `draw` function.
@@ -856,7 +856,7 @@ angle theta around the origin (0,0) for a point (x,y):
        float y2 = sin(theta)*x + cos(theta)*y;
 
 
-Solution: `<code/quad-rotate.py>`_
+Solution: `<code/chapter-03/quad-rotate.py>`_
 
 
 .. _GLUT:   http://freeglut.sourceforge.net 		

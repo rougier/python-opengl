@@ -9,7 +9,7 @@ Rendering lines
 Segments
 --------
 
-.. figure:: data/segment.png
+.. figure:: images/chapter-08/segment.png
    :figwidth: 50%
 
    Figure

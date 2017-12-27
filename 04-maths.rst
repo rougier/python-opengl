@@ -380,7 +380,7 @@ within the volume (even partially) will be rendered while objects outside
 won't. On the image below, the yellow and red spheres are within the volume
 while the green one is not and does not appear on the projection.
 
-.. image:: data/projection.png
+.. image:: images/chapter-04/projection.png
    :width: 100%
 
 There exist many different ways to project a 3D volume onto a 2D screen but
