@@ -19,18 +19,28 @@ above , we'll need to take care of pretty much everything.
 Dots, discs, circles
 -------------------------------------------------------------------------------
 
-We'll use the `gl.GL_POINTS` primitive that actually display a quad whose size
-(in pixels) can be specified within the vertex shader` using the `gl_PointSize`
-method. If the point is supposed to have a given radius, the quad size must be
-slightly larger to take into account the antialias area (1 pixel on each size
-in ur case). Futhermore, we can specify a non integer radius and we thus have
-to take car of getting the upper bound. So finally, our vertex shader reads:
+The most straightforward way to display points is to use the `gl.GL_POINTS`
+primitive that display a quad that is always facing the camera
+(i.e. billboard). This is very convenient because a mathematical point has no
+dimension, even though we'll use this primite to draw discs and circles as
+well. The size of the quad must be specified within the vertex shader using the
+`gl_PointSize` variable (note that the size is expressed in pixels). As it has
+been explained in the previous chapter, the size of the quad must be slighlty
+larger than the actual diameter of the point because we need some extra space
+for the antialias area. Considering a point with a radius `r`, the size of the
+quad is thus `2+ceil(2*r)` if we consider using 1 pixel for the antalias
+area. Finally, considering a point centered at `center` with radius `radius`,
+our vertex shader reads:
    
 .. code:: glsl
 
+   // Screen resolution as (width, height)
    uniform vec2 resolution;
-   
+
+   // Point center (in pixel coordinates)
    attribute vec2 center;
+
+   // Point radius (in pixels)
    attribute float radius;
    
    varying vec2 v_center;
@@ -43,12 +53,21 @@ to take car of getting the upper bound. So finally, our vertex shader reads:
        gl_Position = vec4(2.0*center/resolution-1.0, 0.0, 1.0);
    }
 
-You may have noticed that we give the window resolution to the shader using a
+You may have noticed that we gave the window resolution to the shader using a
 uniform (that will be updated each time the window size has changed). The goal
-is to be able to use window coordinates in python without taking care of the
-normalized device coordinate. This transformation will be done inside the
-shader. This is important because in the fragment shader, we'll need pixel
-coordinates to perform anti-aliasing. This fragment shaders reads:
+is to be able to use window coordinates (i.e. pixels) from within Python
+without taking care of the normalized device coordinate (this transformation
+has been done in the vertex shader above). We now have one problem to solve. A
+GL point is made from a single vertex and the apparent size of the resulting
+quad is controlled by the `gl_PointSize` variable resulting in several
+fragments. How things are interpolated between vertices knowing there is ony
+one vertex? The answer is that there is no interpolation. If we want to know
+the position of a fragment relatively to the center, we have to find it
+ourself. Luckily, there is one interesting variable `gl_FragCoord` that gives
+us the absolute coordinate of the fragment in window coordinates (bottom-left
+is (0,0)). Subtracting the center from this coordinate will give us the
+relative position of the fragment from which we can compute the distance to the
+outer border of the point. Finally, our fragment shader reads:
 
 .. code:: glsl
           
@@ -58,16 +77,12 @@ coordinates to perform anti-aliasing. This fragment shaders reads:
    {
        vec2 p = gl_FragCoord.xy - v_center;
        float a = 1.0;
-       float d = length(p) - v_radius + 1.0;
+       float d = length(p) - v_radius;
        if(d > 0.0) a = exp(-d*d);
        gl_FragColor = vec4(vec3(0.0), a);
    }
 
-Note that there is a new `gl_FragCoord` variable in this fragment shader. This
-variable gives the coordinate of the current fragment in window coordinates
-(bottom-left is (0,0)). Without it, the `gl.GL_POINTS` would be useless.
-
-Last, we setup our python program (see `dots-1.py <code/chapter-07/dots-1.py>`_).
+Last, we setup our python program to display some discs:
 
 .. code:: python
 
@@ -100,7 +115,7 @@ Last, we setup our python program (see `dots-1.py <code/chapter-07/dots-1.py>`_)
    Figure
 
    Discs positionned vertically with a 0.2 pixel increase.
-   See `code/chapter-07/discs-aligned.py`_
+   See `discs-aligned.py <code/chapter-07/discs-aligned.py>`_
 
 .. figure:: images/chapter-07/dots-2.png
    :figwidth: 50%
@@ -109,183 +124,239 @@ Last, we setup our python program (see `dots-1.py <code/chapter-07/dots-1.py>`_)
    Figure
 
    Circles positionned vertically with a 0.2 pixel increase.
-
+   See `circles-aligned.py <code/chapter-07/circles-aligned.py>`_
+   
 You can see the result on the image on the right. Not only the discs are
 properly antialiased, but they are also positionned at the subpixel level. In
 the image on the right, each disc is actually vertically shifted upward by 0.2
 pixels compared to its left neightbour. However, you cannot see any artefacts
-(can you?): the discs are similar and properly aligned.
+(can you?): the discs are similar and properly aligned. For the disc outlines,
+we simply have to get the absolute distance instead of the signed distance.
 
-----
+.. code:: glsl
+          
+   varying vec2 v_center;
+   varying float v_radius;
+   void main()
+   {
+       vec2 p = gl_FragCoord.xy - v_center;
+       float a = 1.0;
+       float d = length(p) - v_radius;
+       if(abs(d) > 0.0) a = exp(-d*d);
+       gl_FragColor = vec4(vec3(0.0), a);
+   }
 
-.. figure:: movies/chapter-07/triangles.mp4
-   :loop:
-   :autoplay:
-   :controls:
-   :figwidth: 30%
-   :figclass: right
-
-   Figure
-
-.. figure:: movies/chapter-07/ellipses.mp4
-   :loop:
-   :autoplay:
-   :controls:
-   :figwidth: 30%
-   :figclass: right
-
-   Figure
-
-.. figure:: images/chapter-07/spiral.png
-   :figwidth: 30%
-   :figclass: right
-
-   Figure
-
-
-   
-Markers
--------------------------------------------------------------------------------
-
-
-.. figure:: images/chapter-07/CSG-markers.png
-   :figwidth: 50%
-   :figclass: right
-
-   Figure
-
-   Some example of markers constructed using CSG.
-
-
-Arrows
--------------------------------------------------------------------------------
 
 
 Spheres
 -------------------------------------------------------------------------------
 
-
-Constructive Solid Geometry
--------------------------------------------------------------------------------
-
-
-.. figure:: images/chapter-07/CSG.png
-   :figwidth: 50%
+.. figure:: images/chapter-07/sphere.png
+   :figwidth: 30%
    :figclass: right
-              
+
    Figure
 
-   Constructive solid geometry (CSG) allows a to create a complex object by using
-   Boolean operators to combine simpler objects.
+   A lit sphere
+   
+If you look closely at a sphere, you'll see that that the projected shape on
+screen is actualy as disc as shown on the figure on the right. This is actually
+true independently of the viewpoint and we can take advantage of it. A long
+time ago (with the fixed pipeline), rendering a sphere meant tesselating the
+sphere with a large number of triangles. The larger the number of triangles,
+the higher the quality of the sphere and the slower the rendering. However,
+with the advent of shaders, things have changeg dramatically and we can use
+fake spheres, i.e. discs thar are painted such as to appear as spheres. This is
+known as "impostors". If you look again at the image, you might realize that
+the appeareance of the sphere is given by the shading that is not uniform and
+suggests instead a specific lighting that seems to come from the upper right
+corner. Let's seen if can reproduce this.
 
+.. figure:: images/chapter-07/sphere-1.png
+   :figwidth: 20%
+   :figclass: right
 
-Constructive solid geometry (CSG) is a technique used for modeling in order to
-create a complex object by using Boolean operators to combine simpler objects
-(primitives). Resulting objects appear visually complex but are actually a
-cleverly combined or decombined objects. The teaser image in the `GLSL
-References`_ chapter is the result of `complex constructive geometry in 3D
-<http://iquilezles.org/www/articles/distfunctions/distfunctions.htm>`_. See
-also the Wikipedia entry on `Truth function
-<https://en.wikipedia.org/wiki/Truth_function>`_.
+   Figure
 
-This is the reason we did not bother to try to render complex shapes in the
-previous section. Using constructive solid geometry, we are free to model
-pretty much anything and we'll see that in the markers section below. In the
-meantime, we need to define our CSG operations in glsl. The good news is that
-it is incredibly simple, just read:
+   A black disc (`sphere-1.py  <code/chapter-07/sphere-1.py>`_)
+
+First thing first, Let's setup a scene in order to display a single and large
+disc. To do that, we simply test if a fragment is inside or outside the circle:
 
 .. code:: glsl
 
-   // Union (A or B)
-   float csg_union(float d1, float d2)
-   { return min(d1,d2); }
-
-   // Difference (A not B)
-   float csg_difference(float d1, float d2)
-   { return max(d1,-d2); }
-
-   // Intersection (A and B)
-   float csg_intersection(float d1, float d2)
-   {  return max(d1,d2); }
-
-   // Exclusion (A xor B)
-   float csg_exclusion(float d1, float d2) 
-   { return min(max(d1,-d2), max(-d1,d2)); }
-
-
-And we can check for the result using two circles (the shadertoy link for each
-example allows you to play online with them):
-
-   
-.. figure:: images/chapter-07/CSG-intersection.png
-   :figwidth: 30%
-   :figclass: right
-
-   Figure
-
-   | Intersection (A and B)
-   | `CSG-intersection.py <code/chapter-07/csg-intersection.py>`_ / `Shadertoy`__
-
-__  https://www.shadertoy.com/view/XllyWn
-
-.. figure:: images/chapter-07/CSG-union.png
-   :figwidth: 30%
-   :figclass: right
-
-   Figure
-
-   | Union (A or B)
-   | `CSG-union.py <code/chapter-07/csg-union.py>`_ / `Shadertoy`__
-
-__  https://www.shadertoy.com/view/4tlyWn
-
-.. figure:: images/chapter-07/CSG-mix.png
-   :figwidth: 30%
-   :figclass: right
-
-   Figure
-
-   | Two SDF circles (A, B)
-   | `CSG-mix.py <code/chapter-07/csg-mix.py>`_ / `Shadertoy`__
-
-__  https://www.shadertoy.com/view/MtfcDr
+   varying vec2 v_center;
+   varying float v_radius;
+   void main()
+   {
+       vec2 p = gl_FragCoord.xy - v_center;
+       float z = 1.0 - length(p)/v_radius;
+       if (z < 0.0) discard;
+       gl_FragColor = vec4(vec3(0.0), 1.0);
+   }
 
 ----
 
-.. figure:: images/chapter-07/CSG-exclusion.png
+.. figure:: images/chapter-07/sphere-normals.png
+   :figwidth: 20%
+   :figclass: right
+
+   Figure
+
+   Sphere normals view on the xz plane.
+
+To simulate lighting on the disc, we need to compute normal vectors over the
+surface of the sphere (i.e. disc). Luckily enough for us, computing the normal
+for a sphere is very easy. We can simply use the `p=(x,y)` coordinates inside the
+fragment shader and compute the `z` coordinate. How? you might ask
+yourself. This is actually correlated to the distance `d` to the center such
+that `z = 1-d`. If you want to convice yourself, just look at the figure on
+the right that show a side view of half a sphere on the xz plane. The z
+coordinate is maximal in the center and null on the border.
+
+We're ready to simulate lighting on our disc using the `Phong model
+<https://en.wikipedia.org/wiki/Phong_reflection_model>`_. I won't give all the
+detail now because we'll see that later. However, as you can see on the source
+below, this is quite easy and the result is flawless.
+
+.. figure:: images/chapter-07/sphere-3.png
+   :figwidth: 20%
+   :figclass: right
+
+   Figure
+
+   A fake lit sphere (`sphere-3.py  <code/chapter-07/sphere-3.py>`_)
+
+
+.. code:: glsl
+
+   varying vec2 v_center;
+   varying float v_radius;
+   void main()
+   {
+       vec2 p = (gl_FragCoord.xy - v_center)/v_radius;
+       float z = 1.0 - length(p);
+       if (z < 0.0) discard;
+
+       vec3 color = vec3(1.0, 0.0, 0.0);
+       vec3 normal = normalize(vec3(p.xy, z));
+       vec3 direction = normalize(vec3(1.0, 1.0, 1.0));
+       float diffuse = max(0.0, dot(direction, normal));
+       float specular = pow(diffuse, 24.0);
+       gl_FragColor = vec4(max(diffuse*color, specular*vec3(1.0)), 1.0);
+   }
+   
+----
+
+.. figure:: images/chapter-07/spheres-no-depth.png
    :figwidth: 30%
    :figclass: right
 
    Figure
 
-   | Exclusion (A xor B)
-   | `CSG-exclusion.py <code/chapter-07/csg-exclusion.py>`_ / `Shadertoy`__
+   A bunch of fake spheres.
 
-__  https://www.shadertoy.com/view/4tsyWn
+We can now use this technique to display several "spheres" having different
+sizes and positions as shown on the figure on the right. This can be used to
+represent molecules for examples. Howewer, we have a problem with sphere
+intersecting each other. If you look closely the figure, you might have notices
+that no sphere intersect any sphere. This is due to the depth testing of the
+unique vertex (remember gl.GL_POINTS) that is used to generate the quad
+fragments. Each of these fragments share the same `z` coordinate resulting in
+having sphre fully in front of another of fully behind another. For accurate
+rendering, we thus have to tell OpenGL what is the depth of each fragment using
+the `gl_FragDepth` variable (that must be between 0 and 1):
+
+.. figure:: images/chapter-07/spheres.png
+   :figwidth: 30%
+   :figclass: right
+
+   Figure
+
+   A bunch of fake spheres with correct intersections
+   (`spheres.py  <code/chapter-07/spheres.py>`_).
+
+.. code:: glsl
+          
+   varying vec3 v_center;
+   varying float v_radius;
+   void main()
+   {
+       vec2 p = (gl_FragCoord.xy - v_center.xy)/v_radius;
+       float z = 1.0 - length(p);
+       if (z < 0.0) discard;
+
+       gl_FragDepth = 0.5*v_center.z + 0.5*(1.0 - z);
+
+       vec3 color = vec3(1.0, 0.0, 0.0);
+       vec3 normal = normalize(vec3(p.xy, z));
+       vec3 direction = normalize(vec3(1.0, 1.0, 1.0));
+       float diffuse = max(0.0, dot(direction, normal));
+       float specular = pow(diffuse, 24.0);
+       gl_FragColor = vec4(max(diffuse*color, specular*vec3(1.0)), 1.0);
+   }
    
 
-.. figure:: images/chapter-07/CSG-difference-2.png
-   :figwidth: 30%
-   :figclass: right
-
-   Figure
-
-   | Difference (A not B)
-   | `CSG-difference-2.py <code/chapter-07/csg-difference-2.py>`_ / `Shadertoy`__
-
-__  https://www.shadertoy.com/view/XtsyWn
-
-.. figure:: images/chapter-07/CSG-difference-1.png
-   :figwidth: 30%
-   :figclass: right
-
-   Figure
-
-   | Difference (B not A)
-   | `CSG-difference-1.py <code/chapter-07/csg-difference-1.py>`_ / `Shadertoy`__
-
-__  https://www.shadertoy.com/view/4llyWn
-
-
-Boundings boxes
+Exercises
 -------------------------------------------------------------------------------
+
+
+.. figure:: images/chapter-07/spiral.png
+   :figwidth: 25%
+   :figclass: right
+
+   Figure
+
+   Disc spiral
+
+Adapting the shader from the "Dots, discs, circles" section, try to write a
+script to draw discs on a spiral as displayed on the figure on the right. Be
+careful with small discs, especially when the radius is less than one pixel. In
+such case, you'll have to find a convincing way to suggest the size of the
+disc...
+
+Solution: `spiral.py <code/chapter-07/spiral.py>`_
+
+
+
+----
+
+.. figure:: images/chapter-07/voronoi.png
+   :figwidth: 25%
+   :figclass: right
+
+   Figure
+
+   A voronoi diagram computed on the GPU.
+
+
+We've seen when rendering sphere that the individual depth of eahc fragment can
+be controled withing the fragment shader and we computed this depth by taking
+the distance to the center of each disc/sphere. The goal of this exercise is
+thus to adapt this method to render a Voronoi diagram as shonw on the right.
+
+Solution: `voronoi.py <code/chapter-07/voronoi.py>`_
+
+..
+   .. figure:: movies/chapter-07/triangles.mp4
+      :loop:
+      :autoplay:
+      :controls:
+      :figwidth: 30%
+      :figclass: right
+
+      Figure
+
+
+
+   .. figure:: movies/chapter-07/ellipses.mp4
+      :loop:
+      :autoplay:
+      :controls:
+      :figwidth: 30%
+      :figclass: right
+
+      Figure
+
+
+

@@ -92,7 +92,7 @@ body {
 }
 
 /* Buy the book !!! */
-#id54 {
+#id56 {
     padding-top: .25em;
     padding-bottom: .25em;
     color: #ffffff;
@@ -447,64 +447,72 @@ a:active {
 
 
 .chapter-01 .topic-title {
-    background: url("images/chapter-01/chapter-01.png") no-repeat center;
+    background: url("images/chapter-01/toc.png") no-repeat center;
     background-size: 100%;
 }
 .chapter-02 .topic-title {
-    background: url("images/chapter-02/chapter-02.jpg") no-repeat center;
+    background: url("images/chapter-02/toc.png") no-repeat center;
     background-size: 100%;
 }
 .chapter-03 .topic-title {
-    background: url("images/chapter-03/chapter-03.png") no-repeat center;
+    background: url("images/chapter-03/toc.png") no-repeat center;
     background-size: 100%;
 }
 .chapter-04 .topic-title {
-    background: url("images/chapter-04/chapter-04.jpg") no-repeat center;
+    background: url("images/chapter-04/toc.png") no-repeat center;
     background-size: 125%;
 }
 .chapter-05 .topic-title {
-    background: url("images/chapter-05/chapter-05.png") no-repeat center;
+    background: url("images/chapter-05/toc.png") no-repeat center;
     background-size: 100%;
 }
 .chapter-06 .topic-title {
-    background: url("images/chapter-06/chapter-06.jpg") no-repeat center;
+    background: url("images/chapter-06/toc.png") no-repeat center;
     background-size: 100%;
     background-position: center 25%;
 }
 .chapter-07 .topic-title {
-    background: url("images/chapter-07/chapter-07.png") no-repeat center;
+    background: url("images/chapter-07/toc.png") no-repeat center;
     background-size: 100%;
 }
 .chapter-08 .topic-title {
-    background: url("images/chapter-08/chapter-08.png") no-repeat center;
+    background: url("images/chapter-08/toc.png") no-repeat center;
     background-size: 120%;
 }
 .chapter-09 .topic-title {
-    background: url("images/chapter-09/chapter-09.png") no-repeat center;
+    background: url("images/chapter-09/toc.png") no-repeat center;
     background-size: 100%;
 }
 .chapter-10 .topic-title {
-    background: url("images/chapter-10/chapter-10.png") no-repeat center;
+    background: url("images/chapter-10/toc.png") no-repeat center;
     background-size: 100%;
 }
 .chapter-11 .topic-title {
-    background: url("images/chapter-11/chapter-11.png") no-repeat center;
+    background: url("images/chapter-11/toc.png") no-repeat center;
     background-size: 100%;
 }
+.chapter-12 .topic-title {
+    background: url("images/chapter-12/toc.png") no-repeat center;
+c    background-size: 100%;
+}
 .chapter-13 .topic-title {
-    background: url("images/chapter-13/chapter-13.png") no-repeat center;
-    background-size: 125%;
+    background: url("images/chapter-13/toc.png") no-repeat center;
+    background-size: 100%;
 }
 .chapter-14 .topic-title {
-    background: url("images/chapter-15/chapter-15.png") no-repeat center;
-    background-size: 175%;
+    background: url("images/chapter-14/toc.png") no-repeat center;
+    background-size: 125%;
 }
 .chapter-15 .topic-title {
-    background: url("images/chapter-15/chapter-15.png") no-repeat center;
-    background-size: 175%;
+    background: url("images/chapter-15/toc.png") no-repeat center;
+    background-size: 125%;
 }
 .chapter-16 .topic-title {
-    background: url("images/chapter-16/chapter-16.jpg") no-repeat center;
+    background: url("images/chapter-16/toc.png") no-repeat center;
+    background-size: 175%;
+}
+.chapter-17 .topic-title {
+    background: url("images/chapter-17/toc.png") no-repeat center;
     background-size: 125%;
 }
 
