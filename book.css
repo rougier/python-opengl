@@ -477,7 +477,7 @@ a:active {
 }
 .chapter-08 .topic-title {
     background: url("images/chapter-08/toc.png") no-repeat center;
-    background-size: 120%;
+    background-size: 100%;
 }
 .chapter-09 .topic-title {
     background: url("images/chapter-09/toc.png") no-repeat center;

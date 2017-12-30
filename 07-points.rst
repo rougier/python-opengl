@@ -19,18 +19,65 @@ above , we'll need to take care of pretty much everything.
 Dots, discs, circles
 -------------------------------------------------------------------------------
 
+Raw points
+++++++++++
+
+
+.. figure:: images/chapter-07/points.png
+   :figwidth: 30%
+   :figclass: right
+
+   Figure
+
+   "Point" as drawn by OpenGL
+   (see `points.py <code/chapter-07/points.py>`_).
+   
 The most straightforward way to display points is to use the `gl.GL_POINTS`
-primitive that display a quad that is always facing the camera
-(i.e. billboard). This is very convenient because a mathematical point has no
-dimension, even though we'll use this primite to draw discs and circles as
-well. The size of the quad must be specified within the vertex shader using the
-`gl_PointSize` variable (note that the size is expressed in pixels). As it has
-been explained in the previous chapter, the size of the quad must be slighlty
-larger than the actual diameter of the point because we need some extra space
-for the antialias area. Considering a point with a radius `r`, the size of the
-quad is thus `2+ceil(2*r)` if we consider using 1 pixel for the antalias
-area. Finally, considering a point centered at `center` with radius `radius`,
-our vertex shader reads:
+primitive that displays a quad that is always facing the camera
+(i.e. billboard).  This is very convenient because a mathematical point has no
+dimension, even though we'll use this primitive to draw discs and circles in
+the next section. The size of the quad must be specified within the vertex
+shader using the `gl_PointSize` variable (note that the size is expressed in
+pixels). As shown on the figure, the result is quite ugly.
+
+.. code:: python
+
+   import numpy as np
+   from glumpy import app, gloo, gl
+
+   vertex = """
+     attribute vec2 position;
+     void main() {
+         gl_PointSize = 5.0;
+         gl_Position = vec4(position, 0.0, 1.0);
+     } """
+
+   fragment = """
+     void main() {
+          gl_FragColor = vec4(vec3(0.0), 1.0);
+     } """
+
+   window = app.Window(512, 512, color=(1,1,1,1))
+   points = gloo.Program(vertex, fragment, count=1000)
+   points["position"] = np.random.uniform(-1,1,(len(points),2))
+
+   @window.event
+   def on_draw(dt):
+       window.clear()
+       points.draw(gl.GL_POINTS)
+
+   app.run()
+
+
+Antialiased points
+++++++++++++++++++
+
+For drawing antialiased point, the size of the quad must be slighlty larger
+than the actual diameter of the point because we need some extra space for the
+antialias area. Considering a point with a radius `r`, the size of the quad is
+thus `2+ceil(2*r)` if we consider using 1 pixel for the antalias area. Finally,
+considering a point centered at `center` with radius `radius`, our vertex
+shader reads (see also previous chapter on signed distance field):
    
 .. code:: glsl
 
@@ -147,9 +194,83 @@ we simply have to get the absolute distance instead of the signed distance.
    }
 
 
+Ellipses
+-------------------------------------------------------------------------------
+
+
+.. figure:: movies/chapter-07/ellipses.mp4
+   :loop:
+   :autoplay:
+   :controls:
+   :figwidth: 30%
+   :figclass: right
+
+   Figure
+
+   Perfectly antialiases ellipse made of two triangles
+   (`ellipses.py  <code/chapter-07/ellipses.py>`_)
+   
+
+Rendering ellipses is harder than it seems because, as we've explained in a
+previous chapter, computing the distance from an arbitrary point to an ellipse
+is surprinsingly difficult if you compare it to the distance to a circle. The
+second difficulty for us is the fact that an ellipse can be very "flat" and if
+we use the gl.GL_POINTS primitive, a lot of useless fragment will be
+generated. This is the reason why we need to compute the bounding box
+(including thickness and antialias area) and use two triangles to actually
+display the ellipse. Last difficulty is that we cannot take advantage of the
+`gl_FragCoord` but we can now take advantage of the four vertices to have local
+coordinate interpolation in the fragment shader.
+
+.. code:: glsl
+
+   uniform vec2 resolution;
+   uniform float theta;
+   attribute vec2 position;
+   attribute float angle;
+   varying vec2 v_position;
+   void main() {
+       v_position = position;
+       vec2 p = position;
+       p = vec2(p.x*cos(angle+theta) - p.y*sin(angle+theta),
+                p.y*cos(angle+theta) + p.x*sin(angle+theta));
+       p = p + resolution/2.0;
+       gl_Position = vec4(2.0*p/resolution-1.0, 0.0, 1.0);
+   }
+
+Note that in the vertex shader above, we pass the non-rotated coordinates to
+the fragment shader. It makes things much simpler in the fragment shader that
+reads:
+   
+.. code:: glsl
+
+   float SDF_fake_ellipse(vec2 p, vec2 size) {
+     float a = 1.0;
+     float b = size.x/size.y;
+     float r = 0.5*max(size.x,size.y);
+     float f = length(p*vec2(a,b));
+     return f*(f-r)/length(p*vec2(a*a,b*b));
+   }
+
+   uniform vec2 size;
+   varying vec2 v_position;
+   void main() {
+       float d = SDF_fake_ellipse(v_position, size) + 1.0;
+       float alpha;
+       if (abs(d) < 1.0) alpha = exp(-d*d)/ 4.0;
+       else if (d < 0.0) alpha =       1.0/16.0;
+       else              alpha = exp(-d*d)/16.0;
+       gl_FragColor = vec4(vec3(0.0), alpha);
+   }          
+
+ 
+
 
 Spheres
 -------------------------------------------------------------------------------
+
+Flat sphere
++++++++++++
 
 .. figure:: images/chapter-07/sphere.png
    :figwidth: 30%
@@ -248,6 +369,9 @@ below, this is quite easy and the result is flawless.
    
 ----
 
+True sphere
++++++++++++
+
 .. figure:: images/chapter-07/spheres-no-depth.png
    :figwidth: 30%
    :figclass: right
@@ -256,8 +380,8 @@ below, this is quite easy and the result is flawless.
 
    A bunch of fake spheres.
 
-We can now use this technique to display several "spheres" having different
-sizes and positions as shown on the figure on the right. This can be used to
+We can use this technique to display several "spheres" having different sizes
+and positions as shown on the figure on the right. This can be used to
 represent molecules for examples. Howewer, we have a problem with sphere
 intersecting each other. If you look closely the figure, you might have notices
 that no sphere intersect any sphere. This is due to the depth testing of the
@@ -295,6 +419,8 @@ the `gl_FragDepth` variable (that must be between 0 and 1):
        float specular = pow(diffuse, 24.0);
        gl_FragColor = vec4(max(diffuse*color, specular*vec3(1.0)), 1.0);
    }
+
+You can see on the figures that the spheres now intersect each other correctly.
    
 
 Exercises
@@ -318,6 +444,21 @@ disc...
 Solution: `spiral.py <code/chapter-07/spiral.py>`_
 
 
+----
+
+.. figure:: movies/chapter-07/triangles.mp4
+   :loop:
+   :autoplay:
+   :controls:
+   :figwidth: 30%
+   :figclass: right
+
+   Antialiased triangles
+
+Try to adapt the code from the ellipses section to remake the animation on the
+right. Be careful with the computation of the bouding box.
+
+Solution: `triangles.py <code/chapter-07/triangles.py>`_
 
 ----
 
@@ -330,33 +471,9 @@ Solution: `spiral.py <code/chapter-07/spiral.py>`_
    A voronoi diagram computed on the GPU.
 
 
-We've seen when rendering sphere that the individual depth of eahc fragment can
+We've seen when rendering sphere that the individual depth of each fragment can
 be controled withing the fragment shader and we computed this depth by taking
 the distance to the center of each disc/sphere. The goal of this exercise is
-thus to adapt this method to render a Voronoi diagram as shonw on the right.
+thus to adapt this method to render a Voronoi diagram as shown on the right.
 
 Solution: `voronoi.py <code/chapter-07/voronoi.py>`_
-
-..
-   .. figure:: movies/chapter-07/triangles.mp4
-      :loop:
-      :autoplay:
-      :controls:
-      :figwidth: 30%
-      :figclass: right
-
-      Figure
-
-
-
-   .. figure:: movies/chapter-07/ellipses.mp4
-      :loop:
-      :autoplay:
-      :controls:
-      :figwidth: 30%
-      :figclass: right
-
-      Figure
-
-
-

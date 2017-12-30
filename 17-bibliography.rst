@@ -76,7 +76,7 @@ Articles
 .. _article-1: http://jcgt.org/published/0002/01/04/
 
 .. |article-2|
-   replace:: Shader-based Antialiased Dashed Stroke Poylines
+   replace:: Shader-based Antialiased Dashed Stroke Polylines
 .. _article-2: http://jcgt.org/published/0002/02/08/
 
 .. |article-3|
