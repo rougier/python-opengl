@@ -3420,34 +3420,32 @@ thus to adapt this method to render a Voronoi diagram as shown on the right.</p>
 <p class="topic-title first">.</p>
 <ul class="simple">
 <li><a class="reference internal" href="#constructive-solid-geometry" id="id198">Constructive Solid Geometry</a></li>
-<li><a class="reference internal" href="#markers" id="id199">Markers</a></li>
-<li><a class="reference internal" href="#arrows" id="id200">Arrows</a></li>
-<li><a class="reference internal" href="#texture-based" id="id201">Texture based</a></li>
+<li><a class="reference internal" href="#markers" id="id199">Markers</a><ul>
+<li><a class="reference internal" href="#arrow" id="id200">Arrow</a></li>
+<li><a class="reference internal" href="#asterisk" id="id201">Asterisk</a></li>
+<li><a class="reference internal" href="#bar" id="id202">Bar</a></li>
+<li><a class="reference internal" href="#chevron" id="id203">Chevron</a></li>
+<li><a class="reference internal" href="#clover" id="id204">Clover</a></li>
+<li><a class="reference internal" href="#club" id="id205">Club</a></li>
+<li><a class="reference internal" href="#cross" id="id206">Cross</a></li>
+<li><a class="reference internal" href="#diamond" id="id207">Diamond</a></li>
+<li><a class="reference internal" href="#disc" id="id208">Disc</a></li>
+<li><a class="reference internal" href="#ellipse" id="id209">Ellipse</a></li>
+<li><a class="reference internal" href="#heart" id="id210">Heart</a></li>
+<li><a class="reference internal" href="#infinity" id="id211">Infinity</a></li>
+<li><a class="reference internal" href="#ring" id="id212">Ring</a></li>
+<li><a class="reference internal" href="#spade" id="id213">Spade</a></li>
+<li><a class="reference internal" href="#triangle" id="id214">Triangle</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#arrows" id="id215">Arrows</a></li>
+<li><a class="reference internal" href="#texture-based" id="id216">Texture based</a></li>
 </ul>
 </div>
-<!-- .. figure:: movies/chapter-07/triangles.mp4
-   :loop:
-   :autoplay:
-   :controls:
-   :figwidth: 30%
-   :figclass: right
-
-   Figure
-
-
-
-.. figure:: movies/chapter-07/ellipses.mp4
-   :loop:
-   :autoplay:
-   :controls:
-   :figwidth: 30%
-   :figclass: right
-
-   Figure -->
 <div class="section" id="constructive-solid-geometry">
 <h2><a class="toc-backref" href="#id33">Constructive Solid Geometry</a></h2>
-<div class="right figure" id="figure-images/chapter-07/CSG.png" style="width: 50%">
-<img alt="images/chapter-07/CSG.png" src="images/chapter-07/CSG.png" />
+<div class="right figure" id="figure-images/chapter-08/CSG.png" style="width: 50%">
+<img alt="images/chapter-08/CSG.png" src="images/chapter-08/CSG.png" />
 <p class="caption">Figure</p>
 <div class="legend">
 Constructive solid geometry (CSG) allows a to create a complex object by using
@@ -3483,77 +3481,425 @@ it is incredibly simple, just read:</p>
 </pre>
 <p>And we can check for the result using two circles (the shadertoy link for each
 example allows you to play online with them):</p>
-<div class="right figure" id="figure-images/chapter-07/CSG-intersection.png" style="width: 30%">
-<img alt="images/chapter-07/CSG-intersection.png" src="images/chapter-07/CSG-intersection.png" />
+<div class="right figure" id="figure-images/chapter-08/CSG-intersection.png" style="width: 30%">
+<img alt="images/chapter-08/CSG-intersection.png" src="images/chapter-08/CSG-intersection.png" />
 <p class="caption">Figure</p>
 <div class="legend">
 <div class="line-block">
 <div class="line">Intersection (A and B)</div>
-<div class="line"><a class="reference external" href="code/chapter-07/csg-intersection.py">CSG-intersection.py</a> / <a class="reference external" href="https://www.shadertoy.com/view/XllyWn">Shadertoy</a></div>
+<div class="line"><a class="reference external" href="code/chapter-08/csg-intersection.py">CSG-intersection.py</a> / <a class="reference external" href="https://www.shadertoy.com/view/XllyWn">Shadertoy</a></div>
 </div>
 </div>
 </div>
-<div class="right figure" id="figure-images/chapter-07/CSG-union.png" style="width: 30%">
-<img alt="images/chapter-07/CSG-union.png" src="images/chapter-07/CSG-union.png" />
+<div class="right figure" id="figure-images/chapter-08/CSG-union.png" style="width: 30%">
+<img alt="images/chapter-08/CSG-union.png" src="images/chapter-08/CSG-union.png" />
 <p class="caption">Figure</p>
 <div class="legend">
 <div class="line-block">
 <div class="line">Union (A or B)</div>
-<div class="line"><a class="reference external" href="code/chapter-07/csg-union.py">CSG-union.py</a> / <a class="reference external" href="https://www.shadertoy.com/view/4tlyWn">Shadertoy</a></div>
+<div class="line"><a class="reference external" href="code/chapter-08/csg-union.py">CSG-union.py</a> / <a class="reference external" href="https://www.shadertoy.com/view/4tlyWn">Shadertoy</a></div>
 </div>
 </div>
 </div>
-<div class="right figure" id="figure-images/chapter-07/CSG-mix.png" style="width: 30%">
-<img alt="images/chapter-07/CSG-mix.png" src="images/chapter-07/CSG-mix.png" />
+<div class="right figure" id="figure-images/chapter-08/CSG-mix.png" style="width: 30%">
+<img alt="images/chapter-08/CSG-mix.png" src="images/chapter-08/CSG-mix.png" />
 <p class="caption">Figure</p>
 <div class="legend">
 <div class="line-block">
 <div class="line">Two SDF circles (A, B)</div>
-<div class="line"><a class="reference external" href="code/chapter-07/csg-mix.py">CSG-mix.py</a> / <a class="reference external" href="https://www.shadertoy.com/view/MtfcDr">Shadertoy</a></div>
+<div class="line"><a class="reference external" href="code/chapter-08/csg-mix.py">CSG-mix.py</a> / <a class="reference external" href="https://www.shadertoy.com/view/MtfcDr">Shadertoy</a></div>
 </div>
 </div>
 </div>
 <hr class="docutils" />
-<div class="right figure" id="figure-images/chapter-07/CSG-exclusion.png" style="width: 30%">
-<img alt="images/chapter-07/CSG-exclusion.png" src="images/chapter-07/CSG-exclusion.png" />
+<div class="right figure" id="figure-images/chapter-08/CSG-exclusion.png" style="width: 30%">
+<img alt="images/chapter-08/CSG-exclusion.png" src="images/chapter-08/CSG-exclusion.png" />
 <p class="caption">Figure</p>
 <div class="legend">
 <div class="line-block">
 <div class="line">Exclusion (A xor B)</div>
-<div class="line"><a class="reference external" href="code/chapter-07/csg-exclusion.py">CSG-exclusion.py</a> / <a class="reference external" href="https://www.shadertoy.com/view/4tsyWn">Shadertoy</a></div>
+<div class="line"><a class="reference external" href="code/chapter-08/csg-exclusion.py">CSG-exclusion.py</a> / <a class="reference external" href="https://www.shadertoy.com/view/4tsyWn">Shadertoy</a></div>
 </div>
 </div>
 </div>
-<div class="right figure" id="figure-images/chapter-07/CSG-difference-2.png" style="width: 30%">
-<img alt="images/chapter-07/CSG-difference-2.png" src="images/chapter-07/CSG-difference-2.png" />
+<div class="right figure" id="figure-images/chapter-08/CSG-difference-2.png" style="width: 30%">
+<img alt="images/chapter-08/CSG-difference-2.png" src="images/chapter-08/CSG-difference-2.png" />
 <p class="caption">Figure</p>
 <div class="legend">
 <div class="line-block">
 <div class="line">Difference (A not B)</div>
-<div class="line"><a class="reference external" href="code/chapter-07/csg-difference-2.py">CSG-difference-2.py</a> / <a class="reference external" href="https://www.shadertoy.com/view/XtsyWn">Shadertoy</a></div>
+<div class="line"><a class="reference external" href="code/chapter-08/csg-difference-2.py">CSG-difference-2.py</a> / <a class="reference external" href="https://www.shadertoy.com/view/XtsyWn">Shadertoy</a></div>
 </div>
 </div>
 </div>
-<div class="right figure" id="figure-images/chapter-07/CSG-difference-1.png" style="width: 30%">
-<img alt="images/chapter-07/CSG-difference-1.png" src="images/chapter-07/CSG-difference-1.png" />
+<div class="right figure" id="figure-images/chapter-08/CSG-difference-1.png" style="width: 30%">
+<img alt="images/chapter-08/CSG-difference-1.png" src="images/chapter-08/CSG-difference-1.png" />
 <p class="caption">Figure</p>
 <div class="legend">
 <div class="line-block">
 <div class="line">Difference (B not A)</div>
-<div class="line"><a class="reference external" href="code/chapter-07/csg-difference-1.py">CSG-difference-1.py</a> / <a class="reference external" href="https://www.shadertoy.com/view/4llyWn">Shadertoy</a></div>
+<div class="line"><a class="reference external" href="code/chapter-08/csg-difference-1.py">CSG-difference-1.py</a> / <a class="reference external" href="https://www.shadertoy.com/view/4llyWn">Shadertoy</a></div>
 </div>
 </div>
-</div>
-<div class="right figure" id="figure-images/chapter-07/CSG-markers.png" style="width: 50%">
-<img alt="images/chapter-07/CSG-markers.png" src="images/chapter-07/CSG-markers.png" />
-<p class="caption">Figure</p>
-<div class="legend">
-Some example of markers constructed using CSG.</div>
 </div>
 </div>
 <div class="section" id="markers">
 <h2><a class="toc-backref" href="#id33">Markers</a></h2>
+<div class="right figure" id="figure-csg-markers" style="width: 50%">
+<img alt="images/chapter-08/CSG-markers.png" src="images/chapter-08/CSG-markers.png" />
+<p class="caption">Figure</p>
+<div class="legend">
+Some example of markers constructed using CSG. See below for corresponding
+GLSL code.</div>
 </div>
+<p>As illustrated on the right figure creating markers is merely a matter of
+imagination. Try to think of a precise shape and see how you can decompose it
+in terms of constructive solid geometry. I've put a collection of such markers
+in the (open access) article <a class="reference external" href="http://jcgt.org/published/0003/04/01/">Antialiased 2D Grid, Marker, and Arrow Shaders</a>. You'll find the relevant code for
+the markers below.</p>
+<p>All these markers are also defined in the glumpy library. Have a look at the
+<a class="reference external" href="code/chapter-08/marker.py">marker.py</a> example where you experiment with the
+different markers and the different rendering option. Note that all the markers
+are defined &quot;vertically&quot; since their orientation can be computed very easily
+from within the shader.</p>
+<div class="section" id="arrow">
+<h3><a class="toc-backref" href="#id33">Arrow</a></h3>
+<div class="figure" id="figure-images/chapter-08/marker-arrow.png" style="width: 20%">
+<img alt="images/chapter-08/marker-arrow.png" src="images/chapter-08/marker-arrow.png" />
+<p class="caption">Figure</p>
+<div class="legend">
+Marker &quot;arrow&quot;</div>
+</div>
+<pre class="code glsl literal-block">
+<span class="keyword">float</span> <span class="name">marker_arrow</span><span class="punctuation">(</span><span class="keyword">vec2</span> <span class="name">P</span><span class="punctuation">,</span> <span class="keyword">float</span> <span class="name">size</span><span class="punctuation">)</span>
+<span class="punctuation">{</span>
+    <span class="keyword">float</span> <span class="name">r1</span> <span class="operator">=</span> <span class="name">abs</span><span class="punctuation">(</span><span class="name">P</span><span class="punctuation">.</span><span class="name">x</span><span class="punctuation">)</span> <span class="operator">+</span> <span class="name">abs</span><span class="punctuation">(</span><span class="name">P</span><span class="punctuation">.</span><span class="name">y</span><span class="punctuation">)</span> <span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number integer">2</span><span class="punctuation">;</span>
+    <span class="keyword">float</span> <span class="name">r2</span> <span class="operator">=</span> <span class="name">max</span><span class="punctuation">(</span><span class="name">abs</span><span class="punctuation">(</span><span class="name">P</span><span class="punctuation">.</span><span class="name">x</span><span class="operator">+</span><span class="name">size</span><span class="operator">/</span><span class="literal number integer">2</span><span class="punctuation">),</span> <span class="name">abs</span><span class="punctuation">(</span><span class="name">P</span><span class="punctuation">.</span><span class="name">y</span><span class="punctuation">))</span> <span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number integer">2</span><span class="punctuation">;</span>
+    <span class="keyword">float</span> <span class="name">r3</span> <span class="operator">=</span> <span class="name">max</span><span class="punctuation">(</span><span class="name">abs</span><span class="punctuation">(</span><span class="name">P</span><span class="punctuation">.</span><span class="name">x</span><span class="operator">-</span><span class="name">size</span><span class="operator">/</span><span class="literal number integer">6</span><span class="punctuation">)</span><span class="operator">-</span><span class="name">size</span><span class="operator">/</span><span class="literal number integer">4</span><span class="punctuation">,</span> <span class="name">abs</span><span class="punctuation">(</span><span class="name">P</span><span class="punctuation">.</span><span class="name">y</span><span class="punctuation">)</span><span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number integer">4</span><span class="punctuation">);</span>
+    <span class="keyword">return</span> <span class="name">min</span><span class="punctuation">(</span><span class="name">r3</span><span class="punctuation">,</span><span class="name">max</span><span class="punctuation">(</span><span class="literal number float">.75</span><span class="operator">*</span><span class="name">r1</span><span class="punctuation">,</span><span class="name">r2</span><span class="punctuation">));</span>
+<span class="punctuation">}</span>
+</pre>
+</div>
+<hr class="docutils" />
+<div class="section" id="asterisk">
+<h3><a class="toc-backref" href="#id33">Asterisk</a></h3>
+<div class="figure" id="figure-images/chapter-08/marker-asterisk.png" style="width: 20%">
+<img alt="images/chapter-08/marker-asterisk.png" src="images/chapter-08/marker-asterisk.png" />
+<p class="caption">Figure</p>
+<div class="legend">
+Marker &quot;asterisk&quot;</div>
+</div>
+<pre class="code glsl literal-block">
+<span class="keyword">float</span> <span class="name">marker_asterisk</span><span class="punctuation">(</span><span class="keyword">vec2</span> <span class="name">P</span><span class="punctuation">,</span> <span class="keyword">float</span> <span class="name">size</span><span class="punctuation">)</span>
+<span class="punctuation">{</span>
+    <span class="keyword">float</span> <span class="name">x</span> <span class="operator">=</span> <span class="name">M_SQRT2</span><span class="operator">/</span><span class="literal number integer">2</span> <span class="operator">*</span> <span class="punctuation">(</span><span class="name">P</span><span class="punctuation">.</span><span class="name">x</span> <span class="operator">-</span> <span class="name">P</span><span class="punctuation">.</span><span class="name">y</span><span class="punctuation">);</span>
+    <span class="keyword">float</span> <span class="name">y</span> <span class="operator">=</span> <span class="name">M_SQRT2</span><span class="operator">/</span><span class="literal number integer">2</span> <span class="operator">*</span> <span class="punctuation">(</span><span class="name">P</span><span class="punctuation">.</span><span class="name">x</span> <span class="operator">+</span> <span class="name">P</span><span class="punctuation">.</span><span class="name">y</span><span class="punctuation">);</span>
+    <span class="keyword">float</span> <span class="name">r1</span> <span class="operator">=</span> <span class="name">max</span><span class="punctuation">(</span><span class="name">abs</span><span class="punctuation">(</span><span class="name">x</span><span class="punctuation">)</span><span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number integer">2</span><span class="punctuation">,</span> <span class="name">abs</span><span class="punctuation">(</span><span class="name">y</span><span class="punctuation">)</span><span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number integer">10</span><span class="punctuation">);</span>
+    <span class="keyword">float</span> <span class="name">r2</span> <span class="operator">=</span> <span class="name">max</span><span class="punctuation">(</span><span class="name">abs</span><span class="punctuation">(</span><span class="name">y</span><span class="punctuation">)</span><span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number integer">2</span><span class="punctuation">,</span> <span class="name">abs</span><span class="punctuation">(</span><span class="name">x</span><span class="punctuation">)</span><span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number integer">10</span><span class="punctuation">);</span>
+    <span class="keyword">float</span> <span class="name">r3</span> <span class="operator">=</span> <span class="name">max</span><span class="punctuation">(</span><span class="name">abs</span><span class="punctuation">(</span><span class="name">P</span><span class="punctuation">.</span><span class="name">x</span><span class="punctuation">)</span><span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number integer">2</span><span class="punctuation">,</span> <span class="name">abs</span><span class="punctuation">(</span><span class="name">P</span><span class="punctuation">.</span><span class="name">y</span><span class="punctuation">)</span><span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number integer">10</span><span class="punctuation">);</span>
+    <span class="keyword">float</span> <span class="name">r4</span> <span class="operator">=</span> <span class="name">max</span><span class="punctuation">(</span><span class="name">abs</span><span class="punctuation">(</span><span class="name">P</span><span class="punctuation">.</span><span class="name">y</span><span class="punctuation">)</span><span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number integer">2</span><span class="punctuation">,</span> <span class="name">abs</span><span class="punctuation">(</span><span class="name">P</span><span class="punctuation">.</span><span class="name">x</span><span class="punctuation">)</span><span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number integer">10</span><span class="punctuation">);</span>
+    <span class="keyword">return</span> <span class="name">min</span><span class="punctuation">(</span> <span class="name">min</span><span class="punctuation">(</span><span class="name">r1</span><span class="punctuation">,</span><span class="name">r2</span><span class="punctuation">),</span> <span class="name">min</span><span class="punctuation">(</span><span class="name">r3</span><span class="punctuation">,</span><span class="name">r4</span><span class="punctuation">));</span>
+<span class="punctuation">}</span>
+</pre>
+</div>
+<hr class="docutils" />
+<div class="section" id="bar">
+<h3><a class="toc-backref" href="#id33">Bar</a></h3>
+<div class="figure" id="figure-images/chapter-08/marker-bar.png" style="width: 20%">
+<img alt="images/chapter-08/marker-bar.png" src="images/chapter-08/marker-bar.png" />
+<p class="caption">Figure</p>
+<div class="legend">
+Marker &quot;bar&quot;</div>
+</div>
+<pre class="code glsl literal-block">
+<span class="keyword">float</span> <span class="name">marker_bar</span><span class="punctuation">(</span><span class="keyword">vec2</span> <span class="name">P</span><span class="punctuation">,</span> <span class="keyword">float</span> <span class="name">size</span><span class="punctuation">)</span>
+<span class="punctuation">{</span>
+    <span class="keyword">return</span> <span class="name">max</span><span class="punctuation">(</span><span class="name">abs</span><span class="punctuation">(</span><span class="name">P</span><span class="punctuation">.</span><span class="name">x</span><span class="punctuation">)</span><span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number float">6.0</span><span class="punctuation">,</span> <span class="name">abs</span><span class="punctuation">(</span><span class="name">P</span><span class="punctuation">.</span><span class="name">y</span><span class="punctuation">)</span><span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number float">2.0</span><span class="punctuation">);</span>
+<span class="punctuation">}</span>
+</pre>
+</div>
+<hr class="docutils" />
+<div class="section" id="chevron">
+<h3><a class="toc-backref" href="#id33">Chevron</a></h3>
+<div class="figure" id="figure-images/chapter-08/marker-chevron.png" style="width: 20%">
+<img alt="images/chapter-08/marker-chevron.png" src="images/chapter-08/marker-chevron.png" />
+<p class="caption">Figure</p>
+<div class="legend">
+Marker &quot;chevron&quot;</div>
+</div>
+<pre class="code glsl literal-block">
+<span class="keyword">float</span> <span class="name">marker_chevron</span><span class="punctuation">(</span><span class="keyword">vec2</span> <span class="name">P</span><span class="punctuation">,</span> <span class="keyword">float</span> <span class="name">size</span><span class="punctuation">)</span>
+<span class="punctuation">{</span>
+    <span class="keyword">float</span> <span class="name">x</span> <span class="operator">=</span> <span class="literal number float">1.0</span><span class="operator">/</span><span class="name">M_SQRT2</span> <span class="operator">*</span> <span class="punctuation">((</span><span class="name">P</span><span class="punctuation">.</span><span class="name">x</span><span class="operator">-</span><span class="name">size</span><span class="operator">/</span><span class="literal number integer">6</span><span class="punctuation">)</span> <span class="operator">-</span> <span class="name">P</span><span class="punctuation">.</span><span class="name">y</span><span class="punctuation">);</span>
+    <span class="keyword">float</span> <span class="name">y</span> <span class="operator">=</span> <span class="literal number float">1.0</span><span class="operator">/</span><span class="name">M_SQRT2</span> <span class="operator">*</span> <span class="punctuation">((</span><span class="name">P</span><span class="punctuation">.</span><span class="name">x</span><span class="operator">-</span><span class="name">size</span><span class="operator">/</span><span class="literal number integer">6</span><span class="punctuation">)</span> <span class="operator">+</span> <span class="name">P</span><span class="punctuation">.</span><span class="name">y</span><span class="punctuation">);</span>
+    <span class="keyword">float</span> <span class="name">r1</span> <span class="operator">=</span> <span class="name">max</span><span class="punctuation">(</span><span class="name">abs</span><span class="punctuation">(</span><span class="name">x</span><span class="punctuation">),</span>          <span class="name">abs</span><span class="punctuation">(</span><span class="name">y</span><span class="punctuation">))</span>          <span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number float">3.0</span><span class="punctuation">;</span>
+    <span class="keyword">float</span> <span class="name">r2</span> <span class="operator">=</span> <span class="name">max</span><span class="punctuation">(</span><span class="name">abs</span><span class="punctuation">(</span><span class="name">x</span><span class="operator">-</span><span class="name">size</span><span class="operator">/</span><span class="literal number float">3.0</span><span class="punctuation">),</span> <span class="name">abs</span><span class="punctuation">(</span><span class="name">y</span><span class="operator">-</span><span class="name">size</span><span class="operator">/</span><span class="literal number float">3.0</span><span class="punctuation">))</span> <span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number float">3.0</span><span class="punctuation">;</span>
+    <span class="keyword">return</span> <span class="name">max</span><span class="punctuation">(</span><span class="name">r1</span><span class="punctuation">,</span><span class="operator">-</span><span class="name">r2</span><span class="punctuation">);</span>
+<span class="punctuation">}</span>
+</pre>
+</div>
+<hr class="docutils" />
+<div class="section" id="clover">
+<h3><a class="toc-backref" href="#id33">Clover</a></h3>
+<div class="figure" id="figure-images/chapter-08/marker-clover.png" style="width: 20%">
+<img alt="images/chapter-08/marker-clover.png" src="images/chapter-08/marker-clover.png" />
+<p class="caption">Figure</p>
+<div class="legend">
+Marker &quot;clover&quot;</div>
+</div>
+<pre class="code glsl literal-block">
+<span class="keyword">float</span> <span class="name">marker_clover</span><span class="punctuation">(</span><span class="keyword">vec2</span> <span class="name">P</span><span class="punctuation">,</span> <span class="keyword">float</span> <span class="name">size</span><span class="punctuation">)</span>
+<span class="punctuation">{</span>
+    <span class="keyword">const</span> <span class="keyword">float</span> <span class="name">t1</span> <span class="operator">=</span> <span class="operator">-</span><span class="name">M_PI</span><span class="operator">/</span><span class="literal number integer">2</span><span class="punctuation">;</span>
+    <span class="keyword">const</span> <span class="keyword">vec2</span>  <span class="name">c1</span> <span class="operator">=</span> <span class="literal number float">0.25</span><span class="operator">*</span><span class="keyword">vec2</span><span class="punctuation">(</span><span class="name">cos</span><span class="punctuation">(</span><span class="name">t1</span><span class="punctuation">),</span><span class="name">sin</span><span class="punctuation">(</span><span class="name">t1</span><span class="punctuation">));</span>
+    <span class="keyword">const</span> <span class="keyword">float</span> <span class="name">t2</span> <span class="operator">=</span> <span class="name">t1</span><span class="operator">+</span><span class="literal number integer">2</span><span class="operator">*</span><span class="name">M_PI</span><span class="operator">/</span><span class="literal number integer">3</span><span class="punctuation">;</span>
+    <span class="keyword">const</span> <span class="keyword">vec2</span>  <span class="name">c2</span> <span class="operator">=</span> <span class="literal number float">0.25</span><span class="operator">*</span><span class="keyword">vec2</span><span class="punctuation">(</span><span class="name">cos</span><span class="punctuation">(</span><span class="name">t2</span><span class="punctuation">),</span><span class="name">sin</span><span class="punctuation">(</span><span class="name">t2</span><span class="punctuation">));</span>
+    <span class="keyword">const</span> <span class="keyword">float</span> <span class="name">t3</span> <span class="operator">=</span> <span class="name">t2</span><span class="operator">+</span><span class="literal number integer">2</span><span class="operator">*</span><span class="name">M_PI</span><span class="operator">/</span><span class="literal number integer">3</span><span class="punctuation">;</span>
+    <span class="keyword">const</span> <span class="keyword">vec2</span>  <span class="name">c3</span> <span class="operator">=</span> <span class="literal number float">0.25</span><span class="operator">*</span><span class="keyword">vec2</span><span class="punctuation">(</span><span class="name">cos</span><span class="punctuation">(</span><span class="name">t3</span><span class="punctuation">),</span><span class="name">sin</span><span class="punctuation">(</span><span class="name">t3</span><span class="punctuation">));</span>
+
+    <span class="keyword">float</span> <span class="name">r1</span> <span class="operator">=</span> <span class="name">length</span><span class="punctuation">(</span> <span class="name">P</span> <span class="operator">-</span> <span class="name">c1</span><span class="operator">*</span><span class="name">size</span><span class="punctuation">)</span> <span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number float">3.5</span><span class="punctuation">;</span>
+    <span class="keyword">float</span> <span class="name">r2</span> <span class="operator">=</span> <span class="name">length</span><span class="punctuation">(</span> <span class="name">P</span> <span class="operator">-</span> <span class="name">c2</span><span class="operator">*</span><span class="name">size</span><span class="punctuation">)</span> <span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number float">3.5</span><span class="punctuation">;</span>
+    <span class="keyword">float</span> <span class="name">r3</span> <span class="operator">=</span> <span class="name">length</span><span class="punctuation">(</span> <span class="name">P</span> <span class="operator">-</span> <span class="name">c3</span><span class="operator">*</span><span class="name">size</span><span class="punctuation">)</span> <span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number float">3.5</span><span class="punctuation">;</span>
+    <span class="keyword">return</span> <span class="name">min</span><span class="punctuation">(</span><span class="name">min</span><span class="punctuation">(</span><span class="name">r1</span><span class="punctuation">,</span><span class="name">r2</span><span class="punctuation">),</span><span class="name">r3</span><span class="punctuation">);</span>
+<span class="punctuation">}</span>
+</pre>
+</div>
+<hr class="docutils" />
+<div class="section" id="club">
+<h3><a class="toc-backref" href="#id33">Club</a></h3>
+<div class="figure" id="figure-images/chapter-08/marker-club.png" style="width: 20%">
+<img alt="images/chapter-08/marker-club.png" src="images/chapter-08/marker-club.png" />
+<p class="caption">Figure</p>
+<div class="legend">
+Marker &quot;club&quot;</div>
+</div>
+<pre class="code glsl literal-block">
+<span class="keyword">float</span> <span class="name">marker_club</span><span class="punctuation">(</span><span class="keyword">vec2</span> <span class="name">P</span><span class="punctuation">,</span> <span class="keyword">float</span> <span class="name">size</span><span class="punctuation">)</span>
+<span class="punctuation">{</span>
+    <span class="comment single">// clover (3 discs)</span>
+    <span class="keyword">const</span> <span class="keyword">float</span> <span class="name">t1</span> <span class="operator">=</span> <span class="operator">-</span><span class="name">M_PI</span><span class="operator">/</span><span class="literal number float">2.0</span><span class="punctuation">;</span>
+    <span class="keyword">const</span> <span class="keyword">vec2</span>  <span class="name">c1</span> <span class="operator">=</span> <span class="literal number float">0.225</span><span class="operator">*</span><span class="keyword">vec2</span><span class="punctuation">(</span><span class="name">cos</span><span class="punctuation">(</span><span class="name">t1</span><span class="punctuation">),</span><span class="name">sin</span><span class="punctuation">(</span><span class="name">t1</span><span class="punctuation">));</span>
+    <span class="keyword">const</span> <span class="keyword">float</span> <span class="name">t2</span> <span class="operator">=</span> <span class="name">t1</span><span class="operator">+</span><span class="literal number integer">2</span><span class="operator">*</span><span class="name">M_PI</span><span class="operator">/</span><span class="literal number float">3.0</span><span class="punctuation">;</span>
+    <span class="keyword">const</span> <span class="keyword">vec2</span>  <span class="name">c2</span> <span class="operator">=</span> <span class="literal number float">0.225</span><span class="operator">*</span><span class="keyword">vec2</span><span class="punctuation">(</span><span class="name">cos</span><span class="punctuation">(</span><span class="name">t2</span><span class="punctuation">),</span><span class="name">sin</span><span class="punctuation">(</span><span class="name">t2</span><span class="punctuation">));</span>
+    <span class="keyword">const</span> <span class="keyword">float</span> <span class="name">t3</span> <span class="operator">=</span> <span class="name">t2</span><span class="operator">+</span><span class="literal number integer">2</span><span class="operator">*</span><span class="name">M_PI</span><span class="operator">/</span><span class="literal number float">3.0</span><span class="punctuation">;</span>
+    <span class="keyword">const</span> <span class="keyword">vec2</span>  <span class="name">c3</span> <span class="operator">=</span> <span class="literal number float">0.225</span><span class="operator">*</span><span class="keyword">vec2</span><span class="punctuation">(</span><span class="name">cos</span><span class="punctuation">(</span><span class="name">t3</span><span class="punctuation">),</span><span class="name">sin</span><span class="punctuation">(</span><span class="name">t3</span><span class="punctuation">));</span>
+    <span class="keyword">float</span> <span class="name">r1</span> <span class="operator">=</span> <span class="name">length</span><span class="punctuation">(</span> <span class="name">P</span> <span class="operator">-</span> <span class="name">c1</span><span class="operator">*</span><span class="name">size</span><span class="punctuation">)</span> <span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number float">4.25</span><span class="punctuation">;</span>
+    <span class="keyword">float</span> <span class="name">r2</span> <span class="operator">=</span> <span class="name">length</span><span class="punctuation">(</span> <span class="name">P</span> <span class="operator">-</span> <span class="name">c2</span><span class="operator">*</span><span class="name">size</span><span class="punctuation">)</span> <span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number float">4.25</span><span class="punctuation">;</span>
+    <span class="keyword">float</span> <span class="name">r3</span> <span class="operator">=</span> <span class="name">length</span><span class="punctuation">(</span> <span class="name">P</span> <span class="operator">-</span> <span class="name">c3</span><span class="operator">*</span><span class="name">size</span><span class="punctuation">)</span> <span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number float">4.25</span><span class="punctuation">;</span>
+    <span class="keyword">float</span> <span class="name">r4</span> <span class="operator">=</span>  <span class="name">min</span><span class="punctuation">(</span><span class="name">min</span><span class="punctuation">(</span><span class="name">r1</span><span class="punctuation">,</span><span class="name">r2</span><span class="punctuation">),</span><span class="name">r3</span><span class="punctuation">);</span>
+
+    <span class="comment single">// Root (2 circles and 2 planes)</span>
+    <span class="keyword">const</span> <span class="keyword">vec2</span> <span class="name">c4</span> <span class="operator">=</span> <span class="keyword">vec2</span><span class="punctuation">(</span><span class="operator">+</span><span class="literal number float">0.65</span><span class="punctuation">,</span> <span class="literal number float">0.125</span><span class="punctuation">);</span>
+    <span class="keyword">const</span> <span class="keyword">vec2</span> <span class="name">c5</span> <span class="operator">=</span> <span class="keyword">vec2</span><span class="punctuation">(</span><span class="operator">-</span><span class="literal number float">0.65</span><span class="punctuation">,</span> <span class="literal number float">0.125</span><span class="punctuation">);</span>
+    <span class="keyword">float</span> <span class="name">r5</span> <span class="operator">=</span> <span class="name">length</span><span class="punctuation">(</span><span class="name">P</span><span class="operator">-</span><span class="name">c4</span><span class="operator">*</span><span class="name">size</span><span class="punctuation">)</span> <span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number float">1.6</span><span class="punctuation">;</span>
+    <span class="keyword">float</span> <span class="name">r6</span> <span class="operator">=</span> <span class="name">length</span><span class="punctuation">(</span><span class="name">P</span><span class="operator">-</span><span class="name">c5</span><span class="operator">*</span><span class="name">size</span><span class="punctuation">)</span> <span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number float">1.6</span><span class="punctuation">;</span>
+    <span class="keyword">float</span> <span class="name">r7</span> <span class="operator">=</span> <span class="name">P</span><span class="punctuation">.</span><span class="name">y</span> <span class="operator">-</span> <span class="literal number float">0.5</span><span class="operator">*</span><span class="name">size</span><span class="punctuation">;</span>
+    <span class="keyword">float</span> <span class="name">r8</span> <span class="operator">=</span> <span class="literal number float">0.2</span><span class="operator">*</span><span class="name">size</span> <span class="operator">-</span> <span class="name">P</span><span class="punctuation">.</span><span class="name">y</span><span class="punctuation">;</span>
+    <span class="keyword">float</span> <span class="name">r9</span> <span class="operator">=</span> <span class="name">max</span><span class="punctuation">(</span><span class="operator">-</span><span class="name">min</span><span class="punctuation">(</span><span class="name">r5</span><span class="punctuation">,</span><span class="name">r6</span><span class="punctuation">),</span> <span class="name">max</span><span class="punctuation">(</span><span class="name">r7</span><span class="punctuation">,</span><span class="name">r8</span><span class="punctuation">));</span>
+
+    <span class="keyword">return</span> <span class="name">min</span><span class="punctuation">(</span><span class="name">r4</span><span class="punctuation">,</span><span class="name">r9</span><span class="punctuation">);</span>
+<span class="punctuation">}</span>
+</pre>
+</div>
+<hr class="docutils" />
+<div class="section" id="cross">
+<h3><a class="toc-backref" href="#id33">Cross</a></h3>
+<div class="figure" id="figure-images/chapter-08/marker-cross.png" style="width: 20%">
+<img alt="images/chapter-08/marker-cross.png" src="images/chapter-08/marker-cross.png" />
+<p class="caption">Figure</p>
+<div class="legend">
+Marker &quot;cross&quot;</div>
+</div>
+<pre class="code glsl literal-block">
+<span class="keyword">float</span> <span class="name">marker_cross</span><span class="punctuation">(</span><span class="keyword">vec2</span> <span class="name">P</span><span class="punctuation">,</span> <span class="keyword">float</span> <span class="name">size</span><span class="punctuation">)</span>
+<span class="punctuation">{</span>
+    <span class="keyword">float</span> <span class="name">x</span> <span class="operator">=</span> <span class="name">M_SQRT2</span><span class="operator">/</span><span class="literal number float">2.0</span> <span class="operator">*</span> <span class="punctuation">(</span><span class="name">P</span><span class="punctuation">.</span><span class="name">x</span> <span class="operator">-</span> <span class="name">P</span><span class="punctuation">.</span><span class="name">y</span><span class="punctuation">);</span>
+    <span class="keyword">float</span> <span class="name">y</span> <span class="operator">=</span> <span class="name">M_SQRT2</span><span class="operator">/</span><span class="literal number float">2.0</span> <span class="operator">*</span> <span class="punctuation">(</span><span class="name">P</span><span class="punctuation">.</span><span class="name">x</span> <span class="operator">+</span> <span class="name">P</span><span class="punctuation">.</span><span class="name">y</span><span class="punctuation">);</span>
+    <span class="keyword">float</span> <span class="name">r1</span> <span class="operator">=</span> <span class="name">max</span><span class="punctuation">(</span><span class="name">abs</span><span class="punctuation">(</span><span class="name">x</span> <span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number float">3.0</span><span class="punctuation">),</span> <span class="name">abs</span><span class="punctuation">(</span><span class="name">x</span> <span class="operator">+</span> <span class="name">size</span><span class="operator">/</span><span class="literal number float">3.0</span><span class="punctuation">));</span>
+    <span class="keyword">float</span> <span class="name">r2</span> <span class="operator">=</span> <span class="name">max</span><span class="punctuation">(</span><span class="name">abs</span><span class="punctuation">(</span><span class="name">y</span> <span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number float">3.0</span><span class="punctuation">),</span> <span class="name">abs</span><span class="punctuation">(</span><span class="name">y</span> <span class="operator">+</span> <span class="name">size</span><span class="operator">/</span><span class="literal number float">3.0</span><span class="punctuation">));</span>
+    <span class="keyword">float</span> <span class="name">r3</span> <span class="operator">=</span> <span class="name">max</span><span class="punctuation">(</span><span class="name">abs</span><span class="punctuation">(</span><span class="name">x</span><span class="punctuation">),</span> <span class="name">abs</span><span class="punctuation">(</span><span class="name">y</span><span class="punctuation">));</span>
+    <span class="keyword">float</span> <span class="name">r</span> <span class="operator">=</span> <span class="name">max</span><span class="punctuation">(</span><span class="name">min</span><span class="punctuation">(</span><span class="name">r1</span><span class="punctuation">,</span><span class="name">r2</span><span class="punctuation">),</span><span class="name">r3</span><span class="punctuation">);</span>
+    <span class="name">r</span> <span class="operator">-=</span> <span class="name">size</span><span class="operator">/</span><span class="literal number integer">2</span><span class="punctuation">;</span>
+    <span class="keyword">return</span> <span class="name">r</span><span class="punctuation">;</span>
+<span class="punctuation">}</span>
+</pre>
+</div>
+<hr class="docutils" />
+<div class="section" id="diamond">
+<h3><a class="toc-backref" href="#id33">Diamond</a></h3>
+<div class="figure" id="figure-images/chapter-08/marker-diamond.png" style="width: 20%">
+<img alt="images/chapter-08/marker-diamond.png" src="images/chapter-08/marker-diamond.png" />
+<p class="caption">Figure</p>
+<div class="legend">
+Marker &quot;diamond&quot;</div>
+</div>
+<pre class="code glsl literal-block">
+<span class="keyword">float</span> <span class="name">marker_diamond</span><span class="punctuation">(</span><span class="keyword">vec2</span> <span class="name">P</span><span class="punctuation">,</span> <span class="keyword">float</span> <span class="name">size</span><span class="punctuation">)</span>
+<span class="punctuation">{</span>
+   <span class="keyword">float</span> <span class="name">x</span> <span class="operator">=</span> <span class="name">M_SQRT2</span><span class="operator">/</span><span class="literal number float">2.0</span> <span class="operator">*</span> <span class="punctuation">(</span><span class="name">P</span><span class="punctuation">.</span><span class="name">x</span> <span class="operator">-</span> <span class="name">P</span><span class="punctuation">.</span><span class="name">y</span><span class="punctuation">);</span>
+   <span class="keyword">float</span> <span class="name">y</span> <span class="operator">=</span> <span class="name">M_SQRT2</span><span class="operator">/</span><span class="literal number float">2.0</span> <span class="operator">*</span> <span class="punctuation">(</span><span class="name">P</span><span class="punctuation">.</span><span class="name">x</span> <span class="operator">+</span> <span class="name">P</span><span class="punctuation">.</span><span class="name">y</span><span class="punctuation">);</span>
+   <span class="keyword">return</span> <span class="name">max</span><span class="punctuation">(</span><span class="name">abs</span><span class="punctuation">(</span><span class="name">x</span><span class="punctuation">),</span> <span class="name">abs</span><span class="punctuation">(</span><span class="name">y</span><span class="punctuation">))</span> <span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="punctuation">(</span><span class="literal number float">2.0</span><span class="operator">*</span><span class="name">M_SQRT2</span><span class="punctuation">);</span>
+<span class="punctuation">}</span>
+</pre>
+</div>
+<hr class="docutils" />
+<div class="section" id="disc">
+<h3><a class="toc-backref" href="#id33">Disc</a></h3>
+<div class="figure" id="figure-images/chapter-08/marker-disc.png" style="width: 20%">
+<img alt="images/chapter-08/marker-disc.png" src="images/chapter-08/marker-disc.png" />
+<p class="caption">Figure</p>
+<div class="legend">
+Marker &quot;disc&quot;</div>
+</div>
+<pre class="code glsl literal-block">
+<span class="keyword">float</span> <span class="name">marker_disc</span><span class="punctuation">(</span><span class="keyword">vec2</span> <span class="name">P</span><span class="punctuation">,</span> <span class="keyword">float</span> <span class="name">size</span><span class="punctuation">)</span>
+<span class="punctuation">{</span>
+    <span class="keyword">return</span> <span class="name">length</span><span class="punctuation">(</span><span class="name">P</span><span class="punctuation">)</span> <span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number integer">2</span><span class="punctuation">;</span>
+<span class="punctuation">}</span>
+</pre>
+</div>
+<hr class="docutils" />
+<div class="section" id="ellipse">
+<h3><a class="toc-backref" href="#id33">Ellipse</a></h3>
+<div class="figure" id="figure-images/chapter-08/marker-ellipse.png" style="width: 20%">
+<img alt="images/chapter-08/marker-ellipse.png" src="images/chapter-08/marker-ellipse.png" />
+<p class="caption">Figure</p>
+<div class="legend">
+Marker &quot;ellipse&quot;</div>
+</div>
+<pre class="code glsl literal-block">
+<span class="keyword">float</span> <span class="name">marker_ellipse</span><span class="punctuation">(</span><span class="keyword">vec2</span> <span class="name">P</span><span class="punctuation">,</span> <span class="keyword">float</span> <span class="name">size</span><span class="punctuation">)</span>
+<span class="punctuation">{</span>
+    <span class="comment single">// Alternate version (approximation)</span>
+    <span class="keyword">float</span> <span class="name">a</span> <span class="operator">=</span> <span class="literal number float">1.0</span><span class="punctuation">;</span>
+    <span class="keyword">float</span> <span class="name">b</span> <span class="operator">=</span> <span class="literal number float">2.0</span><span class="punctuation">;</span>
+    <span class="keyword">float</span> <span class="name">r</span> <span class="operator">=</span> <span class="literal number float">0.5</span><span class="operator">*</span><span class="name">size</span><span class="punctuation">;</span>
+    <span class="keyword">float</span> <span class="name">f</span> <span class="operator">=</span> <span class="name">length</span><span class="punctuation">(</span> <span class="name">P</span><span class="operator">*</span><span class="keyword">vec2</span><span class="punctuation">(</span><span class="name">a</span><span class="punctuation">,</span><span class="name">b</span><span class="punctuation">)</span> <span class="punctuation">);</span>
+    <span class="name">f</span> <span class="operator">=</span> <span class="name">length</span><span class="punctuation">(</span> <span class="name">P</span><span class="operator">*</span><span class="keyword">vec2</span><span class="punctuation">(</span><span class="name">a</span><span class="punctuation">,</span><span class="name">b</span><span class="punctuation">)</span> <span class="punctuation">);</span>
+    <span class="name">f</span> <span class="operator">=</span> <span class="name">f</span><span class="operator">*</span><span class="punctuation">(</span><span class="name">f</span><span class="operator">-</span><span class="name">r</span><span class="punctuation">)</span><span class="operator">/</span><span class="name">length</span><span class="punctuation">(</span> <span class="name">P</span><span class="operator">*</span><span class="keyword">vec2</span><span class="punctuation">(</span><span class="name">a</span><span class="operator">*</span><span class="name">a</span><span class="punctuation">,</span><span class="name">b</span><span class="operator">*</span><span class="name">b</span><span class="punctuation">)</span> <span class="punctuation">);</span>
+    <span class="keyword">return</span> <span class="name">f</span><span class="punctuation">;</span>
+<span class="punctuation">}</span>
+</pre>
+</div>
+<hr class="docutils" />
+<div class="section" id="heart">
+<h3><a class="toc-backref" href="#id33">Heart</a></h3>
+<div class="figure" id="figure-images/chapter-08/marker-heart.png" style="width: 20%">
+<img alt="images/chapter-08/marker-heart.png" src="images/chapter-08/marker-heart.png" />
+<p class="caption">Figure</p>
+<div class="legend">
+Marker &quot;heart&quot;</div>
+</div>
+<pre class="code glsl literal-block">
+<span class="keyword">float</span> <span class="name">marker_heart</span><span class="punctuation">(</span><span class="keyword">vec2</span> <span class="name">P</span><span class="punctuation">,</span> <span class="keyword">float</span> <span class="name">size</span><span class="punctuation">)</span>
+<span class="punctuation">{</span>
+   <span class="keyword">float</span> <span class="name">x</span> <span class="operator">=</span> <span class="name">M_SQRT2</span><span class="operator">/</span><span class="literal number float">2.0</span> <span class="operator">*</span> <span class="punctuation">(</span><span class="name">P</span><span class="punctuation">.</span><span class="name">x</span> <span class="operator">-</span> <span class="name">P</span><span class="punctuation">.</span><span class="name">y</span><span class="punctuation">);</span>
+   <span class="keyword">float</span> <span class="name">y</span> <span class="operator">=</span> <span class="name">M_SQRT2</span><span class="operator">/</span><span class="literal number float">2.0</span> <span class="operator">*</span> <span class="punctuation">(</span><span class="name">P</span><span class="punctuation">.</span><span class="name">x</span> <span class="operator">+</span> <span class="name">P</span><span class="punctuation">.</span><span class="name">y</span><span class="punctuation">);</span>
+   <span class="keyword">float</span> <span class="name">r1</span> <span class="operator">=</span> <span class="name">max</span><span class="punctuation">(</span><span class="name">abs</span><span class="punctuation">(</span><span class="name">x</span><span class="punctuation">),</span><span class="name">abs</span><span class="punctuation">(</span><span class="name">y</span><span class="punctuation">))</span><span class="operator">-</span><span class="name">size</span><span class="operator">/</span><span class="literal number float">3.5</span><span class="punctuation">;</span>
+   <span class="keyword">float</span> <span class="name">r2</span> <span class="operator">=</span> <span class="name">length</span><span class="punctuation">(</span><span class="name">P</span> <span class="operator">-</span> <span class="name">M_SQRT2</span><span class="operator">/</span><span class="literal number float">2.0</span><span class="operator">*</span><span class="keyword">vec2</span><span class="punctuation">(</span><span class="operator">+</span><span class="literal number float">1.0</span><span class="punctuation">,</span><span class="operator">-</span><span class="literal number float">1.0</span><span class="punctuation">)</span><span class="operator">*</span><span class="name">size</span><span class="operator">/</span><span class="literal number float">3.5</span><span class="punctuation">)</span>
+               <span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number float">3.5</span><span class="punctuation">;</span>
+   <span class="keyword">float</span> <span class="name">r3</span> <span class="operator">=</span> <span class="name">length</span><span class="punctuation">(</span><span class="name">P</span> <span class="operator">-</span> <span class="name">M_SQRT2</span><span class="operator">/</span><span class="literal number float">2.0</span><span class="operator">*</span><span class="keyword">vec2</span><span class="punctuation">(</span><span class="operator">-</span><span class="literal number float">1.0</span><span class="punctuation">,</span><span class="operator">-</span><span class="literal number float">1.0</span><span class="punctuation">)</span><span class="operator">*</span><span class="name">size</span><span class="operator">/</span><span class="literal number float">3.5</span><span class="punctuation">)</span>
+               <span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number float">3.5</span><span class="punctuation">;</span>
+   <span class="keyword">return</span> <span class="name">min</span><span class="punctuation">(</span><span class="name">min</span><span class="punctuation">(</span><span class="name">r1</span><span class="punctuation">,</span><span class="name">r2</span><span class="punctuation">),</span><span class="name">r3</span><span class="punctuation">);</span>
+<span class="punctuation">}</span>
+</pre>
+</div>
+<hr class="docutils" />
+<div class="section" id="infinity">
+<h3><a class="toc-backref" href="#id33">Infinity</a></h3>
+<div class="figure" id="figure-images/chapter-08/marker-infinity.png" style="width: 20%">
+<img alt="images/chapter-08/marker-infinity.png" src="images/chapter-08/marker-infinity.png" />
+<p class="caption">Figure</p>
+<div class="legend">
+Marker &quot;infinity&quot;</div>
+</div>
+<pre class="code glsl literal-block">
+<span class="keyword">float</span> <span class="name">marker_infinity</span><span class="punctuation">(</span><span class="keyword">vec2</span> <span class="name">P</span><span class="punctuation">,</span> <span class="keyword">float</span> <span class="name">size</span><span class="punctuation">)</span>
+<span class="punctuation">{</span>
+    <span class="keyword">const</span> <span class="keyword">vec2</span> <span class="name">c1</span> <span class="operator">=</span> <span class="keyword">vec2</span><span class="punctuation">(</span><span class="operator">+</span><span class="literal number float">0.2125</span><span class="punctuation">,</span> <span class="literal number float">0.00</span><span class="punctuation">);</span>
+    <span class="keyword">const</span> <span class="keyword">vec2</span> <span class="name">c2</span> <span class="operator">=</span> <span class="keyword">vec2</span><span class="punctuation">(</span><span class="operator">-</span><span class="literal number float">0.2125</span><span class="punctuation">,</span> <span class="literal number float">0.00</span><span class="punctuation">);</span>
+    <span class="keyword">float</span> <span class="name">r1</span> <span class="operator">=</span> <span class="name">length</span><span class="punctuation">(</span><span class="name">P</span><span class="operator">-</span><span class="name">c1</span><span class="operator">*</span><span class="name">size</span><span class="punctuation">)</span> <span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number float">3.5</span><span class="punctuation">;</span>
+    <span class="keyword">float</span> <span class="name">r2</span> <span class="operator">=</span> <span class="name">length</span><span class="punctuation">(</span><span class="name">P</span><span class="operator">-</span><span class="name">c1</span><span class="operator">*</span><span class="name">size</span><span class="punctuation">)</span> <span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number float">7.5</span><span class="punctuation">;</span>
+    <span class="keyword">float</span> <span class="name">r3</span> <span class="operator">=</span> <span class="name">length</span><span class="punctuation">(</span><span class="name">P</span><span class="operator">-</span><span class="name">c2</span><span class="operator">*</span><span class="name">size</span><span class="punctuation">)</span> <span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number float">3.5</span><span class="punctuation">;</span>
+    <span class="keyword">float</span> <span class="name">r4</span> <span class="operator">=</span> <span class="name">length</span><span class="punctuation">(</span><span class="name">P</span><span class="operator">-</span><span class="name">c2</span><span class="operator">*</span><span class="name">size</span><span class="punctuation">)</span> <span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number float">7.5</span><span class="punctuation">;</span>
+    <span class="keyword">return</span> <span class="name">min</span><span class="punctuation">(</span> <span class="name">max</span><span class="punctuation">(</span><span class="name">r1</span><span class="punctuation">,</span><span class="operator">-</span><span class="name">r2</span><span class="punctuation">),</span> <span class="name">max</span><span class="punctuation">(</span><span class="name">r3</span><span class="punctuation">,</span><span class="operator">-</span><span class="name">r4</span><span class="punctuation">));</span>
+<span class="punctuation">}</span>
+</pre>
+</div>
+<hr class="docutils" />
+<div class="section" id="ring">
+<h3><a class="toc-backref" href="#id33">Ring</a></h3>
+<div class="figure" id="figure-images/chapter-08/marker-ring.png" style="width: 20%">
+<img alt="images/chapter-08/marker-ring.png" src="images/chapter-08/marker-ring.png" />
+<p class="caption">Figure</p>
+<div class="legend">
+Marker &quot;ring&quot;</div>
+</div>
+<pre class="code glsl literal-block">
+<span class="keyword">float</span> <span class="name">marker_ring</span><span class="punctuation">(</span><span class="keyword">vec2</span> <span class="name">P</span><span class="punctuation">,</span> <span class="keyword">float</span> <span class="name">size</span><span class="punctuation">)</span>
+<span class="punctuation">{</span>
+    <span class="keyword">float</span> <span class="name">r1</span> <span class="operator">=</span> <span class="name">length</span><span class="punctuation">(</span><span class="name">P</span><span class="punctuation">)</span> <span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number integer">2</span><span class="punctuation">;</span>
+    <span class="keyword">float</span> <span class="name">r2</span> <span class="operator">=</span> <span class="name">length</span><span class="punctuation">(</span><span class="name">P</span><span class="punctuation">)</span> <span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number integer">4</span><span class="punctuation">;</span>
+    <span class="keyword">return</span> <span class="name">max</span><span class="punctuation">(</span><span class="name">r1</span><span class="punctuation">,</span><span class="operator">-</span><span class="name">r2</span><span class="punctuation">);</span>
+<span class="punctuation">}</span>
+</pre>
+</div>
+<hr class="docutils" />
+<div class="section" id="spade">
+<h3><a class="toc-backref" href="#id33">Spade</a></h3>
+<div class="figure" id="figure-images/chapter-08/marker-spade.png" style="width: 20%">
+<img alt="images/chapter-08/marker-spade.png" src="images/chapter-08/marker-spade.png" />
+<p class="caption">Figure</p>
+<div class="legend">
+Marker &quot;spade&quot;</div>
+</div>
+<pre class="code glsl literal-block">
+<span class="keyword">float</span> <span class="name">marker_spade</span><span class="punctuation">(</span><span class="keyword">vec2</span> <span class="name">P</span><span class="punctuation">,</span> <span class="keyword">float</span> <span class="name">size</span><span class="punctuation">)</span>
+<span class="punctuation">{</span>
+   <span class="comment single">// Reversed heart (diamond + 2 circles)</span>
+   <span class="keyword">float</span> <span class="name">s</span><span class="operator">=</span> <span class="name">size</span> <span class="operator">*</span> <span class="literal number float">0.85</span> <span class="operator">/</span> <span class="literal number float">3.5</span><span class="punctuation">;</span>
+   <span class="keyword">float</span> <span class="name">x</span> <span class="operator">=</span> <span class="name">M_SQRT2</span><span class="operator">/</span><span class="literal number float">2.0</span> <span class="operator">*</span> <span class="punctuation">(</span><span class="name">P</span><span class="punctuation">.</span><span class="name">x</span> <span class="operator">+</span> <span class="name">P</span><span class="punctuation">.</span><span class="name">y</span><span class="punctuation">)</span> <span class="operator">+</span> <span class="literal number float">0.4</span><span class="operator">*</span><span class="name">s</span><span class="punctuation">;</span>
+   <span class="keyword">float</span> <span class="name">y</span> <span class="operator">=</span> <span class="name">M_SQRT2</span><span class="operator">/</span><span class="literal number float">2.0</span> <span class="operator">*</span> <span class="punctuation">(</span><span class="name">P</span><span class="punctuation">.</span><span class="name">x</span> <span class="operator">-</span> <span class="name">P</span><span class="punctuation">.</span><span class="name">y</span><span class="punctuation">)</span> <span class="operator">-</span> <span class="literal number float">0.4</span><span class="operator">*</span><span class="name">s</span><span class="punctuation">;</span>
+   <span class="keyword">float</span> <span class="name">r1</span> <span class="operator">=</span> <span class="name">max</span><span class="punctuation">(</span><span class="name">abs</span><span class="punctuation">(</span><span class="name">x</span><span class="punctuation">),</span><span class="name">abs</span><span class="punctuation">(</span><span class="name">y</span><span class="punctuation">))</span> <span class="operator">-</span> <span class="name">s</span><span class="punctuation">;</span>
+   <span class="keyword">float</span> <span class="name">r2</span> <span class="operator">=</span> <span class="name">length</span><span class="punctuation">(</span><span class="name">P</span> <span class="operator">-</span> <span class="name">M_SQRT2</span><span class="operator">/</span><span class="literal number float">2.0</span><span class="operator">*</span><span class="keyword">vec2</span><span class="punctuation">(</span><span class="operator">+</span><span class="literal number float">1.0</span><span class="punctuation">,</span><span class="operator">+</span><span class="literal number float">0.2</span><span class="punctuation">)</span><span class="operator">*</span><span class="name">s</span><span class="punctuation">)</span> <span class="operator">-</span> <span class="name">s</span><span class="punctuation">;</span>
+   <span class="keyword">float</span> <span class="name">r3</span> <span class="operator">=</span> <span class="name">length</span><span class="punctuation">(</span><span class="name">P</span> <span class="operator">-</span> <span class="name">M_SQRT2</span><span class="operator">/</span><span class="literal number float">2.0</span><span class="operator">*</span><span class="keyword">vec2</span><span class="punctuation">(</span><span class="operator">-</span><span class="literal number float">1.0</span><span class="punctuation">,</span><span class="operator">+</span><span class="literal number float">0.2</span><span class="punctuation">)</span><span class="operator">*</span><span class="name">s</span><span class="punctuation">)</span> <span class="operator">-</span> <span class="name">s</span><span class="punctuation">;</span>
+   <span class="keyword">float</span> <span class="name">r4</span> <span class="operator">=</span>  <span class="name">min</span><span class="punctuation">(</span><span class="name">min</span><span class="punctuation">(</span><span class="name">r1</span><span class="punctuation">,</span><span class="name">r2</span><span class="punctuation">),</span><span class="name">r3</span><span class="punctuation">);</span>
+
+   <span class="comment single">// Root (2 circles and 2 planes)</span>
+   <span class="keyword">const</span> <span class="keyword">vec2</span> <span class="name">c1</span> <span class="operator">=</span> <span class="keyword">vec2</span><span class="punctuation">(</span><span class="operator">+</span><span class="literal number float">0.65</span><span class="punctuation">,</span> <span class="literal number float">0.125</span><span class="punctuation">);</span>
+   <span class="keyword">const</span> <span class="keyword">vec2</span> <span class="name">c2</span> <span class="operator">=</span> <span class="keyword">vec2</span><span class="punctuation">(</span><span class="operator">-</span><span class="literal number float">0.65</span><span class="punctuation">,</span> <span class="literal number float">0.125</span><span class="punctuation">);</span>
+   <span class="keyword">float</span> <span class="name">r5</span> <span class="operator">=</span> <span class="name">length</span><span class="punctuation">(</span><span class="name">P</span><span class="operator">-</span><span class="name">c1</span><span class="operator">*</span><span class="name">size</span><span class="punctuation">)</span> <span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number float">1.6</span><span class="punctuation">;</span>
+   <span class="keyword">float</span> <span class="name">r6</span> <span class="operator">=</span> <span class="name">length</span><span class="punctuation">(</span><span class="name">P</span><span class="operator">-</span><span class="name">c2</span><span class="operator">*</span><span class="name">size</span><span class="punctuation">)</span> <span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="literal number float">1.6</span><span class="punctuation">;</span>
+   <span class="keyword">float</span> <span class="name">r7</span> <span class="operator">=</span> <span class="name">P</span><span class="punctuation">.</span><span class="name">y</span> <span class="operator">-</span> <span class="literal number float">0.5</span><span class="operator">*</span><span class="name">size</span><span class="punctuation">;</span>
+   <span class="keyword">float</span> <span class="name">r8</span> <span class="operator">=</span> <span class="literal number float">0.1</span><span class="operator">*</span><span class="name">size</span> <span class="operator">-</span> <span class="name">P</span><span class="punctuation">.</span><span class="name">y</span><span class="punctuation">;</span>
+   <span class="keyword">float</span> <span class="name">r9</span> <span class="operator">=</span> <span class="name">max</span><span class="punctuation">(</span><span class="operator">-</span><span class="name">min</span><span class="punctuation">(</span><span class="name">r5</span><span class="punctuation">,</span><span class="name">r6</span><span class="punctuation">),</span> <span class="name">max</span><span class="punctuation">(</span><span class="name">r7</span><span class="punctuation">,</span><span class="name">r8</span><span class="punctuation">));</span>
+
+    <span class="keyword">return</span> <span class="name">min</span><span class="punctuation">(</span><span class="name">r4</span><span class="punctuation">,</span><span class="name">r9</span><span class="punctuation">);</span>
+<span class="punctuation">}</span>
+</pre>
+</div>
+<hr class="docutils" />
+<div class="section" id="triangle">
+<h3><a class="toc-backref" href="#id33">Triangle</a></h3>
+<div class="figure" id="figure-images/chapter-08/marker-triangle.png" style="width: 20%">
+<img alt="images/chapter-08/marker-triangle.png" src="images/chapter-08/marker-triangle.png" />
+<p class="caption">Figure</p>
+<div class="legend">
+Marker &quot;triangle&quot;</div>
+</div>
+<pre class="code glsl literal-block">
+<span class="keyword">float</span> <span class="name">marker_triangle</span><span class="punctuation">(</span><span class="keyword">vec2</span> <span class="name">P</span><span class="punctuation">,</span> <span class="keyword">float</span> <span class="name">size</span><span class="punctuation">)</span>
+<span class="punctuation">{</span>
+    <span class="keyword">float</span> <span class="name">x</span> <span class="operator">=</span> <span class="name">M_SQRT2</span><span class="operator">/</span><span class="literal number float">2.0</span> <span class="operator">*</span> <span class="punctuation">(</span><span class="name">P</span><span class="punctuation">.</span><span class="name">x</span> <span class="operator">-</span> <span class="punctuation">(</span><span class="name">P</span><span class="punctuation">.</span><span class="name">y</span><span class="operator">-</span><span class="name">size</span><span class="operator">/</span><span class="literal number integer">6</span><span class="punctuation">));</span>
+    <span class="keyword">float</span> <span class="name">y</span> <span class="operator">=</span> <span class="name">M_SQRT2</span><span class="operator">/</span><span class="literal number float">2.0</span> <span class="operator">*</span> <span class="punctuation">(</span><span class="name">P</span><span class="punctuation">.</span><span class="name">x</span> <span class="operator">+</span> <span class="punctuation">(</span><span class="name">P</span><span class="punctuation">.</span><span class="name">y</span><span class="operator">-</span><span class="name">size</span><span class="operator">/</span><span class="literal number integer">6</span><span class="punctuation">));</span>
+    <span class="keyword">float</span> <span class="name">r1</span> <span class="operator">=</span> <span class="name">max</span><span class="punctuation">(</span><span class="name">abs</span><span class="punctuation">(</span><span class="name">x</span><span class="punctuation">),</span> <span class="name">abs</span><span class="punctuation">(</span><span class="name">y</span><span class="punctuation">))</span> <span class="operator">-</span> <span class="name">size</span><span class="operator">/</span><span class="punctuation">(</span><span class="literal number float">2.0</span><span class="operator">*</span><span class="name">M_SQRT2</span><span class="punctuation">);</span>
+    <span class="keyword">float</span> <span class="name">r2</span> <span class="operator">=</span> <span class="name">P</span><span class="punctuation">.</span><span class="name">y</span><span class="operator">-</span><span class="name">size</span><span class="operator">/</span><span class="literal number integer">6</span><span class="punctuation">;</span>
+    <span class="keyword">return</span> <span class="name">max</span><span class="punctuation">(</span><span class="name">r1</span><span class="punctuation">,</span><span class="name">r2</span><span class="punctuation">);</span>
+<span class="punctuation">}</span>
+</pre>
+</div>
+</div>
+<hr class="docutils" />
 <div class="section" id="arrows">
 <h2><a class="toc-backref" href="#id33">Arrows</a></h2>
 </div>
@@ -3566,9 +3912,9 @@ Some example of markers constructed using CSG.</div>
 <div class="contents toc chapter-09 local topic" id="id40">
 <p class="topic-title first">.</p>
 <ul class="simple">
-<li><a class="reference internal" href="#segments" id="id202">Segments</a></li>
-<li><a class="reference internal" href="#polylines" id="id203">Polylines</a></li>
-<li><a class="reference internal" href="#bezier-curves" id="id204">Bézier curves</a></li>
+<li><a class="reference internal" href="#segments" id="id217">Segments</a></li>
+<li><a class="reference internal" href="#polylines" id="id218">Polylines</a></li>
+<li><a class="reference internal" href="#bezier-curves" id="id219">Bézier curves</a></li>
 </ul>
 </div>
 <div class="section" id="segments">
@@ -3594,9 +3940,9 @@ parameterization is given by −d ≤ u ≤ ∥AB∥ + d and −d ≤ v ≤ +d.<
 <div class="contents toc chapter-10 local topic" id="id41">
 <p class="topic-title first">.</p>
 <ul class="simple">
-<li><a class="reference internal" href="#id42" id="id205">Triangulation</a></li>
-<li><a class="reference internal" href="#odd-fill-rule" id="id206">Odd-fill rule</a></li>
-<li><a class="reference internal" href="#holes" id="id207">Holes</a></li>
+<li><a class="reference internal" href="#id42" id="id220">Triangulation</a></li>
+<li><a class="reference internal" href="#odd-fill-rule" id="id221">Odd-fill rule</a></li>
+<li><a class="reference internal" href="#holes" id="id222">Holes</a></li>
 </ul>
 </div>
 <div class="section" id="id42">
@@ -3614,9 +3960,9 @@ parameterization is given by −d ≤ u ≤ ∥AB∥ + d and −d ≤ v ≤ +d.<
 <div class="contents toc chapter-11 local topic" id="id43">
 <p class="topic-title first">.</p>
 <ul class="simple">
-<li><a class="reference internal" href="#implicit-surfaces" id="id208">Implicit surfaces</a></li>
-<li><a class="reference internal" href="#height-fields" id="id209">Height fields</a></li>
-<li><a class="reference internal" href="#mesh-models" id="id210">Mesh models</a></li>
+<li><a class="reference internal" href="#implicit-surfaces" id="id223">Implicit surfaces</a></li>
+<li><a class="reference internal" href="#height-fields" id="id224">Height fields</a></li>
+<li><a class="reference internal" href="#mesh-models" id="id225">Mesh models</a></li>
 </ul>
 </div>
 <div class="section" id="implicit-surfaces">
@@ -3634,9 +3980,9 @@ parameterization is given by −d ≤ u ≤ ∥AB∥ + d and −d ≤ v ≤ +d.<
 <div class="contents toc chapter-12 local topic" id="id44">
 <p class="topic-title first">.</p>
 <ul class="simple">
-<li><a class="reference internal" href="#failsafe-text" id="id211">Failsafe text</a></li>
-<li><a class="reference internal" href="#d-text" id="id212">2D text</a></li>
-<li><a class="reference internal" href="#id45" id="id213">3D text</a></li>
+<li><a class="reference internal" href="#failsafe-text" id="id226">Failsafe text</a></li>
+<li><a class="reference internal" href="#d-text" id="id227">2D text</a></li>
+<li><a class="reference internal" href="#id45" id="id228">3D text</a></li>
 </ul>
 </div>
 <div class="section" id="failsafe-text">
@@ -3654,9 +4000,9 @@ parameterization is given by −d ≤ u ≤ ∥AB∥ + d and −d ≤ v ≤ +d.<
 <div class="contents toc chapter-13 local topic" id="id46">
 <p class="topic-title first">.</p>
 <ul class="simple">
-<li><a class="reference internal" href="#post-processing" id="id214">Post-processing</a></li>
-<li><a class="reference internal" href="#general-computation" id="id215">General computation</a></li>
-<li><a class="reference internal" href="#color-picking" id="id216">Color picking</a></li>
+<li><a class="reference internal" href="#post-processing" id="id229">Post-processing</a></li>
+<li><a class="reference internal" href="#general-computation" id="id230">General computation</a></li>
+<li><a class="reference internal" href="#color-picking" id="id231">Color picking</a></li>
 </ul>
 </div>
 <div class="section" id="post-processing">
@@ -3674,14 +4020,14 @@ parameterization is given by −d ≤ u ≤ ∥AB∥ + d and −d ≤ v ≤ +d.<
 <div class="contents toc chapter-14 local topic" id="id47">
 <p class="topic-title first">.</p>
 <ul class="simple">
-<li><a class="reference internal" href="#colormaps" id="id217">Colormaps</a></li>
-<li><a class="reference internal" href="#contours" id="id218">Contours</a></li>
-<li><a class="reference internal" href="#transparency" id="id219">Transparency</a></li>
-<li><a class="reference internal" href="#generic-transformation" id="id220">Generic transformation</a></li>
-<li><a class="reference internal" href="#grids" id="id221">Grids</a><ul>
-<li><a class="reference internal" href="#cartesian-grid" id="id222">Cartesian grid</a></li>
-<li><a class="reference internal" href="#hexagonal-grid" id="id223">Hexagonal grid</a></li>
-<li><a class="reference internal" href="#polar-grid" id="id224">Polar grid</a></li>
+<li><a class="reference internal" href="#colormaps" id="id232">Colormaps</a></li>
+<li><a class="reference internal" href="#contours" id="id233">Contours</a></li>
+<li><a class="reference internal" href="#transparency" id="id234">Transparency</a></li>
+<li><a class="reference internal" href="#generic-transformation" id="id235">Generic transformation</a></li>
+<li><a class="reference internal" href="#grids" id="id236">Grids</a><ul>
+<li><a class="reference internal" href="#cartesian-grid" id="id237">Cartesian grid</a></li>
+<li><a class="reference internal" href="#hexagonal-grid" id="id238">Hexagonal grid</a></li>
+<li><a class="reference internal" href="#polar-grid" id="id239">Polar grid</a></li>
 </ul>
 </li>
 </ul>
@@ -3743,33 +4089,33 @@ the color depending on the distance using the GLSL <code>mix</code> function. (<
 <div class="contents toc chapter-16 local topic" id="id48">
 <p class="topic-title first">.</p>
 <ul class="simple">
-<li><a class="reference internal" href="#types" id="id225">Types</a><ul>
-<li><a class="reference internal" href="#scalar" id="id226">Scalar</a></li>
-<li><a class="reference internal" href="#vector" id="id227">Vector</a></li>
-<li><a class="reference internal" href="#matrix" id="id228">Matrix</a></li>
-<li><a class="reference internal" href="#texture" id="id229">Texture</a></li>
+<li><a class="reference internal" href="#types" id="id240">Types</a><ul>
+<li><a class="reference internal" href="#scalar" id="id241">Scalar</a></li>
+<li><a class="reference internal" href="#vector" id="id242">Vector</a></li>
+<li><a class="reference internal" href="#matrix" id="id243">Matrix</a></li>
+<li><a class="reference internal" href="#texture" id="id244">Texture</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#qualifiers" id="id230">Qualifiers</a><ul>
-<li><a class="reference internal" href="#storage" id="id231">Storage</a></li>
-<li><a class="reference internal" href="#parameters" id="id232">Parameters</a></li>
-<li><a class="reference internal" href="#precision" id="id233">Precision</a></li>
+<li><a class="reference internal" href="#qualifiers" id="id245">Qualifiers</a><ul>
+<li><a class="reference internal" href="#storage" id="id246">Storage</a></li>
+<li><a class="reference internal" href="#parameters" id="id247">Parameters</a></li>
+<li><a class="reference internal" href="#precision" id="id248">Precision</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#built-in-variables" id="id234">Built-in variables</a><ul>
-<li><a class="reference internal" href="#vertex-shader" id="id235">Vertex shader</a></li>
-<li><a class="reference internal" href="#fragment-shader" id="id236">Fragment shader</a></li>
+<li><a class="reference internal" href="#built-in-variables" id="id249">Built-in variables</a><ul>
+<li><a class="reference internal" href="#vertex-shader" id="id250">Vertex shader</a></li>
+<li><a class="reference internal" href="#fragment-shader" id="id251">Fragment shader</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#built-in-constants" id="id237">Built-in constants</a></li>
-<li><a class="reference internal" href="#built-in-functions" id="id238">Built-in functions</a><ul>
-<li><a class="reference internal" href="#angle-and-trigonometry-functions" id="id239">Angle and trigonometry functions</a></li>
-<li><a class="reference internal" href="#exponential-functions" id="id240">Exponential functions</a></li>
-<li><a class="reference internal" href="#common-functions" id="id241">Common functions</a></li>
-<li><a class="reference internal" href="#geometric-functions" id="id242">Geometric functions</a></li>
-<li><a class="reference internal" href="#matrix-functions" id="id243">Matrix functions</a></li>
-<li><a class="reference internal" href="#vector-relational-functions" id="id244">Vector Relational Functions</a></li>
-<li><a class="reference internal" href="#texture-lookup-functions" id="id245">Texture lookup functions</a></li>
+<li><a class="reference internal" href="#built-in-constants" id="id252">Built-in constants</a></li>
+<li><a class="reference internal" href="#built-in-functions" id="id253">Built-in functions</a><ul>
+<li><a class="reference internal" href="#angle-and-trigonometry-functions" id="id254">Angle and trigonometry functions</a></li>
+<li><a class="reference internal" href="#exponential-functions" id="id255">Exponential functions</a></li>
+<li><a class="reference internal" href="#common-functions" id="id256">Common functions</a></li>
+<li><a class="reference internal" href="#geometric-functions" id="id257">Geometric functions</a></li>
+<li><a class="reference internal" href="#matrix-functions" id="id258">Matrix functions</a></li>
+<li><a class="reference internal" href="#vector-relational-functions" id="id259">Vector Relational Functions</a></li>
+<li><a class="reference internal" href="#texture-lookup-functions" id="id260">Texture lookup functions</a></li>
 </ul>
 </li>
 </ul>
@@ -4434,10 +4780,10 @@ which face to do a 2- dimensional texture lookup in, as described in section
 <div class="contents toc chapter-17 local topic" id="id50">
 <p class="topic-title first">.</p>
 <ul class="simple">
-<li><a class="reference internal" href="#people" id="id246">People</a></li>
-<li><a class="reference internal" href="#tutorials" id="id247">Tutorials</a></li>
-<li><a class="reference internal" href="#articles" id="id248">Articles</a></li>
-<li><a class="reference internal" href="#books" id="id249">Books</a></li>
+<li><a class="reference internal" href="#people" id="id261">People</a></li>
+<li><a class="reference internal" href="#tutorials" id="id262">Tutorials</a></li>
+<li><a class="reference internal" href="#articles" id="id263">Articles</a></li>
+<li><a class="reference internal" href="#books" id="id264">Books</a></li>
 </ul>
 </div>
 <p>This is a curated list of some computer graphics resources (peoole, articles,
@@ -4500,7 +4846,7 @@ these specific cases are not studied in this article.</p>
 </div>
 </li>
 <li><div class="first line-block">
-<div class="line"><a class="reference external" href="http://jcgt.org/published/0002/02/08/">Shader-based Antialiased Dashed Stroke Poylines</a></div>
+<div class="line"><a class="reference external" href="http://jcgt.org/published/0002/02/08/">Shader-based Antialiased Dashed Stroke Polylines</a></div>
 <div class="line">N. P. Rougier
 Journal of Computer Graphics Techniques (JCGT), vol. 2, no. 2, pp. 105–121, 2013.</div>
 </div>

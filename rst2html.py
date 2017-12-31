@@ -12,9 +12,33 @@ import PIL
 
 class video(nodes.General, nodes.Inline, nodes.Element): pass
 class media(nodes.General, nodes.Inline, nodes.Element): pass
+class figref(nodes.Inline, nodes.TextElement): pass
 
 
+# --- Figure references -------------------------------------------------------
+#
+# This class solves pending figure references throughout the whole document
+#
+# TODO: Use "section.subsection.number" format.
+class FigureReferences(Transform):
+    default_priority = 260
+    def apply(self):
+        num = 0
+        numbers = {}
 
+        for node in self.document.traverse(nodes.figure):
+            if node['label'] is not None:
+                num += 1
+                node['number'] = num
+                numbers[node['label']] = num
+            else:
+                node['number'] = None
+
+        for node in self.document.traverse(figref):
+            if node['target'] not in numbers:
+                continue
+            num = '(%d)' % numbers[node['target']]
+            node[0] = nodes.Text(num, num)
 
 # --- video directive ---------------------------------------------------------
 #
@@ -135,6 +159,27 @@ class Figure(Media):
 directives.register_directive('figure', Figure)
 
 
+# --- fig role ----------------------------------------------------------------
+#
+# `fig` role allows to refer to a figure identified by a label
+#
+def fig_role(role, rawtext, text, lineno, inliner, options={}, content=[]):
+    text = utils.unescape(text)
+    node = figref('(?)', '(?)', target=text)
+    pending = nodes.pending(FigureReferences)
+    inliner.document.note_pending(pending)
+    return [node], []
+fig_role.content = True
+roles.register_canonical_role('fig', fig_role)
+
+
+# --- html figref --------------------------------------------------------------
+def html_visit_figref(self, node):
+    self.body.append('<a href="#figure-%s">' % node['target'])
+def html_depart_figref(self, node):
+    self.body.append('</a>')
+HTMLTranslator.visit_figref = html_visit_figref
+HTMLTranslator.depart_figref = html_depart_figref
 
 # --- html video --------------------------------------------------------------
 def html_visit_video(self, node):
