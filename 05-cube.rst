@@ -174,7 +174,6 @@ Actual rendering
    :autoplay:
    :controls:
    :figwidth: 35%
-   :figclass: left
             
    Figure
 
@@ -258,7 +257,6 @@ shader.
    :autoplay:
    :controls:
    :figwidth: 35%
-   :figclass: left
             
    Figure
 
@@ -294,7 +292,6 @@ Outlined cube
    :autoplay:
    :controls:
    :figwidth: 35%
-   :figclass: left
             
    Figure
 
@@ -365,7 +362,6 @@ Textured cube
    :autoplay:
    :controls:
    :figwidth: 35%
-   :figclass: left
             
    Figure
 
@@ -464,7 +460,6 @@ Exercises
    :autoplay:
    :controls:
    :figwidth: 35%
-   :figclass: left
             
    Figure
 
@@ -490,7 +485,6 @@ cube code <code/chapter-05/color-cube.py>`_, try to modify only the shader code
    :autoplay:
    :controls:
    :figwidth: 35%
-   :figclass: left
             
    Figure
 

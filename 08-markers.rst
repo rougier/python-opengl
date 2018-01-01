@@ -11,10 +11,8 @@ Rendering markers
 Constructive Solid Geometry
 -------------------------------------------------------------------------------
 
-
 .. figure:: images/chapter-08/CSG.png
    :figwidth: 50%
-   :figclass: right
               
    Figure
 
@@ -62,7 +60,6 @@ example allows you to play online with them):
    
 .. figure:: images/chapter-08/CSG-intersection.png
    :figwidth: 30%
-   :figclass: right
 
    Figure
 
@@ -73,7 +70,6 @@ __  https://www.shadertoy.com/view/XllyWn
 
 .. figure:: images/chapter-08/CSG-union.png
    :figwidth: 30%
-   :figclass: right
 
    Figure
 
@@ -84,7 +80,6 @@ __  https://www.shadertoy.com/view/4tlyWn
 
 .. figure:: images/chapter-08/CSG-mix.png
    :figwidth: 30%
-   :figclass: right
 
    Figure
 
@@ -97,7 +92,6 @@ __  https://www.shadertoy.com/view/MtfcDr
 
 .. figure:: images/chapter-08/CSG-exclusion.png
    :figwidth: 30%
-   :figclass: right
 
    Figure
 
@@ -109,7 +103,6 @@ __  https://www.shadertoy.com/view/4tsyWn
 
 .. figure:: images/chapter-08/CSG-difference-2.png
    :figwidth: 30%
-   :figclass: right
 
    Figure
 
@@ -120,7 +113,6 @@ __  https://www.shadertoy.com/view/XtsyWn
 
 .. figure:: images/chapter-08/CSG-difference-1.png
    :figwidth: 30%
-   :figclass: right
 
    Figure
 
@@ -148,278 +140,19 @@ As illustrated on the right figure creating markers is merely a matter of
 imagination. Try to think of a precise shape and see how you can decompose it
 in terms of constructive solid geometry. I've put a collection of such markers
 in the (open access) article `Antialiased 2D Grid, Marker, and Arrow Shaders
-<http://jcgt.org/published/0003/04/01/>`_. You'll find the relevant code for
-the markers below.
+<http://jcgt.org/published/0003/04/01/>`_. 
+
 
 All these markers are also defined in the glumpy library. Have a look at the
-`marker.py <code/chapter-08/marker.py>`_ example where you experiment with the
-different markers and the different rendering option. Note that all the markers
-are defined "vertically" since their orientation can be computed very easily
-from within the shader.
-
-
-Arrow
-+++++
-
-.. figure:: images/chapter-08/marker-arrow.png
-   :figwidth: 20%
-
-   Figure
-
-   Marker "arrow"
-
-.. code:: glsl
-
-   float marker_arrow(vec2 P, float size)
-   {
-       float r1 = abs(P.x) + abs(P.y) - size/2;
-       float r2 = max(abs(P.x+size/2), abs(P.y)) - size/2;
-       float r3 = max(abs(P.x-size/6)-size/4, abs(P.y)- size/4);
-       return min(r3,max(.75*r1,r2));
-   }
-
-
-----
-
-Asterisk
-++++++++
-
-.. figure:: images/chapter-08/marker-asterisk.png
-   :figwidth: 20%
-
-   Figure
-
-   Marker "asterisk"
-
-.. code:: glsl
-
-   float marker_asterisk(vec2 P, float size)
-   {
-       float x = M_SQRT2/2 * (P.x - P.y);
-       float y = M_SQRT2/2 * (P.x + P.y);
-       float r1 = max(abs(x)- size/2, abs(y)- size/10);
-       float r2 = max(abs(y)- size/2, abs(x)- size/10);
-       float r3 = max(abs(P.x)- size/2, abs(P.y)- size/10);
-       float r4 = max(abs(P.y)- size/2, abs(P.x)- size/10);
-       return min( min(r1,r2), min(r3,r4));
-   }
-
-----
-
-Bar
-++++
-
-.. figure:: images/chapter-08/marker-bar.png
-   :figwidth: 20%
-
-   Figure
-
-   Marker "bar"
-
-
-.. code:: glsl
-
-   float marker_bar(vec2 P, float size)
-   {
-       return max(abs(P.x)- size/6.0, abs(P.y)- size/2.0);
-   }
-
-----
-
-Chevron
-+++++++
-
-.. figure:: images/chapter-08/marker-chevron.png
-   :figwidth: 20%
-
-   Figure
-
-   Marker "chevron"
-
-.. code:: glsl
-
-   float marker_chevron(vec2 P, float size)
-   {
-       float x = 1.0/M_SQRT2 * ((P.x-size/6) - P.y);
-       float y = 1.0/M_SQRT2 * ((P.x-size/6) + P.y);
-       float r1 = max(abs(x),          abs(y))          - size/3.0;
-       float r2 = max(abs(x-size/3.0), abs(y-size/3.0)) - size/3.0;
-       return max(r1,-r2);
-   }
-
-----
-
-Clover
-++++++
-
-.. figure:: images/chapter-08/marker-clover.png
-   :figwidth: 20%
-
-   Figure
-
-   Marker "clover"
-
-.. code:: glsl
-
-   float marker_clover(vec2 P, float size)
-   {
-       const float t1 = -M_PI/2;
-       const vec2  c1 = 0.25*vec2(cos(t1),sin(t1));
-       const float t2 = t1+2*M_PI/3;
-       const vec2  c2 = 0.25*vec2(cos(t2),sin(t2));
-       const float t3 = t2+2*M_PI/3;
-       const vec2  c3 = 0.25*vec2(cos(t3),sin(t3));
-
-       float r1 = length( P - c1*size) - size/3.5;
-       float r2 = length( P - c2*size) - size/3.5;
-       float r3 = length( P - c3*size) - size/3.5;
-       return min(min(r1,r2),r3);
-   }
-   
-----
-
-Club
-++++
-
-.. figure:: images/chapter-08/marker-club.png
-   :figwidth: 20%
-
-   Figure
-
-   Marker "club"
-
-.. code:: glsl
-
-   float marker_club(vec2 P, float size)
-   {
-       // clover (3 discs)
-       const float t1 = -M_PI/2.0;
-       const vec2  c1 = 0.225*vec2(cos(t1),sin(t1));
-       const float t2 = t1+2*M_PI/3.0;
-       const vec2  c2 = 0.225*vec2(cos(t2),sin(t2));
-       const float t3 = t2+2*M_PI/3.0;
-       const vec2  c3 = 0.225*vec2(cos(t3),sin(t3));
-       float r1 = length( P - c1*size) - size/4.25;
-       float r2 = length( P - c2*size) - size/4.25;
-       float r3 = length( P - c3*size) - size/4.25;
-       float r4 =  min(min(r1,r2),r3);
-
-       // Root (2 circles and 2 planes)
-       const vec2 c4 = vec2(+0.65, 0.125);
-       const vec2 c5 = vec2(-0.65, 0.125);
-       float r5 = length(P-c4*size) - size/1.6;
-       float r6 = length(P-c5*size) - size/1.6;
-       float r7 = P.y - 0.5*size;
-       float r8 = 0.2*size - P.y;
-       float r9 = max(-min(r5,r6), max(r7,r8));
-
-       return min(r4,r9);
-   }
-
-----
-   
-Cross
-+++++
-
-.. figure:: images/chapter-08/marker-cross.png
-   :figwidth: 20%
-
-   Figure
-
-   Marker "cross"
-
-.. code:: glsl
-
-   float marker_cross(vec2 P, float size)
-   {
-       float x = M_SQRT2/2.0 * (P.x - P.y);
-       float y = M_SQRT2/2.0 * (P.x + P.y);
-       float r1 = max(abs(x - size/3.0), abs(x + size/3.0));
-       float r2 = max(abs(y - size/3.0), abs(y + size/3.0));
-       float r3 = max(abs(x), abs(y));
-       float r = max(min(r1,r2),r3);
-       r -= size/2;
-       return r;
-   }
-          
-----
-
-Diamond
-+++++++
-
-.. figure:: images/chapter-08/marker-diamond.png
-   :figwidth: 20%
-
-   Figure
-
-   Marker "diamond"
-
-.. code:: glsl
-
-   float marker_diamond(vec2 P, float size)
-   {
-      float x = M_SQRT2/2.0 * (P.x - P.y);
-      float y = M_SQRT2/2.0 * (P.x + P.y);
-      return max(abs(x), abs(y)) - size/(2.0*M_SQRT2);
-   }
-
-----
-
-Disc
-++++
-
-.. figure:: images/chapter-08/marker-disc.png
-   :figwidth: 20%
-
-   Figure
-
-   Marker "disc"
-
-
-.. code:: glsl
-
-   float marker_disc(vec2 P, float size)
-   {
-       return length(P) - size/2;
-   }
-          
-----
-
-Ellipse
-+++++++
-
-.. figure:: images/chapter-08/marker-ellipse.png
-   :figwidth: 20%
-
-   Figure
-
-   Marker "ellipse"
-
-.. code:: glsl
-
-   float marker_ellipse(vec2 P, float size)
-   {
-       // Alternate version (approximation)
-       float a = 1.0;
-       float b = 2.0;
-       float r = 0.5*size;
-       float f = length( P*vec2(a,b) );
-       f = length( P*vec2(a,b) );
-       f = f*(f-r)/length( P*vec2(a*a,b*b) );
-       return f;
-   }
-
-----
-
-Heart
-+++++
-
-.. figure:: images/chapter-08/marker-heart.png
-   :figwidth: 20%
-
-   Figure
-
-   Marker "heart"
+`marker.py <code/chapter-08/marker.py>`_ example where you can experiment with
+the different markers and the different rendering options. Feel free to design
+your own and to open a pull request to have them added to glumpy. Note that all
+the markers have a default orientation that can be changed very easily from
+within the shader.
+
+
+For example, the heart marker, which is made of two discs and one sphere, reads
+as follows:
 
 .. code:: glsl
 
@@ -427,126 +160,418 @@ Heart
    {
       float x = M_SQRT2/2.0 * (P.x - P.y);
       float y = M_SQRT2/2.0 * (P.x + P.y);
+
+      // Square
       float r1 = max(abs(x),abs(y))-size/3.5;
-      float r2 = length(P - M_SQRT2/2.0*vec2(+1.0,-1.0)*size/3.5)
-                  - size/3.5;
-      float r3 = length(P - M_SQRT2/2.0*vec2(-1.0,-1.0)*size/3.5)
-                  - size/3.5;
+
+      // Disc 1
+      float r2 = length(P - M_SQRT2/2.0*vec2(+1.0,-1.0)*size/3.5) - size/3.5;
+
+      // Disc 2
+      float r3 = length(P - M_SQRT2/2.0*vec2(-1.0,-1.0)*size/3.5) - size/3.5;
+      
       return min(min(r1,r2),r3);
    }
 
 
-----
+.. figure:: images/chapter-08/marker-arrow.png
+   :figwidth: 20%
+   :figclass: left  
+
+   Figure
+
+   Marker "arrow"
 
 
-Infinity
-++++++++
+.. figure:: images/chapter-08/marker-asterisk.png
+   :figwidth: 20%
+   :figclass: left
+              
+   Figure
+
+   Marker "asterisk"
+
+
+.. figure:: images/chapter-08/marker-bar.png
+   :figwidth: 20%
+   :figclass: left
+              
+   Figure
+
+   Marker "bar"
+
+
+
+.. figure:: images/chapter-08/marker-chevron.png
+   :figwidth: 20%
+   :figclass: left
+
+   Figure
+
+   Marker "chevron"
+
+
+.. figure:: images/chapter-08/marker-clover.png
+   :figwidth: 20%
+   :figclass: left
+
+   Figure
+
+   Marker "clover"
+
+
+.. figure:: images/chapter-08/marker-club.png
+   :figwidth: 20%
+   :figclass: left
+              
+   Figure
+
+   Marker "club"
+
+
+.. figure:: images/chapter-08/marker-cross.png
+   :figwidth: 20%
+   :figclass: left
+              
+   Figure
+
+   Marker "cross"
+
+
+.. figure:: images/chapter-08/marker-diamond.png
+   :figwidth: 20%
+   :figclass: left
+              
+   Figure
+
+   Marker "diamond"
+
+
+.. figure:: images/chapter-08/marker-disc.png
+   :figwidth: 20%
+   :figclass: left
+              
+   Figure
+
+   Marker "disc"
+
+
+
+.. figure:: images/chapter-08/marker-ellipse.png
+   :figwidth: 20%
+   :figclass: left
+              
+   Figure
+
+   Marker "ellipse"
+
+
+.. figure:: images/chapter-08/marker-heart.png
+   :figwidth: 20%
+   :figclass: left
+              
+   Figure
+
+   Marker "heart"
+
 
 .. figure:: images/chapter-08/marker-infinity.png
    :figwidth: 20%
-
+   :figclass: left
+              
    Figure
 
    Marker "infinity"
 
-.. code:: glsl
 
-   float marker_infinity(vec2 P, float size)
-   {
-       const vec2 c1 = vec2(+0.2125, 0.00);
-       const vec2 c2 = vec2(-0.2125, 0.00);
-       float r1 = length(P-c1*size) - size/3.5;
-       float r2 = length(P-c1*size) - size/7.5;
-       float r3 = length(P-c2*size) - size/3.5;
-       float r4 = length(P-c2*size) - size/7.5;
-       return min( max(r1,-r2), max(r3,-r4));
-   }
-             
-----
-   
-Ring
-++++
+.. figure:: images/chapter-08/marker-pin.png
+   :figwidth: 20%
+   :figclass: left
+
+   Figure
+
+   Marker "pin"
+
 
 .. figure:: images/chapter-08/marker-ring.png
    :figwidth: 20%
-
+   :figclass: left
+              
    Figure
 
    Marker "ring"
 
-.. code:: glsl
-
-   float marker_ring(vec2 P, float size)
-   {
-       float r1 = length(P) - size/2;
-       float r2 = length(P) - size/4;
-       return max(r1,-r2);
-   }
-   
-----
-
-Spade
-+++++
 
 .. figure:: images/chapter-08/marker-spade.png
    :figwidth: 20%
-
+   :figclass: left
+              
    Figure
 
    Marker "spade"
 
-.. code:: glsl
-
-   float marker_spade(vec2 P, float size)
-   {
-      // Reversed heart (diamond + 2 circles)
-      float s= size * 0.85 / 3.5;
-      float x = M_SQRT2/2.0 * (P.x + P.y) + 0.4*s;
-      float y = M_SQRT2/2.0 * (P.x - P.y) - 0.4*s;
-      float r1 = max(abs(x),abs(y)) - s;
-      float r2 = length(P - M_SQRT2/2.0*vec2(+1.0,+0.2)*s) - s;
-      float r3 = length(P - M_SQRT2/2.0*vec2(-1.0,+0.2)*s) - s;
-      float r4 =  min(min(r1,r2),r3);
-
-      // Root (2 circles and 2 planes)
-      const vec2 c1 = vec2(+0.65, 0.125);
-      const vec2 c2 = vec2(-0.65, 0.125);
-      float r5 = length(P-c1*size) - size/1.6;
-      float r6 = length(P-c2*size) - size/1.6;
-      float r7 = P.y - 0.5*size;
-      float r8 = 0.1*size - P.y;
-      float r9 = max(-min(r5,r6), max(r7,r8));
-
-       return min(r4,r9);
-   }
-          
-----
-   
-Triangle
-++++++++
 
 .. figure:: images/chapter-08/marker-triangle.png
    :figwidth: 20%
-
+   :figclass: left
+              
    Figure
 
    Marker "triangle"
 
-.. code:: glsl
 
-   float marker_triangle(vec2 P, float size)
-   {
-       float x = M_SQRT2/2.0 * (P.x - (P.y-size/6));
-       float y = M_SQRT2/2.0 * (P.x + (P.y-size/6));
-       float r1 = max(abs(x), abs(y)) - size/(2.0*M_SQRT2);
-       float r2 = P.y-size/6;
-       return max(r1,r2);
-   }
-   
-----
 
 Arrows
 -------------------------------------------------------------------------------
 
+Arrows are a bit different from markers because they are made of a body, which
+is a line basically, and a head. Most of the difficulty lies in the head
+definition that may vary a lot depending on the type the arrow. For example,
+the stealth arrow shader reads:
+
+.. code:: glsl
+
+   float line_distance(vec2 p, vec2 p1, vec2 p2) {
+       vec2 center = (p1 + p2) * 0.5;
+       float len = length(p2 - p1);
+       vec2 dir = (p2 - p1) / len;
+       vec2 rel_p = p - center;
+       return dot(rel_p, vec2(dir.y, -dir.x));
+   }
+
+   float arrow_stealth(vec2 texcoord,
+                       float body, float head,
+                       float linewidth, float antialias)
+   {
+       float w = linewidth/2.0 + antialias;
+       vec2 start = -vec2(body/2.0, 0.0);
+       vec2 end   = +vec2(body/2.0, 0.0);
+       float height = 0.5;
+
+       // Head : 4 lines
+       float d1 = line_distance(texcoord, end-head*vec2(+1.0,-height),
+                                          end);
+       float d2 = line_distance(texcoord, end-head*vec2(+1.0,-height),
+                                          end-vec2(3.0*head/4.0,0.0));
+       float d3 = line_distance(texcoord, end-head*vec2(+1.0,+height), end);
+       float d4 = line_distance(texcoord, end-head*vec2(+1.0,+0.5),
+                                          end-vec2(3.0*head/4.0,0.0));
+
+       // Body : 1 segment
+       float d5 = segment_distance(texcoord, start, end - vec2(linewidth,0.0));
+
+       return min(d5, max( max(-d1, d3), - max(-d2,d4)));
+   }
+
+
+Glumpy provides 8 types of arrows that you can see below. You can also have a
+look at the `arrow.py <code/chapter-08/arrow.py>`_ example where you can
+experiment with the different shapes and rendering options. Feel free to design
+your own and to open a pull request to have them added to glumpy.
+
+
+.. figure:: images/chapter-08/arrow-triangle-90.png
+   :figwidth: 20%
+   :figclass: left
+              
+   Figure
+
+   Arrow "triangle_90"
+
+.. figure:: images/chapter-08/arrow-triangle-60.png
+   :figwidth: 20%
+   :figclass: left
+              
+   Figure
+
+   Arrow "triangle_60"
+
+.. figure:: images/chapter-08/arrow-triangle-30.png
+   :figwidth: 20%
+   :figclass: left
+      
+   Figure
+
+   Arrow "triangle_30"
+
+
+.. figure:: images/chapter-08/arrow-angle-90.png
+   :figwidth: 20%
+   :figclass: left
+              
+   Figure
+
+   Arrow "angle_90"
+
+.. figure:: images/chapter-08/arrow-angle-60.png
+   :figwidth: 20%
+   :figclass: left
+              
+   Figure
+
+   Arrow "angle_60"
+
+.. figure:: images/chapter-08/arrow-angle-30.png
+   :figwidth: 20%
+   :figclass: left
+              
+   Figure
+
+   Arrow "angle_30"
+   
+.. figure:: images/chapter-08/arrow-stealth.png
+   :figwidth: 20%
+   :figclass: left
+              
+   Figure
+
+   Arrow "stealth"
+
+.. figure:: images/chapter-08/arrow-curved.png
+   :figwidth: 20%
+   :figclass: left
+              
+   Figure
+
+   Arrow "curved"
+
+
+
+
+          
 Texture based
 -------------------------------------------------------------------------------
+
+.. figure:: images/chapter-08/firefox.png
+   :figwidth: 30%
+   :figclass: right
+              
+   Figure
+
+   The black and white Firefox logo
+
+We've seen that constructive solid geometry is a powerful tool for the design
+of quite complex shapes. It is also very fast since everything is computed on
+the GPU. Of course, the more complex is the shape, the slower it will be to
+evaluate and thus to render. However, for really complex shapes, it might not
+be possible to express the shape in mathematical terms and we have to find
+another way. The idea is to actually precompute the signed distance to an
+arbitrary shape on the CPU and to store the result in a texture.
+
+This computation quite be quite intensive and this the reason why it is
+preferable to code it in C. Glumpy comes with the binding for the `"Anti-Aliased
+Euclidean Distance Transform"
+<http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.170.1024&rep=rep1&type=pdf>`_
+method proposed by Stefan Gustavson and Robin Strand.
+
+.. figure:: images/chapter-08/firefox-sdf.png
+   :figwidth: 30%
+   :figclass: right
+              
+   Figure
+
+   Signed distance to the Firefox logo
+
+If you run the code below, you should obtain the image on the right.
+
+.. code:: python
+
+   import numpy as np
+   from PIL import Image
+   from glumpy.ext.sdf import compute_sdf
+   
+   Z = np.array(Image.open("firefox.png"))
+   compute_sdf(Z)
+   image = Image.fromarray((Z*255).astype(np.ubyte))
+   image.save("firefox-sdf.png")
+   
+Even though the logo is barely recognisable on the resulting image, it carries
+nonetheless the necessary information to compute the distance to the border
+from within the shader. When the texture will be read inside the fragment
+shader, we'll subtract 0.5 from the texture value (texture value are
+normalized, hence the 0.5) to obtain the actual signed distance field. You're
+then free to use this distance for accurate rendering of your shape. Needless
+to say that the precision of the distance is directly correlated with the size
+of your texture...
+
+
+.. figure:: movies/chapter-08/sdf-marker.mp4
+   :loop:
+   :autoplay:
+   :controls:
+   :figwidth: 30%
+
+   Figure 
+              
+   SDF marker (see `sdf-marker.py <code/chapter-08/sdf-marker.py>`_)
+
+The fragment shader reads (see also `sdf-marker.py <code/chapter-08/sdf-marker.py>`_):
+   
+.. code:: glsl
+
+   varying float v_size;
+   varying vec2 v_texcoord;
+   uniform float linewidth;
+   uniform float antialias;
+   uniform sampler2D texture;
+   void main() {
+       float size = v_size + linewidth + 2.0*antialias;
+       float signed_distance = size*(texture2D(texture, v_texcoord).r - 0.5);
+       float border_distance = abs(signed_distance) - linewidth/2.0 + antialias;
+       float alpha = border_distance/antialias;
+       alpha = exp(-alpha*alpha);
+       if (border_distance < 0)
+           gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+       else if (border_distance < (linewidth/2.0 + 2.0*antialias))
+           gl_FragColor = vec4(0.0, 0.0, 0.0, alpha);
+       else
+           discard;
+   }
+
+   
+Exercises
+-------------------------------------------------------------------------------
+
+
+Quiver plot
++++++++++++
+
+.. figure:: images/chapter-08/quiver.png
+   :figwidth: 50%
+   :figclass: right
+              
+   Figure
+
+   An dynamic quiver plot made of two triangles.
+
+Now that we know how to draw arrows, we can make a quiver plot very easily. The
+obvious solution would be to draw n arrows using 2×n triangles (since one arrow
+is two triangle). However, if your arrows are evenly spaced as on the figure on
+the right, there is a smarter solution using only two triangles.
+
+Solution: `quiver.py <code/chapter-08/quiver.py>`_
+
+ SDF-light-shadow.webm
+
+Light and shadows
++++++++++++++++++
+
+.. figure:: movies/chapter-08/SDF-light-shadow.mp4
+   :loop:
+   :autoplay:
+   :controls:
+   :figwidth: 50%
+
+   Figure 
+              
+   2D signed distance functions by Marteen.
+   Live demo at https://www.shadertoy.com/view/4dfXDn
+
+
+As explained before, the `shadertoy <https://www.shadertoy.com>`_ website is a
+great teaching resources and you can learn a lot by reading the sources
+accompanying a demo. As an exercise, have a look at this `wonderful demo
+<https://www.shadertoy.com/view/4dfXDn>`_ by Marteen that show two dimensional
+signed distance field functions with light and shadows.
+
+Simply gorgeous.

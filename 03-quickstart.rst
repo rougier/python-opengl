@@ -30,7 +30,6 @@ Normalize Device Coordinates
 
 .. figure:: images/chapter-03/NDC.png
    :figwidth: 40%
-   :figclass: left
             
    Figure
 
@@ -59,7 +58,6 @@ Triangulation
 
 .. figure:: images/chapter-03/triangulation.png
    :figwidth: 35%
-   :figclass: left
             
    Figure
 
@@ -105,7 +103,6 @@ GL Primitives
 
 .. figure:: images/chapter-03/gl-primitives.png
    :figwidth: 40%
-   :figclass: left
 
    Figure
 
@@ -144,7 +141,6 @@ Interpolation
 
 .. figure:: images/chapter-03/interpolation.png
    :figwidth: 40%
-   :figclass: left
             
    Figure
 
@@ -458,7 +454,6 @@ We're done, we can now rewrite the display function:
 
 .. figure:: images/chapter-03/glumpy-quad-solid.png
    :figwidth: 30%
-   :figclass: left
             
    Figure
 
@@ -484,7 +479,6 @@ Uniform color
 
 .. figure:: images/chapter-03/glumpy-quad-uniform-color.png
    :figwidth: 30%
-   :figclass: left
             
    Figure
 
@@ -528,7 +522,6 @@ Varying color
 
 .. figure:: images/chapter-03/glumpy-quad-varying-color.png
    :figwidth: 30%
-   :figclass: left
             
    Figure
 
@@ -757,7 +750,6 @@ the quad program (see `<code/chapter-03/glumpy-quad-varying-color.py>`_):
       :autoplay:
       :controls:
       :figwidth: 35%
-      :figclass: left
 
       Figure
 
@@ -816,7 +808,6 @@ tricks in the next chapters.
    :autoplay:
    :controls:
    :figwidth: 35%
-   :figclass: left
 
    Figure
 
@@ -839,7 +830,6 @@ Solution: `<code/chapter-03/quad-scale.py>`_
    :autoplay:
    :controls:
    :figwidth: 35%
-   :figclass: left
 
    Figure
 

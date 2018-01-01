@@ -92,7 +92,7 @@ body {
 }
 
 /* Buy the book !!! */
-#id56 {
+#id59 {
     padding-top: .25em;
     padding-bottom: .25em;
     color: #ffffff;
@@ -640,13 +640,24 @@ img {
 }
 
 .right {
+    margin: 0;
+    padding: 0;
     float: right;
-    margin-left: .5em;
+    margin-left: 1em;
+}
+
+.left {
+    float: left;
+    margin: 0;
+    padding: 0;
+    margin-right: 1em;
 }
 
 .align-right {
     float: right;
-    margin-left: .5em;
+    margin: 0;
+    padding: 0;
+    margin-left: 1.0em;
 }
 
 
@@ -654,13 +665,13 @@ img {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: 85%;
     line-height: 1.25em;
-    margin: 0;
-    padding: 0;
+/*    margin: 0;*/
+/*    padding: 0;*/
     counter-increment: figure;
     overflow:auto;
 /*    border: 1px solid #ccc;*/
-    float: right;
-    margin-left: 1em;
+/*    float: right;*/
+/*    margin-left: 1em;*/
     padding-bottom: 1em;
 }
 .figure img, .figure video {

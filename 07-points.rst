@@ -426,10 +426,11 @@ You can see on the figures that the spheres now intersect each other correctly.
 Exercises
 -------------------------------------------------------------------------------
 
+Tiny discs
+++++++++++
 
 .. figure:: images/chapter-07/spiral.png
-   :figwidth: 25%
-   :figclass: right
+   :figwidth: 30%
 
    Figure
 
@@ -444,15 +445,18 @@ disc...
 Solution: `spiral.py <code/chapter-07/spiral.py>`_
 
 
-----
+
+Antialiased triangles
++++++++++++++++++++++
 
 .. figure:: movies/chapter-07/triangles.mp4
    :loop:
    :autoplay:
    :controls:
    :figwidth: 30%
-   :figclass: right
 
+   Figure 
+              
    Antialiased triangles
 
 Try to adapt the code from the ellipses section to remake the animation on the
@@ -460,11 +464,13 @@ right. Be careful with the computation of the bouding box.
 
 Solution: `triangles.py <code/chapter-07/triangles.py>`_
 
-----
+
+
+GPU Voronoi
++++++++++++
 
 .. figure:: images/chapter-07/voronoi.png
-   :figwidth: 25%
-   :figclass: right
+   :figwidth: 30%
 
    Figure
 

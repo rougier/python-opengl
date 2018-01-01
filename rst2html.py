@@ -76,7 +76,7 @@ class Media(Video,images.Image):
     option_spec.update(Video.option_spec.copy())
     def run(self):
         uri = directives.uri(self.arguments[0])
-        if uri.split('.')[-1] in ['ogg', 'mpg', 'mp4', 'avi', 'mpeg']:
+        if uri.split('.')[-1] in ['ogg', 'mpg', 'mp4', 'avi', 'mpeg', 'webm']:
             return Video.run(self)
         else:
             return images.Image.run(self)
@@ -103,7 +103,7 @@ class Figure(Media):
     has_content = True
     def run(self):
         figwidth = self.options.pop('figwidth', None)
-        figclasses = self.options.pop('figclass', None)
+        figclasses = self.options.pop('figclass', ["right"])
         align = self.options.pop('align', None)
         (media_node,) = Media.run(self)
         if isinstance(media_node, nodes.system_message):
