@@ -92,7 +92,7 @@ body {
 }
 
 /* Buy the book !!! */
-#id59 {
+#id62 {
     padding-top: .25em;
     padding-bottom: .25em;
     color: #ffffff;
@@ -364,12 +364,18 @@ h4 a, h4 a:visited, h4 a:hover {
     padding-bottom: 0em;
 }
 
+.literal-block {
+    font-size: 90%;
+    line-height: 1em;
+    font-family: 'Source Code Pro';
+}
 
 /* --- Links --------------------------------------------------------------- */
 a {
     color: #059;
     text-decoration: none;
     transition: all 1.0s ease;
+/*    border-bottom: .5px dashed #059;*/
 }
 a:visited {
     color: #059;
@@ -377,7 +383,7 @@ a:visited {
 a:hover {
 /*    color: #059;*/
     color: #DF3651; 
-/*    border-bottom: 1px solid #059;*/
+/*    border-bottom: .5px solid #059;*/
 }
 a:active {
     color:#000000;

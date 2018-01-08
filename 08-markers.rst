@@ -106,7 +106,7 @@ __  https://www.shadertoy.com/view/4tsyWn
 
    Figure
 
-   | Difference (A not B)
+   | Difference (B not A)
    | `CSG-difference-2.py <code/chapter-08/csg-difference-2.py>`_ / `Shadertoy`__
 
 __  https://www.shadertoy.com/view/XtsyWn
@@ -116,7 +116,7 @@ __  https://www.shadertoy.com/view/XtsyWn
 
    Figure
 
-   | Difference (B not A)
+   | Difference (A not B)
    | `CSG-difference-1.py <code/chapter-08/csg-difference-1.py>`_ / `Shadertoy`__
 
 __  https://www.shadertoy.com/view/4llyWn
@@ -495,7 +495,7 @@ to say that the precision of the distance is directly correlated with the size
 of your texture...
 
 
-.. figure:: movies/chapter-08/sdf-marker.mp4
+.. figure:: movies/chapter-08/texture-marker.mp4
    :loop:
    :autoplay:
    :controls:
@@ -503,9 +503,10 @@ of your texture...
 
    Figure 
               
-   SDF marker (see `sdf-marker.py <code/chapter-08/sdf-marker.py>`_)
+   SDF textured marker (see `texture-marker.py
+   <code/chapter-08/texture-marker.py>`_)
 
-The fragment shader reads (see also `sdf-marker.py <code/chapter-08/sdf-marker.py>`_):
+The fragment shader reads (see also `texture-marker.py <code/chapter-08/texture-marker.py>`_):
    
 .. code:: glsl
 
@@ -551,7 +552,6 @@ the right, there is a smarter solution using only two triangles.
 
 Solution: `quiver.py <code/chapter-08/quiver.py>`_
 
- SDF-light-shadow.webm
 
 Light and shadows
 +++++++++++++++++
@@ -569,9 +569,9 @@ Light and shadows
 
 
 As explained before, the `shadertoy <https://www.shadertoy.com>`_ website is a
-great teaching resources and you can learn a lot by reading the sources
-accompanying a demo. As an exercise, have a look at this `wonderful demo
-<https://www.shadertoy.com/view/4dfXDn>`_ by Marteen that show two dimensional
+great resource and you can learn a lot by reading the sources accompanying each
+demo. As an exercise, have a look at this `wonderful demo
+<https://www.shadertoy.com/view/4dfXDn>`_ by Marteen that shows two dimensional
 signed distance field functions with light and shadows.
 
-Simply gorgeous.
+Simply gorgeous...
