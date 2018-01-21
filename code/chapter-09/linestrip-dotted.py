@@ -48,6 +48,7 @@ fragment = """
 uniform float antialias;
 uniform float thickness;
 uniform float linelength;
+uniform float phase;
 varying vec2 v_uv;
 varying float v_alpha;
 
@@ -55,13 +56,15 @@ void main() {
     float d = 0;
     float w = thickness/2.0 - antialias;
 
-    float spacing = 2.0;
-    float center = v_uv.x - mod(v_uv.x+spacing/2.0*thickness,
-                                spacing*thickness) + spacing/2.0*thickness;
-    if (linelength - center > thickness/2.0)
-        d = length(v_uv - vec2(center,0.0)) - w;
-    else
+    float spacing = 1.5;
+    float center = v_uv.x + spacing/2.0*thickness
+                 - mod(v_uv.x + phase + spacing/2.0*thickness, spacing*thickness);
+    if (linelength - center < thickness/2.0)
         discard;
+    else if (center < thickness/2.0)
+        discard;
+    else
+        d = length(v_uv - vec2(center,0.0)) - w;
 
     if( d < 0) {
         gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
@@ -72,14 +75,17 @@ void main() {
 } """
 
 window = app.Window(512, 512, color=(1,1,1,1))
-
+phase = 0
 @window.event
 def on_resize(width, height):
     line["resolution"] = width, height
 
 @window.event
 def on_draw(dt):
+    global phase
     window.clear()
+    phase -= 0.01*12
+    line["phase"] = phase
     line.draw(gl.GL_TRIANGLE_STRIP)
 
 def bake(P):
@@ -94,15 +100,16 @@ def bake(P):
     V[0], V[-1] = V[1], V[-2]
     return V_prev, V_curr, V_next, L[-1]
 
-n = 1024
-T = np.linspace(0, 12*2*np.pi, n, dtype=np.float32)
-R = np.linspace(10, 246, n, dtype=np.float32)
+n = 512
+T = np.linspace(0, 10*2*np.pi, n, dtype=np.float32)
+R = np.linspace(64, 250, n, dtype=np.float32)
 P = np.dstack((256+np.cos(T)*R, 256+np.sin(T)*R)).squeeze()
 V_prev, V_curr, V_next, length = bake(P)
 
 line = gloo.Program(vertex, fragment)
 line["prev"], line["curr"], line["next"]  = V_prev, V_curr, V_next
-line["thickness"] = 6.0
+line["thickness"] = 12.0
 line["antialias"] = 1.5
 line["linelength"] = length
+
 app.run()

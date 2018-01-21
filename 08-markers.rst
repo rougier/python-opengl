@@ -7,6 +7,16 @@ Rendering markers
    :class: toc chapter-08
 
 
+Markers and arrows are important components in scientific visualisation.
+Markers help to visualize individual points and aggregated data while arrows
+can be used to visualize a stream flow. Markers and arrows can be actually
+rendered very fast by taking advantage of the shader. In fact, they can be
+drawn entirely inside the shader provided we know the size, the type and the
+orientation. The teaser figure comes from an `article
+<http://jcgt.org/published/0003/04/01/>`_ I wrote and published in the journal
+of Computer Graphics and Techniques. The content of this chapter is largely
+inspired by this article.
+
 
 Constructive Solid Geometry
 -------------------------------------------------------------------------------

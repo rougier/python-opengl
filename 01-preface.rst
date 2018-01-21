@@ -9,13 +9,11 @@ Preface
 
 This book is open-access (i.e. it's free to read at `this address
 <http://www.labri.fr/perso/nrougier/python+opengl>`_) because I believe
-knowledge should be free. However, *if you think the book is worth a few
-dollars* (`5€ <https://www.paypal.me/NicolasPRougier/5>`_ or `10€
-<https://www.paypal.me/NicolasPRougier/10>`_), you can use `Paypal
-<https://www.paypal.me/NicolasPRougier/>`_ to make payment. This money will
-help me to travel to Python conferences and to write other books as well.  If
-you don't have money, it's fine. Just enjoy the book and spread the
-word about it. The teaser image above comes from the `artwork section
+knowledge should be free. However, if you think the book is worth a few
+dollars, you can `Buy the book`_. This money will help me to travel to Python
+conferences and to write other books as well.  If you don't have money, it's
+fine. Just enjoy the book and spread the word about it. The teaser image above
+comes from the `artwork section
 <http://www.labri.fr/perso/nrougier/artwork/index.html>`_ of my website. It has
 been made some years ago using the `Povray <http://www.povray.org>`_
 (Persistence of Vision) raytracer. I like it very much because it is a kind of
@@ -184,8 +182,10 @@ As you may have realized by now, the book is free for you to read
 online. However, some people prefer to have a PDF version or even a dead-tree
 version. For this to happen, I need to design a latex template for producing a
 nice PDF. That's a lot of work and I don't really have time since I'm also (and
-mainly) a researcher with several students to supervise, researches to do,
-grants to write, talks to prepare, etc.
+mainly) a `researcher
+<http://www.labri.fr/perso/nrougier/research/index.html>`_ with several
+students to supervise, researches to do, articles and grants to write, talks to
+prepare, etc.
 
 Consequently, if you really want to have a PDF version, you'll have to
 explicitly express your interest by contributing a small amount of

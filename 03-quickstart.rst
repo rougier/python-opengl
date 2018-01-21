@@ -1,4 +1,4 @@
-Quickstart
+Quickstart                                                                    
 ===============================================================================
 
 .. contents:: .
@@ -12,9 +12,9 @@ For the **really** impatient, you can try to run the code in the `teaser image
 open on your desktop with a red color in the background. If you now want to
 understand how this works, you'll have to read the text below.
            
-           
-Preliminaries
--------------
+
+Preliminaries                                                                  
+-------------------------------------------------------------------------------
 
 The main difficulty for newcomers in programming modern OpenGL is that it
 requires to underdtand a lot of different concepts at once and then, to perform
@@ -25,8 +25,8 @@ first OpenGL program using the raw interface and our goal is to display a
 simple colored quad (i.e. a red square).
 
 
-Normalize Device Coordinates
-++++++++++++++++++++++++++++
+Normalize Device Coordinates                                                   
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. figure:: images/chapter-03/NDC.png
    :figwidth: 40%
@@ -53,8 +53,8 @@ some problems, especially when you're dealing with the mouse pointer whose
 **y** coordinate goes this other way around.
 
 
-Triangulation
-+++++++++++++
+Triangulation                                                                  
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. figure:: images/chapter-03/triangulation.png
    :figwidth: 35%
@@ -98,8 +98,8 @@ Our quad can now be using triangle `(V₀,V₁,V₂)` and triangle `(V₁,V₂,V
 is exactly what we need to tell OpenGL.
 
 
-GL Primitives
-+++++++++++++
+GL Primitives                                                                  
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. figure:: images/chapter-03/gl-primitives.png
    :figwidth: 40%
@@ -136,8 +136,8 @@ because we took care of describing the two triangles following this implicit
 structure.
 
 
-Interpolation
-+++++++++++++
+Interpolation                                                                  
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. figure:: images/chapter-03/interpolation.png
    :figwidth: 40%
@@ -186,8 +186,8 @@ shader. And this property will be used and abused in this book.
 
 
 
-The hard way
-------------
+The hard way                                                                   
+-------------------------------------------------------------------------------
 
 Having reviewed some important OpenGL concepts, it's time to code our quad
 example. But, before even using OpenGL, we need to open a window with a valid GL
@@ -240,8 +240,8 @@ simple case, we just ask OpenGL to swap buffers (this avoids flickering).
 Finally, the keyboard callback allows us to exit by pressing the `Escape` key.
 
 
-Writing shaders
-+++++++++++++++
+Writing shaders                                                                
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Now that your window has been created, we can start writing our program, that
 is, we need to write a vertex and a fragment shader. For the vertex shader, the
@@ -289,8 +289,8 @@ notation. `1.0` for alpha channel means fully opaque.
      }
 
 
-Compiling the program
-+++++++++++++++++++++
+Compiling the program                                                          
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 We wrote our shader and we need now to build a program that will link the
 vertex and the fragment shader together. Building such program is relatively
@@ -364,8 +364,8 @@ because we'll use a single program in this example:
    gl.glUseProgram(program)
 
 
-Uploading data to the GPU
-+++++++++++++++++++++++++
+Uploading data to the GPU                                                      
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Next, we need to build CPU data and the corresponding GPU buffer that will hold
 a copy of the CPU data (GPU cannot access CPU memory). In Python, things are
@@ -440,8 +440,9 @@ Let's now fill our CPU data and upload it to the newly created GPU buffer:
    gl.glBufferData(gl.GL_ARRAY_BUFFER, data.nbytes, data, gl.GL_DYNAMIC_DRAW)
 
 
-Rendering
-+++++++++
+
+Rendering                                                                      
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 We're done, we can now rewrite the display function:
 
@@ -474,8 +475,9 @@ numpy. Of course, you can design your own library to ease the writing of GL
 Python applications.
 
 
-Uniform color
-+++++++++++++
+
+Uniform color                                                                  
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. figure:: images/chapter-03/glumpy-quad-uniform-color.png
    :figwidth: 30%
@@ -516,8 +518,9 @@ If you run the new `<code/glut-quad-uniform-color.py>`_ example, you should
 obtain the blue quad as shown on the right.
 
 
-Varying color
-+++++++++++++
+
+Varying color                                                                  
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 .. figure:: images/chapter-03/glumpy-quad-varying-color.png
@@ -612,8 +615,8 @@ thanks to NumPy:
    
 
 
-The easy way
-------------
+The easy way                                                                   
+-------------------------------------------------------------------------------
 
 As we've seen in the previous section, displaying a simple quad using modern GL
 is quite tedious and requires a fair number of operations and this why from now
@@ -716,8 +719,8 @@ program.
    `<code/chapter-03/quad-glumpy.py>`_
 
 
-Uniform color
-+++++++++++++
+Uniform color                                                                  
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Adding a `uniform` specified color like is only a matter of modifying the
 fragment shader as in the previous section an directly assigning the color to
@@ -729,8 +732,8 @@ the quad program (see `<code/chapter-03/glumpy-quad-uniform-color.py>`_):
 
 
 
-Varying color
-+++++++++++++
+Varying color                                                                  
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Adding a per-vertex color like is also and only a matter of modifying the
 fragment shader as in the previous section an directly assigning the color to
@@ -794,8 +797,8 @@ the quad program (see `<code/chapter-03/glumpy-quad-varying-color.py>`_):
 
    
      
-Exercises
----------
+Exercises                                                                      
+-------------------------------------------------------------------------------
 
 Now we can play a bit with the shader and hopefully you'll understand why
 learning to program the dynamic graphic pipeline is worth the effort. Modifying

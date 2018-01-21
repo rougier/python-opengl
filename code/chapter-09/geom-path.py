@@ -101,9 +101,16 @@ void main()
     }
 
     // Round join (instead of miter)
-    // if (v_texcoord.x < 0.0)          { distance = length(v_texcoord); }
-    // else if(v_texcoord.x > v_length) { distance = length(v_texcoord - vec2(v_length, 0.0)); }
-
+    if (miter_limit < 0) {
+        if (v_texcoord.x < 0.0)
+        {
+            distance = length(v_texcoord);
+        }
+        else if(v_texcoord.x > v_length)
+        {
+            distance = length(v_texcoord - vec2(v_length, 0.0));
+        }
+    } else {
     // Miter limit
     float t = (miter_limit-1.0)*(linewidth/2.0) + antialias;
 
@@ -114,6 +121,7 @@ void main()
     else if( (v_texcoord.x > v_length) && (v_bevel_distance.y > (abs(distance) + t)) )
     {
         distance = v_bevel_distance.y - t;
+    }
     }
     gl_FragColor = stroke(distance, linewidth, antialias, color);
 } """
@@ -310,13 +318,13 @@ P[:,1] = 400 + np.sin(T)*R
 # Star
 def star(inner=0.45, outer=1.0, n=5):
     R = np.array( [inner,outer]*n)
-    T = np.linspace(0,2*np.pi,2*n,endpoint=False)
+    T = np.linspace(-0.5*np.pi, 1.5*np.pi, 2*n, endpoint=False)
     P = np.zeros((2*n,2))
     P[:,0]= R*np.cos(T)
     P[:,1]= R*np.sin(T)
     return P
 
-P = (star(n=5)*350 + (400,400)).astype(np.float32)
+P = (star(n=5)*300 + (400,400)).astype(np.float32)
 
 closed = True
 if closed:
@@ -333,9 +341,9 @@ I = I.astype(np.uint32).view(gloo.IndexBuffer)
 
 
 program["position"] = P
-program["linewidth"] = 32.0
+program["linewidth"] = 64.0
 program["antialias"] = 1.5
-program["miter_limit"] = 4.0
+program["miter_limit"] = 1.0
 program["color"] = 0,0,0,1
 
 window = app.Window(width=800, height=800, color=(1,1,1,1))

@@ -1,4 +1,4 @@
-Rendering lines
+Rendering lines                                                                
 ===============================================================================
 
 .. contents:: .
@@ -7,8 +7,19 @@ Rendering lines
    :class: toc chapter-09
 
 
-Raw Lines
----------
+Lines are most certainly among the most important components in scientific
+visualization. They can be used to represents axis, frames, plots, error bars,
+contours, grids, etc. Lines and segments are among the most simple geometrical
+objects. And yet, they can become quite complex if we consider line thickness,
+cap, joint and pattern such as dotted, dashed, etc. In the end, rendering lines
+with perfect quality is a lot of work as you'll read below. But it's worth the
+effort as illustrated in the teaser image above. This cames from an interactive
+demo of glumpy (See the `spiral demo
+<https://github.com/glumpy/glumpy/blob/master/examples/spiral.py>`_).
+           
+
+Raw Lines                                                                      
+-------------------------------------------------------------------------------
 
 As we've seen in the Quickstart_ chapter, OpenGL come with three different line
 primitives, namely `gl.GL_LINES` (segments), `gl.GL_LINE_STRIP` (polyline) and
@@ -59,7 +70,7 @@ on the image on the right if you want to see it. But you've be warned. It makes
 my eyes bleed each time I look at it.
 
            
-Segments
+Segments                                                                       
 -------------------------------------------------------------------------------
 
 .. figure:: images/chapter-09/segment.png
@@ -199,7 +210,7 @@ any cap you like. In fact, you could have used any marker we've seen in
 the previous chapter or no caps at all (just discard the fragment in such case).
 
 
-Lines
+Lines                                                                          
 -------------------------------------------------------------------------------
 
 .. figure:: images/chapter-09/line-joints.png
@@ -232,8 +243,8 @@ case, we'll need only 2×n vertices while in the other, we'll need 4×n vertices
 (and a lot of tests inside the shader).
    
 
-Smooth lines
-++++++++++++
+Smooth lines                                                                   
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. figure:: images/chapter-09/joint-detail.png
    :figwidth: 35%
@@ -275,7 +286,7 @@ Patterns_ below).
 Taking all these constraints into account, the line preparation reads:
 
 
-.. code :: python
+.. code:: python
 
    def bake(P, closed=False):
        epsilon = 1e-10
@@ -366,8 +377,9 @@ Adn the fragment shader reads:
 
 .. note::
 
-   Note that we'll be using the GL_TRIANGLE_STRIP while would be better to use
-   GL_TRIANGLES and to compute the relevant indices. But I'm lazy right now.
+   Note that we'll be using the GL_TRIANGLE_STRIP even though it would be
+   better to use GL_TRIANGLES and to compute the relevant indices. But I feel
+   lazy right now.
 
 Putting all together, we can draw some nice and smooth lines (see `linestrip.py
 <code/chapter-09/linestrip.py>`_). Note that for closed lines such as the star
@@ -383,8 +395,8 @@ the `bake` function).
 
 
 
-Broken lines
-++++++++++++
+Broken lines                                                                   
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. figure:: images/chapter-09/line-adjency.png
    :figwidth: 40%
@@ -414,16 +426,19 @@ CPU time of "quadrupling" vertices as we did in the previous section. To be
 able to this, we have to use `gl.GL_LINES_ADJACENCY_EXT` and indicate OpenGL
 we'll generate four vertices at each stage, just before the vertex shader:
 
+
 .. code:: python
           
    geometry = gloo.GeometryShader(geometry, 4,
                                   gl.GL_LINES_ADJACENCY_EXT,
                                   gl.GL_TRIANGLE_STRIP)
 
+                                  
 Inside the geometry shader, we now have access to four consecutive vertices (in
 the sense of the provided indices) that can be used to compute the actual
 position of a given segment of the line. During rendering, we also have to use
 the same primitives:
+
 
 .. code:: python
 
@@ -433,10 +448,21 @@ the same primitives:
        program.draw(gl.GL_LINE_STRIP_ADJACENCY_EXT, I)
 
 
+I won't further describe the method that is a bit complicated but you can all
+the details in the provided demo script. See the caption of the image below.
+       
+.. figure:: images/chapter-09/stars.png
+   :figwidth: 100%
+              
+   Figure
+
+   Different line joints using a geometry shader. See
+   `geom-path.py <code/chapter-09/geom.path.py>`_.
 
 
-Bézier curves
-+++++++++++++
+
+Bézier curves                                                                  
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. figure:: images/chapter-09/bezier_div.png
    :figwidth: 30%
@@ -447,18 +473,22 @@ Bézier curves
    Bézier demo from the `antigrain geometry library <http://antigrain.com/>`_
 
 There is a huge litterature on Bézier curves and a huge litterature on GPU
-Bézier curves as well. I won't explain eveything here because it would require
-a whole book. If you're interested in the topic, you can have a look at `A
+Bézier curves as well (+ lot of patents). I won't explain everything here
+because it would require a whole book and I'm not sure I understand every
+aspect anyway. If you're interested in the topic, you can have a look at `A
 Primer on Bézier curves <https://pomax.github.io/bezierinfo>`_ by Mike
 Kamermans (Pomax) that explain pretty much everything but GPU
 implementation. For GPU implementation, you can have a look at shadertoy and do
-a search using the bezier keyword.
+a search using the "Bézier" or "bezier" keyword (I even commited `one
+<https://www.shadertoy.com/view/4dfSDf>`_ myself).
 
 For the time being, we'll use an approximation of Bézier curves using an
 `adaptive subdivision <http://antigrain.com/research/adaptive_bezier/>`_ as
-designed by Maxim Shemarev (and translated in Python by me). You can see on the
-images below that this method provides a very good approximation in a
-reasonable number of segments (third figure on the right).
+designed by Maxim Shemarev (and translated in Python by me, see `curves.py
+<code/chapter-09/curves.py>`_). You can see on the images below that this
+method provides a very good approximation in a reasonable number of segments
+(third figure on the right).
+
 
 .. figure:: images/chapter-09/bezier01.gif
    :figwidth: 30%
@@ -468,6 +498,7 @@ reasonable number of segments (third figure on the right).
 
    Approximation of a Bézier curves with too few vertices (n=52).
 
+   
 .. figure:: images/chapter-09/bezier02.gif
    :figwidth: 30%
    :figclass: left
@@ -476,6 +507,7 @@ reasonable number of segments (third figure on the right).
 
    Approximation of a Bézier curves with too many vertices (n=210).
 
+   
 .. figure:: images/chapter-09/bezier04.gif
    :figwidth: 30%
    :figclass: left
@@ -485,20 +517,331 @@ reasonable number of segments (third figure on the right).
    Adaptive subdivision of a Bézier curves (n=40).
    
 
-Consequently, for drawing a Bézier curve, we'll first need to approximate it
-using linear segment and then we'll bake to render it as a smooth line
-(i.e. using bevel joint).
+Consequently, for drawing a Bézier curve, we just need to approximate as line
+segments, bake those segments and render them as shown below (using
+bevel joint, see `bezier.py <code/chapter-09/bezier.py>`_):
 
 
-Patterns
+.. figure:: images/chapter-09/bezier-1.png
+   :figwidth: 31%
+   :figclass: right
+
+   Figure
+
+   
+.. figure:: images/chapter-09/bezier-2.png
+   :figwidth: 31%
+   :figclass: right
+
+   Figure
+
+   
+.. figure:: images/chapter-09/bezier-3.png
+   :figwidth: 31%
+   :figclass: right
+
+   Figure
+
+
+   
+Patterns                                                                      
+-------------------------------------------------------------------------------
+
+Simple dotted pattern                                                          
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. figure:: movies/chapter-09/linestrip-dotted.mp4
+   :loop:
+   :autoplay:
+   :controls:
+   :figwidth: 35%
+            
+   Figure
+
+   An animated dotted animated computed inside the fragment shader. See
+   `linestrip-dotted.py <code/chapter-09/linestrip-dotted.py>`_.
+
+Rendering a simple dotted pattern is surprinsingly simple. If you look at the
+fragmen code from the smooth line sections, the computation of the sidnged
+distance reads:
+
+.. code:: glsl
+
+   ...
+   // Cap at start
+   if (v_uv.x < 0)
+       d = length(v_uv) - w;
+   // Cap at end
+   else if (v_uv.x >= linelength)
+       d = length(v_uv - vec2(linelength,0)) - w;
+   // Body
+   else
+       d = abs(v_uv.y) - w;
+   ...
+       
+We can slightly change this code in order to compute the signed distance to
+discs whose centers area spread over the whole. Do you remember that we took
+care of computing the line curvilinear coordinate? Having centers spread along
+this line is then just a matter of a modulo.
+
+.. code:: glsl
+
+   uniform float phase;
+   ...
+   float spacing = 1.5;
+   float center = v_uv.x + spacing/2.0*thickness
+                - mod(v_uv.x + phase + spacing/2.0*thickness, spacing*thickness);
+   // Discard uncomplete dot at the end of the line
+   if (linelength - center < thickness/2.0)
+       discard;
+   // Discard uncomplete dot at the start of the line
+   else if (center < thickness/2.0)
+       discard;
+   else
+       d = length(v_uv - vec2(center,0.0)) - w;
+   ...
+
+.. figure:: movies/chapter-09/linestrip-spaded.mp4
+   :loop:
+   :autoplay:
+   :controls:
+   :figwidth: 35%
+
+   Figure
+
+   An animated dotted animated computed inside the fragment shader. See
+   `linestrip-spaded.py <code/chapter-09/linestrip-spaded.py>`_.
+
+The animation is obtained by slowly increasing the phase that makes all dot
+centers to move along the lines.
+
+By the way, you may have noticed that I've been using the simplest marker I
+could think of (disc) for the example above. But we could have used any of the
+marker from the previous chapter actually. For example, on the figure on the
+right, I use the spade marker and I've added a fading at line start and end to
+prevent the sudden apparition/disparition of a marker.
+   
+
+Arbitrary dash patterns                                                        
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Having arbitrary dashed patterns with possibly very thick lines and arbitrary
+joints is quite a difficult problem if we want to have an (almost) pure GPU
+implementation. It is actually so hard that I had to write an article
+explaining how this can be done. If you want to know more, just read See
+"`Shader-based Antialiased Dashed Stroke Polylines
+<http://jcgt.org/published/0002/02/08/>`_" for a full explanation as well as
+`Python implementation <http://jcgt.org/published/0002/02/08/code.zip>`_. The
+result is illustrated on the movies below.
+
+.. figure:: movies/chapter-09/stars.mp4
+   :loop:
+   :autoplay:
+   :controls:
+   :figwidth: 30%
+   :figclass: left
+            
+   Figure
+
+.. figure:: movies/chapter-09/sphere.mp4
+   :loop:
+   :autoplay:
+   :controls:
+   :figwidth: 30%
+   :figclass: left
+            
+   Figure
+
+.. figure:: movies/chapter-09/tiger.mp4
+   :loop:
+   :autoplay:
+   :controls:
+   :figwidth: 30%
+   :figclass: left
+            
+   Figure
+
+Unfortunately, at the time of writing, these arbitrary dash patterns lines have
+not yet been implemented in glumpy. You're thus more than welcome to make a
+PR. Contact me if you're interested.
+
+
+3D lines                                                                      
+-------------------------------------------------------------------------------
+
+.. figure:: movies/chapter-09/linestrip-3d.mp4
+   :loop:
+   :autoplay:
+   :controls:
+   :figwidth: 35%
+   :figclass: right
+
+   Figure
+
+   A loxodrome (spherical spiral) with fixed line thickness. See
+   `linestrip-3d.py <code/chapter-09/linestrip-3d.py>`_
+
+
+You certainly have noticed that until now, we've been dealing only with lines
+in the two-dimensional screen space, using two-dimensional coordinates `(x,y)`
+to describe positions. The thickness of such lines is rather intuitive because
+they live in the screen space.
+
+In three dimensions however, the problem is different. Mathematically, a line
+has no thickness per se and the thick lines we've been drawing so far were
+actually ribbon. In 3D, we have the choice to consider a thick line to be a
+ribbon or a tube. But there is actually a third, and simpler option, which is
+to consider than the line is a ribbon that is always facing the camera.
+
+
+Fixed apparent thickness                                                       
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+For a fixed apparent thickness, the method is (almost) straighforward:
+
+1. Apply transformation and get NDC coordinates
+2. Convert NDC coordinates to viewport coordinates
+3. Thicken line in viewport space
+4. Transmit the resulting vertex   
+
+Let's start with the conversion from NDC (normalized device coordinates) to
+screen:
+
+
+.. code:: glsl
+
+   uniform vec2 viewport;
+   uniform mat4 model, view, projection;
+   attribute vec3 prev, curr, next;
+          
+   ...
+          
+   // Normalized device coordinates
+   vec4 NDC_prev = projection * view * model * vec4(prev.xyz, 1.0);
+   vec4 NDC_curr = projection * view * model * vec4(curr.xyz, 1.0);
+   vec4 NDC_next = projection * view * model * vec4(next.xyz, 1.0);
+
+   // Viewport (screen) coordinates
+   vec2 screen_prev = viewport * ((NDC_prev.xy/NDC_prev.w) + 1.0)/2.0;
+   vec2 screen_curr = viewport * ((NDC_curr.xy/NDC_curr.w) + 1.0)/2.0;
+   vec2 screen_next = viewport * ((NDC_next.xy/NDC_next.w) + 1.0)/2.0;
+
+From these screen coordinates, we can compute the final position as we did
+previously with the noticeable difference that we also need to use `z`
+coordinate from the NDC coordinate.
+
+
+.. code:: glsl
+
+   vec2 position;
+   float w = thickness/2.0 + antialias;
+   vec2 t0 = normalize(screen_curr.xy - screen_prev.xy);
+   vec2 n0 = vec2(-t0.y, t0.x);
+   vec2 t1 = normalize(screen_next.xy - screen_curr.xy);
+   vec2 n1 = vec2(-t1.y, t1.x);
+   v_uv = vec2(uv.x, uv.y*w);
+   if (prev.xy == curr.xy) {
+       v_uv.x = -w;
+       position = screen_curr.xy - w*t1 + uv.y*w*n1;
+   } else if (curr.xy == next.xy) {
+       v_uv.x = linelength+w;
+       position = screen_curr.xy + w*t0 + uv.y*w*n0;
+   } else {
+       vec2 miter = normalize(n0 + n1);
+       // The max operator avoid glitches when miter is too large
+       float dy = w / max(dot(miter, n1), 1.0);
+       position = screen_curr.xy + dy*uv.y*miter;
+   }
+
+   // Back to NDC coordinates
+   gl_Position = vec4(2.0*position/viewport-1.0, NDC_curr.z/NDC_curr.w, 1.0);
+
+And we'll use the fragment shader we've using for smooth lines. Have a look at
+`linestrip-3d.py <code/chapter-09/linestrip-3d.py>`_ for the full
+implementation.
+   
+
+
+Varying apparent thickness                                                     
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. figure:: movies/chapter-09/linestrip-3d-better.mp4
+   :loop:
+   :autoplay:
+   :controls:
+   :figwidth: 35%
+   :figclass: right
+            
+   Figure
+
+   A loxodrome (spherical spiral) with subtle varying colors and thickness. See
+   `linestrip-3d-better.py <code/chapter-09/linestrip-3d-better.py>`_
+
+   
+We can refine the rendering by considering the orientation of the line. This
+orientation is given by the normal to the surface, and because our spiral is
+drawn over the surface of a sphere, the normal to the surface is easy to
+compute because it is the same coordinate as the point. But, instead of
+applying the full transformation, we'll restict it to the model transformation
+(i.e. no view nor projection) resulting in a normal vector where the `z`
+coordinate indicates if the shape is orienting towards the camera. Then,
+depending on this, we can modulate the thickness or the color of the line as
+shown on the figure on the right. In this example, we modify the thickness in
+the vertex shader and the color in the fragment shader.
+
+
+.. code:: glsl
+
+   vec4 normal = model*vec4(curr.xyz, 1.0);
+   v_normal = normal.xyz;
+   if (normal.z < 0)
+       v_thickness = thickness/2.0;
+   else
+       v_thickness = thickness*(pow(normal.z,.5)+1)/2.;
+
+
+
+
+   
+Exercises                                                                      
 -------------------------------------------------------------------------------
 
 
-Exercises
--------------------------------------------------------------------------------
-
-Realtime signals
-++++++++++++++++
+Realtime signals                                                               
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  
-Let us consider a simple example where we have to display 100 signals made of
-1,000 points. This corresponds to 100,000 vertices.
+.. figure:: images/chapter-09/signals.png
+   :figwidth: 50%
+   :figclass: right
+
+   Figure
+
+   20*15 signals of 1000 points each.
+
+Let us consider a simple example where we have to display 300 (15*20) signals
+made of 1,000 points each (300,000 vertices). What could be the fastest way to
+display them using raw OpenGL lines?
+
+Solution: `signals.py <code/chapter-09/signals.py>`_
+
+
+
+Variable thickness                                                             
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. figure:: images/chapter-09/linestrip-varying-thickness.png
+   :figwidth: 30%
+   :figclass: right
+
+   Figure
+
+   Linestrip with varying thickness
+
+We've seen in the `Smooth lines`_ section how to render smooth lines using
+bevel joints. The thickness of the resulting line was (implicitly)
+constant. How would you transform the shader to have a varying thickness as
+illustrated on the figure on the right?
+
+Solution:
+`linestrip-varying-thickness.py <code/chapter-09/linestrip-varying-thickness.py>`_
+
