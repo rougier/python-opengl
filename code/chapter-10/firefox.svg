@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- License Agreement at http://iconmonstr.com/license/ -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   x="0px"
+   y="0px"
+   width="512px"
+   height="512px"
+   viewBox="0 0 512 512"
+   enable-background="new 0 0 512 512"
+   xml:space="preserve"
+   id="svg2"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="firefox.svg"><metadata
+     id="metadata9"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+     id="defs7" /><sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1262"
+     inkscape:window-height="929"
+     id="namedview5"
+     showgrid="false"
+     inkscape:zoom="1.0898438"
+     inkscape:cx="256"
+     inkscape:cy="256"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg2" /><path
+     id="firefox"
+     d="m 193.236,136.759 c 1.611,-13.756 10.781,-31.599 28.046,-39.777 -25.94,-3.966 -47.005,8.179 -57.497,23.792 -16.648,-3.592 -26.877,-3.789 -43.619,-0.661 C 109.542,112.061 97.048,93.712 98.026,74.512 77.925,98.189 73.783,116.043 76.261,137.357 -1.106,275.751 102.984,442.169 251.351,442.169 384.647,442.168 462,340.227 462,235.769 462,165.324 430.113,104.175 397.556,90.954 c 12.147,13.387 25.947,48.257 23.303,72.387 C 394.582,94.921 328.971,68.478 306.861,69.886 379.543,98.226 396.937,194.7 390.489,223.173 384.17,189.785 364.006,161.027 351.943,153.425 422.334,318.333 252.334,369 200.464,311.768 c 13.376,3.469 39.78,1.764 59.561,-11.483 18.506,-12.393 20.247,-13.12 32.137,-14.043 14.123,-1.098 -0.851,-28.986 -31.702,-24.268 -12.694,1.942 -33.612,16.869 -59.341,7.031 -31.045,-11.872 -30.068,-54.25 1.99,-41.5 6.939,-9.003 1.817,-26.021 1.817,-26.021 9.314,-8.529 21.072,-14.539 28.234,-18.763 4.697,-2.77 17.077,-10.439 16.376,-25.351 -2.522,-1.972 -6.598,-4.492 -15.779,-3.965 -35.775,2.268 -38.167,-10.658 -40.521,-16.646 z"
+     style="fill:#dcdcdc;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     inkscape:connector-curvature="0" /></svg>

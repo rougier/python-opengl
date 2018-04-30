@@ -585,3 +585,5 @@ demo. As an exercise, have a look at this `wonderful demo
 signed distance field functions with light and shadows.
 
 Simply gorgeous...
+
+----

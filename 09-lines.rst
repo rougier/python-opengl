@@ -13,7 +13,7 @@ contours, grids, etc. Lines and segments are among the most simple geometrical
 objects. And yet, they can become quite complex if we consider line thickness,
 cap, joint and pattern such as dotted, dashed, etc. In the end, rendering lines
 with perfect quality is a lot of work as you'll read below. But it's worth the
-effort as illustrated in the teaser image above. This cames from an interactive
+effort as illustrated in the teaser image above. This comes from an interactive
 demo of glumpy (See the `spiral demo
 <https://github.com/glumpy/glumpy/blob/master/examples/spiral.py>`_).
            
@@ -845,3 +845,4 @@ illustrated on the figure on the right?
 Solution:
 `linestrip-varying-thickness.py <code/chapter-09/linestrip-varying-thickness.py>`_
 
+----

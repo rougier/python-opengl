@@ -483,3 +483,5 @@ the distance to the center of each disc/sphere. The goal of this exercise is
 thus to adapt this method to render a Voronoi diagram as shown on the right.
 
 Solution: `voronoi.py <code/chapter-07/voronoi.py>`_
+
+----
