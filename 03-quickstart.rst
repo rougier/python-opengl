@@ -748,7 +748,7 @@ the quad program (see `<code/chapter-03/glumpy-quad-varying-color.py>`_):
    Animating
    +++++++++
 
-   .. figure:: data/quad-scale.mp4
+   .. figure:: movies/chapter-03/quad-scale.mp4
       :loop:
       :autoplay:
       :controls:
