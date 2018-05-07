@@ -8,7 +8,7 @@ Preface
 
 
 This book is open-access (i.e. it's free to read at `this address
-<http://www.labri.fr/perso/nrougier/python+opengl>`_) because I believe
+<http://www.labri.fr/perso/nrougier/python-opengl>`_) because I believe
 knowledge should be free. However, if you think the book is worth a few
 dollars, you can give me a few euros (`5€
 <https://www.paypal.me/NicolasPRougier/5>`_ or `10€
@@ -67,7 +67,7 @@ If you want to rebuild the html output, from the top directory, type:
 
 Or you use the provided `make.sh <make.sh>`_ shell script.
                    
-The sources are available from https://github.com/rougier/python+opengl.
+The sources are available from https://github.com/rougier/python-opengl.
 
 Last point, I wrote the book in a kind of modern `Kerouac
 <https://en.wikipedia.org/wiki/Jack_Kerouac>`_'s style such that you can
@@ -123,10 +123,10 @@ How to contribute
 
 If you want to contribute to this book, you can:
 
-* Report issues (https://github.com/rougier/python+opengl/issues)
-* Suggest improvements (https://github.com/rougier/python+opengl/pulls)
-* Correct English (https://github.com/rougier/python+opengl/issues)
-* Star the project (https://github.com/rougier/python+opengl)
+* Report issues (https://github.com/rougier/python-opengl/issues)
+* Suggest improvements (https://github.com/rougier/python-opengl/pulls)
+* Correct English (https://github.com/rougier/python-opengl/issues)
+* Star the project (https://github.com/rougier/python-opengl)
 * Suggest a more responsive design for the HTML Book
 * Spread the word about this book (Reddit, Hacker News, etc.)
 
@@ -136,7 +136,7 @@ Publishing
 If you're an editor interested in publishing this book, you can `contact me
 <mailto:Nicolas.Rougier@inria.fr>`_ if you agree to have this version and all
 subsequent versions open access (i.e. online at `this address
-<http://www.labri.fr/perso/nrougier/python+opengl>`_), you know how to deal
+<http://www.labri.fr/perso/nrougier/python-opengl>`_), you know how to deal
 with `restructured text <http://docutils.sourceforge.net/rst.html>`_ (Word is
 not an option), you provide a real added-value as well as supporting services,
 and more importantly, you have a truly amazing latex book template (and be
