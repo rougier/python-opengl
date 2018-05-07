@@ -1,16 +1,19 @@
 Framebuffer
 ===============================================================================
 
-.. contents:: .
-   :local:
-   :depth: 2
-   :class: toc chapter-13
+Work in Progress.
 
-Post-processing
----------------
+..
+   .. contents:: .
+      :local:
+      :depth: 2
+      :class: toc chapter-13
 
-General computation
--------------------
+   Post-processing
+   ---------------
 
-Color picking
--------------
+   General computation
+   -------------------
+
+   Color picking
+   -------------

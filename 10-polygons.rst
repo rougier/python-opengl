@@ -1,4 +1,3 @@
-
 Rendering polygons                                                             
 ===============================================================================
 
@@ -32,8 +31,8 @@ line that cross a concave polygon at more than two points as shown on the
 figure above with the red lines.
 
 
-Convex polygons                                                                
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Convex polygons
++++++++++++++++
 
 For convex polygons, we have to consider two cases:
 
@@ -95,8 +94,8 @@ are actually inside the polygon area.
    See `convex-polygon-fan.py <code/chapter-10/convex-polygon-fan.py>`_
 
 
-Concave polygons                                                               
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Concave polygons
+++++++++++++++++
 
 For concave polygons, we could consider the two aforementionned cases where
 points are either ordered and describe the contour of the polygon or points are
@@ -211,15 +210,15 @@ Note that we also need to activate the stencil test in the `on_init` window even
 .. _SVG Specification: https://www.w3.org/TR/SVG/painting.html
 
 
-Non-zero fill rule                                                             
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++   
+Non-zero fill rule
+++++++++++++++++++
 
 The non-zero fill rule implementation is easy because it corresponds to the
 default triangulation we've just seen above and no extra work is necessary.
 
 
-Odd-even fill rule                                                             
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++   
+Odd-even fill rule
+++++++++++++++++++
 
 In order to enforce the odd-even fill rule, we need to use a 2-pass
 rendering. The first pass will write to the stencil buffer according to the
@@ -303,13 +302,60 @@ stencil buffer:
     gl.glStencilOp(gl.GL_KEEP, gl.GL_KEEP, gl.GL_KEEP)
 
 
-Gradient and pattern                                                           
--------------------------------------------------------------------------------
 
-Antialiasing                                                                   
--------------------------------------------------------------------------------
-
+    
 Exercises                                                                      
 -------------------------------------------------------------------------------
 
+Polygon gradients
++++++++++++++++++
+
+.. figure:: images/chapter-10/radial-gradient.png
+   :figwidth: 25%
+   :figclass: right
+
+   Figure
+
+   Radial gradient.
+
+
+The SVG specification considers two kind of color gradients (i.e. smooth
+transition from one color to another), radial and linear. Using the vertices
+coordinates inside the shader, it is thus very easy to create those gradients.
+In order to do that, you need to compute (for every fragment) a scalar that
+indicate tells the amount of color 1 and color 2 respectively and try to render
+the image on the right.
+
+Solution: `radial-gradient.py <code/chapter-10/radial-gradient.py>`_
+
+
+Polygon Patterns
+++++++++++++++++
+
+.. figure:: images/chapter-10/pattern.png
+   :figwidth: 25%
+   :figclass: right
+
+   Figure
+
+   Patterns.
+
+We can also use any texture to pain the polygon. It's only a matter of
+assigning the right texture to polygon vertices. Try to render the image on the
+right using this `texture <images/chapter-10/wave.png>`_
+
+Solution: `pattern.py <code/chapter-10/pattern.py>`_
+
+
+Antialiasing                                                                   
+++++++++++++
+
+As you have noticed, the polygon we've renderered so far are not antialised
+(because we've been using only raw triangles). While it might be possible to
+write a specific shader to take car of antiliasing on the border, it is far
+more easier to draw an antialiased polygon in two steps. First, we draw the
+interio of the polygon and then, we render a half-line on the contour. We need
+a half-line because we do not want the line to cover the already rendered
+polygon. There is no real difficulty and this is a good exercise. I will use
+the best proposed solution to be included here.
 

@@ -28,7 +28,7 @@ plt.text(2*space, y, "0",  va="bottom", fontsize=big, color=color1)
 plt.text(2*space, y, "backers", va="top", fontsize=small, color=color2)
 plt.text(3*space, y, "365",  va="bottom", fontsize=big, color=color1)
 plt.text(3*space, y, "days to go", va="top", fontsize=small, color=color2)
-plt.text(4*space, y, "Nov 7, 2017",  va="bottom", fontsize=big, color=color1)
+plt.text(4*space, y, "May 5, 2018",  va="bottom", fontsize=big, color=color1)
 plt.text(4*space, y, "Last update", va="top", fontsize=small, color=color2)
 
 plt.tight_layout()

@@ -10,10 +10,12 @@ Preface
 This book is open-access (i.e. it's free to read at `this address
 <http://www.labri.fr/perso/nrougier/python+opengl>`_) because I believe
 knowledge should be free. However, if you think the book is worth a few
-dollars, you can `Buy the book`_. This money will help me to travel to Python
-conferences and to write other books as well.  If you don't have money, it's
-fine. Just enjoy the book and spread the word about it. The teaser image above
-comes from the `artwork section
+dollars, you can give me a few euros (`5€
+<https://www.paypal.me/NicolasPRougier/5>`_ or `10€
+<https://www.paypal.me/NicolasPRougier/10>`_). This money will help me to
+travel to Python conferences and to write other books as well.  If you don't
+have money, it's fine. Just enjoy the book and spread the word about it. The
+teaser image above comes from the `artwork section
 <http://www.labri.fr/perso/nrougier/artwork/index.html>`_ of my website. It has
 been made some years ago using the `Povray <http://www.povray.org>`_
 (Persistence of Vision) raytracer. I like it very much because it is a kind of
@@ -173,42 +175,6 @@ Code
 The code is licensed under the `OSI-approved BSD 2-Clause License
 <LICENSE-code.txt>`_.
 
-
-
-Buy the book
--------------------------------------------------------------------------------
-
-As you may have realized by now, the book is free for you to read
-online. However, some people prefer to have a PDF version or even a dead-tree
-version. For this to happen, I need to design a latex template for producing a
-nice PDF. That's a lot of work and I don't really have time since I'm also (and
-mainly) a `researcher
-<http://www.labri.fr/perso/nrougier/research/index.html>`_ with several
-students to supervise, researches to do, articles and grants to write, talks to
-prepare, etc.
-
-Consequently, if you really want to have a PDF version, you'll have to
-explicitly express your interest by contributing a small amount of
-money. Then,
-
-* if the total reach **5,000 euros**, I'll produce the PDF
-* if the total reach **10,000 euros**, I'll have the book printed and sold (20 euros).
-
-However, be warned that you won't get refund if the first goal is not
-reached. In such case, consider your payment as a donation to the online
-version. If you find this unfair, remember you have the choice to give or not
-and the online version is free and open source...
-
-.. image:: images/chapter-01/crowdfunding.png
-   :width: 100%
-
-
-.. class:: button
-   
-* `5€ <https://www.paypal.me/NicolasPRougier/5>`_ 
-* `10€ <https://www.paypal.me/NicolasPRougier/10>`_
-* `25€ <https://www.paypal.me/NicolasPRougier/25>`_
-* `50€ <https://www.paypal.me/NicolasPRougier/50>`_
 
 
 .. --- Links ------------------------------------------------------------------

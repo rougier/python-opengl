@@ -91,14 +91,6 @@ body {
     margin-bottom: 0.5em;
 }
 
-/* Buy the book !!! */
-#id65 {
-    padding-top: .25em;
-    padding-bottom: .25em;
-    color: #ffffff;
-    background-color: #DF3651;
-}
-
 .sidebar ul.simple > li > a::before {
     display: block;
     content: "chapter " counter(chapter-sidebar);

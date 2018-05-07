@@ -1,17 +1,20 @@
 Rendering text
 ===============================================================================
 
-.. contents:: .
-   :local:
-   :depth: 2
-   :class: toc chapter-12
+Work in Progress.
 
-           
-Failsafe text
--------------
+..
+   .. contents:: .
+      :local:
+      :depth: 2
+      :class: toc chapter-12
 
-2D text
--------
 
-3D text
--------
+   Failsafe text
+   -------------
+
+   2D text
+   -------
+
+   3D text
+   -------
