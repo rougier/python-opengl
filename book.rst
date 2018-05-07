@@ -28,8 +28,8 @@
    | Latest version - |date|
    | |website|_
 
-.. |website| replace:: www.labri.fr/perso/nrougier/python+opengl
-.. _website: http://www.labri.fr/perso/nrougier/python+opengl
+.. |website| replace:: www.labri.fr/perso/nrougier/python-opengl
+.. _website: http://www.labri.fr/perso/nrougier/python-opengl
 
 
 .. image:: images/teaser.png
