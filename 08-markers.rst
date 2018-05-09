@@ -68,7 +68,7 @@ And we can check for the result using two circles (the shadertoy link for each
 example allows you to play online with them):
 
    
-.. figure:: images/chapter-08/CSG-intersection.png
+.. figure:: images/chapter-08/csg-intersection.png
    :figwidth: 30%
 
    Figure
@@ -78,7 +78,7 @@ example allows you to play online with them):
 
 __  https://www.shadertoy.com/view/XllyWn
 
-.. figure:: images/chapter-08/CSG-union.png
+.. figure:: images/chapter-08/csg-union.png
    :figwidth: 30%
 
    Figure
@@ -88,7 +88,7 @@ __  https://www.shadertoy.com/view/XllyWn
 
 __  https://www.shadertoy.com/view/4tlyWn
 
-.. figure:: images/chapter-08/CSG-mix.png
+.. figure:: images/chapter-08/csg-mix.png
    :figwidth: 30%
 
    Figure
@@ -100,7 +100,7 @@ __  https://www.shadertoy.com/view/MtfcDr
 
 ----
 
-.. figure:: images/chapter-08/CSG-exclusion.png
+.. figure:: images/chapter-08/csg-exclusion.png
    :figwidth: 30%
 
    Figure
@@ -111,7 +111,7 @@ __  https://www.shadertoy.com/view/MtfcDr
 __  https://www.shadertoy.com/view/4tsyWn
    
 
-.. figure:: images/chapter-08/CSG-difference-2.png
+.. figure:: images/chapter-08/csg-difference-2.png
    :figwidth: 30%
 
    Figure
@@ -121,7 +121,7 @@ __  https://www.shadertoy.com/view/4tsyWn
 
 __  https://www.shadertoy.com/view/XtsyWn
 
-.. figure:: images/chapter-08/CSG-difference-1.png
+.. figure:: images/chapter-08/csg-difference-1.png
    :figwidth: 30%
 
    Figure

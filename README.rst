@@ -8,7 +8,7 @@ Python & OpenGL for Scientific Visualization
 
 Python and OpenGL have a long but complicated story. It used to be really easy
 to program something using the fixed-pipeline and libraries such as Pyglet but
-things have became more difficult with the introduction of the dynamic graphic
+things became more difficult with the introduction of the dynamic graphic
 pipeline in 2004. The goal of this book is to reconciliate Python programmers
 with OpenGL, providing both an introduction to modern OpenGL and a set of basic
 and advanced techniques in order to achieve both fast, scalable & beautiful

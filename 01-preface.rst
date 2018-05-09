@@ -95,8 +95,6 @@ should import numpy, scipy and glumpy as:
 .. code-block:: python
    
    import numpy as np
-   import scipy as sp
-   import glumpy as gp
 
 
 We'll use up-to-date versions (at the date of writing, i.e. August, 2017) of the
