@@ -32,10 +32,10 @@ explicitly OpenGL how to draw 6 faces with them:
 
 These vertice describe a cube centered on (0,0,0) that goes from (-1,-1,-1) to
 (+1,+1,+1). Unfortunately, we cannot use `gl.GL_TRIANGLE_STRIP` as we did for
-the quad. If your remember how this rendering primitive considers vertices as a
+the quad. If you remember how this rendering primitive considers vertices as a
 succession of triangles, you should also realize there is no way to organize
-our vertices into a triangle strip that wpuld describe our cube. This means we
-have to tell OpenGL explicitely what are our triangles, i.e. we need to
+our vertices into a triangle strip that would describe our cube. This means we
+have to tell OpenGL explicitly what are our triangles, i.e. we need to
 describe triangles in terms of vertex indices (relatively to the `V` array we
 just defined):
 
@@ -108,7 +108,7 @@ from the `glumpy.glm` module (that also defines ortho, frustum and perspective
 matrices as well as rotation, translation and scaling operations). This default
 perspective matrix is located at the origin and look in the negative z
 direction with the up direction pointing toward the positive y-axis. If we
-leave our cube at the origin, the camera would be inside the cube and we woudl
+leave our cube at the origin, the camera would be inside the cube and we would
 not see much. So let first create a view matrix that is a translation along the
 z-axis:
 

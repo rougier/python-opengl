@@ -17,7 +17,7 @@ Preliminaries
 -------------------------------------------------------------------------------
 
 The main difficulty for newcomers in programming modern OpenGL is that it
-requires to underdtand a lot of different concepts at once and then, to perform
+requires to understand a lot of different concepts at once and then, to perform
 a lot of operations before rendering anything on screen. This complexity
 implies that there are many places where your code can be wrong, both at the
 conceptual and code level. To illustrate this difficulty, we'll program our
@@ -395,7 +395,7 @@ We now need to bind the buffer to the program, that is, for each attribute
 present in the vertex shader program, we need to tell OpenGL where to find the
 corresponding data (i.e. GPU buffer) and this requires some computations. More
 precisely, we need to tell the GPU how to read the buffer in order to bind each
-value to the relevant attribute. To do this, GPU needs to kow what is the
+value to the relevant attribute. To do this, GPU needs to know what is the
 stride between 2 consecutive element and what is the offset to read one
 attribute:
 
@@ -531,7 +531,7 @@ Varying color
    A colored quad using a per-vertex color.
 
 Until now, we have been using a constant color for the four vertices of our
-quad and the result is (unsuprinsingly) a boring uniform red or blue quad. We
+quad and the result is (unsurprisingly) a boring uniform red or blue quad. We
 can make a bit more interesting though by assigning different colors for each
 vertex and see how OpenGL will interpolate colors. Our new vertex shader would
 need to be rewritten as:
@@ -722,8 +722,8 @@ program.
 Uniform color                                                                  
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Adding a `uniform` specified color like is only a matter of modifying the
-fragment shader as in the previous section an directly assigning the color to
+Adding a `uniform` specified color is only a matter of modifying the
+fragment shader as in the previous section and directly assigning the color to
 the quad program (see `<code/chapter-03/glumpy-quad-uniform-color.py>`_):
 
 .. code:: python
@@ -735,8 +735,8 @@ the quad program (see `<code/chapter-03/glumpy-quad-uniform-color.py>`_):
 Varying color                                                                  
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Adding a per-vertex color like is also and only a matter of modifying the
-fragment shader as in the previous section an directly assigning the color to
+Adding a per-vertex color is also only a matter of modifying the
+fragment shader as in the previous section and directly assigning the color to
 the quad program (see `<code/chapter-03/glumpy-quad-varying-color.py>`_):
 
 .. code:: python
@@ -849,7 +849,7 @@ angle theta around the origin (0,0) for a point (x,y):
        float y2 = sin(theta)*x + cos(theta)*y;
 
 
-Solution: `<code/chapter-03/quad-rotate.py>`_
+Solution: `<code/chapter-03/quad-rotation.py>`_
 
 
 .. _GLUT:   http://freeglut.sourceforge.net 		
