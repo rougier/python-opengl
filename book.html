@@ -19,7 +19,7 @@
 <img alt="images/sa.large.png" src="images/sa.large.png" style="width: 32px;" />
 <img alt="images/nc.large.png" src="images/nc.large.png" style="width: 32px;" />
 <div class="line-block">
-<div class="line">Latest version - May 2018</div>
+<div class="line">Latest version - August 2018</div>
 <div class="line"><a class="reference external" href="http://www.labri.fr/perso/nrougier/python-opengl">www.labri.fr/perso/nrougier/python-opengl</a></div>
 </div>
 </div>
@@ -609,7 +609,7 @@ executed 21 times, once for each fragment.</p>
 <div class="section" id="buffers">
 <h3><a class="toc-backref" href="#id5">Buffers</a></h3>
 <p>The next question is thus where do those vertices comes from ? The idea of
-modern GL is that vertices are stored on the GPU and needs to be uploaded to
+modern GL is that vertices are stored on the GPU and need to be uploaded to
 the GPU before rendering. The way to do that is to build buffers onto the CPU
 and to send these buffers onto the GPU. If your data does not change, no need
 to upload them again. That is the big difference with the previous fixed
@@ -835,7 +835,7 @@ understand how this works, you'll have to read the text below.</p>
 <div class="section" id="preliminaries">
 <h2><a class="toc-backref" href="#id7">Preliminaries</a></h2>
 <p>The main difficulty for newcomers in programming modern OpenGL is that it
-requires to underdtand a lot of different concepts at once and then, to perform
+requires to understand a lot of different concepts at once and then, to perform
 a lot of operations before rendering anything on screen. This complexity
 implies that there are many places where your code can be wrong, both at the
 conceptual and code level. To illustrate this difficulty, we'll program our
@@ -1160,7 +1160,7 @@ equivalent to a C <code>double</code>). So let us specify a NumPy array holding 
 present in the vertex shader program, we need to tell OpenGL where to find the
 corresponding data (i.e. GPU buffer) and this requires some computations. More
 precisely, we need to tell the GPU how to read the buffer in order to bind each
-value to the relevant attribute. To do this, GPU needs to kow what is the
+value to the relevant attribute. To do this, GPU needs to know what is the
 stride between 2 consecutive element and what is the offset to read one
 attribute:</p>
 <pre class="code neutral literal-block">
@@ -1266,7 +1266,7 @@ obtain the blue quad as shown on the right.</p>
 A colored quad using a per-vertex color.</div>
 </div>
 <p>Until now, we have been using a constant color for the four vertices of our
-quad and the result is (unsuprinsingly) a boring uniform red or blue quad. We
+quad and the result is (unsurprisingly) a boring uniform red or blue quad. We
 can make a bit more interesting though by assigning different colors for each
 vertex and see how OpenGL will interpolate colors. Our new vertex shader would
 need to be rewritten as:</p>
@@ -1422,8 +1422,8 @@ You should obtain the same output as in previous section.
 `<code/chapter-03/quad-glumpy.py>`_ -->
 <div class="section" id="id9">
 <h3><a class="toc-backref" href="#id7">Uniform color</a></h3>
-<p>Adding a <code>uniform</code> specified color like is only a matter of modifying the
-fragment shader as in the previous section an directly assigning the color to
+<p>Adding a <code>uniform</code> specified color is only a matter of modifying the
+fragment shader as in the previous section and directly assigning the color to
 the quad program (see <a class="reference external" href="code/chapter-03/glumpy-quad-uniform-color.py">code/chapter-03/glumpy-quad-uniform-color.py</a>):</p>
 <pre class="code python literal-block">
 <span class="name">quad</span><span class="punctuation">[</span><span class="literal string double">&quot;color&quot;</span><span class="punctuation">]</span> <span class="operator">=</span> <span class="literal number integer">0</span><span class="punctuation">,</span><span class="literal number integer">0</span><span class="punctuation">,</span><span class="literal number integer">1</span><span class="punctuation">,</span><span class="literal number integer">1</span>
@@ -1431,8 +1431,8 @@ the quad program (see <a class="reference external" href="code/chapter-03/glumpy
 </div>
 <div class="section" id="id10">
 <h3><a class="toc-backref" href="#id7">Varying color</a></h3>
-<p>Adding a per-vertex color like is also and only a matter of modifying the
-fragment shader as in the previous section an directly assigning the color to
+<p>Adding a per-vertex color is also only a matter of modifying the
+fragment shader as in the previous section and directly assigning the color to
 the quad program (see <a class="reference external" href="code/chapter-03/glumpy-quad-varying-color.py">code/chapter-03/glumpy-quad-varying-color.py</a>):</p>
 <pre class="code python literal-block">
 <span class="name">quad</span><span class="punctuation">[</span><span class="literal string double">&quot;color&quot;</span><span class="punctuation">]</span> <span class="operator">=</span> <span class="punctuation">(</span><span class="literal number integer">1</span><span class="punctuation">,</span><span class="literal number integer">1</span><span class="punctuation">,</span><span class="literal number integer">0</span><span class="punctuation">,</span><span class="literal number integer">1</span><span class="punctuation">),</span> <span class="punctuation">(</span><span class="literal number integer">1</span><span class="punctuation">,</span><span class="literal number integer">0</span><span class="punctuation">,</span><span class="literal number integer">0</span><span class="punctuation">,</span><span class="literal number integer">1</span><span class="punctuation">),</span> <span class="punctuation">(</span><span class="literal number integer">0</span><span class="punctuation">,</span><span class="literal number integer">0</span><span class="punctuation">,</span><span class="literal number integer">1</span><span class="punctuation">,</span><span class="literal number integer">1</span><span class="punctuation">),</span> <span class="punctuation">(</span><span class="literal number integer">0</span><span class="punctuation">,</span><span class="literal number integer">1</span><span class="punctuation">,</span><span class="literal number integer">0</span><span class="punctuation">,</span><span class="literal number integer">1</span><span class="punctuation">)</span>
@@ -1527,7 +1527,7 @@ angle theta around the origin (0,0) for a point (x,y):</p>
 <span class="keyword">float</span> <span class="name">x2</span> <span class="operator">=</span> <span class="name">cos</span><span class="punctuation">(</span><span class="name">theta</span><span class="punctuation">)</span><span class="operator">*</span><span class="name">x</span> <span class="operator">-</span> <span class="name">sin</span><span class="punctuation">(</span><span class="name">theta</span><span class="punctuation">)</span><span class="operator">*</span><span class="name">y</span><span class="punctuation">;</span>
 <span class="keyword">float</span> <span class="name">y2</span> <span class="operator">=</span> <span class="name">sin</span><span class="punctuation">(</span><span class="name">theta</span><span class="punctuation">)</span><span class="operator">*</span><span class="name">x</span> <span class="operator">+</span> <span class="name">cos</span><span class="punctuation">(</span><span class="name">theta</span><span class="punctuation">)</span><span class="operator">*</span><span class="name">y</span><span class="punctuation">;</span>
 </pre>
-<p>Solution: <a class="reference external" href="code/chapter-03/quad-rotate.py">code/chapter-03/quad-rotate.py</a></p>
+<p>Solution: <a class="reference external" href="code/chapter-03/quad-rotation.py">code/chapter-03/quad-rotation.py</a></p>
 </div>
 </div>
 <div class="section" id="basic-mathematics">
@@ -1557,7 +1557,7 @@ angle theta around the origin (0,0) for a point (x,y):</p>
 </div>
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 <p>There is no way around mathematics. If you want to understand computer
-geometry, you need to masterize a few mathematical concepts. But not that many
+geometry, you need to master a few mathematical concepts. But not that many
 actually. I won't introduce everything since there is already a lot of
 tutorials online explaining the core concepts of <a class="reference external" href="http://math.hws.edu/graphicsbook/c3/s5.html">linear algrebra</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Three-dimensional_space">Euclidean geometry</a>, <a class="reference external" href="http://www.tomdalling.com/blog/modern-opengl/explaining-homogenous-coordinates-and-projective-geometry/">homogeneous
 coordinates</a>,
@@ -1625,7 +1625,7 @@ through points to be projected). For these two projections, results are similar
 but different. In the first case, distances have been exactly conserved while
 in the second case, the distance between projected points has increased, but
 projected points are still equidistant. The third projection is where
-homogenous coordinates make sense. For this (abritraty) projection, we decided
+homogenous coordinates make sense. For this (arbitrary) projection, we decided
 that the further the point is from the origin, and the further away from the
 origin its projection will be. To do that, we measure the distance of the point
 to the origin and we add this distance to its <code>w</code> value before projecting it
@@ -1641,7 +1641,7 @@ represented in the form of a 4-tuple (a,b,c,d) that is a shortcut for the
 actual representation: a + bi⃗ + cj⃗ + dk⃗, where a, b, c, and d are real
 numbers, and i⃗, j⃗, k⃗ are the fundamental quaternion units.</p>
 </div>
-<p>Back to our regular 3D-Euclidean space, the principle remains the same and we have the following relationgship between Cartesian and homogeneous coordinates:</p>
+<p>Back to our regular 3D-Euclidean space, the principle remains the same and we have the following relationship between Cartesian and homogeneous coordinates:</p>
 <pre class="code math literal-block">
  (x,y,z,w) → (x/w, y/w, z/w) (for w ≠ 0)
 Homogeneous    Cartesian
@@ -1649,7 +1649,7 @@ Homogeneous    Cartesian
  (x,y,z)   → (x, y, z, 1)
 Cartesian     Homogeneous
 </pre>
-<p>If you didn't understood everything, you can stick to the description provided
+<p>If you didn't understand everything, you can stick to the description provided
 by Sam Hocevar:</p>
 <ul class="simple">
 <li>If w = 1, then the vector (x,y,z,1) is a position in space</li>
@@ -1666,7 +1666,7 @@ by Sam Hocevar:</p>
 Transformation are not commutative, hence R*T*V (up) is different from T*R*V
 (bottom). Remember that last transformation is on the left.</div>
 </div>
-<p>We'll use now homogeneous coordinates and express all our transformations using
+<p>We'll now use homogeneous coordinates and express all our transformations using
 only 4×4 matrices. This will allow us to chain several transformations by
 multiplying transformation matrices. However, before diving into the actual
 definition of these matrices, we need to decide if we consider a four
@@ -1981,10 +1981,10 @@ explicitly OpenGL how to draw 6 faces with them:</p>
 </pre>
 <p>These vertice describe a cube centered on (0,0,0) that goes from (-1,-1,-1) to
 (+1,+1,+1). Unfortunately, we cannot use <code>gl.GL_TRIANGLE_STRIP</code> as we did for
-the quad. If your remember how this rendering primitive considers vertices as a
+the quad. If you remember how this rendering primitive considers vertices as a
 succession of triangles, you should also realize there is no way to organize
-our vertices into a triangle strip that wpuld describe our cube. This means we
-have to tell OpenGL explicitely what are our triangles, i.e. we need to
+our vertices into a triangle strip that would describe our cube. This means we
+have to tell OpenGL explicitly what are our triangles, i.e. we need to
 describe triangles in terms of vertex indices (relatively to the <code>V</code> array we
 just defined):</p>
 <pre class="code python literal-block">
@@ -2044,7 +2044,7 @@ from the <code>glumpy.glm</code> module (that also defines ortho, frustum and pe
 matrices as well as rotation, translation and scaling operations). This default
 perspective matrix is located at the origin and look in the negative z
 direction with the up direction pointing toward the positive y-axis. If we
-leave our cube at the origin, the camera would be inside the cube and we woudl
+leave our cube at the origin, the camera would be inside the cube and we would
 not see much. So let first create a view matrix that is a translation along the
 z-axis:</p>
 <pre class="code python literal-block">
@@ -5266,7 +5266,7 @@ The variable <code>gl_Position</code> is intended for writing the homogeneous ve
 position.</blockquote>
 <p><span class="proto">gl_PointSize</span></p>
 <blockquote>
-The variable gl_PointSize` is intended for a vertex shader to write the size
+The variable <code>gl_PointSize</code> is intended for a vertex shader to write the size
 of the point to be rasterized. It is measured in pixels.</blockquote>
 </div>
 <div class="section" id="fragment-shader">

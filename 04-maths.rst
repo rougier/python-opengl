@@ -10,7 +10,7 @@ Basic Mathematics
 
 
 There is no way around mathematics. If you want to understand computer
-geometry, you need to masterize a few mathematical concepts. But not that many
+geometry, you need to master a few mathematical concepts. But not that many
 actually. I won't introduce everything since there is already a lot of
 tutorials online explaining the core concepts of `linear algrebra
 <http://math.hws.edu/graphicsbook/c3/s5.html>`_, `Euclidean geometry
@@ -92,7 +92,7 @@ through points to be projected). For these two projections, results are similar
 but different. In the first case, distances have been exactly conserved while
 in the second case, the distance between projected points has increased, but
 projected points are still equidistant. The third projection is where
-homogenous coordinates make sense. For this (abritraty) projection, we decided
+homogenous coordinates make sense. For this (arbitrary) projection, we decided
 that the further the point is from the origin, and the further away from the
 origin its projection will be. To do that, we measure the distance of the point
 to the origin and we add this distance to its `w` value before projecting it
@@ -110,7 +110,7 @@ P(-0.5), P(0.0), P(+0.5), P(+1.0)]`, we have have `║P(-1.0)-P(-0.5)]║ >
    actual representation: a + bi⃗ + cj⃗ + dk⃗, where a, b, c, and d are real
    numbers, and i⃗, j⃗, k⃗ are the fundamental quaternion units.
    
-Back to our regular 3D-Euclidean space, the principle remains the same and we have the following relationgship between Cartesian and homogeneous coordinates:
+Back to our regular 3D-Euclidean space, the principle remains the same and we have the following relationship between Cartesian and homogeneous coordinates:
  
 .. code::
    :class: math
@@ -122,7 +122,7 @@ Back to our regular 3D-Euclidean space, the principle remains the same and we ha
    Cartesian     Homogeneous
    
 
-If you didn't understood everything, you can stick to the description provided
+If you didn't understand everything, you can stick to the description provided
 by Sam Hocevar:
 
 * If w = 1, then the vector (x,y,z,1) is a position in space
@@ -144,7 +144,7 @@ Transformations
    (bottom). Remember that last transformation is on the left.
    
 
-We'll use now homogeneous coordinates and express all our transformations using
+We'll now use homogeneous coordinates and express all our transformations using
 only 4×4 matrices. This will allow us to chain several transformations by
 multiplying transformation matrices. However, before diving into the actual
 definition of these matrices, we need to decide if we consider a four
