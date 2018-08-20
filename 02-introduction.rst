@@ -414,7 +414,7 @@ Libraries
 
 .. Note::
 
-   Even though glumpy and vispy shares a number of concept, they are different.
+   Even though glumpy and vispy share a number of concept, they are different.
    vispy offers a high-level interface that may be convenient in some
    situations but this tends to hide the internal machinery. This is one of the
    reason we'll be using glumpy instead (the other reason being that I'm the

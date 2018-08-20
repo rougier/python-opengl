@@ -30,7 +30,6 @@ Work in Progress.
 
    .. figure:: data/quad-grid.mp4
       :loop:
-      :autoplay:
       :controls:
       :figwidth: 35%
       :figclass: left

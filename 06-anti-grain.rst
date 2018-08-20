@@ -330,7 +330,6 @@ Distance to a circle is the easiest to compute.
 
 .. figure:: movies/chapter-06/SDF-circle.mp4
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 25%
    :figclass: right
@@ -358,7 +357,6 @@ the projection of P onto the place.
 
 .. figure:: movies/chapter-06/SDF-plane.mp4
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 25%
    :figclass: right
@@ -387,7 +385,6 @@ vertices defining the box.
 
 .. figure:: movies/chapter-06/SDF-box.mp4
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 25%
    :figclass: right
@@ -414,7 +411,6 @@ Rounded Box
 
 .. figure:: movies/chapter-06/SDF-round-box.mp4
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 25%
    :figclass: right
@@ -442,7 +438,6 @@ Fake Box
 
 .. figure:: movies/chapter-06/SDF-fake-box.mp4
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 25%
    :figclass: right
@@ -469,7 +464,6 @@ True triangle
 
 .. figure:: movies/chapter-06/SDF-triangle.mp4
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 25%
    :figclass: right
@@ -515,7 +509,6 @@ Round triangle
 
 .. figure:: movies/chapter-06/SDF-round-triangle.mp4
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 25%
    :figclass: right
@@ -543,7 +536,6 @@ Fake triangle
 
 .. figure:: movies/chapter-06/SDF-fake-triangle.mp4
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 25%
    :figclass: right
@@ -583,7 +575,6 @@ True ellipse
 
 .. figure:: movies/chapter-06/SDF-ellipse.mp4
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 25%
    :figclass: right
@@ -650,7 +641,6 @@ Fake (but fast) ellipse
 
 .. figure:: movies/chapter-06/SDF-fake-ellipse.mp4
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 25%
    :figclass: right

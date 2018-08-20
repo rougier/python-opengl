@@ -414,7 +414,7 @@ if a given fragment is inside the joint area or not. This requires a specific
 parameterization that relies on having a different tesselation with 4×n
 vertices instead of 2×n. I won't explain all the details here but only provide
 the final result that you can found in `geom-path.py
-<code/chapter-09/geom.path.py>`_.
+<code/chapter-09/geom_path.py>`_.
 
 If you look at the sources, you'll see I'm using a geometry shader, which is a
 new type of shader that is not officially available in GL ES 2.0 but which is
@@ -457,7 +457,7 @@ the details in the provided demo script. See the caption of the image below.
    Figure
 
    Different line joints using a geometry shader. See
-   `geom-path.py <code/chapter-09/geom.path.py>`_.
+   `geom-path.py <code/chapter-09/geom_path.py>`_.
 
 
 
@@ -552,7 +552,6 @@ Simple dotted pattern
 
 .. figure:: movies/chapter-09/linestrip-dotted.mp4
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 35%
             
@@ -603,7 +602,6 @@ this line is then just a matter of a modulo.
 
 .. figure:: movies/chapter-09/linestrip-spaded.mp4
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 35%
 
@@ -636,7 +634,6 @@ result is illustrated on the movies below.
 
 .. figure:: movies/chapter-09/stars.mp4
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 30%
    :figclass: left
@@ -645,7 +642,6 @@ result is illustrated on the movies below.
 
 .. figure:: movies/chapter-09/sphere.mp4
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 30%
    :figclass: left
@@ -654,7 +650,6 @@ result is illustrated on the movies below.
 
 .. figure:: movies/chapter-09/tiger.mp4
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 30%
    :figclass: left
@@ -671,7 +666,6 @@ PR. Contact me if you're interested.
 
 .. figure:: movies/chapter-09/linestrip-3d.mp4
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 35%
    :figclass: right
@@ -767,7 +761,6 @@ Varying apparent thickness
 
 .. figure:: movies/chapter-09/linestrip-3d-better.mp4
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 35%
    :figclass: right

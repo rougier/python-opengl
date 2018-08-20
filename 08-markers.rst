@@ -507,7 +507,6 @@ of your texture...
 
 .. figure:: movies/chapter-08/texture-marker.mp4
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 30%
 
@@ -568,7 +567,6 @@ Light and shadows
 
 .. figure:: movies/chapter-08/SDF-light-shadow.mp4
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 50%
 

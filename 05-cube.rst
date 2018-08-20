@@ -171,7 +171,6 @@ Actual rendering
 
 .. figure:: movies/chapter-05/solid-cube.mp4
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 35%
             
@@ -254,7 +253,6 @@ shader.
 
 .. figure:: movies/chapter-05/color-cube.mp4
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 35%
             
@@ -289,7 +287,6 @@ Outlined cube
 
 .. figure:: movies/chapter-05/outline-cube.mp4
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 35%
             
@@ -359,7 +356,6 @@ Textured cube
 
 .. figure:: movies/chapter-05/texture-cube.mp4
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 35%
             
@@ -457,7 +453,6 @@ Exercises
 
 .. figure:: movies/chapter-05/color-border-cube-1.mp4
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 35%
             
@@ -482,7 +477,6 @@ cube code <code/chapter-05/color-cube.py>`_, try to modify only the shader code
 
 .. figure:: movies/chapter-05/color-border-cube-2.mp4
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 35%
             

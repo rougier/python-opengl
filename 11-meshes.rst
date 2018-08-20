@@ -94,7 +94,6 @@ Work in Progress.
    .. figure:: movies/chapter-11/boy.mp4
       :figclass: right
       :loop:
-      :autoplay:
       :controls:
       :figwidth: 35%
 

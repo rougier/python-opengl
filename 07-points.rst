@@ -200,7 +200,6 @@ Ellipses
 
 .. figure:: movies/chapter-07/ellipses.mp4
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 30%
    :figclass: right
@@ -451,7 +450,6 @@ Antialiased triangles
 
 .. figure:: movies/chapter-07/triangles.mp4
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 30%
 

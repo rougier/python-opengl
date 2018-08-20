@@ -17,7 +17,7 @@ Preliminaries
 -------------------------------------------------------------------------------
 
 The main difficulty for newcomers in programming modern OpenGL is that it
-requires to underdtand a lot of different concepts at once and then, to perform
+requires to understand a lot of different concepts at once and then, to perform
 a lot of operations before rendering anything on screen. This complexity
 implies that there are many places where your code can be wrong, both at the
 conceptual and code level. To illustrate this difficulty, we'll program our
@@ -109,7 +109,7 @@ GL Primitives
    Common OpenGL rendering primitives.
               
 Ok, now things are getting serious because we need to actually tell OpenGL what
-to do with the vertices, i.e. how to render them? what do they describe in term
+to do with the vertices, i.e. how to render them? What do they describe in term
 of geometrical primitives? This is quite an important topic since this will
 determines how fragments will be actually generated as illustrated on the image
 below:
@@ -380,7 +380,7 @@ equivalent to a C `double`). So let us specify a NumPy array holding 4×2
    # Build data
    data = np.zeros((4,2), dtype=np.float32))
 
-Wen then create a placeholder on the GPU without yet specifying the size:
+We then create a placeholder on the GPU without yet specifying the size:
 
 .. code:: python
 
@@ -395,7 +395,7 @@ We now need to bind the buffer to the program, that is, for each attribute
 present in the vertex shader program, we need to tell OpenGL where to find the
 corresponding data (i.e. GPU buffer) and this requires some computations. More
 precisely, we need to tell the GPU how to read the buffer in order to bind each
-value to the relevant attribute. To do this, GPU needs to kow what is the
+value to the relevant attribute. To do this, GPU needs to know what is the
 stride between 2 consecutive element and what is the offset to read one
 attribute:
 
@@ -412,7 +412,7 @@ attribute:
 
 
 In our simple quad scenario, this is relatively easy to write because we have a
-single attribute ("`position`"). We first requires the attribute location
+single attribute ("`position`"). We first require the attribute location
 inside the program and then we bind the buffer with the relevant offset.
                                    
 .. code:: python
@@ -750,7 +750,6 @@ the quad program (see `<code/chapter-03/glumpy-quad-varying-color.py>`_):
 
    .. figure:: movies/chapter-03/quad-scale.mp4
       :loop:
-      :autoplay:
       :controls:
       :figwidth: 35%
 
@@ -808,7 +807,6 @@ tricks in the next chapters.
 
 .. figure:: movies/chapter-03/quad-scale.mp4
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 35%
 
@@ -830,7 +828,6 @@ Solution: `<code/chapter-03/quad-scale.py>`_
 
 .. figure:: movies/chapter-03/quad-rotate.mp4
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 35%
 
