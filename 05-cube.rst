@@ -7,7 +7,7 @@ Rendering a cube
    :class: toc chapter-05
 
 We now have all the pieces needed to render a simple 3D scene, that is, a
-rotating cube as show in the teaser image above. But we first need to create
+rotating cube as shown in the teaser image above. But we first need to create
 the cube and to tell OpenGL how we want to actually project it on the screen.
 
 
@@ -30,7 +30,7 @@ explicitly OpenGL how to draw 6 faces with them:
    V["position"] = [[ 1, 1, 1], [-1, 1, 1], [-1,-1, 1], [ 1,-1, 1],
                     [ 1,-1,-1], [ 1, 1,-1], [-1, 1,-1], [-1,-1,-1]]
 
-These vertice describe a cube centered on (0,0,0) that goes from (-1,-1,-1) to
+These vertices describe a cube centered on (0,0,0) that goes from (-1,-1,-1) to
 (+1,+1,+1). Unfortunately, we cannot use `gl.GL_TRIANGLE_STRIP` as we did for
 the quad. If you remember how this rendering primitive considers vertices as a
 succession of triangles, you should also realize there is no way to organize
@@ -44,9 +44,9 @@ just defined):
    I = np.array([0,1,2, 0,2,3,  0,3,4, 0,4,5,  0,5,6, 0,6,1,
                  1,6,7, 1,7,2,  7,4,3, 7,3,2,  4,7,6, 4,6,5], dtype=np.uint32)
 
-This `I` is an `IndexBuffer` that need to be uploaded to the GPU as well.
-Using glumpy, the easiest way is to use a `VertexBuffer` for vertices data and
-an `IndexBuffer` for indices data:
+This `I` is an `IndexBuffer` that needs to be uploaded to the GPU as well.
+Using glumpy, the easiest way is to use a `VertexBuffer` for vertex data and
+an `IndexBuffer` for index data:
 
 .. code:: python
 
@@ -106,10 +106,10 @@ and we'll keep the fragment shader to a minimum for now (red color):
 For the projection, we'll use the default perspective camera that is available
 from the `glumpy.glm` module (that also defines ortho, frustum and perspective
 matrices as well as rotation, translation and scaling operations). This default
-perspective matrix is located at the origin and look in the negative z
+perspective matrix is located at the origin and looks in the negative z
 direction with the up direction pointing toward the positive y-axis. If we
 leave our cube at the origin, the camera would be inside the cube and we would
-not see much. So let first create a view matrix that is a translation along the
+not see much. So let's first create a view matrix that is a translation along the
 z-axis:
 
 .. code:: python
@@ -120,7 +120,7 @@ z-axis:
 Next, we need to define the model matrix and the projection matrix. However,
 we'll not setup them right away because the model matrix will be updated in the
 `on_draw` function in order to rotate the cube, while the projection matrix
-will be updated as soon as the viewport change (which is the case when the
+will be updated as soon as the viewport changes (which is the case when the
 window is first created) in the `on_resize` function.
 
 
@@ -144,8 +144,8 @@ with `near=2.0`, `far=100.0` and field of view of 45°:
       ratio = width / float(height)
       cube['projection'] = glm.perspective(45.0, ratio, 2.0, 100.0)
 
-For the mode matrix, we want the cube to rotate around its center. We do that
-by compositing a rotation the z axis (`theta`), then around the y axis (`phi`):
+For the model matrix, we want the cube to rotate around its center. We do that
+by compositing a rotation about the z axis (`theta`), then about the y axis (`phi`):
 
 .. code:: python
 
@@ -163,7 +163,7 @@ by compositing a rotation the z axis (`theta`), then around the y axis (`phi`):
        model = np.eye(4, dtype=np.float32)
        glm.rotate(model, theta, 0, 0, 1)
        glm.rotate(model, phi, 0, 1, 0)
-       cube['u_model'] = model
+       cube['model'] = model
 
    
 Actual rendering
@@ -177,7 +177,7 @@ Actual rendering
             
    Figure
 
-   A flat shaded rotating cube using Python, OpenGL and glumpy. The 3d aspect
+   A flat shaded rotating cube using Python, OpenGL and glumpy. The 3D aspect
    may be difficult to see because of the flat shading of the cube.
 
 
@@ -212,7 +212,7 @@ Colored cube
 ++++++++++++
 
 The previous cube is not very interesting because we used a single color for
-all the faces and this tends to hide the 3d structure. We can fix this by adding
+all the faces and this tends to hide the 3D structure. We can fix this by adding
 some colors and in the process, we'll discover why glumpy_ is so useful. To add
 color per vertex to the cube, we simply define the vertex structure as:
 
@@ -299,9 +299,9 @@ Outlined cube
    coincident surfaces properly.
 
 We can make the cube a bit nicer by outlining it using black lines. To outline
-the cube, we need to draw lines between couple of vertices on each face. 4
+the cube, we need to draw lines between pairs of vertices on each face. 4
 lines for the back and front face and 2 lines for the top and bottom faces. Why
-only 2 lines for top and bottom ? Because lines are shared between the
+only 2 lines for top and bottom? Because lines are shared between the
 faces. So overall we need 12 lines and we need to compute the corresponding
 indices (I did it for you):
 
@@ -495,7 +495,7 @@ cube code <code/chapter-05/color-cube.py>`_, try to modify only the shader code
 thick border surrounded by black outline. For the "transparent" part, you'll
 need to use the `discard` instruction from within the fragment shader that
 instructs OpenGL to not display the fragment at all and to terminate the
-program frot this shader. Since nothing will be rendered, there is no need to
+program from this shader. Since nothing will be rendered, there is no need to
 process the rest of program.
 
 **Solution**: `<code/chapter-05/hollow-cube.py>`_
