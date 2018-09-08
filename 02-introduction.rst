@@ -251,7 +251,7 @@ coordinates for `position` but we may have chosen to have only 2 if were to
 work in two-dimensions. Same holds true for `color`. We could have used
 only 3 channels (r,g,b) if we did not want to use transparency. This would save
 some bytes for each vertex. Of course, for 4 vertices, this does not really
-matter but you have to realize it **will matter** if you data size grows up to
+matter but you have to realize it **will matter** if your data size grows up to
 one or ten million vertices.
 
 Variables
@@ -337,7 +337,7 @@ If you look at the figure that introduced the gl pipeline, we have 3 vertices
 and 21 fragments. What is the color of each individual fragment ?
 
 The answer is *the interpolation of all 3 vertices color*. This interpolation
-is made using distance of the fragment to each individual vertex. This is a
+is made using the distance of the fragment to each individual vertex. This is a
 very important concept to understand. Any varying value is interpolated between
 the vertices that compose the elementary item (mostly, line or triangle).
 
@@ -414,11 +414,11 @@ Libraries
 
 .. Note::
 
-   Even though glumpy and vispy shares a number of concept, they are different.
+   Even though glumpy and vispy share a number of concepts, they are different.
    vispy offers a high-level interface that may be convenient in some
    situations but this tends to hide the internal machinery. This is one of the
-   reason we'll be using glumpy instead (the other reason being that I'm the
-   author of glumpy (and one of the author of vispy as well in fact)).
+   reasons we'll be using glumpy instead (the other reason being that I'm the
+   author of glumpy (and one of the authors of vispy as well in fact)).
    
 * `Glumpy`_ is a python library for scientific visualization that is both fast,
   scalable and beautiful. Glumpy leverages the computational power of modern

@@ -42,10 +42,10 @@ the projective dimension. In order to explain it, we'll use a 1-dimensional
 space where point coordinates are single scalars indicating the position of the
 points onto the X-axis. This will make everything clearer hopefully.
 
-Let us consider for example a simple set of point `[-1.0, -0.5, 0.0, +0.5,
+Let us consider for example a simple set of points `[-1.0, -0.5, 0.0, +0.5,
 +1.0]` in this unidimensional space. We want to project onto another segment
-`[-2,+2]` that represent the screen (any point projected outside this segment
-is discared and won't be visible into the final projection) The question now is
+`[-2,+2]` that represents the screen (any point projected outside this segment
+is discared and won't be visible into the final projection). The question now is
 how do we project the points onto the screen?
 
 .. figure:: images/chapter-04/1D-H-Coordinates.png
@@ -66,7 +66,7 @@ and default value of 1 for all the `w` such that our new point set is now
 `[(-1.0,1.0), -(0.5,1.0), (0.0,1.0), (+0.5,1.0), (+1.0,1.0)]`. Reciprocally, a
 point `(x,w)` in projective space corresponds to the point `x/w` (if `w` ≠ 0)
 in our unidimensional Euclidean space. From this conversion, we can see
-immediately that there exist actually an infinite set of homogenous coordinates
+immediately that there exists actually an infinite set of homogenous coordinates
 that correspond to a single Cartesian coordinate as illustrated on the figure.
 
 .. figure:: images/chapter-04/1D-Projection.png
@@ -86,20 +86,20 @@ Projections
 +++++++++++
 
 We are now ready to project our point set onto the screen. As shown on the
-figure above, we can use an orthographic (all rays are parallels) or a linear
+figure above, we can use an orthographic (all rays are parallel) or a linear
 projection (rays originate from the camera point and hit the screen, passing
 through points to be projected). For these two projections, results are similar
 but different. In the first case, distances have been exactly conserved while
 in the second case, the distance between projected points has increased, but
 projected points are still equidistant. The third projection is where
 homogenous coordinates make sense. For this (arbitrary) projection, we decided
-that the further the point is from the origin, and the further away from the
+that the further the point is from the origin, the further away from the
 origin its projection will be. To do that, we measure the distance of the point
 to the origin and we add this distance to its `w` value before projecting it
 (this corresponds to the black circles on the figure) using the linear
 projection. It is to be noted that this new projection does not conserve the
 distance relationship and if we consider the set of projected points `[P(-1.0),
-P(-0.5), P(0.0), P(+0.5), P(+1.0)]`, we have have `║P(-1.0)-P(-0.5)]║ >
+P(-0.5), P(0.0), P(+0.5), P(+1.0)]`, we have `║P(-1.0)-P(-0.5)]║ >
 ║P(-0.5)- P(0.0)║`.
 
 
@@ -155,7 +155,7 @@ consider a vector to be 4 rows and 1 columns, meaning transformations happen on
 the left side of vectors. To transform a vertex V by a transformation matrix M,
 we write: V' = M*V. To chain two transformations M1 and M2 (first M1, then M2),
 we write: V' = M2*M1*V which is different from V' = M1*M2*V because matrix
-multiplication is not communative. As clearly illustrated on the right figure,
+multiplication is not commutative. As clearly illustrated by the figure on the right,
 this means for example that a rotation followed by a translation is not the
 same as a translation followed by a rotation.
 
@@ -222,7 +222,7 @@ corresponding matrix is given below:
 Scaling
 +++++++
 
-Considering a vertex `V = (x, y, z, 1)` and a scaling vector `T = (sx, sy, sz,
+Considering a vertex `V = (x, y, z, 1)` and a scaling vector `S = (sx, sy, sz,
 0)`, the scaling of `V` by `S` is `(sx*x, sy*y, sz*z, 1)`. The corresponding
 matrix is given below:
 
@@ -309,8 +309,8 @@ A word of caution
 OpenGL uses a `column-major representation
 <https://www.opengl.org/archives/resources/faq/technical/transformations.htm>`_
 of matrices. This mean that when reading a set of 16 contiguous
-values in memory, the first 4 values corresponds to the first column while in
-Numpy (using C default layout), this would corresponds to the first row. In
+values in memory, relative to a 4×4 matrix, the first 4 values correspond to the first column while in
+Numpy (using C default layout), this would correspond to the first row. In
 order to stay consistent with most OpenGL tutorials, we'll use a column-major
 order in the rest of this book. This means that any glumpy transformations will
 appear to be transposed when displayed, but the underlying memory
@@ -374,7 +374,7 @@ GPU, but you would use on the right with Python/NumPy:
 Projections
 -------------------------------------------------------------------------------
 
-In order to define a projection, we need to specify first what what do we want
+In order to define a projection, we need to specify first what do we want
 to view, that is, we need to define a viewing volume such that any object
 within the volume (even partially) will be rendered while objects outside
 won't. On the image below, the yellow and red spheres are within the volume
@@ -425,7 +425,7 @@ Perspective
                
 At this point, it is not necessary to understand how these matrices were
 built. Suffice it to say they are standard matrices in the 3D world. Both
-suppose the viewer (=camera) is located at position (0,0,0) and is looking in
+assume the viewer (=camera) is located at position (0,0,0) and is looking in
 the direction (0,0,1).
 
 There exists a second form of the perpective matrix that might be easier to
@@ -453,8 +453,8 @@ Model and view matrices
 +++++++++++++++++++++++
 
 We are almost done with matrices. You may have guessed that the above matrices
-requires the viewing volume to be in the z direction. We could design our 3D
-scene such that all objects are withing this direction but it would not be very
+require the viewing volume to be in the z direction. We could design our 3D
+scene such that all objects are within this direction but it would not be very
 convenient. So instead, we use a view matrix that maps the world space to
 camera space. This is pretty much as if we were orienting the camera at a given
 position and look toward a given direction. In the meantime, we can further
