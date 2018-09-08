@@ -219,7 +219,7 @@ Buffers
 +++++++
 
 The next question is thus where do those vertices comes from ? The idea of
-modern GL is that vertices are stored on the GPU and need to be uploaded to
+modern GL is that vertices are stored on the CPU and need to be uploaded to
 the GPU before rendering. The way to do that is to build buffers onto the CPU
 and to send these buffers onto the GPU. If your data does not change, no need
 to upload them again. That is the big difference with the previous fixed
