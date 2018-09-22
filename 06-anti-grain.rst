@@ -263,7 +263,7 @@ outside the circle.
 Now, let's check if OpenGL is consistent with our maths. We'll write a fragment
 shader that compute the color according to the distance to the shape. We'll use
 the red color outside the circle, blue color inside and white color on the
-border (with some tolerance of we won't see anything).
+border (with some tolerance or we won't see anything).
 
 .. code:: glsl
 
@@ -659,7 +659,7 @@ Fake (but fast) ellipse
 
    `SDF-fake-ellipse.py <code/chapter-06/SDF-fake-ellipse.py>`_
 
-Íñigo Quílez also provided a very fast apprximation of the ellipse
+Íñigo Quílez also provided a very fast approximation of the ellipse
 distance. Some artifacts can be clearly seen but we'll see later that if our ellipse is not too thick, this approximation will do the job.
 
    
