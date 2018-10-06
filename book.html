@@ -19,7 +19,7 @@
 <img alt="images/sa.large.png" src="images/sa.large.png" style="width: 32px;" />
 <img alt="images/nc.large.png" src="images/nc.large.png" style="width: 32px;" />
 <div class="line-block">
-<div class="line">Latest version - August 2018</div>
+<div class="line">Latest version - September 2018</div>
 <div class="line"><a class="reference external" href="http://www.labri.fr/perso/nrougier/python-opengl">www.labri.fr/perso/nrougier/python-opengl</a></div>
 </div>
 </div>
@@ -609,7 +609,7 @@ executed 21 times, once for each fragment.</p>
 <div class="section" id="buffers">
 <h3><a class="toc-backref" href="#id5">Buffers</a></h3>
 <p>The next question is thus where do those vertices comes from ? The idea of
-modern GL is that vertices are stored on the GPU and need to be uploaded to
+modern GL is that vertices are stored on the CPU and need to be uploaded to
 the GPU before rendering. The way to do that is to build buffers onto the CPU
 and to send these buffers onto the GPU. If your data does not change, no need
 to upload them again. That is the big difference with the previous fixed
@@ -637,7 +637,7 @@ coordinates for <code>position</code> but we may have chosen to have only 2 if w
 work in two-dimensions. Same holds true for <code>color</code>. We could have used
 only 3 channels (r,g,b) if we did not want to use transparency. This would save
 some bytes for each vertex. Of course, for 4 vertices, this does not really
-matter but you have to realize it <strong>will matter</strong> if you data size grows up to
+matter but you have to realize it <strong>will matter</strong> if your data size grows up to
 one or ten million vertices.</p>
 </div>
 <div class="section" id="variables">
@@ -710,7 +710,7 @@ the vertex color to the fragment shader, we now write:</p>
 If you look at the figure that introduced the gl pipeline, we have 3 vertices
 and 21 fragments. What is the color of each individual fragment ?</p>
 <p>The answer is <em>the interpolation of all 3 vertices color</em>. This interpolation
-is made using distance of the fragment to each individual vertex. This is a
+is made using the distance of the fragment to each individual vertex. This is a
 very important concept to understand. Any varying value is interpolated between
 the vertices that compose the elementary item (mostly, line or triangle).</p>
 <p>Ok, enough for now, we'll see an explicit example in the next chapter.</p>
@@ -777,11 +777,11 @@ it also has much to offer for experienced programmers and researchers.</li>
 <h3><a class="toc-backref" href="#id5">Libraries</a></h3>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Even though glumpy and vispy shares a number of concept, they are different.
+<p class="last">Even though glumpy and vispy share a number of concepts, they are different.
 vispy offers a high-level interface that may be convenient in some
 situations but this tends to hide the internal machinery. This is one of the
-reason we'll be using glumpy instead (the other reason being that I'm the
-author of glumpy (and one of the author of vispy as well in fact)).</p>
+reasons we'll be using glumpy instead (the other reason being that I'm the
+author of glumpy (and one of the authors of vispy as well in fact)).</p>
 </div>
 <ul class="simple">
 <li><a class="reference external" href="http://glumpy.github.io">Glumpy</a> is a python library for scientific visualization that is both fast,
@@ -847,7 +847,7 @@ simple colored quad (i.e. a red square).</p>
 <img alt="images/chapter-03/NDC.png" src="images/chapter-03/NDC.png" />
 <p class="caption">Figure</p>
 <div class="legend">
-Normalized Device Coordinates (NDC) where bottom-left corner coordinates is
+Normalized Device Coordinates (NDC) where bottom-left corner coordinate is
 (-1,-1) and top-right corner is (+1,+1).</div>
 </div>
 <p>Before even diving into actual code, it is important to understand first how
@@ -862,7 +862,7 @@ the whole universe, you'll have utlimately to fit it into this small volume.</p>
 to right and <strong>y</strong> coordinates increase from bottom to top. For this latter
 one, it is noticeably different from the usual convention and this might induce
 some problems, especially when you're dealing with the mouse pointer whose
-<strong>y</strong> coordinate goes this other way around.</p>
+<strong>y</strong> coordinate goes the other way around.</p>
 </div>
 <div class="section" id="triangulation">
 <h3><a class="toc-backref" href="#id7">Triangulation</a></h3>
@@ -876,7 +876,7 @@ Different triangulation of the same quad using from 2 to 5 triangles.</div>
 surface means to find a set of triangles, which covers a given surface. This
 can be a tedious process but fortunately, there exist many different methods
 and algorithms to perform such triangulation automatically for any 2D or 3D
-surface. The quality of the triangulation is measured in term of the closeness
+surface. The quality of the triangulation is measured in terms of the closeness
 to the approximated surface, the number of triangles necessary (the smaller,
 the better) and the homogeneity of the triangles (we prefer to have triangles
 that have more or less the same size and to not have any degenerated triangle).</p>
@@ -884,7 +884,7 @@ that have more or less the same size and to not have any degenerated triangle).<
 triangulation (which is not unique as illustrated on the figure). Since we want
 to minimize the number of triangles, we'll use the 2 triangles solution that
 requires only 4 (shared) vertices corresponding to the four corners of the
-quad. However, you can see of the figure that we could have used different
+quad. However, you can see from the figure that we could have used different
 triangulations using more vertices, and later in this book we will just do that
 (but for a reason).</p>
 <p>Considering the NDC, our quad will thus be composed of two triangles:</p>
@@ -892,8 +892,7 @@ triangulations using more vertices, and later in this book we will just do that
 <li>One triangle described by vertices <code>(-1,+1), (+1,+1), (-1,-1)</code></li>
 <li>One triangle described by vertices <code>(+1,+1), (-1,-1), (+1,-1)</code></li>
 </ul>
-<p>Here we can see that vertices <code>(-1,-1)</code> and <code>(+1,+1)</code> are structurally the
-same. So instead of using 6 vertices to describe the two triangles, we can
+<p>Here we can see that vertices <code>(-1,-1)</code> and <code>(+1,+1)</code> are common to both triangles. So instead of using 6 vertices to describe the two triangles, we can
 re-use the common vertices to describe the whole quad. Let's name them:</p>
 <ul class="simple">
 <li><code>V₀</code>: <code>(-1,+1)</code></li>
@@ -913,12 +912,12 @@ is exactly what we need to tell OpenGL.</p>
 Common OpenGL rendering primitives.</div>
 </div>
 <p>Ok, now things are getting serious because we need to actually tell OpenGL what
-to do with the vertices, i.e. how to render them? what do they describe in term
+to do with the vertices, i.e. how to render them? What do they describe in terms
 of geometrical primitives? This is quite an important topic since this will
-determines how fragments will be actually generated as illustrated on the image
+determine how fragments will actually be generated as illustrated on the image
 below:</p>
-<p>Mostly, OpenGL knows how to draw (ugly) point, (ugly) lines and ugly
-(triangles). For lines and triangles, there exist some variations depending if
+<p>Mostly, OpenGL knows how to draw (ugly) points, (ugly) lines and (ugly)
+triangles. For lines and triangles, there exist some variations depending if
 you want to specify very precisely what to draw or if you can take advantage of
 some implicit assumptions. Let's consider lines first for example. Given a set
 of four vertices <code>(V₀,V₁,V₂,V₃)</code>, you migh want to draw segments
@@ -945,13 +944,13 @@ structure.</p>
 The Barycentric interpolation <code>f</code> of a fragment <code>p</code> is given by <code>f = 𝛌₁f₁ +
 𝛌₂f₂ + 𝛌₃f₃</code></div>
 </div>
-<p>The choice of the triangle as the only surface primitive is not arbitrary
-choice because a triangle offers the possibility of having a nice and intuitive
+<p>The choice of the triangle as the only surface primitive is not an arbitrary
+choice, because a triangle offers the possibility of having a nice and intuitive
 interpolation of any point that is inside the triangle. If you look back at
 the graphic pipeline as it has been introduced in the <a class="reference internal" href="#modern-opengl">Modern OpenGL</a> section,
 you can see that the rasterisation requires for OpenGL to generate fragments
 inside the triangle but also to interpolate values (colors on the figure). One
-of the legitimate question to be solved is then: if I have a triangle
+of the legitimate questions to be solved is then: if I have a triangle
 (V₁,V₂,V₃), each summit vertex having (for example) a different color, what is
 the color of a fragment <code>p</code> inside the triangle? The answer is <a class="reference external" href="https://en.wikibooks.org/wiki/GLSL_Programming/Rasterization">barycentric
 interpolation</a>
@@ -985,7 +984,7 @@ shader. And this property will be used and abused in this book.</p>
 <h2><a class="toc-backref" href="#id7">The hard way</a></h2>
 <p>Having reviewed some important OpenGL concepts, it's time to code our quad
 example. But, before even using OpenGL, we need to open a window with a valid GL
-context. This can be done using toolkit such as <a class="reference external" href="https://www.gtk.org">Gtk</a>, <a class="reference external" href="https://www.qt.io">Qt</a> or <a class="reference external" href="https://www.wxwidgets.org">Wx</a> or any native
+context. This can be done using a toolkit such as <a class="reference external" href="https://www.gtk.org">Gtk</a>, <a class="reference external" href="https://www.qt.io">Qt</a> or <a class="reference external" href="https://www.wxwidgets.org">Wx</a> or any native
 toolkit (Windows, Linux, OSX). Unfortunately, the <a class="reference external" href="https://docs.python.org/3/library/tk.html">Tk</a> Python interface does not
 allow to create a GL context and we cannot use it. Note there also exists
 dedicated toolkits such as <a class="reference external" href="http://www.glfw.org">GLFW</a> or <a class="reference external" href="http://freeglut.sourceforge.net">GLUT</a> and the advantage of GLUT is that
@@ -1005,7 +1004,7 @@ package. Here is a minimal setup that should open a window with garbage on it
     <span class="name">gl</span><span class="operator">.</span><span class="name">glViewport</span><span class="punctuation">(</span><span class="literal number integer">0</span><span class="punctuation">,</span> <span class="literal number integer">0</span><span class="punctuation">,</span> <span class="name">width</span><span class="punctuation">,</span> <span class="name">height</span><span class="punctuation">)</span>
 
 <span class="keyword">def</span> <span class="name function">keyboard</span><span class="punctuation">(</span> <span class="name">key</span><span class="punctuation">,</span> <span class="name">x</span><span class="punctuation">,</span> <span class="name">y</span> <span class="punctuation">):</span>
-    <span class="keyword">if</span> <span class="name">key</span> <span class="operator">==</span> <span class="literal string single">'b'</span>\<span class="name">x1b</span><span class="literal string single">':</span>
+    <span class="keyword">if</span> <span class="name">key</span> <span class="operator">==</span> <span class="literal string affix">b</span><span class="literal string single">'</span><span class="literal string escape">\x1b</span><span class="literal string single">'</span><span class="punctuation">:</span>
         <span class="name">sys</span><span class="operator">.</span><span class="name">exit</span><span class="punctuation">(</span> <span class="punctuation">)</span>
 
 <span class="name">glut</span><span class="operator">.</span><span class="name">glutInit</span><span class="punctuation">()</span>
@@ -1148,7 +1147,7 @@ equivalent to a C <code>double</code>). So let us specify a NumPy array holding 
 <span class="comment single"># Build data</span>
 <span class="name">data</span> <span class="operator">=</span> <span class="name">np</span><span class="operator">.</span><span class="name">zeros</span><span class="punctuation">((</span><span class="literal number integer">4</span><span class="punctuation">,</span><span class="literal number integer">2</span><span class="punctuation">),</span> <span class="name">dtype</span><span class="operator">=</span><span class="name">np</span><span class="operator">.</span><span class="name">float32</span><span class="punctuation">))</span>
 </pre>
-<p>Wen then create a placeholder on the GPU without yet specifying the size:</p>
+<p>We then create a placeholder on the GPU without yet specifying the size:</p>
 <pre class="code python literal-block">
 <span class="comment single"># Request a buffer slot from GPU</span>
 <span class="name builtin">buffer</span> <span class="operator">=</span> <span class="name">gl</span><span class="operator">.</span><span class="name">glGenBuffers</span><span class="punctuation">(</span><span class="literal number integer">1</span><span class="punctuation">)</span>
@@ -1161,7 +1160,7 @@ present in the vertex shader program, we need to tell OpenGL where to find the
 corresponding data (i.e. GPU buffer) and this requires some computations. More
 precisely, we need to tell the GPU how to read the buffer in order to bind each
 value to the relevant attribute. To do this, GPU needs to know what is the
-stride between 2 consecutive element and what is the offset to read one
+stride between 2 consecutive elements and what is the offset to read one
 attribute:</p>
 <pre class="code neutral literal-block">
                  1ˢᵗ vertex  2ⁿᵈ vertex  3ʳᵈ vertex   …
@@ -1173,7 +1172,7 @@ attribute:</p>
                                 stride
 </pre>
 <p>In our simple quad scenario, this is relatively easy to write because we have a
-single attribute (&quot;<code>position</code>&quot;). We first requires the attribute location
+single attribute (&quot;<code>position</code>&quot;). We first require the attribute location
 inside the program and then we bind the buffer with the relevant offset.</p>
 <pre class="code python literal-block">
 <span class="name">stride</span> <span class="operator">=</span> <span class="name">data</span><span class="operator">.</span><span class="name">strides</span><span class="punctuation">[</span><span class="literal number integer">0</span><span class="punctuation">]</span>
@@ -1267,7 +1266,7 @@ A colored quad using a per-vertex color.</div>
 </div>
 <p>Until now, we have been using a constant color for the four vertices of our
 quad and the result is (unsurprisingly) a boring uniform red or blue quad. We
-can make a bit more interesting though by assigning different colors for each
+can make it a bit more interesting though by assigning different colors to each
 vertex and see how OpenGL will interpolate colors. Our new vertex shader would
 need to be rewritten as:</p>
 <pre class="code glsl literal-block">
@@ -1337,8 +1336,8 @@ thanks to NumPy:</p>
 <div class="section" id="the-easy-way">
 <h2><a class="toc-backref" href="#id7">The easy way</a></h2>
 <p>As we've seen in the previous section, displaying a simple quad using modern GL
-is quite tedious and requires a fair number of operations and this why from now
-on we'll use <a class="reference external" href="http://glumpy.github.io">glumpy</a> whose goal is to make this process both easy and
+is quite tedious and requires a fair number of operations and this is why, from now
+on, we'll use <a class="reference external" href="http://glumpy.github.io">glumpy</a> whose goal is to make this process both easy and
 intuitive.</p>
 <p>Glumpy is organized around three main modules:</p>
 <ul class="simple">
@@ -1366,7 +1365,7 @@ this backend is activately maintainted and &quot;just works&quot;.</p>
 <span class="name">window</span> <span class="operator">=</span> <span class="name">app</span><span class="operator">.</span><span class="name">Window</span><span class="punctuation">()</span>
 </pre>
 <p>If necessary, you can also indicate which backend to use by writing
-<code>app.choose(&quot;glfw&quot;)</code> before creating the window. The creation of the program is
+<code>app.use(&quot;glfw&quot;)</code> before creating the window. The creation of the program is
 also straightforward:</p>
 <pre class="code python literal-block">
 <span class="comment single"># Build the program and corresponding buffers (with 4 vertices)</span>
@@ -1379,7 +1378,7 @@ a matter of setting the different fields of the <code>quad</code> program:</p>
 <span class="comment single"># Upload data into GPU</span>
 <span class="name">quad</span><span class="punctuation">[</span><span class="literal string single">'position'</span><span class="punctuation">]</span> <span class="operator">=</span> <span class="punctuation">(</span><span class="operator">-</span><span class="literal number integer">1</span><span class="punctuation">,</span><span class="operator">+</span><span class="literal number integer">1</span><span class="punctuation">),</span> <span class="punctuation">(</span><span class="operator">+</span><span class="literal number integer">1</span><span class="punctuation">,</span><span class="operator">+</span><span class="literal number integer">1</span><span class="punctuation">),</span> <span class="punctuation">(</span><span class="operator">-</span><span class="literal number integer">1</span><span class="punctuation">,</span><span class="operator">-</span><span class="literal number integer">1</span><span class="punctuation">),</span> <span class="punctuation">(</span><span class="operator">+</span><span class="literal number integer">1</span><span class="punctuation">,</span><span class="operator">-</span><span class="literal number integer">1</span><span class="punctuation">)</span>
 </pre>
-<p>Under the hood, glumpy has parsed your shader programs and has identied
+<p>Under the hood, glumpy has parsed your shader programs and has identified
 attributes. Rendering is just a matter of calling the <code>draw</code> method from our
 shader program, using the proper mode.</p>
 <pre class="code python literal-block">
@@ -1394,9 +1393,9 @@ shader program, using the proper mode.</p>
 </pre>
 <p>The whole source is available in <a class="reference external" href="code/chapter-03/glumpy-quad-solid.py">code/chapter-03/glumpy-quad-solid.py</a>.</p>
 <p>If you run this program using the <code>--debug</code> switch, you should obtain the
-following output that show what is being done in the background. More
+following output that shows what is being done in the background. More
 specifically, you can check that the program is actually compiled and linked
-using specified shaders and that the buffer is created and bound to the
+using the specified shaders and that the buffer is created and bound to the
 program.</p>
 <pre class="code output literal-block">
 [i] HiDPI detected, fixing window size
@@ -1582,10 +1581,10 @@ fourth <code>w</code> coordinate that corresponds to the fourth dimension, let's
 the projective dimension. In order to explain it, we'll use a 1-dimensional
 space where point coordinates are single scalars indicating the position of the
 points onto the X-axis. This will make everything clearer hopefully.</p>
-<p>Let us consider for example a simple set of point <code>[-1.0, -0.5, 0.0, +0.5,
+<p>Let us consider for example a simple set of points <code>[-1.0, -0.5, 0.0, +0.5,
 +1.0]</code> in this unidimensional space. We want to project onto another segment
-<code>[-2,+2]</code> that represent the screen (any point projected outside this segment
-is discared and won't be visible into the final projection) The question now is
+<code>[-2,+2]</code> that represents the screen (any point projected outside this segment
+is discared and won't be visible into the final projection). The question now is
 how do we project the points onto the screen?</p>
 <div class="right figure" id="figure-images/chapter-04/1D-H-Coordinates.png" style="width: 50%">
 <img alt="images/chapter-04/1D-H-Coordinates.png" src="images/chapter-04/1D-H-Coordinates.png" />
@@ -1603,7 +1602,7 @@ and default value of 1 for all the <code>w</code> such that our new point set is
 <code>[(-1.0,1.0), -(0.5,1.0), (0.0,1.0), (+0.5,1.0), (+1.0,1.0)]</code>. Reciprocally, a
 point <code>(x,w)</code> in projective space corresponds to the point <code>x/w</code> (if <code>w</code> ≠ 0)
 in our unidimensional Euclidean space. From this conversion, we can see
-immediately that there exist actually an infinite set of homogenous coordinates
+immediately that there exists actually an infinite set of homogenous coordinates
 that correspond to a single Cartesian coordinate as illustrated on the figure.</p>
 <div class="right figure" id="figure-images/chapter-04/1D-Projection.png" style="width: 100%">
 <img alt="images/chapter-04/1D-Projection.png" src="images/chapter-04/1D-Projection.png" />
@@ -1619,20 +1618,20 @@ projected and you can consider it like an infinite point. -->
 <div class="section" id="projections">
 <h3><a class="toc-backref" href="#id11">Projections</a></h3>
 <p>We are now ready to project our point set onto the screen. As shown on the
-figure above, we can use an orthographic (all rays are parallels) or a linear
+figure above, we can use an orthographic (all rays are parallel) or a linear
 projection (rays originate from the camera point and hit the screen, passing
 through points to be projected). For these two projections, results are similar
 but different. In the first case, distances have been exactly conserved while
 in the second case, the distance between projected points has increased, but
 projected points are still equidistant. The third projection is where
 homogenous coordinates make sense. For this (arbitrary) projection, we decided
-that the further the point is from the origin, and the further away from the
+that the further the point is from the origin, the further away from the
 origin its projection will be. To do that, we measure the distance of the point
 to the origin and we add this distance to its <code>w</code> value before projecting it
 (this corresponds to the black circles on the figure) using the linear
 projection. It is to be noted that this new projection does not conserve the
 distance relationship and if we consider the set of projected points <code>[P(-1.0),
-P(-0.5), P(0.0), P(+0.5), P(+1.0)]</code>, we have have <code>║P(-1.0)-P(-0.5)]║ &gt;
+P(-0.5), P(0.0), P(+0.5), P(+1.0)]</code>, we have <code>║P(-1.0)-P(-0.5)]║ &gt;
 ║P(-0.5)- P(0.0)║</code>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -1677,7 +1676,7 @@ consider a vector to be 4 rows and 1 columns, meaning transformations happen on
 the left side of vectors. To transform a vertex V by a transformation matrix M,
 we write: V' = M*V. To chain two transformations M1 and M2 (first M1, then M2),
 we write: V' = M2*M1*V which is different from V' = M1*M2*V because matrix
-multiplication is not communative. As clearly illustrated on the right figure,
+multiplication is not commutative. As clearly illustrated by the figure on the right,
 this means for example that a rotation followed by a translation is not the
 same as a translation followed by a rotation.</p>
 <!-- **Main transformations**
@@ -1732,7 +1731,7 @@ corresponding matrix is given below:</p>
 </div>
 <div class="section" id="scaling">
 <h3><a class="toc-backref" href="#id11">Scaling</a></h3>
-<p>Considering a vertex <code>V = (x, y, z, 1)</code> and a scaling vector <code>T = (sx, sy, sz,
+<p>Considering a vertex <code>V = (x, y, z, 1)</code> and a scaling vector <code>S = (sx, sy, sz,
 0)</code>, the scaling of <code>V</code> by <code>S</code> is <code>(sx*x, sy*y, sz*z, 1)</code>. The corresponding
 matrix is given below:</p>
 <pre class="code math literal-block">
@@ -1805,8 +1804,8 @@ Y-axis and Z-axis.</p>
 <h3><a class="toc-backref" href="#id11">A word of caution</a></h3>
 <p>OpenGL uses a <a class="reference external" href="https://www.opengl.org/archives/resources/faq/technical/transformations.htm">column-major representation</a>
 of matrices. This mean that when reading a set of 16 contiguous
-values in memory, the first 4 values corresponds to the first column while in
-Numpy (using C default layout), this would corresponds to the first row. In
+values in memory, relative to a 4×4 matrix, the first 4 values correspond to the first column while in
+Numpy (using C default layout), this would correspond to the first row. In
 order to stay consistent with most OpenGL tutorials, we'll use a column-major
 order in the rest of this book. This means that any glumpy transformations will
 appear to be transposed when displayed, but the underlying memory
@@ -1856,7 +1855,7 @@ GPU, but you would use on the right with Python/NumPy:</p>
 </div>
 <div class="section" id="id14">
 <h2><a class="toc-backref" href="#id11">Projections</a></h2>
-<p>In order to define a projection, we need to specify first what what do we want
+<p>In order to define a projection, we need to specify first what do we want
 to view, that is, we need to define a viewing volume such that any object
 within the volume (even partially) will be rendered while objects outside
 won't. On the image below, the yellow and red spheres are within the volume
@@ -1895,7 +1894,7 @@ matrices below:</p>
 </pre>
 <p>At this point, it is not necessary to understand how these matrices were
 built. Suffice it to say they are standard matrices in the 3D world. Both
-suppose the viewer (=camera) is located at position (0,0,0) and is looking in
+assume the viewer (=camera) is located at position (0,0,0) and is looking in
 the direction (0,0,1).</p>
 <p>There exists a second form of the perpective matrix that might be easier to
 manipulate. Instead of specifying the right/left/top/bottom planes, we'll use
@@ -1916,8 +1915,8 @@ the x direction.</p>
 <div class="section" id="model-and-view-matrices">
 <h3><a class="toc-backref" href="#id11">Model and view matrices</a></h3>
 <p>We are almost done with matrices. You may have guessed that the above matrices
-requires the viewing volume to be in the z direction. We could design our 3D
-scene such that all objects are withing this direction but it would not be very
+require the viewing volume to be in the z direction. We could design our 3D
+scene such that all objects are within this direction but it would not be very
 convenient. So instead, we use a view matrix that maps the world space to
 camera space. This is pretty much as if we were orienting the camera at a given
 position and look toward a given direction. In the meantime, we can further
@@ -1962,7 +1961,7 @@ chapter carefully, you may have guessed the corresponding GLSL shader:</p>
 </ul>
 </div>
 <p>We now have all the pieces needed to render a simple 3D scene, that is, a
-rotating cube as show in the teaser image above. But we first need to create
+rotating cube as shown in the teaser image above. But we first need to create
 the cube and to tell OpenGL how we want to actually project it on the screen.</p>
 <div class="section" id="object-creation">
 <h2><a class="toc-backref" href="#id15">Object creation</a></h2>
@@ -1979,7 +1978,7 @@ explicitly OpenGL how to draw 6 faces with them:</p>
 <span class="name">V</span><span class="punctuation">[</span><span class="literal string double">&quot;position&quot;</span><span class="punctuation">]</span> <span class="operator">=</span> <span class="punctuation">[[</span> <span class="literal number integer">1</span><span class="punctuation">,</span> <span class="literal number integer">1</span><span class="punctuation">,</span> <span class="literal number integer">1</span><span class="punctuation">],</span> <span class="punctuation">[</span><span class="operator">-</span><span class="literal number integer">1</span><span class="punctuation">,</span> <span class="literal number integer">1</span><span class="punctuation">,</span> <span class="literal number integer">1</span><span class="punctuation">],</span> <span class="punctuation">[</span><span class="operator">-</span><span class="literal number integer">1</span><span class="punctuation">,</span><span class="operator">-</span><span class="literal number integer">1</span><span class="punctuation">,</span> <span class="literal number integer">1</span><span class="punctuation">],</span> <span class="punctuation">[</span> <span class="literal number integer">1</span><span class="punctuation">,</span><span class="operator">-</span><span class="literal number integer">1</span><span class="punctuation">,</span> <span class="literal number integer">1</span><span class="punctuation">],</span>
                  <span class="punctuation">[</span> <span class="literal number integer">1</span><span class="punctuation">,</span><span class="operator">-</span><span class="literal number integer">1</span><span class="punctuation">,</span><span class="operator">-</span><span class="literal number integer">1</span><span class="punctuation">],</span> <span class="punctuation">[</span> <span class="literal number integer">1</span><span class="punctuation">,</span> <span class="literal number integer">1</span><span class="punctuation">,</span><span class="operator">-</span><span class="literal number integer">1</span><span class="punctuation">],</span> <span class="punctuation">[</span><span class="operator">-</span><span class="literal number integer">1</span><span class="punctuation">,</span> <span class="literal number integer">1</span><span class="punctuation">,</span><span class="operator">-</span><span class="literal number integer">1</span><span class="punctuation">],</span> <span class="punctuation">[</span><span class="operator">-</span><span class="literal number integer">1</span><span class="punctuation">,</span><span class="operator">-</span><span class="literal number integer">1</span><span class="punctuation">,</span><span class="operator">-</span><span class="literal number integer">1</span><span class="punctuation">]]</span>
 </pre>
-<p>These vertice describe a cube centered on (0,0,0) that goes from (-1,-1,-1) to
+<p>These vertices describe a cube centered on (0,0,0) that goes from (-1,-1,-1) to
 (+1,+1,+1). Unfortunately, we cannot use <code>gl.GL_TRIANGLE_STRIP</code> as we did for
 the quad. If you remember how this rendering primitive considers vertices as a
 succession of triangles, you should also realize there is no way to organize
@@ -1991,9 +1990,9 @@ just defined):</p>
 <span class="name">I</span> <span class="operator">=</span> <span class="name">np</span><span class="operator">.</span><span class="name">array</span><span class="punctuation">([</span><span class="literal number integer">0</span><span class="punctuation">,</span><span class="literal number integer">1</span><span class="punctuation">,</span><span class="literal number integer">2</span><span class="punctuation">,</span> <span class="literal number integer">0</span><span class="punctuation">,</span><span class="literal number integer">2</span><span class="punctuation">,</span><span class="literal number integer">3</span><span class="punctuation">,</span>  <span class="literal number integer">0</span><span class="punctuation">,</span><span class="literal number integer">3</span><span class="punctuation">,</span><span class="literal number integer">4</span><span class="punctuation">,</span> <span class="literal number integer">0</span><span class="punctuation">,</span><span class="literal number integer">4</span><span class="punctuation">,</span><span class="literal number integer">5</span><span class="punctuation">,</span>  <span class="literal number integer">0</span><span class="punctuation">,</span><span class="literal number integer">5</span><span class="punctuation">,</span><span class="literal number integer">6</span><span class="punctuation">,</span> <span class="literal number integer">0</span><span class="punctuation">,</span><span class="literal number integer">6</span><span class="punctuation">,</span><span class="literal number integer">1</span><span class="punctuation">,</span>
               <span class="literal number integer">1</span><span class="punctuation">,</span><span class="literal number integer">6</span><span class="punctuation">,</span><span class="literal number integer">7</span><span class="punctuation">,</span> <span class="literal number integer">1</span><span class="punctuation">,</span><span class="literal number integer">7</span><span class="punctuation">,</span><span class="literal number integer">2</span><span class="punctuation">,</span>  <span class="literal number integer">7</span><span class="punctuation">,</span><span class="literal number integer">4</span><span class="punctuation">,</span><span class="literal number integer">3</span><span class="punctuation">,</span> <span class="literal number integer">7</span><span class="punctuation">,</span><span class="literal number integer">3</span><span class="punctuation">,</span><span class="literal number integer">2</span><span class="punctuation">,</span>  <span class="literal number integer">4</span><span class="punctuation">,</span><span class="literal number integer">7</span><span class="punctuation">,</span><span class="literal number integer">6</span><span class="punctuation">,</span> <span class="literal number integer">4</span><span class="punctuation">,</span><span class="literal number integer">6</span><span class="punctuation">,</span><span class="literal number integer">5</span><span class="punctuation">],</span> <span class="name">dtype</span><span class="operator">=</span><span class="name">np</span><span class="operator">.</span><span class="name">uint32</span><span class="punctuation">)</span>
 </pre>
-<p>This <code>I</code> is an <code>IndexBuffer</code> that need to be uploaded to the GPU as well.
-Using glumpy, the easiest way is to use a <code>VertexBuffer</code> for vertices data and
-an <code>IndexBuffer</code> for indices data:</p>
+<p>This <code>I</code> is an <code>IndexBuffer</code> that needs to be uploaded to the GPU as well.
+Using glumpy, the easiest way is to use a <code>VertexBuffer</code> for vertex data and
+an <code>IndexBuffer</code> for index data:</p>
 <pre class="code python literal-block">
 <span class="name">V</span> <span class="operator">=</span> <span class="name">V</span><span class="operator">.</span><span class="name">view</span><span class="punctuation">(</span><span class="name">gloo</span><span class="operator">.</span><span class="name">VertexBuffer</span><span class="punctuation">)</span>
 <span class="name">I</span> <span class="operator">=</span> <span class="name">I</span><span class="operator">.</span><span class="name">view</span><span class="punctuation">(</span><span class="name">gloo</span><span class="operator">.</span><span class="name">IndexBuffer</span><span class="punctuation">)</span>
@@ -2042,10 +2041,10 @@ example, we'll use the model-view-projection model that requires 3 matrices:</p>
 <p>For the projection, we'll use the default perspective camera that is available
 from the <code>glumpy.glm</code> module (that also defines ortho, frustum and perspective
 matrices as well as rotation, translation and scaling operations). This default
-perspective matrix is located at the origin and look in the negative z
+perspective matrix is located at the origin and looks in the negative z
 direction with the up direction pointing toward the positive y-axis. If we
 leave our cube at the origin, the camera would be inside the cube and we would
-not see much. So let first create a view matrix that is a translation along the
+not see much. So let's first create a view matrix that is a translation along the
 z-axis:</p>
 <pre class="code python literal-block">
 <span class="name">view</span> <span class="operator">=</span> <span class="name">np</span><span class="operator">.</span><span class="name">eye</span><span class="punctuation">(</span><span class="literal number integer">4</span><span class="punctuation">,</span><span class="name">dtype</span><span class="operator">=</span><span class="name">np</span><span class="operator">.</span><span class="name">float32</span><span class="punctuation">)</span>
@@ -2054,7 +2053,7 @@ z-axis:</p>
 <p>Next, we need to define the model matrix and the projection matrix. However,
 we'll not setup them right away because the model matrix will be updated in the
 <code>on_draw</code> function in order to rotate the cube, while the projection matrix
-will be updated as soon as the viewport change (which is the case when the
+will be updated as soon as the viewport changes (which is the case when the
 window is first created) in the <code>on_resize</code> function.</p>
 <pre class="code python literal-block">
 <span class="name">projection</span> <span class="operator">=</span> <span class="name">np</span><span class="operator">.</span><span class="name">eye</span><span class="punctuation">(</span><span class="literal number integer">4</span><span class="punctuation">,</span><span class="name">dtype</span><span class="operator">=</span><span class="name">np</span><span class="operator">.</span><span class="name">float32</span><span class="punctuation">)</span>
@@ -2073,8 +2072,8 @@ with <code>near=2.0</code>, <code>far=100.0</code> and field of view of 45°:</p
    <span class="name">ratio</span> <span class="operator">=</span> <span class="name">width</span> <span class="operator">/</span> <span class="name builtin">float</span><span class="punctuation">(</span><span class="name">height</span><span class="punctuation">)</span>
    <span class="name">cube</span><span class="punctuation">[</span><span class="literal string single">'projection'</span><span class="punctuation">]</span> <span class="operator">=</span> <span class="name">glm</span><span class="operator">.</span><span class="name">perspective</span><span class="punctuation">(</span><span class="literal number float">45.0</span><span class="punctuation">,</span> <span class="name">ratio</span><span class="punctuation">,</span> <span class="literal number float">2.0</span><span class="punctuation">,</span> <span class="literal number float">100.0</span><span class="punctuation">)</span>
 </pre>
-<p>For the mode matrix, we want the cube to rotate around its center. We do that
-by compositing a rotation the z axis (<code>theta</code>), then around the y axis (<code>phi</code>):</p>
+<p>For the model matrix, we want the cube to rotate around its center. We do that
+by compositing a rotation about the z axis (<code>theta</code>), then about the y axis (<code>phi</code>):</p>
 <pre class="code python literal-block">
 <span class="name">phi</span><span class="punctuation">,</span> <span class="name">theta</span> <span class="operator">=</span> <span class="literal number integer">0</span><span class="punctuation">,</span><span class="literal number integer">0</span>
 
@@ -2090,7 +2089,7 @@ by compositing a rotation the z axis (<code>theta</code>), then around the y axi
     <span class="name">model</span> <span class="operator">=</span> <span class="name">np</span><span class="operator">.</span><span class="name">eye</span><span class="punctuation">(</span><span class="literal number integer">4</span><span class="punctuation">,</span> <span class="name">dtype</span><span class="operator">=</span><span class="name">np</span><span class="operator">.</span><span class="name">float32</span><span class="punctuation">)</span>
     <span class="name">glm</span><span class="operator">.</span><span class="name">rotate</span><span class="punctuation">(</span><span class="name">model</span><span class="punctuation">,</span> <span class="name">theta</span><span class="punctuation">,</span> <span class="literal number integer">0</span><span class="punctuation">,</span> <span class="literal number integer">0</span><span class="punctuation">,</span> <span class="literal number integer">1</span><span class="punctuation">)</span>
     <span class="name">glm</span><span class="operator">.</span><span class="name">rotate</span><span class="punctuation">(</span><span class="name">model</span><span class="punctuation">,</span> <span class="name">phi</span><span class="punctuation">,</span> <span class="literal number integer">0</span><span class="punctuation">,</span> <span class="literal number integer">1</span><span class="punctuation">,</span> <span class="literal number integer">0</span><span class="punctuation">)</span>
-    <span class="name">cube</span><span class="punctuation">[</span><span class="literal string single">'u_model'</span><span class="punctuation">]</span> <span class="operator">=</span> <span class="name">model</span>
+    <span class="name">cube</span><span class="punctuation">[</span><span class="literal string single">'model'</span><span class="punctuation">]</span> <span class="operator">=</span> <span class="name">model</span>
 </pre>
 </div>
 <div class="section" id="actual-rendering">
@@ -2101,7 +2100,7 @@ by compositing a rotation the z axis (<code>theta</code>), then around the y axi
 </video>
 <p class="caption">Figure</p>
 <div class="legend">
-A flat shaded rotating cube using Python, OpenGL and glumpy. The 3d aspect
+A flat shaded rotating cube using Python, OpenGL and glumpy. The 3D aspect
 may be difficult to see because of the flat shading of the cube.</div>
 </div>
 <p>We're now alsmost ready to render the whole scene but we need to modify the
@@ -2126,7 +2125,7 @@ endless animation:</p>
 <div class="section" id="colored-cube">
 <h3><a class="toc-backref" href="#id15">Colored cube</a></h3>
 <p>The previous cube is not very interesting because we used a single color for
-all the faces and this tends to hide the 3d structure. We can fix this by adding
+all the faces and this tends to hide the 3D structure. We can fix this by adding
 some colors and in the process, we'll discover why <a class="reference external" href="http://glumpy.github.io">glumpy</a> is so useful. To add
 color per vertex to the cube, we simply define the vertex structure as:</p>
 <pre class="code python literal-block">
@@ -2195,9 +2194,9 @@ An outlined colored cube using <code>GL_POLYGON_OFFSET_FILL</code> that allows t
 coincident surfaces properly.</div>
 </div>
 <p>We can make the cube a bit nicer by outlining it using black lines. To outline
-the cube, we need to draw lines between couple of vertices on each face. 4
+the cube, we need to draw lines between pairs of vertices on each face. 4
 lines for the back and front face and 2 lines for the top and bottom faces. Why
-only 2 lines for top and bottom ? Because lines are shared between the
+only 2 lines for top and bottom? Because lines are shared between the
 faces. So overall we need 12 lines and we need to compute the corresponding
 indices (I did it for you):</p>
 <pre class="code python literal-block">
@@ -2365,7 +2364,7 @@ An outlined hollow cube computed from within the shader.</div>
 thick border surrounded by black outline. For the &quot;transparent&quot; part, you'll
 need to use the <code>discard</code> instruction from within the fragment shader that
 instructs OpenGL to not display the fragment at all and to terminate the
-program frot this shader. Since nothing will be rendered, there is no need to
+program from this shader. Since nothing will be rendered, there is no need to
 process the rest of program.</p>
 <p><strong>Solution</strong>: <a class="reference external" href="code/chapter-05/hollow-cube.py">code/chapter-05/hollow-cube.py</a></p>
 <hr class="docutils" />
@@ -2579,7 +2578,7 @@ outside the circle.</p>
 <p>Now, let's check if OpenGL is consistent with our maths. We'll write a fragment
 shader that compute the color according to the distance to the shape. We'll use
 the red color outside the circle, blue color inside and white color on the
-border (with some tolerance of we won't see anything).</p>
+border (with some tolerance or we won't see anything).</p>
 <pre class="code glsl literal-block">
 <span class="keyword">float</span> <span class="name">distance</span><span class="punctuation">(</span><span class="keyword">vec2</span> <span class="name">P</span><span class="punctuation">,</span> <span class="keyword">vec2</span> <span class="name">center</span><span class="punctuation">,</span> <span class="keyword">float</span> <span class="name">radius</span><span class="punctuation">)</span>
 <span class="punctuation">{</span>
@@ -2895,7 +2894,7 @@ problem for us. We will re-use his formula.</p>
 <div class="legend">
 <a class="reference external" href="code/chapter-06/SDF-fake-ellipse.py">SDF-fake-ellipse.py</a></div>
 </div>
-<p>Íñigo Quílez also provided a very fast apprximation of the ellipse
+<p>Íñigo Quílez also provided a very fast approximation of the ellipse
 distance. Some artifacts can be clearly seen but we'll see later that if our ellipse is not too thick, this approximation will do the job.</p>
 <pre class="code glsl literal-block">
 <span class="comment single">// Code by Inigo Quilez</span>
@@ -3221,7 +3220,7 @@ fake spheres, i.e. discs thar are painted such as to appear as spheres. This is
 known as &quot;impostors&quot;. If you look again at the image, you might realize that
 the appeareance of the sphere is given by the shading that is not uniform and
 suggests instead a specific lighting that seems to come from the upper right
-corner. Let's seen if can reproduce this.</p>
+corner. Let's see if we can reproduce this.</p>
 <div class="right figure" id="figure-images/chapter-07/sphere-1.png" style="width: 20%">
 <img alt="images/chapter-07/sphere-1.png" src="images/chapter-07/sphere-1.png" />
 <p class="caption">Figure</p>
@@ -4195,9 +4194,10 @@ the fragment shader:</p>
 better to use GL_TRIANGLES and to compute the relevant indices. But I feel
 lazy right now.</p>
 </div>
-<p>Putting all together, we can draw some nice and smooth lines (see <a class="reference external" href="code/chapter-09/linestrip.py">linestrip.py</a>). Note that for closed lines such as the star
-below, first and last vertex needs to be the same (but it is taken care of in
-the <code>bake</code> function).</p>
+<p>Putting it all together, we can draw some nice and smooth lines (see
+<a class="reference external" href="code/chapter-09/linestrip.py">linestrip.py</a>). Note that for closed lines
+such as the star below, first and last vertex needs to be the same (but it is
+taken care of in the <code>bake</code> function).</p>
 <div class="right figure" id="figure-images/chapter-09/linestrip.png" style="width: 100%">
 <img alt="images/chapter-09/linestrip.png" src="images/chapter-09/linestrip.png" />
 <p class="caption">Figure</p>
@@ -4325,7 +4325,7 @@ An animated dotted animated computed inside the fragment shader. See
 <a class="reference external" href="code/chapter-09/linestrip-dotted.py">linestrip-dotted.py</a>.</div>
 </div>
 <p>Rendering a simple dotted pattern is surprinsingly simple. If you look at the
-fragmen code from the smooth line sections, the computation of the sidnged
+fragmen code from the smooth line sections, the computation of the signed
 distance reads:</p>
 <pre class="code glsl literal-block">
 <span class="punctuation">...</span>

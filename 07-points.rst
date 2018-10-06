@@ -291,7 +291,7 @@ fake spheres, i.e. discs thar are painted such as to appear as spheres. This is
 known as "impostors". If you look again at the image, you might realize that
 the appeareance of the sphere is given by the shading that is not uniform and
 suggests instead a specific lighting that seems to come from the upper right
-corner. Let's seen if can reproduce this.
+corner. Let's see if we can reproduce this.
 
 .. figure:: images/chapter-07/sphere-1.png
    :figwidth: 20%
