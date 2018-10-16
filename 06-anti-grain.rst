@@ -262,7 +262,7 @@ outside the circle.
 
 Now, let's check if OpenGL is consistent with our maths. We'll write a fragment
 shader that compute the color according to the distance to the shape. We'll use
-the red color outside the circle, blue color inside and white color on the
+the blue color outside the circle, red color inside and white color on the
 border (with some tolerance or we won't see anything).
 
 .. code:: glsl
