@@ -189,7 +189,7 @@ def html_visit_video(self, node):
     if 'loop' in node:
         atts['loop'] = True
     if 'autoplay' in node:
-        atts['autoplay'] = True
+        atts['autoplay'] = False
     if 'width' in node:
         atts['width'] = node['width']
     if 'height' in node:

@@ -19,7 +19,7 @@
 <img alt="images/sa.large.png" src="images/sa.large.png" style="width: 32px;" />
 <img alt="images/nc.large.png" src="images/nc.large.png" style="width: 32px;" />
 <div class="line-block">
-<div class="line">Latest version - September 2018</div>
+<div class="line">Latest version - October 2018</div>
 <div class="line"><a class="reference external" href="http://www.labri.fr/perso/nrougier/python-opengl">www.labri.fr/perso/nrougier/python-opengl</a></div>
 </div>
 </div>
@@ -1441,7 +1441,6 @@ the quad program (see <a class="reference external" href="code/chapter-03/glumpy
 
 .. figure:: movies/chapter-03/quad-scale.mp4
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 35%
 
@@ -1494,7 +1493,7 @@ the rendering is now a matter of writing the proper shader. We'll get a first
 taste in the three exercises below but we'll see much more powerful shader
 tricks in the next chapters.</p>
 <div class="right figure" id="figure-movies/chapter-03/quad-scale.mp4" style="width: 35%">
-<video autoplay="True" controls="True" loop="True">
+<video controls="True" loop="True">
 <source src="movies/chapter-03/quad-scale.mp4"></source>
 </video>
 <p class="caption">Figure</p>
@@ -1511,7 +1510,7 @@ program, for example in the <code>draw</code> function.</p>
 <p>Solution: <a class="reference external" href="code/chapter-03/quad-scale.py">code/chapter-03/quad-scale.py</a></p>
 <hr class="docutils" />
 <div class="right figure" id="figure-movies/chapter-03/quad-rotate.mp4" style="width: 35%">
-<video autoplay="True" controls="True" loop="True">
+<video controls="True" loop="True">
 <source src="movies/chapter-03/quad-rotate.mp4"></source>
 </video>
 <p class="caption">Figure</p>
@@ -2095,7 +2094,7 @@ by compositing a rotation about the z axis (<code>theta</code>), then about the 
 <div class="section" id="actual-rendering">
 <h2><a class="toc-backref" href="#id15">Actual rendering</a></h2>
 <div class="right figure" id="figure-movies/chapter-05/solid-cube.mp4" style="width: 35%">
-<video autoplay="True" controls="True" loop="True">
+<video controls="True" loop="True">
 <source src="movies/chapter-05/solid-cube.mp4"></source>
 </video>
 <p class="caption">Figure</p>
@@ -2161,7 +2160,7 @@ shader.</p>
 <span class="punctuation">}</span> <span class="error">&quot;&quot;&quot;</span>
 </pre>
 <div class="right figure" id="figure-movies/chapter-05/color-cube.mp4" style="width: 35%">
-<video autoplay="True" controls="True" loop="True">
+<video controls="True" loop="True">
 <source src="movies/chapter-05/color-cube.mp4"></source>
 </video>
 <p class="caption">Figure</p>
@@ -2185,7 +2184,7 @@ attributes, we can directly bind it:</p>
 <div class="section" id="outlined-cube">
 <h3><a class="toc-backref" href="#id15">Outlined cube</a></h3>
 <div class="right figure" id="figure-movies/chapter-05/outline-cube.mp4" style="width: 35%">
-<video autoplay="True" controls="True" loop="True">
+<video controls="True" loop="True">
 <source src="movies/chapter-05/outline-cube.mp4"></source>
 </video>
 <p class="caption">Figure</p>
@@ -2246,7 +2245,7 @@ are drawn &quot;above&quot; the cube because we paint a line on a surface:</p>
 <div class="section" id="textured-cube">
 <h3><a class="toc-backref" href="#id15">Textured cube</a></h3>
 <div class="right figure" id="figure-movies/chapter-05/texture-cube.mp4" style="width: 35%">
-<video autoplay="True" controls="True" loop="True">
+<video controls="True" loop="True">
 <source src="movies/chapter-05/texture-cube.mp4"></source>
 </video>
 <p class="caption">Figure</p>
@@ -2334,7 +2333,7 @@ void main()
 <div class="section" id="id16">
 <h2><a class="toc-backref" href="#id15">Exercises</a></h2>
 <div class="right figure" id="figure-movies/chapter-05/color-border-cube-1.mp4" style="width: 35%">
-<video autoplay="True" controls="True" loop="True">
+<video controls="True" loop="True">
 <source src="movies/chapter-05/color-border-cube-1.mp4"></source>
 </video>
 <p class="caption">Figure</p>
@@ -2353,7 +2352,7 @@ cube code</a>, try to modify only the shader code
 <p><strong>Solution</strong>: <a class="reference external" href="code/chapter-05/border-cube.py">code/chapter-05/border-cube.py</a></p>
 <hr class="docutils" />
 <div class="right figure" id="figure-movies/chapter-05/color-border-cube-2.mp4" style="width: 35%">
-<video autoplay="True" controls="True" loop="True">
+<video controls="True" loop="True">
 <source src="movies/chapter-05/color-border-cube-2.mp4"></source>
 </video>
 <p class="caption">Figure</p>
@@ -2577,7 +2576,7 @@ border, strictly negative if <code>(x,y)</code> is inside the circle and strictl
 outside the circle.</p>
 <p>Now, let's check if OpenGL is consistent with our maths. We'll write a fragment
 shader that compute the color according to the distance to the shape. We'll use
-the red color outside the circle, blue color inside and white color on the
+the blue color outside the circle, red color inside and white color on the
 border (with some tolerance or we won't see anything).</p>
 <pre class="code glsl literal-block">
 <span class="keyword">float</span> <span class="name">distance</span><span class="punctuation">(</span><span class="keyword">vec2</span> <span class="name">P</span><span class="punctuation">,</span> <span class="keyword">vec2</span> <span class="name">center</span><span class="punctuation">,</span> <span class="keyword">float</span> <span class="name">radius</span><span class="punctuation">)</span>
@@ -2631,7 +2630,7 @@ each of the example.</p>
 <h4>Circle</h4>
 <p>Distance to a circle is the easiest to compute.</p>
 <div class="right figure" id="figure-movies/chapter-06/SDF-circle.mp4" style="width: 25%">
-<video autoplay="True" controls="True" loop="True">
+<video controls="True" loop="True">
 <source src="movies/chapter-06/SDF-circle.mp4"></source>
 </video>
 <p class="caption">Figure</p>
@@ -2650,7 +2649,7 @@ each of the example.</p>
 <p>The distance from a point P to a plane (line in 2d) is the distance from P to
 the projection of P onto the place.</p>
 <div class="right figure" id="figure-movies/chapter-06/SDF-plane.mp4" style="width: 25%">
-<video autoplay="True" controls="True" loop="True">
+<video controls="True" loop="True">
 <source src="movies/chapter-06/SDF-plane.mp4"></source>
 </video>
 <p class="caption">Figure</p>
@@ -2671,7 +2670,7 @@ the projection of P onto the place.</p>
 <p>When computing distance to a box, one has to take care of the distance to the
 vertices defining the box.</p>
 <div class="right figure" id="figure-movies/chapter-06/SDF-box.mp4" style="width: 25%">
-<video autoplay="True" controls="True" loop="True">
+<video controls="True" loop="True">
 <source src="movies/chapter-06/SDF-box.mp4"></source>
 </video>
 <p class="caption">Figure</p>
@@ -2691,7 +2690,7 @@ vertices defining the box.</p>
 <div class="section" id="rounded-box">
 <h4>Rounded Box</h4>
 <div class="right figure" id="figure-movies/chapter-06/SDF-round-box.mp4" style="width: 25%">
-<video autoplay="True" controls="True" loop="True">
+<video controls="True" loop="True">
 <source src="movies/chapter-06/SDF-round-box.mp4"></source>
 </video>
 <p class="caption">Figure</p>
@@ -2712,7 +2711,7 @@ subtracting the corner radius.</p>
 <div class="section" id="fake-box">
 <h4>Fake Box</h4>
 <div class="right figure" id="figure-movies/chapter-06/SDF-fake-box.mp4" style="width: 25%">
-<video autoplay="True" controls="True" loop="True">
+<video controls="True" loop="True">
 <source src="movies/chapter-06/SDF-fake-box.mp4"></source>
 </video>
 <p class="caption">Figure</p>
@@ -2732,7 +2731,7 @@ box vertices.</p>
 <div class="section" id="true-triangle">
 <h4>True triangle</h4>
 <div class="right figure" id="figure-movies/chapter-06/SDF-triangle.mp4" style="width: 25%">
-<video autoplay="True" controls="True" loop="True">
+<video controls="True" loop="True">
 <source src="movies/chapter-06/SDF-triangle.mp4"></source>
 </video>
 <p class="caption">Figure</p>
@@ -2772,7 +2771,7 @@ vertices.</p>
 <div class="section" id="round-triangle">
 <h4>Round triangle</h4>
 <div class="right figure" id="figure-movies/chapter-06/SDF-round-triangle.mp4" style="width: 25%">
-<video autoplay="True" controls="True" loop="True">
+<video controls="True" loop="True">
 <source src="movies/chapter-06/SDF-round-triangle.mp4"></source>
 </video>
 <p class="caption">Figure</p>
@@ -2794,7 +2793,7 @@ the oustide part of the SDF triangle.</p>
 <div class="section" id="fake-triangle">
 <h4>Fake triangle</h4>
 <div class="right figure" id="figure-movies/chapter-06/SDF-fake-triangle.mp4" style="width: 25%">
-<video autoplay="True" controls="True" loop="True">
+<video controls="True" loop="True">
 <source src="movies/chapter-06/SDF-fake-triangle.mp4"></source>
 </video>
 <p class="caption">Figure</p>
@@ -2827,7 +2826,7 @@ markers because it is faster to compute than the regular SDF triangle.</p>
 <div class="section" id="true-ellipse">
 <h4>True ellipse</h4>
 <div class="right figure" id="figure-movies/chapter-06/SDF-ellipse.mp4" style="width: 25%">
-<video autoplay="True" controls="True" loop="True">
+<video controls="True" loop="True">
 <source src="movies/chapter-06/SDF-ellipse.mp4"></source>
 </video>
 <p class="caption">Figure</p>
@@ -2887,7 +2886,7 @@ problem for us. We will re-use his formula.</p>
 <div class="section" id="fake-but-fast-ellipse">
 <h4>Fake (but fast) ellipse</h4>
 <div class="right figure" id="figure-movies/chapter-06/SDF-fake-ellipse.mp4" style="width: 25%">
-<video autoplay="True" controls="True" loop="True">
+<video controls="True" loop="True">
 <source src="movies/chapter-06/SDF-fake-ellipse.mp4"></source>
 </video>
 <p class="caption">Figure</p>
@@ -3142,7 +3141,7 @@ we simply have to get the absolute distance instead of the signed distance.</p>
 <div class="section" id="ellipses">
 <h2><a class="toc-backref" href="#id27">Ellipses</a></h2>
 <div class="right figure" id="figure-movies/chapter-07/ellipses.mp4" style="width: 30%">
-<video autoplay="True" controls="True" loop="True">
+<video controls="True" loop="True">
 <source src="movies/chapter-07/ellipses.mp4"></source>
 </video>
 <p class="caption">Figure</p>
@@ -3350,7 +3349,7 @@ disc...</p>
 <div class="section" id="antialiased-triangles">
 <h3><a class="toc-backref" href="#id27">Antialiased triangles</a></h3>
 <div class="right figure" id="figure-movies/chapter-07/triangles.mp4" style="width: 30%">
-<video autoplay="True" controls="True" loop="True">
+<video controls="True" loop="True">
 <source src="movies/chapter-07/triangles.mp4"></source>
 </video>
 <p class="caption">Figure</p>
@@ -3776,7 +3775,7 @@ then free to use this distance for accurate rendering of your shape. Needless
 to say that the precision of the distance is directly correlated with the size
 of your texture...</p>
 <div class="right figure" id="figure-movies/chapter-08/texture-marker.mp4" style="width: 30%">
-<video autoplay="True" controls="True" loop="True">
+<video controls="True" loop="True">
 <source src="movies/chapter-08/texture-marker.mp4"></source>
 </video>
 <p class="caption">Figure</p>
@@ -3824,7 +3823,7 @@ the right, there is a smarter solution using only two triangles.</p>
 <div class="section" id="light-and-shadows">
 <h3><a class="toc-backref" href="#id29">Light and shadows</a></h3>
 <div class="right figure" id="figure-movies/chapter-08/SDF-light-shadow.mp4" style="width: 50%">
-<video autoplay="True" controls="True" loop="True">
+<video controls="True" loop="True">
 <source src="movies/chapter-08/SDF-light-shadow.mp4"></source>
 </video>
 <p class="caption">Figure</p>
@@ -4220,7 +4219,7 @@ shader. To be able to do this, we need to know from within the fragment shader
 if a given fragment is inside the joint area or not. This requires a specific
 parameterization that relies on having a different tesselation with 4×n
 vertices instead of 2×n. I won't explain all the details here but only provide
-the final result that you can found in <a class="reference external" href="code/chapter-09/geom.path.py">geom-path.py</a>.</p>
+the final result that you can found in <a class="reference external" href="code/chapter-09/geom_path.py">geom-path.py</a>.</p>
 <p>If you look at the sources, you'll see I'm using a geometry shader, which is a
 new type of shader that is not officially available in GL ES 2.0 but which is
 nonetheless available on a wide number of implementations. This geometry shader
@@ -4252,7 +4251,7 @@ the details in the provided demo script. See the caption of the image below.</p>
 <p class="caption">Figure</p>
 <div class="legend">
 Different line joints using a geometry shader. See
-<a class="reference external" href="code/chapter-09/geom.path.py">geom-path.py</a>.</div>
+<a class="reference external" href="code/chapter-09/geom_path.py">geom-path.py</a>.</div>
 </div>
 </div>
 <div class="section" id="bezier-curves">
@@ -4316,7 +4315,7 @@ bevel joint, see <a class="reference external" href="code/chapter-09/bezier.py">
 <div class="section" id="simple-dotted-pattern">
 <h3><a class="toc-backref" href="#id39">Simple dotted pattern</a></h3>
 <div class="right figure" id="figure-movies/chapter-09/linestrip-dotted.mp4" style="width: 35%">
-<video autoplay="True" controls="True" loop="True">
+<video controls="True" loop="True">
 <source src="movies/chapter-09/linestrip-dotted.mp4"></source>
 </video>
 <p class="caption">Figure</p>
@@ -4361,7 +4360,7 @@ this line is then just a matter of a modulo.</p>
 <span class="punctuation">...</span>
 </pre>
 <div class="right figure" id="figure-movies/chapter-09/linestrip-spaded.mp4" style="width: 35%">
-<video autoplay="True" controls="True" loop="True">
+<video controls="True" loop="True">
 <source src="movies/chapter-09/linestrip-spaded.mp4"></source>
 </video>
 <p class="caption">Figure</p>
@@ -4387,19 +4386,19 @@ explaining how this can be done. If you want to know more, just read See
 <a class="reference external" href="http://jcgt.org/published/0002/02/08/code.zip">Python implementation</a>. The
 result is illustrated on the movies below.</p>
 <div class="left figure" id="figure-movies/chapter-09/stars.mp4" style="width: 30%">
-<video autoplay="True" controls="True" loop="True">
+<video controls="True" loop="True">
 <source src="movies/chapter-09/stars.mp4"></source>
 </video>
 <p class="caption">Figure</p>
 </div>
 <div class="left figure" id="figure-movies/chapter-09/sphere.mp4" style="width: 30%">
-<video autoplay="True" controls="True" loop="True">
+<video controls="True" loop="True">
 <source src="movies/chapter-09/sphere.mp4"></source>
 </video>
 <p class="caption">Figure</p>
 </div>
 <div class="left figure" id="figure-movies/chapter-09/tiger.mp4" style="width: 30%">
-<video autoplay="True" controls="True" loop="True">
+<video controls="True" loop="True">
 <source src="movies/chapter-09/tiger.mp4"></source>
 </video>
 <p class="caption">Figure</p>
@@ -4412,7 +4411,7 @@ PR. Contact me if you're interested.</p>
 <div class="section" id="d-lines">
 <h2><a class="toc-backref" href="#id39">3D lines</a></h2>
 <div class="right figure" id="figure-movies/chapter-09/linestrip-3d.mp4" style="width: 35%">
-<video autoplay="True" controls="True" loop="True">
+<video controls="True" loop="True">
 <source src="movies/chapter-09/linestrip-3d.mp4"></source>
 </video>
 <p class="caption">Figure</p>
@@ -4491,7 +4490,7 @@ implementation.</p>
 <div class="section" id="varying-apparent-thickness">
 <h3><a class="toc-backref" href="#id39">Varying apparent thickness</a></h3>
 <div class="right figure" id="figure-movies/chapter-09/linestrip-3d-better.mp4" style="width: 35%">
-<video autoplay="True" controls="True" loop="True">
+<video controls="True" loop="True">
 <source src="movies/chapter-09/linestrip-3d-better.mp4"></source>
 </video>
 <p class="caption">Figure</p>
@@ -4962,7 +4961,6 @@ corresponding indices:
 .. figure:: movies/chapter-11/boy.mp4
    :figclass: right
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 35%
 
@@ -5069,7 +5067,6 @@ Cartesian grid
 
 .. figure:: data/quad-grid.mp4
    :loop:
-   :autoplay:
    :controls:
    :figwidth: 35%
    :figclass: left
