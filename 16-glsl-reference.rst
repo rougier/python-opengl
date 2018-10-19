@@ -171,7 +171,7 @@ functionality are intrinsically declared with the following types:
    
 :proto:`gl_PointSize`
 
-   The variable gl_PointSize` is intended for a vertex shader to write the size
+   The variable `gl_PointSize` is intended for a vertex shader to write the size
    of the point to be rasterized. It is measured in pixels.
 
    

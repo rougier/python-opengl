@@ -33,7 +33,7 @@ Normalize Device Coordinates
             
    Figure
 
-   Normalized Device Coordinates (NDC) where bottom-left corner coordinates is
+   Normalized Device Coordinates (NDC) where bottom-left corner coordinate is
    (-1,-1) and top-right corner is (+1,+1).
    
 
@@ -50,7 +50,7 @@ The second important fact to know is that **x** coordinates increase from left
 to right and **y** coordinates increase from bottom to top. For this latter
 one, it is noticeably different from the usual convention and this might induce
 some problems, especially when you're dealing with the mouse pointer whose
-**y** coordinate goes this other way around.
+**y** coordinate goes the other way around.
 
 
 Triangulation                                                                  
@@ -67,7 +67,7 @@ Triangulation
 surface means to find a set of triangles, which covers a given surface. This
 can be a tedious process but fortunately, there exist many different methods
 and algorithms to perform such triangulation automatically for any 2D or 3D
-surface. The quality of the triangulation is measured in term of the closeness
+surface. The quality of the triangulation is measured in terms of the closeness
 to the approximated surface, the number of triangles necessary (the smaller,
 the better) and the homogeneity of the triangles (we prefer to have triangles
 that have more or less the same size and to not have any degenerated triangle).
@@ -76,7 +76,7 @@ In our case, we want to render a square and we need to find the proper
 triangulation (which is not unique as illustrated on the figure). Since we want
 to minimize the number of triangles, we'll use the 2 triangles solution that
 requires only 4 (shared) vertices corresponding to the four corners of the
-quad. However, you can see of the figure that we could have used different
+quad. However, you can see from the figure that we could have used different
 triangulations using more vertices, and later in this book we will just do that
 (but for a reason).
    
@@ -85,8 +85,7 @@ Considering the NDC, our quad will thus be composed of two triangles:
 * One triangle described by vertices `(-1,+1), (+1,+1), (-1,-1)`
 * One triangle described by vertices `(+1,+1), (-1,-1), (+1,-1)`
 
-Here we can see that vertices `(-1,-1)` and `(+1,+1)` are structurally the
-same. So instead of using 6 vertices to describe the two triangles, we can
+Here we can see that vertices `(-1,-1)` and `(+1,+1)` are common to both triangles. So instead of using 6 vertices to describe the two triangles, we can
 re-use the common vertices to describe the whole quad. Let's name them:
 
 * `V₀`: `(-1,+1)`
@@ -109,14 +108,14 @@ GL Primitives
    Common OpenGL rendering primitives.
               
 Ok, now things are getting serious because we need to actually tell OpenGL what
-to do with the vertices, i.e. how to render them? What do they describe in term
+to do with the vertices, i.e. how to render them? What do they describe in terms
 of geometrical primitives? This is quite an important topic since this will
-determines how fragments will be actually generated as illustrated on the image
+determine how fragments will actually be generated as illustrated on the image
 below:
 
 
-Mostly, OpenGL knows how to draw (ugly) point, (ugly) lines and ugly
-(triangles). For lines and triangles, there exist some variations depending if
+Mostly, OpenGL knows how to draw (ugly) points, (ugly) lines and (ugly)
+triangles. For lines and triangles, there exist some variations depending if
 you want to specify very precisely what to draw or if you can take advantage of
 some implicit assumptions. Let's consider lines first for example. Given a set
 of four vertices `(V₀,V₁,V₂,V₃)`, you migh want to draw segments
@@ -147,13 +146,13 @@ Interpolation
    The Barycentric interpolation `f` of a fragment `p` is given by `f = 𝛌₁f₁ +
    𝛌₂f₂ + 𝛌₃f₃`
 
-The choice of the triangle as the only surface primitive is not arbitrary
-choice because a triangle offers the possibility of having a nice and intuitive
+The choice of the triangle as the only surface primitive is not an arbitrary
+choice, because a triangle offers the possibility of having a nice and intuitive
 interpolation of any point that is inside the triangle. If you look back at
 the graphic pipeline as it has been introduced in the `Modern OpenGL`_ section,
 you can see that the rasterisation requires for OpenGL to generate fragments
 inside the triangle but also to interpolate values (colors on the figure). One
-of the legitimate question to be solved is then: if I have a triangle
+of the legitimate questions to be solved is then: if I have a triangle
 (V₁,V₂,V₃), each summit vertex having (for example) a different color, what is
 the color of a fragment `p` inside the triangle? The answer is `barycentric
 interpolation <https://en.wikibooks.org/wiki/GLSL_Programming/Rasterization>`_
@@ -191,7 +190,7 @@ The hard way
 
 Having reviewed some important OpenGL concepts, it's time to code our quad
 example. But, before even using OpenGL, we need to open a window with a valid GL
-context. This can be done using toolkit such as Gtk_, Qt_ or Wx_ or any native
+context. This can be done using a toolkit such as Gtk_, Qt_ or Wx_ or any native
 toolkit (Windows, Linux, OSX). Unfortunately, the Tk_ Python interface does not
 allow to create a GL context and we cannot use it. Note there also exists
 dedicated toolkits such as GLFW_ or GLUT_ and the advantage of GLUT is that
@@ -213,7 +212,7 @@ package. Here is a minimal setup that should open a window with garbage on it
        gl.glViewport(0, 0, width, height)
 
    def keyboard( key, x, y ):
-       if key == 'b'\x1b':
+       if key == b'\x1b':
            sys.exit( )
 
    glut.glutInit()
@@ -396,7 +395,7 @@ present in the vertex shader program, we need to tell OpenGL where to find the
 corresponding data (i.e. GPU buffer) and this requires some computations. More
 precisely, we need to tell the GPU how to read the buffer in order to bind each
 value to the relevant attribute. To do this, GPU needs to know what is the
-stride between 2 consecutive element and what is the offset to read one
+stride between 2 consecutive elements and what is the offset to read one
 attribute:
 
 .. code::
@@ -531,8 +530,8 @@ Varying color
    A colored quad using a per-vertex color.
 
 Until now, we have been using a constant color for the four vertices of our
-quad and the result is (unsuprinsingly) a boring uniform red or blue quad. We
-can make a bit more interesting though by assigning different colors for each
+quad and the result is (unsurprisingly) a boring uniform red or blue quad. We
+can make it a bit more interesting though by assigning different colors to each
 vertex and see how OpenGL will interpolate colors. Our new vertex shader would
 need to be rewritten as:
 
@@ -619,8 +618,8 @@ The easy way
 -------------------------------------------------------------------------------
 
 As we've seen in the previous section, displaying a simple quad using modern GL
-is quite tedious and requires a fair number of operations and this why from now
-on we'll use glumpy_ whose goal is to make this process both easy and
+is quite tedious and requires a fair number of operations and this is why, from now
+on, we'll use glumpy_ whose goal is to make this process both easy and
 intuitive.
 
 Glumpy is organized around three main modules:
@@ -652,7 +651,7 @@ We still need to open a window, but now this is straightforward:
    window = app.Window()
 
 If necessary, you can also indicate which backend to use by writing
-`app.choose("glfw")` before creating the window. The creation of the program is
+`app.use("glfw")` before creating the window. The creation of the program is
 also straightforward:
 
 .. code:: python
@@ -669,7 +668,7 @@ a matter of setting the different fields of the `quad` program:
    # Upload data into GPU
    quad['position'] = (-1,+1), (+1,+1), (-1,-1), (+1,-1)
 
-Under the hood, glumpy has parsed your shader programs and has identied
+Under the hood, glumpy has parsed your shader programs and has identified
 attributes. Rendering is just a matter of calling the `draw` method from our
 shader program, using the proper mode.
 
@@ -687,9 +686,9 @@ shader program, using the proper mode.
 The whole source is available in `<code/chapter-03/glumpy-quad-solid.py>`_.
 
 If you run this program using the `--debug` switch, you should obtain the
-following output that show what is being done in the background. More
+following output that shows what is being done in the background. More
 specifically, you can check that the program is actually compiled and linked
-using specified shaders and that the buffer is created and bound to the
+using the specified shaders and that the buffer is created and bound to the
 program.
 
 .. code::
@@ -722,8 +721,8 @@ program.
 Uniform color                                                                  
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Adding a `uniform` specified color like is only a matter of modifying the
-fragment shader as in the previous section an directly assigning the color to
+Adding a `uniform` specified color is only a matter of modifying the
+fragment shader as in the previous section and directly assigning the color to
 the quad program (see `<code/chapter-03/glumpy-quad-uniform-color.py>`_):
 
 .. code:: python
@@ -735,8 +734,8 @@ the quad program (see `<code/chapter-03/glumpy-quad-uniform-color.py>`_):
 Varying color                                                                  
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Adding a per-vertex color like is also and only a matter of modifying the
-fragment shader as in the previous section an directly assigning the color to
+Adding a per-vertex color is also only a matter of modifying the
+fragment shader as in the previous section and directly assigning the color to
 the quad program (see `<code/chapter-03/glumpy-quad-varying-color.py>`_):
 
 .. code:: python
@@ -846,7 +845,7 @@ angle theta around the origin (0,0) for a point (x,y):
        float y2 = sin(theta)*x + cos(theta)*y;
 
 
-Solution: `<code/chapter-03/quad-rotate.py>`_
+Solution: `<code/chapter-03/quad-rotation.py>`_
 
 
 .. _GLUT:   http://freeglut.sourceforge.net 		

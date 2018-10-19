@@ -381,10 +381,10 @@ Adn the fragment shader reads:
    better to use GL_TRIANGLES and to compute the relevant indices. But I feel
    lazy right now.
 
-Putting all together, we can draw some nice and smooth lines (see `linestrip.py
-<code/chapter-09/linestrip.py>`_). Note that for closed lines such as the star
-below, first and last vertex needs to be the same (but it is taken care of in
-the `bake` function).
+Putting it all together, we can draw some nice and smooth lines (see
+`linestrip.py <code/chapter-09/linestrip.py>`_). Note that for closed lines
+such as the star below, first and last vertex needs to be the same (but it is
+taken care of in the `bake` function).
    
 .. figure:: images/chapter-09/linestrip.png
    :figwidth: 100%
@@ -561,7 +561,7 @@ Simple dotted pattern
    `linestrip-dotted.py <code/chapter-09/linestrip-dotted.py>`_.
 
 Rendering a simple dotted pattern is surprinsingly simple. If you look at the
-fragmen code from the smooth line sections, the computation of the sidnged
+fragmen code from the smooth line sections, the computation of the signed
 distance reads:
 
 .. code:: glsl
