@@ -206,6 +206,7 @@ package. Here is a minimal setup that should open a window with garbage on it
    import OpenGL.GLUT as glut
 
    def display():
+       gl.glClear(gl.GL_COLOR_BUFFER_BIT)
        glut.glutSwapBuffers()
 
    def reshape(width,height):
