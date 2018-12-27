@@ -377,7 +377,7 @@ equivalent to a C `double`). So let us specify a NumPy array holding 4×2
 .. code:: python
 
    # Build data
-   data = np.zeros((4,2), dtype=np.float32))
+   data = np.zeros((4,2), dtype=np.float32)
 
 We then create a placeholder on the GPU without yet specifying the size:
 
