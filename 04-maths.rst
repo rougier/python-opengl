@@ -437,14 +437,14 @@ field of view in the horizontal and vertical direction:
 
    ┌                                     ┐ n: near
    │ c/aspect  0       0          0      │ f: far
-   │    0      c       0          0      │ c : cotangen(fovy)
+   │    0      c       0          0      │ c: cotangent(fovy)
    │    0      0  (f+n)/(n-f)  2nf/(n-f) │ 
    │    0      0      -1          0      │ 
    └                                     ┘ 
                Perspective projection
 
                
-where `fovy` specifies the field of view angle, in degrees, in the y direction
+where `fovy` specifies the field of view angle in the y direction
 and `aspect` specifies the aspect ratio that determines the field of view in
 the x direction.
 
