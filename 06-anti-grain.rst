@@ -45,17 +45,17 @@ jaggies_) and the way to attenuate it.  Let's first examine the origin of the
 problem from a practical point of view (have a look at wikipedia for the
 `background theory`_).
 
-The figure on the right illustrates the problem when we wants to render a disc
+The figure on the right illustrates the problem when we want to render a disc
 onto a small area. The very first thing to be noticed is that pixels are
 **not** mathematical points and the center of the pixel is usually associated
 with the center of the pixel. This means that if we consider a pair of integer
 coordinates `(i,j)`, then `(i+Δx, j+Δy)` designates the same pixel (with `-0.5
 < Δx, Δy < 0.5`).  In order to rasterize the mathematical description of our
-circle (center and radius), the rasterizer examine the center of each pixel to
+circle (center and radius), the rasterizer examines the center of each pixel to
 determine if it falls inside or outside the shape. The result is illustrated on
 the right part of the figure. Even if the center of a pixel is very close but
 outside of the circle, it is not painted as it is shown for the thicker square
-on the figure. More generally, without antia-aliasing, a pixel will be only on
+on the figure. More generally, without anti-aliasing, a pixel will be only on
 (inside) or off (outside), leading to very hard jagged edges and a very
 approximate shape for small sizes as well.
 
@@ -218,11 +218,11 @@ From wikipedia (again):
   boundary of Ω where the signed distance function is zero, and it takes
   negative values outside of Ω.*
 
-Said differently and in order to render a shape, we need to find a function of
+Said differently: in order to render a shape, we need to find a function of
 `x` and `y` that returns a value that is the signed distance to the shape, that
 is, a signed distance to the border of the shape. Inside the shape, the value
 is positive, outside the shape the value is negative and on the border, the
-value is null. Easy enough.
+value is zero. Easy enough.
 
 .. note::
 
@@ -230,7 +230,7 @@ value is null. Easy enough.
 
 Of course, the question is now how do we find such function? Let's start with
 the most simple geometrical primitive: a circle centered on `(xc,yc)` with a
-radius `r`. For any point `(x,y)`, we know the (positive or null) distance to
+radius `r`. For any point `(x,y)`, we know the (non-negative) distance to
 the center is given by: `d = sqrt((x-xc)*(x-xc)+(y-yc)*(y-yc))`. To simplify
 computations, we'll consider the circle to centered on the origin, the distance
 now writes `d = sqrt(x*x+y*y)`. This distance is not what we want since we
@@ -256,7 +256,7 @@ origin is given by:
    See `<code/chapter-06/circle-sdf-distances.py>`_
 
 
-As an exercise, you can check that `d(x,y)` is null if `(x,y)` is on the
+As an exercise, you can check that `d(x,y)` is zero if `(x,y)` is on the
 border, strictly negative if `(x,y)` is inside the circle and strictly positive
 outside the circle.
 
@@ -695,7 +695,7 @@ For all these cases, we need to define the thickness of the antialiased area,
 that wen we compute the actual size of the circle, we have to take this into
 account (2*antialias + linewidth). The antialias area is usually 1.0 pixel.
 If it is larger, the shape will appear blurry, and it it is too narrow, the
-shape will have hard egdes. The degenerated case being a null area that results
+shape will have hard egdes. The degenerated case being zero area that results
 in no antialias at all.
    
 .. figure:: images/chapter-06/antialias-function.png
