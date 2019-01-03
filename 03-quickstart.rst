@@ -561,7 +561,7 @@ an input:
      varying vec4 v_color;
      void main()
      {
-       gl_FragColor = color;
+       gl_FragColor = v_color;
      }
      
 We now need to upload vertex color to the GPU. We could create a new vertex
