@@ -216,7 +216,7 @@ corresponding matrix is given below:
    │ 1 0 0 tx │ * │ x │ = │ 1*x + 0*y + 0*z + tx*1 │ = │ x+tx │
    │ 0 1 0 ty │   │ y │   │ 0*x + 1*y + 0*z + ty*1 │   │ y+ty │
    │ 0 0 1 tz │   │ z │   │ 0*x + 0*y + 1*z + tz*1 │   │ z+tz │
-   │ 0 0 0 1  │   │ 1 │   │ 0*x + 0*y + 0*z +  1*  │   │ 1    │
+   │ 0 0 0 1  │   │ 1 │   │ 0*x + 0*y + 0*z +  1*1 │   │ 1    │
    └          ┘   └   ┘   └                        ┘   └      ┘
 
 Scaling
