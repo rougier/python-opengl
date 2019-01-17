@@ -196,8 +196,7 @@ allow to create a GL context and we cannot use it. Note there also exists
 dedicated toolkits such as GLFW_ or GLUT_ and the advantage of GLUT is that
 it's already installed alongside OpenGL. Even if it is now deprecated, we'll
 use GLUT since it's a very lightweight toolkit and does not require any extra
-package. Here is a minimal setup that should open a window with garbage on it
-(since we do not even clear the window):
+package. Here is a minimal setup that should open a window with a black background.
 
 .. code:: python
 
@@ -206,6 +205,7 @@ package. Here is a minimal setup that should open a window with garbage on it
    import OpenGL.GLUT as glut
 
    def display():
+       gl.glClear(gl.GL_COLOR_BUFFER_BIT)
        glut.glutSwapBuffers()
 
    def reshape(width,height):
