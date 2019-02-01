@@ -241,8 +241,8 @@ structured array using numpy_:
 
 .. code:: python
 
-  data = numpy.zeros(4, dtype = [ ("position", np.float32, 3),
-                                  ("color",    np.float32, 4)] )
+  data = np.zeros(4, dtype = [ ("position", np.float32, 3),
+                               ("color",    np.float32, 4)] )
 
 We just created a CPU buffer with 4 vertices, each of them having a
 `position` (3 floats for x,y,z coordinates) and a `color` (4 floats for
@@ -263,8 +263,8 @@ using 2 floats for position and 4 floats for color:
 
 .. code:: python
 
-   data = numpy.zeros(4, dtype = [ ("position", np.float32, 2),
-                                   ("color",    np.float32, 4)] )
+   data = np.zeros(4, dtype = [ ("position", np.float32, 2),
+                                ("color",    np.float32, 4)] )
 
 We need to tell the vertex shader that it will have to handle vertices where a
 position is a tuple of 2 floats and color is a tuple of 4 floats. This is
