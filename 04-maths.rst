@@ -278,7 +278,7 @@ Y-axis rotation
    │    0    0    0   1 │   │ 1 │   │       0*x + 0*y      + 0*z + 1*1 │
    └                    ┘   └   ┘   └                                  ┘
                                     ┌                      ┐
-                                  = │ cos(d)*x - sin(d)*z  │
+                                  = │ cos(d)*x + sin(d)*z  │
                                     │ y                    │
                                     │ -sin(d)*x + cos(d)*z │
                                     │ 1                    │
