@@ -335,10 +335,10 @@ We get different representations depending on the order convention (column major
    column-major                          row-major
      (OpenGL)                             (NumPy)
     ┌         ┐   ┌   ┐   ┌         ┐   ┌         ┐   ┌                   ┐
-    │ a b c d │ × │ x │ = │ x y z w │ × │ a e i m │ = │ ax + by + cz + dw │
-    │ e f g h │   │ y │   └         ┘   │ b f j n │   │ ex + fy + gz + hw │
-    │ i j k l │   │ z │                 │ c g k o │   │ ix + jy + hz + lw │
-    │ m n o p │   │ w │                 │ d h l p │   │ mx + ny + oz + pw │
+    │ a e i m │ × │ x │ = │ x y z w │ × │ a b c d │ = │ ax + ey + iz + mw │
+    │ b f j n │   │ y │   └         ┘   │ e f g h │   │ bx + fy + jz + nw │
+    │ c g k o │   │ z │                 │ i j k l │   │ cx + gy + kz + ow │
+    │ d h l p │   │ w │                 │ m n o p │   │ dx + hy + lz + pw │
     └         ┘   └   ┘                 └         ┘   └                   ┘
 
 
