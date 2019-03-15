@@ -281,8 +281,8 @@ vertex shader:
    }
 
 This vertex shader now expects a vertex to possess 2 attributes, one named
-`position` and one named `color` with specified types (vec3 means tuple of
-3 floats and vec4 means tuple of 4 floats). It is important to note that even
+`position` and one named `color` with specified types (vec2 means tuple of
+2 floats and vec4 means tuple of 4 floats). It is important to note that even
 if we labeled the first attribute `position`, this attribute is not yet bound
 to the actual `position` in the numpy array. We'll need to do it explicitly
 at some point in our program and there is no magic that will bind the numpy

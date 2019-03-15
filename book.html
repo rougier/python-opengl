@@ -19,7 +19,7 @@
 <img alt="images/sa.large.png" src="images/sa.large.png" style="width: 32px;" />
 <img alt="images/nc.large.png" src="images/nc.large.png" style="width: 32px;" />
 <div class="line-block">
-<div class="line">Latest version - October 2018</div>
+<div class="line">Latest version - March 2019</div>
 <div class="line"><a class="reference external" href="http://www.labri.fr/perso/nrougier/python-opengl">www.labri.fr/perso/nrougier/python-opengl</a></div>
 </div>
 </div>
@@ -627,8 +627,8 @@ you want, but the bad news is that you have to program just everything.</p>
 hold a position and a color. The easiest way to do that in python is to use a
 structured array using <a class="reference external" href="http://www.numpy.org">numpy</a>:</p>
 <pre class="code python literal-block">
-<span class="name">data</span> <span class="operator">=</span> <span class="name">numpy</span><span class="operator">.</span><span class="name">zeros</span><span class="punctuation">(</span><span class="literal number integer">4</span><span class="punctuation">,</span> <span class="name">dtype</span> <span class="operator">=</span> <span class="punctuation">[</span> <span class="punctuation">(</span><span class="literal string double">&quot;position&quot;</span><span class="punctuation">,</span> <span class="name">np</span><span class="operator">.</span><span class="name">float32</span><span class="punctuation">,</span> <span class="literal number integer">3</span><span class="punctuation">),</span>
-                                <span class="punctuation">(</span><span class="literal string double">&quot;color&quot;</span><span class="punctuation">,</span>    <span class="name">np</span><span class="operator">.</span><span class="name">float32</span><span class="punctuation">,</span> <span class="literal number integer">4</span><span class="punctuation">)]</span> <span class="punctuation">)</span>
+<span class="name">data</span> <span class="operator">=</span> <span class="name">np</span><span class="operator">.</span><span class="name">zeros</span><span class="punctuation">(</span><span class="literal number integer">4</span><span class="punctuation">,</span> <span class="name">dtype</span> <span class="operator">=</span> <span class="punctuation">[</span> <span class="punctuation">(</span><span class="literal string double">&quot;position&quot;</span><span class="punctuation">,</span> <span class="name">np</span><span class="operator">.</span><span class="name">float32</span><span class="punctuation">,</span> <span class="literal number integer">3</span><span class="punctuation">),</span>
+                             <span class="punctuation">(</span><span class="literal string double">&quot;color&quot;</span><span class="punctuation">,</span>    <span class="name">np</span><span class="operator">.</span><span class="name">float32</span><span class="punctuation">,</span> <span class="literal number integer">4</span><span class="punctuation">)]</span> <span class="punctuation">)</span>
 </pre>
 <p>We just created a CPU buffer with 4 vertices, each of them having a
 <code>position</code> (3 floats for x,y,z coordinates) and a <code>color</code> (4 floats for
@@ -646,8 +646,8 @@ one or ten million vertices.</p>
 connect them together. So, let's consider again a CPU buffer of 4 vertices
 using 2 floats for position and 4 floats for color:</p>
 <pre class="code python literal-block">
-<span class="name">data</span> <span class="operator">=</span> <span class="name">numpy</span><span class="operator">.</span><span class="name">zeros</span><span class="punctuation">(</span><span class="literal number integer">4</span><span class="punctuation">,</span> <span class="name">dtype</span> <span class="operator">=</span> <span class="punctuation">[</span> <span class="punctuation">(</span><span class="literal string double">&quot;position&quot;</span><span class="punctuation">,</span> <span class="name">np</span><span class="operator">.</span><span class="name">float32</span><span class="punctuation">,</span> <span class="literal number integer">2</span><span class="punctuation">),</span>
-                                <span class="punctuation">(</span><span class="literal string double">&quot;color&quot;</span><span class="punctuation">,</span>    <span class="name">np</span><span class="operator">.</span><span class="name">float32</span><span class="punctuation">,</span> <span class="literal number integer">4</span><span class="punctuation">)]</span> <span class="punctuation">)</span>
+<span class="name">data</span> <span class="operator">=</span> <span class="name">np</span><span class="operator">.</span><span class="name">zeros</span><span class="punctuation">(</span><span class="literal number integer">4</span><span class="punctuation">,</span> <span class="name">dtype</span> <span class="operator">=</span> <span class="punctuation">[</span> <span class="punctuation">(</span><span class="literal string double">&quot;position&quot;</span><span class="punctuation">,</span> <span class="name">np</span><span class="operator">.</span><span class="name">float32</span><span class="punctuation">,</span> <span class="literal number integer">2</span><span class="punctuation">),</span>
+                             <span class="punctuation">(</span><span class="literal string double">&quot;color&quot;</span><span class="punctuation">,</span>    <span class="name">np</span><span class="operator">.</span><span class="name">float32</span><span class="punctuation">,</span> <span class="literal number integer">4</span><span class="punctuation">)]</span> <span class="punctuation">)</span>
 </pre>
 <p>We need to tell the vertex shader that it will have to handle vertices where a
 position is a tuple of 2 floats and color is a tuple of 4 floats. This is
@@ -662,8 +662,8 @@ vertex shader:</p>
 <span class="punctuation">}</span>
 </pre>
 <p>This vertex shader now expects a vertex to possess 2 attributes, one named
-<code>position</code> and one named <code>color</code> with specified types (vec3 means tuple of
-3 floats and vec4 means tuple of 4 floats). It is important to note that even
+<code>position</code> and one named <code>color</code> with specified types (vec2 means tuple of
+2 floats and vec4 means tuple of 4 floats). It is important to note that even
 if we labeled the first attribute <code>position</code>, this attribute is not yet bound
 to the actual <code>position</code> in the numpy array. We'll need to do it explicitly
 at some point in our program and there is no magic that will bind the numpy
@@ -990,14 +990,14 @@ allow to create a GL context and we cannot use it. Note there also exists
 dedicated toolkits such as <a class="reference external" href="http://www.glfw.org">GLFW</a> or <a class="reference external" href="http://freeglut.sourceforge.net">GLUT</a> and the advantage of GLUT is that
 it's already installed alongside OpenGL. Even if it is now deprecated, we'll
 use GLUT since it's a very lightweight toolkit and does not require any extra
-package. Here is a minimal setup that should open a window with garbage on it
-(since we do not even clear the window):</p>
+package. Here is a minimal setup that should open a window with a black background.</p>
 <pre class="code python literal-block">
 <span class="keyword namespace">import</span> <span class="name namespace">sys</span>
 <span class="keyword namespace">import</span> <span class="name namespace">OpenGL.GL</span> <span class="keyword namespace">as</span> <span class="name namespace">gl</span>
 <span class="keyword namespace">import</span> <span class="name namespace">OpenGL.GLUT</span> <span class="keyword namespace">as</span> <span class="name namespace">glut</span>
 
 <span class="keyword">def</span> <span class="name function">display</span><span class="punctuation">():</span>
+    <span class="name">gl</span><span class="operator">.</span><span class="name">glClear</span><span class="punctuation">(</span><span class="name">gl</span><span class="operator">.</span><span class="name">GL_COLOR_BUFFER_BIT</span><span class="punctuation">)</span>
     <span class="name">glut</span><span class="operator">.</span><span class="name">glutSwapBuffers</span><span class="punctuation">()</span>
 
 <span class="keyword">def</span> <span class="name function">reshape</span><span class="punctuation">(</span><span class="name">width</span><span class="punctuation">,</span><span class="name">height</span><span class="punctuation">):</span>
@@ -1145,7 +1145,7 @@ equivalent to a C <code>double</code>). So let us specify a NumPy array holding 
 32-bits float that will correspond to our 4×(x,y) vertices:</p>
 <pre class="code python literal-block">
 <span class="comment single"># Build data</span>
-<span class="name">data</span> <span class="operator">=</span> <span class="name">np</span><span class="operator">.</span><span class="name">zeros</span><span class="punctuation">((</span><span class="literal number integer">4</span><span class="punctuation">,</span><span class="literal number integer">2</span><span class="punctuation">),</span> <span class="name">dtype</span><span class="operator">=</span><span class="name">np</span><span class="operator">.</span><span class="name">float32</span><span class="punctuation">))</span>
+<span class="name">data</span> <span class="operator">=</span> <span class="name">np</span><span class="operator">.</span><span class="name">zeros</span><span class="punctuation">((</span><span class="literal number integer">4</span><span class="punctuation">,</span><span class="literal number integer">2</span><span class="punctuation">),</span> <span class="name">dtype</span><span class="operator">=</span><span class="name">np</span><span class="operator">.</span><span class="name">float32</span><span class="punctuation">)</span>
 </pre>
 <p>We then create a placeholder on the GPU without yet specifying the size:</p>
 <pre class="code python literal-block">
@@ -1291,7 +1291,7 @@ an input:</p>
 <span class="keyword">varying</span> <span class="keyword">vec4</span> <span class="name">v_color</span><span class="punctuation">;</span>
 <span class="keyword">void</span> <span class="name">main</span><span class="punctuation">()</span>
 <span class="punctuation">{</span>
-  <span class="name">gl_FragColor</span> <span class="operator">=</span> <span class="name">color</span><span class="punctuation">;</span>
+  <span class="name">gl_FragColor</span> <span class="operator">=</span> <span class="name">v_color</span><span class="punctuation">;</span>
 <span class="punctuation">}</span>
 </pre>
 <p>We now need to upload vertex color to the GPU. We could create a new vertex
@@ -1724,7 +1724,7 @@ corresponding matrix is given below:</p>
 │ 1 0 0 tx │ * │ x │ = │ 1*x + 0*y + 0*z + tx*1 │ = │ x+tx │
 │ 0 1 0 ty │   │ y │   │ 0*x + 1*y + 0*z + ty*1 │   │ y+ty │
 │ 0 0 1 tz │   │ z │   │ 0*x + 0*y + 1*z + tz*1 │   │ z+tz │
-│ 0 0 0 1  │   │ 1 │   │ 0*x + 0*y + 0*z +  1*  │   │ 1    │
+│ 0 0 0 1  │   │ 1 │   │ 0*x + 0*y + 0*z +  1*1 │   │ 1    │
 └          ┘   └   ┘   └                        ┘   └      ┘
 </pre>
 </div>
@@ -1751,15 +1751,15 @@ Y-axis and Z-axis.</p>
 <h4>X-axis rotation</h4>
 <pre class="code math literal-block">
 ┌                    ┐   ┌   ┐   ┌                                 ┐
-│   1       0    0 0 │ * │ x │ = │      1*x      + 0*y + 0*z + 0*0 │
-│ cos(d) -sin(d) 0 0 │   │ y │   │ cos(d)*x - sin(d)*y + 0*z + 0*0 │
-│ sin(d)  cos(d) 0 0 │   │ z │   │ sin(d)*x + cos(d)*y + 0*z + 0*0 │
-│   0       0    0 1 │   │ 1 │   │      0*x      + 0*y + 0*z + 1*1 │
+│ 1   0       0    0 │ * │ x │ = │ 1*x      + 0*y      + 0*z + 0*1 │
+│ 0 cos(d) -sin(d) 0 │   │ y │   │ 0*x + cos(d)*y - sin(d)*z + 0*1 │
+│ 0 sin(d)  cos(d) 0 │   │ z │   │ 0*x + sin(d)*y + cos(d)*z + 0*1 │
+│ 0   0       0    1 │   │ 1 │   │ 0*x      + 0*y +      0*z + 1*1 │
 └                    ┘   └   ┘   └                                 ┘
                                  ┌                      ┐
                                = │ x                    │
-                                 │ cos(d)*x - sin(d)*y  │
-                                 │ sin(d)*x + cos(d)*y  │
+                                 │ cos(d)*y - sin(d)*z  │
+                                 │ sin(d)*y + cos(d)*z  │
                                  │ 1                    │
                                  └                      ┘
 </pre>
@@ -1768,13 +1768,13 @@ Y-axis and Z-axis.</p>
 <h4>Y-axis rotation</h4>
 <pre class="code math literal-block">
 ┌                    ┐   ┌   ┐   ┌                                  ┐
-│  cos(d) 0 sin(d) 0 │ * │ x │ = │  cos(d)*x + 0*y + sin(d)*z + 0*0 │
-│    0    1   0    0 │   │ y │   │       0*x + 1*y +      0*z + 0*0 │
-│ -sin(d) 0 cos(d) 0 │   │ z │   │ -sin(d)*x + 0*y + cos(d)*z + 0*0 │
+│  cos(d) 0 sin(d) 0 │ * │ x │ = │  cos(d)*x + 0*y + sin(d)*z + 0*1 │
+│    0    1   0    0 │   │ y │   │       0*x + 1*y +      0*z + 0*1 │
+│ -sin(d) 0 cos(d) 0 │   │ z │   │ -sin(d)*x + 0*y + cos(d)*z + 0*1 │
 │    0    0    0   1 │   │ 1 │   │       0*x + 0*y      + 0*z + 1*1 │
 └                    ┘   └   ┘   └                                  ┘
                                  ┌                      ┐
-                               = │ cos(d)*x - sin(d)*z  │
+                               = │ cos(d)*x + sin(d)*z  │
                                  │ y                    │
                                  │ -sin(d)*x + cos(d)*z │
                                  │ 1                    │
@@ -1785,9 +1785,9 @@ Y-axis and Z-axis.</p>
 <h4>Z-axis rotation</h4>
 <pre class="code math literal-block">
 ┌                    ┐   ┌   ┐   ┌                                  ┐
-│ cos(d) -sin(d) 0 0 │ * │ x │ = │  cos(d)*x - sin(d)*y + 0*z + 0*0 │
-│ sin(d)  cos(d) 0 0 │   │ y │   │  sin(d)*x + cos(d)*y + 0*z + 0*0 │
-│   0       0    1 0 │   │ z │   │       0*x +      0*y + 1*z + 0*0 │
+│ cos(d) -sin(d) 0 0 │ * │ x │ = │  cos(d)*x - sin(d)*y + 0*z + 0*1 │
+│ sin(d)  cos(d) 0 0 │   │ y │   │  sin(d)*x + cos(d)*y + 0*z + 0*1 │
+│   0       0    1 0 │   │ z │   │       0*x +      0*y + 1*z + 0*1 │
 │   0       0    0 1 │   │ 1 │   │       0*x +      0*y + 0*z + 1*1 │
 └                    ┘   └   ┘   └                                  ┘
                                  ┌                      ┐
@@ -1821,10 +1821,10 @@ need to know at this stage.</p>
 column-major                          row-major
   (OpenGL)                             (NumPy)
  ┌         ┐   ┌   ┐   ┌         ┐   ┌         ┐   ┌                   ┐
- │ a b c d │ × │ x │ = │ x y z w │ × │ a e i m │ = │ ax + by + cz + dw │
- │ e f g h │   │ y │   └         ┘   │ b f j n │   │ ex + fy + gz + hw │
- │ i j k l │   │ z │                 │ c g k o │   │ ix + jy + hz + lw │
- │ m n o p │   │ w │                 │ d h l p │   │ mx + ny + oz + pw │
+ │ a e i m │ × │ x │ = │ x y z w │ × │ a b c d │ = │ ax + ey + iz + mw │
+ │ b f j n │   │ y │   └         ┘   │ e f g h │   │ bx + fy + jz + nw │
+ │ c g k o │   │ z │                 │ i j k l │   │ cx + gy + kz + ow │
+ │ d h l p │   │ w │                 │ m n o p │   │ dx + hy + lz + pw │
  └         ┘   └   ┘                 └         ┘   └                   ┘
 </pre>
 <p>For example, here is a translation matrix as returned by the
@@ -1901,13 +1901,13 @@ field of view in the horizontal and vertical direction:</p>
 <pre class="code math literal-block">
 ┌                                     ┐ n: near
 │ c/aspect  0       0          0      │ f: far
-│    0      c       0          0      │ c : cotangen(fovy)
+│    0      c       0          0      │ c: cotangent(fovy)
 │    0      0  (f+n)/(n-f)  2nf/(n-f) │
 │    0      0      -1          0      │
 └                                     ┘
             Perspective projection
 </pre>
-<p>where <code>fovy</code> specifies the field of view angle, in degrees, in the y direction
+<p>where <code>fovy</code> specifies the field of view angle in the y direction
 and <code>aspect</code> specifies the aspect ratio that determines the field of view in
 the x direction.</p>
 </div>
@@ -2414,17 +2414,17 @@ we're mostly interested in spatial aliasing (such a <a class="reference external
 <a class="reference external" href="https://en.wikipedia.org/wiki/Jaggies">jaggies</a>) and the way to attenuate it.  Let's first examine the origin of the
 problem from a practical point of view (have a look at wikipedia for the
 <a class="reference external" href="https://en.wikipedia.org/wiki/Aliasing">background theory</a>).</p>
-<p>The figure on the right illustrates the problem when we wants to render a disc
+<p>The figure on the right illustrates the problem when we want to render a disc
 onto a small area. The very first thing to be noticed is that pixels are
 <strong>not</strong> mathematical points and the center of the pixel is usually associated
 with the center of the pixel. This means that if we consider a pair of integer
 coordinates <code>(i,j)</code>, then <code>(i+Δx, j+Δy)</code> designates the same pixel (with <code>-0.5
 &lt; Δx, Δy &lt; 0.5</code>).  In order to rasterize the mathematical description of our
-circle (center and radius), the rasterizer examine the center of each pixel to
+circle (center and radius), the rasterizer examines the center of each pixel to
 determine if it falls inside or outside the shape. The result is illustrated on
 the right part of the figure. Even if the center of a pixel is very close but
 outside of the circle, it is not painted as it is shown for the thicker square
-on the figure. More generally, without antia-aliasing, a pixel will be only on
+on the figure. More generally, without anti-aliasing, a pixel will be only on
 (inside) or off (outside), leading to very hard jagged edges and a very
 approximate shape for small sizes as well.</p>
 <div class="section" id="sample-based-methods">
@@ -2541,18 +2541,18 @@ metric space determines the distance of a given point x from the boundary of
 values at points x inside Ω, it decreases in value as x approaches the
 boundary of Ω where the signed distance function is zero, and it takes
 negative values outside of Ω.</em></blockquote>
-<p>Said differently and in order to render a shape, we need to find a function of
+<p>Said differently: in order to render a shape, we need to find a function of
 <code>x</code> and <code>y</code> that returns a value that is the signed distance to the shape, that
 is, a signed distance to the border of the shape. Inside the shape, the value
 is positive, outside the shape the value is negative and on the border, the
-value is null. Easy enough.</p>
+value is zero. Easy enough.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">The sign of inside/outside can be reversed as long as they are opposite.</p>
 </div>
 <p>Of course, the question is now how do we find such function? Let's start with
 the most simple geometrical primitive: a circle centered on <code>(xc,yc)</code> with a
-radius <code>r</code>. For any point <code>(x,y)</code>, we know the (positive or null) distance to
+radius <code>r</code>. For any point <code>(x,y)</code>, we know the (non-negative) distance to
 the center is given by: <code>d = sqrt((x-xc)*(x-xc)+(y-yc)*(y-yc))</code>. To simplify
 computations, we'll consider the circle to centered on the origin, the distance
 now writes <code>d = sqrt(x*x+y*y)</code>. This distance is not what we want since we
@@ -2571,7 +2571,7 @@ d(x,y) = sqrt(x*x+y*y) - r
 <p>See <a class="reference external" href="code/chapter-06/circle-sdf-distances.py">code/chapter-06/circle-sdf-distances.py</a></p>
 </div>
 </div>
-<p>As an exercise, you can check that <code>d(x,y)</code> is null if <code>(x,y)</code> is on the
+<p>As an exercise, you can check that <code>d(x,y)</code> is zero if <code>(x,y)</code> is on the
 border, strictly negative if <code>(x,y)</code> is inside the circle and strictly positive
 outside the circle.</p>
 <p>Now, let's check if OpenGL is consistent with our maths. We'll write a fragment
@@ -2934,7 +2934,7 @@ For a given shape, we might want to draw only the outline of the shape
 that wen we compute the actual size of the circle, we have to take this into
 account (2*antialias + linewidth). The antialias area is usually 1.0 pixel.
 If it is larger, the shape will appear blurry, and it it is too narrow, the
-shape will have hard egdes. The degenerated case being a null area that results
+shape will have hard egdes. The degenerated case being zero area that results
 in no antialias at all.</p>
 <div class="right figure" id="figure-images/chapter-06/antialias-function.png">
 <img alt="images/chapter-06/antialias-function.png" src="images/chapter-06/antialias-function.png" />
