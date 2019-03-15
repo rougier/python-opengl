@@ -252,15 +252,15 @@ X-axis rotation
    :class: math
 
    ┌                    ┐   ┌   ┐   ┌                                 ┐
-   │   1       0    0 0 │ * │ x │ = │      1*x      + 0*y + 0*z + 0*0 │
-   │ cos(d) -sin(d) 0 0 │   │ y │   │ cos(d)*x - sin(d)*y + 0*z + 0*0 │
-   │ sin(d)  cos(d) 0 0 │   │ z │   │ sin(d)*x + cos(d)*y + 0*z + 0*0 │
-   │   0       0    0 1 │   │ 1 │   │      0*x      + 0*y + 0*z + 1*1 │
+   │ 1   0       0    0 │ * │ x │ = │ 1*x      + 0*y      + 0*z + 0*1 │
+   │ 0 cos(d) -sin(d) 0 │   │ y │   │ 0*x + cos(d)*y - sin(d)*z + 0*1 │
+   │ 0 sin(d)  cos(d) 0 │   │ z │   │ 0*x + sin(d)*y + cos(d)*z + 0*1 │
+   │ 0   0       0    1 │   │ 1 │   │ 0*x      + 0*y +      0*z + 1*1 │
    └                    ┘   └   ┘   └                                 ┘
                                     ┌                      ┐
                                   = │ x                    │
-                                    │ cos(d)*x - sin(d)*y  │
-                                    │ sin(d)*x + cos(d)*y  │
+                                    │ cos(d)*y - sin(d)*z  │
+                                    │ sin(d)*y + cos(d)*z  │
                                     │ 1                    │
                                     └                      ┘
 
@@ -272,9 +272,9 @@ Y-axis rotation
 
 
    ┌                    ┐   ┌   ┐   ┌                                  ┐
-   │  cos(d) 0 sin(d) 0 │ * │ x │ = │  cos(d)*x + 0*y + sin(d)*z + 0*0 │
-   │    0    1   0    0 │   │ y │   │       0*x + 1*y +      0*z + 0*0 │
-   │ -sin(d) 0 cos(d) 0 │   │ z │   │ -sin(d)*x + 0*y + cos(d)*z + 0*0 │
+   │  cos(d) 0 sin(d) 0 │ * │ x │ = │  cos(d)*x + 0*y + sin(d)*z + 0*1 │
+   │    0    1   0    0 │   │ y │   │       0*x + 1*y +      0*z + 0*1 │
+   │ -sin(d) 0 cos(d) 0 │   │ z │   │ -sin(d)*x + 0*y + cos(d)*z + 0*1 │
    │    0    0    0   1 │   │ 1 │   │       0*x + 0*y      + 0*z + 1*1 │
    └                    ┘   └   ┘   └                                  ┘
                                     ┌                      ┐
@@ -291,9 +291,9 @@ Z-axis rotation
    :class: math
 
    ┌                    ┐   ┌   ┐   ┌                                  ┐
-   │ cos(d) -sin(d) 0 0 │ * │ x │ = │  cos(d)*x - sin(d)*y + 0*z + 0*0 │
-   │ sin(d)  cos(d) 0 0 │   │ y │   │  sin(d)*x + cos(d)*y + 0*z + 0*0 │
-   │   0       0    1 0 │   │ z │   │       0*x +      0*y + 1*z + 0*0 │
+   │ cos(d) -sin(d) 0 0 │ * │ x │ = │  cos(d)*x - sin(d)*y + 0*z + 0*1 │
+   │ sin(d)  cos(d) 0 0 │   │ y │   │  sin(d)*x + cos(d)*y + 0*z + 0*1 │
+   │   0       0    1 0 │   │ z │   │       0*x +      0*y + 1*z + 0*1 │
    │   0       0    0 1 │   │ 1 │   │       0*x +      0*y + 0*z + 1*1 │
    └                    ┘   └   ┘   └                                  ┘
                                     ┌                      ┐
