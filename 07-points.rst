@@ -107,7 +107,7 @@ without taking care of the normalized device coordinate (this transformation
 has been done in the vertex shader above). We now have one problem to solve. A
 GL point is made from a single vertex and the apparent size of the resulting
 quad is controlled by the `gl_PointSize` variable resulting in several
-fragments. How things are interpolated between vertices knowing there is ony
+fragments. How things are interpolated between vertices knowing there is only
 one vertex? The answer is that there is no interpolation. If we want to know
 the position of a fragment relatively to the center, we have to find it
 ourself. Luckily, there is one interesting variable `gl_FragCoord` that gives
@@ -280,13 +280,13 @@ Flat sphere
    A lit sphere
    
 If you look closely at a sphere, you'll see that that the projected shape on
-screen is actualy as disc as shown on the figure on the right. This is actually
+screen is actually a disc as shown on the figure on the right. This is actually
 true independently of the viewpoint and we can take advantage of it. A long
 time ago (with the fixed pipeline), rendering a sphere meant tesselating the
 sphere with a large number of triangles. The larger the number of triangles,
 the higher the quality of the sphere and the slower the rendering. However,
-with the advent of shaders, things have changeg dramatically and we can use
-fake spheres, i.e. discs thar are painted such as to appear as spheres. This is
+with the advent of shaders, things have changed dramatically and we can use
+fake spheres, i.e. discs that are painted such as to appear as spheres. This is
 known as "impostors". If you look again at the image, you might realize that
 the appeareance of the sphere is given by the shading that is not uniform and
 suggests instead a specific lighting that seems to come from the upper right
@@ -331,7 +331,7 @@ for a sphere is very easy. We can simply use the `p=(x,y)` coordinates inside th
 fragment shader and compute the `z` coordinate. How? you might ask
 yourself. This is actually correlated to the distance `d` to the center such
 that `z = 1-d`. If you want to convice yourself, just look at the figure on
-the right that show a side view of half a sphere on the xz plane. The z
+the right that shows a side view of half a sphere on the xz plane. The z
 coordinate is maximal in the center and null on the border.
 
 We're ready to simulate lighting on our disc using the `Phong model

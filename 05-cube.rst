@@ -304,9 +304,9 @@ indices (I did it for you):
 
 .. code:: python
 
-    O = [0,1, 1,2, 2,3, 3,0,
+    O = np.array([0,1, 1,2, 2,3, 3,0,
          4,7, 7,6, 6,5, 5,4,
-         0,5, 1,6, 2,7, 3,4 ]
+         0,5, 1,6, 2,7, 3,4 ], dtype=np.uint32)
     O = O.view(gloo.IndexBuffer)
 
 We then need to draw the cube twice. One time using triangles and the indices

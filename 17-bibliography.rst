@@ -8,7 +8,7 @@ Bibliography
    :class: toc chapter-17
 
 
-This is a curated list of some computer graphics resources (peoole, articles,
+This is a curated list of some computer graphics resources (people, articles,
 books & tutorials) addressing different aspects. Some are very specific to
 OpenGL while some others offer a broader view on computer graphics and
 geometry.
@@ -42,7 +42,7 @@ People
 Tutorials
 ---------
 
-.. |tutorial-1| replace:: Open GL tutorial (C)
+.. |tutorial-1| replace:: OpenGL tutorial (C)
 .. _tutorial-1: http://www.opengl-tutorial.org
 
 .. |tutorial-2| replace:: Learn OpenGL (C)
