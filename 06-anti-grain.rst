@@ -167,7 +167,7 @@ the image, this corresponds to the grey areas that give us direct access to the
 final color of the pixel (more precisely, the percentage of the color we have
 to mix with the background color or any other object in the vicinity).
 Unfortunately, such method is not possible to enforce in a full 3D scene
-because all the transformations and differen occlusuins would make the
+because all the transformations and different occlusions would make the
 computation of the final shape too complex. In two dimensions however, this is
 probably the best method we can use and this is also the method that is used in
 the `Anti-grain geometry
@@ -278,11 +278,11 @@ border (with some tolerance or we won't see anything).
        const float epsilon = 0.005;
        float d = distance(v_position, vec2(0.0), 0.5);
        if (d > +epsilon)
-           gl_FragColor = vec4(abs(d), 0.0, 0.0, 1.0);
+           gl_FragColor = vec4(1.0-abs(d), 0.0, 0.0, 1.0);
        else if (d < -epsilon)
-           gl_FragColor = vec4(0.0, 0.0, abs(d), 1.0);
+           gl_FragColor = vec4(0.0, 0.0, 1.0-abs(d), 1.0);
        else 
-           gl_FragColor = vec4(0.0, 0.0, 0.0, 1.0);
+           gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
    }
    
 
@@ -674,8 +674,8 @@ We have our signed distance functions but we need to exploit them in order to
 do the proper antialiasing. If you remember that a SDF function gives the
 distance to the border of the shape, we still need to compute the right color
 according to this distance. When we are fully inside or outside the shape, it
-is easy: let's say black for the inside and white for the oustide (or nothing
-using the transaprency level). The interesting part is located in the vicinity
+is easy: let's say black for the inside and white for the outside (or nothing
+using the transparency level). The interesting part is located in the vicinity
 of the border, it is not fully black nor fully white but grey. What amount of
 grey you might ask? Well, it is directly correlated with the distance to the
 border. But first, let's have a look at the figure below that show the
