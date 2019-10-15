@@ -172,7 +172,7 @@ The graphic pipeline
 
 If you want to understand modern OpenGL, you have to understand the graphic
 pipeline and shaders. Shaders are pieces of program (using a C-like language)
-that are build onto the GPU and executed during the rendering
+that are built onto the GPU and executed during the rendering
 pipeline. Depending on the nature of the shaders (there are many types
 depending on the version of OpenGL you're using), they will act at different
 stage of the rendering pipeline. To simplify this tutorial, we'll use only
@@ -209,7 +209,7 @@ special variable). We'll see later how to make them to do more useful things.
 
 One question remains: when are those shaders executed exactly ? The vertex
 shader is executed for each vertex that is given to the rendering pipeline
-(we'll see what does that mean exactly later) and the fragment shader is
+(we'll see excatly what that means later) and the fragment shader is
 executed on each fragment (= pixel) that is generated after the vertex
 stage. For example, in the simple figure above, the vertex would be called 3
 times, once for each vertex (1,2 and 3) while the fragment shader would be
@@ -220,20 +220,20 @@ Buffers
 
 The next question is thus where do those vertices comes from ? The idea of
 modern GL is that vertices are stored on the CPU and need to be uploaded to
-the GPU before rendering. The way to do that is to build buffers onto the CPU
+the GPU before rendering. The way to do that is to build buffers on the CPU
 and to send these buffers onto the GPU. If your data does not change, no need
 to upload them again. That is the big difference with the previous fixed
 pipeline where data were uploaded at each rendering call (only display lists
 were built into GPU memory).
 
 But what is the structure of a vertex ? OpenGL does not assume anything about
-your vertex structure and you're free to use as many information you may need
+your vertex structure and you're free to use as much information you may need
 for each vertex. The only condition is that all vertices from a buffer have the
-same structure (possibly with different content). This again is a big
+same structure (possibly with different content). This, again, is a big
 difference with the fixed pipeline where OpenGL was doing a lot of complex
 rendering stuff for you (projections, lighting, normals, etc.) with an implicit
 fixed vertex structure. The good news is that you're now free to do anything
-you want, but the bad news is that you have to program just everything.
+you want, but the bad news is that you have to program just about everything.
 
 Let's take a simple example of a vertex structure where we want each vertex to
 hold a position and a color. The easiest way to do that in python is to use a
@@ -257,7 +257,7 @@ one or ten million vertices.
 Variables
 +++++++++
 
-Now, we need to explain our shaders what to do with these buffers and how to
+Now, we need to explain to our shaders what to do with these buffers and how to
 connect them together. So, let's consider again a CPU buffer of 4 vertices
 using 2 floats for position and 4 floats for color:
 
@@ -350,7 +350,7 @@ State of the union
 Last, but not least, we need to access the OpenGL library from within Python
 and we have mostly two solutions at our disposal. Either we use pure bindings
 and we have to program everything (see next chapter) or we use an engine that
-provide a lot of convenient functions that ease the development. We'll first
+provides a lot of convenient functions that ease the development. We'll first
 use the PyOpenGL bindings before using the glumpy_ library that offers a tight
 integration with numpy.
 
