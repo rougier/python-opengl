@@ -368,7 +368,7 @@ Uploading data to the GPU
 
 Next, we need to build CPU data and the corresponding GPU buffer that will hold
 a copy of the CPU data (GPU cannot access CPU memory). In Python, things are
-grealty facilitated by NumPy that allows to have a precise control over number
+greatly facilitated by NumPy that allows to have a precise control over number
 representations. This is important because GLES 2.0 floats have to be exactly
 32 bits long and a regular Python float would not work (they are actually
 equivalent to a C `double`). So let us specify a NumPy array holding 4×2
