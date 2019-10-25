@@ -340,7 +340,7 @@ Polygon Patterns
 
    Patterns.
 
-We can also use any texture to pain the polygon. It's only a matter of
+We can also use any texture to paint the polygon. It's only a matter of
 assigning the right texture to polygon vertices. Try to render the image on the
 right using this `texture <images/chapter-10/wave.png>`_
 
