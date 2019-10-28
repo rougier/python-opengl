@@ -276,7 +276,7 @@ border (with some tolerance or we won't see anything).
    void main()
    {
        const float epsilon = 0.005;
-       float d = distance(v_position, vec2(0.0), 0.5);
+       float d = distance(v_position.xy, vec2(0.0), 0.5);
        if (d > +epsilon)
            gl_FragColor = vec4(1.0-abs(d), 0.0, 0.0, 1.0);
        else if (d < -epsilon)
@@ -290,7 +290,7 @@ border (with some tolerance or we won't see anything).
 Geometrical primitives
 ++++++++++++++++++++++
 
-We need now to define a few primitives usigned signed distance function. You'll
+We need now to define a few primitives using signed distance function. You'll
 understand in the next section why we only need a few primitives. In the
 meantime, we'll use a less boring palette than the one in the previous
 section. We'll use instead the palette that has become the standard for
