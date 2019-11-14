@@ -129,7 +129,7 @@ There exist other primitives but we won't used them in this book because
 they're mainly related to *geometry shaders* that are not introduced.
 
 If you remember the previous section where we explained that our quad can be
-described using using triangle `(V₀,V₁,V₂)` and triangle `(V₁,V₂,V₃)`, you can
+described using triangle `(V₀,V₁,V₂)` and triangle `(V₁,V₂,V₃)`, you can
 now realize that we can take advantage or the `GL_TRIANGLE_STRIP` primitive
 because we took care of describing the two triangles following this implicit
 structure.
