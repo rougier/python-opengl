@@ -120,7 +120,7 @@ you want to specify very precisely what to draw or if you can take advantage of
 some implicit assumptions. Let's consider lines first for example. Given a set
 of four vertices `(V₀,V₁,V₂,V₃)`, you migh want to draw segments
 `(V₀,V₁)``(V₂,V₃)` using `GL_LINES` or a broken line `(V₀,V₁,V₂,V₃)` using
-using `GL_LINE_STRIP` or a closed broken line `(V₀,V₁,V₂,V₃,V₀,)` using
+`GL_LINE_STRIP` or a closed broken line `(V₀,V₁,V₂,V₃,V₀,)` using
 `GL_LINE_LOOP`. For triangles, you have the choices of specifying each triangle
 individually using `GL_TRIANGLES` or you can tell OpenGL that triangles follow
 an implicit structure using `GL_TRIANGLE_STRIP`. For example, considering a set
@@ -129,7 +129,7 @@ There exist other primitives but we won't used them in this book because
 they're mainly related to *geometry shaders* that are not introduced.
 
 If you remember the previous section where we explained that our quad can be
-described using using triangle `(V₀,V₁,V₂)` and triangle `(V₁,V₂,V₃)`, you can
+described using triangle `(V₀,V₁,V₂)` and triangle `(V₁,V₂,V₃)`, you can
 now realize that we can take advantage or the `GL_TRIANGLE_STRIP` primitive
 because we took care of describing the two triangles following this implicit
 structure.
