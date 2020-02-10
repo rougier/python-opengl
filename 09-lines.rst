@@ -97,8 +97,8 @@ the normal to `AB`. We want to draw a segment of thickness `w` using an
 antialias area (filter radius) `r`. From these information, we can compute the
 4 necesssary vertices (screen space `(x,y)`):
 
-* `A₀ =  A - (w/2 + r) * (T+O)`
-* `A₁ =  A - (w/2 + r) * (T-O)`
+* `A₀ =  A - (w/2 + r) * (T-O)`
+* `A₁ =  A - (w/2 + r) * (T+O)`
 * `B₀ =  B + (w/2 + r) * (T+O)`
 * `B₁ =  B + (w/2 + r) * (T-O)`
 
@@ -112,7 +112,7 @@ where the origin is `A` and the direction is horizontal (see figure above):
 
 This parameterization is very convenient because the distance to the segment
 body is given by the `v` component while the cap areas can be identified using
-`u < 0 or x > |AB|`.
+`u < 0` or `u > |AB|`.
 
 The next question is where do we compute all these information? We could do it
 at the python level of course but it would be slower than computing directly
