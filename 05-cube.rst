@@ -370,13 +370,13 @@ coordinates can be pretty much anything but for the sake of simplicity, we'll
 stick to the [0,1] range). Since we are displaying a cube, we'll use one
 texture per side and the texture coordinates are quite easy to define: [0,0],
 [0,1], [1,0] and [1,1]. Of course, we have to take care of assigning the right
-texture coordinates to the right vertex or you texture will be messed up.
+texture coordinates to the right vertex or the texture will be messed up.
 
-Furthemore, we'll need some extra work because we cannot share anymore our
-vertices between faces since they won't share their texture coordinates. We
+Furthemore, we'll need some extra work because we cannot share our
+vertices between faces anymore since they won't share their texture coordinates. We
 thus need to have a set of 24 vertices (6 faces × 4 vertices). We'll use the
 dedicated function below that will take care of generating the right texture
-coordinates.
+coordinates:
 
 ----
 

@@ -73,42 +73,42 @@ Sample based methods
 
    Figure
 
-   Rendering of a disc using multisample anti-aliasing. By mutisampling the
+   Rendering of a disc using multisample anti-aliasing. By multisampling the
    same pixel, the edge can be rendered smoother. The thick black square pixel
    that was previously considered outside the shape can not be considered
    half-outside (2 samples outside) and half-inside (2 samples inside).
 
 
-One of the simplest method to remove antialising consists in using several
+One of the simplest method to remove aliasing consists of using several
 samples to estimate the final color of a fragment. Instead of only considering
 the center of the pixel, one case use several samples over the whole surface of
 a pixel in order to have a better estimate as shown on the figure on the
 right. A fragment that was previously considered outside, based on its center
 only, can now be considered half inside / half outside. This multi-sampling
-helps to attenuate the jagged edges we've seen in the previous section. On the
+helps to attenuate the jagged edges we've seen in the previous section. In the
 figure, we used a very simple and straightforward multi-sample method,
 assigning fixed and equidistant locations for the four subsamples. There exist
 however better methods for multi-sampling as shown by the impressive list of
-sample based antialiasing techniques:
+sample based anti-aliasing techniques:
 
-* SSAA_: Supersampling antialiasing
-* MSAA_: Multisample antialiasing
+* SSAA_: Supersampling anti-aliasing
+* MSAA_: Multisample anti-aliasing
 * FSAA_: Full screen anti-aliasing
-* FXAA_: Fast approximate antialiasing
-* SMAA_: Subpixel morphological antialiasing
-* DLAA_: Directionally localized antialiasing
-* NFAA_: Normal filter antialiasing
-* HRAA_: High-Resolution antialiasing
-* TXAA_: Temporal antialiasing
+* FXAA_: Fast approximate anti-aliasing
+* SMAA_: Subpixel morphological anti-aliasing
+* DLAA_: Directionally localized anti-aliasing
+* NFAA_: Normal filter anti-aliasing
+* HRAA_: High-Resolution anti-aliasing
+* TXAA_: Temporal anti-aliasing
 * EQAA_: Enhanced quality at-prntialiasing
-* CSAA_: Coverage Sample antialiasing
+* CSAA_: Coverage Sample anti-aliasing
 
 Depending on the performance you need to achieve (in terms of rendering quality
 and speed) one method might be better than the other. However, you cannot
 expect to achieve top quality due to inherent limitations of all these
 methods. If they are great for real-time rendering such as video games (and
 some of them are really good), they are hardly sufficient for any scientific
-visualization as illustrated on the figure below.
+visualization as illustrated in the figure below.
 
 .. figure:: images/chapter-06/ssaa-sdf.png
    :figwidth: 100%
@@ -162,8 +162,8 @@ Coverage methods
 Another approach for anti-aliasing is to compute the exact coverage of a shape
 over each pixel surface as shown on the figure on the right. To do so, we need
 of course to know precisely the shape we want to display and where it is
-located in order to compute the coverage of the shape onto the pixel grid. On
-the image, this corresponds to the grey areas that give us direct access to the
+located in order to compute the coverage of the shape onto the pixel grid. In
+the figure, this corresponds to the grey areas that give us direct access to the
 final color of the pixel (more precisely, the percentage of the color we have
 to mix with the background color or any other object in the vicinity).
 Unfortunately, such method is not possible to enforce in a full 3D scene
@@ -183,14 +183,14 @@ that constitutes the quality standard we aim at.
    Actual versus approximated coverage.
 
 But even in 2D, computing the exact coverage of the shape over the different
-pixels can become rapidly a complex and slow task. One way to greatly simplify
+pixels can rapidly become a complex and slow task. One way to greatly simplify
 the problem is to consider pixel to be round (instead of square or
 rectangle). With such asumption, we only need to compute the distance from the
 center of the pixel to the border of the shape (that is locally considered to
-be a line) to get a very accurate estimate of the coverage and this is exactly
+be a line) to get a very accurate estimate of the pixel's coverage. This is exactly
 what we'll do in the next section.
 
-If you wonder if our round pixel shape approximation makes any. sense at all,
+If you wonder if our round pixel shape approximation makes any sense at all,
 have a look at the `subpixel zoo
 <https://geometrian.com/programming/reference/subpixelzoo/index.php>`_
 maintained by Ian Mallett and you'll understand our assumption is not so bad
@@ -229,7 +229,7 @@ value is zero. Easy enough.
    The sign of inside/outside can be reversed as long as they are opposite. 
 
 Of course, the question is now how do we find such function? Let's start with
-the most simple geometrical primitive: a circle centered on `(xc,yc)` with a
+the most simple geometrical primitive: a circle centered on `(xc,yc)` with
 radius `r`. For any point `(x,y)`, we know the (non-negative) distance to
 the center is given by: `d = sqrt((x-xc)*(x-xc)+(y-yc)*(y-yc))`. To simplify
 computations, we'll consider the circle to centered on the origin, the distance
@@ -315,9 +315,9 @@ of my knowledge):
    The `#include` directive is not part ot the glsl specification and is only
    available from within glumpy.
 
-However, we don't want to copy this code in all the example. We can instead
+However, we don't want to copy this code in all of the examples. We can instead
 write a `palette.glsl <code/chapter-06/palette.glsl>`_ shader and include it in
-each of the example.
+each of the examples.
 
 
 
@@ -546,7 +546,7 @@ Fake triangle
 
 What I call a fake SDF triangle is a triangle made of lines instead of line
 segments. If you look at the corner (outside part), you will notice the
-different compared to the real triangle. This fake triangle will used later for
+difference compared to the real triangle. This fake triangle will be used later for
 markers because it is faster to compute than the regular SDF triangle.
    
 .. code:: glsl
@@ -671,14 +671,14 @@ Distance based anti-aliasing
 -------------------------------------------------------------------------------
 
 We have our signed distance functions but we need to exploit them in order to
-do the proper antialiasing. If you remember that a SDF function gives the
+do the proper anti-aliasing. If you remember that an SDF function gives the
 distance to the border of the shape, we still need to compute the right color
 according to this distance. When we are fully inside or outside the shape, it
 is easy: let's say black for the inside and white for the outside (or nothing
 using the transparency level). The interesting part is located in the vicinity
 of the border, it is not fully black nor fully white but grey. What amount of
 grey you might ask? Well, it is directly correlated with the distance to the
-border. But first, let's have a look at the figure below that show the
+border. But first, let's have a look at the figure below, which shows the
 different situations:
 
 .. figure:: images/chapter-06/circle-aa.png
@@ -686,17 +686,17 @@ different situations:
    Figure
 
    For a given shape, we might want to draw only the outline of the shape
-   (left), the interior only (left) or both of them (middle).
+   (left), the interior only (right) or both of them (middle).
 
 
-For all these cases, we need to define the thickness of the antialiased area,
+For all these cases, we need to define the thickness of the anti-aliased area,
 (that is, the area where the estimated coverage will go from 0 (outside) to 1
 (inside)) and the line thickness for the stroke and outline cases. This means
-that wen we compute the actual size of the circle, we have to take this into
-account (2*antialias + linewidth). The antialias area is usually 1.0 pixel.
-If it is larger, the shape will appear blurry, and it it is too narrow, the
-shape will have hard egdes. The degenerated case being zero area that results
-in no antialias at all.
+that when we compute the actual size of the circle, we have to take this into
+account (2*anti-alias + linewidth). The anti-alias area is usually 1.0 pixel.
+If it is larger, the shape will appear blurry, and if it is too narrow, the
+shape will have hard egdes. The degenerated case is being zero area, which
+results in no anti-aliasing at all.
    
 .. figure:: images/chapter-06/antialias-function.png
 
