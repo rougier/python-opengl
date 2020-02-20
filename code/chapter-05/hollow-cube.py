@@ -32,9 +32,9 @@ void main()
     float xy = min( abs(v_position.x), abs(v_position.y));
     float xz = min( abs(v_position.x), abs(v_position.z));
     float yz = min( abs(v_position.y), abs(v_position.z));
-    float b1 = 0.7;
-    float b2 = 0.75;
-    float b3 = 0.95;
+    float b1 = 0.74;
+    float b2 = 0.76;
+    float b3 = 0.98;
 
     if ((xy < b1) && (xz < b1) && (yz < b1))
         discard;
