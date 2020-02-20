@@ -23,7 +23,7 @@ fragment = """
     varying vec2 v_position;
     void main()
     {
-        const float epsilon = 0.05;
+        const float epsilon = 0.005;
 
         float d = distance(v_position, vec2(0.0), 0.5);
         if (d < -epsilon)
