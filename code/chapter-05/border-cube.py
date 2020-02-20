@@ -32,7 +32,7 @@ void main()
     float xy = min( abs(v_position.x), abs(v_position.y));
     float xz = min( abs(v_position.x), abs(v_position.z));
     float yz = min( abs(v_position.y), abs(v_position.z));
-    float b = 0.95;
+    float b = 0.85;
 
     if ((xy > b) || (xz > b) || (yz > b))
         gl_FragColor = vec4(0,0,0,1);
