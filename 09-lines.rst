@@ -220,9 +220,9 @@ Lines
 
    The different line joints.
 
-Polylines (i.e. line made of several segments) is much more difficult to render
-than segment because we have to take joints into account as illustrated on the
-image on the right. But, even if there appears to exist three different kind of
+Polylines (i.e. lines made of several segments) are much more difficult to render
+than segments because we have to take joints into account as illustrated in the
+image on the right. But even if there appear to be three different kinds of
 joints, there are really only two cases to consider: the bevel joint and the
 others (round and miter). These cases are different because we can code a
 reasonably fast solution for the bevel case while the two others ask for more
@@ -485,7 +485,7 @@ a search using the "Bézier" or "bezier" keyword (I even commited `one
 For the time being, we'll use an approximation of Bézier curves using an
 `adaptive subdivision <http://antigrain.com/research/adaptive_bezier/>`_ as
 designed by Maxim Shemarev (and translated in Python by me, see `curves.py
-<code/chapter-09/curves.py>`_). You can see on the images below that this
+<code/chapter-09/curves.py>`_). You can see in the images below that this
 method provides a very good approximation in a reasonable number of segments
 (third figure on the right).
 
