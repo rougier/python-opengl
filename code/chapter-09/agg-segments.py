@@ -66,6 +66,9 @@ fragment = """
           d = exp(-d*d);
           gl_FragColor = vec4(0.0, 0.0, 0.0, d*v_alpha);
       } 
+      else {
+          gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0);
+      }
   } """
 
 window = app.Window(1200, 400, color=(1,1,1,1))
