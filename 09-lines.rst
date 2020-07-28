@@ -309,8 +309,8 @@ Taking all these constraints into account, the line preparation reads:
        return V_prev, V_curr, V_next, L[-1]
 
 
-Using this baking, it is now realtively easy to compute vertex position from
-within the vertex shader. The only difficulty being to parameterize properly
+Using this baking, it is now relatively easy to compute vertex position from
+within the vertex shader. The only difficulty being to properly parameterize
 the vertex such as to have all information to perform the antialiasing inside
 the fragment shader:
 
@@ -347,7 +347,7 @@ the fragment shader:
        gl_Position = vec4(2.0*p/resolution-1.0, 0.0, 1.0);
    }
 
-Adn the fragment shader reads:
+And the fragment shader reads:
    
 .. code:: glsl
 
@@ -412,8 +412,8 @@ just to be able to handle miter and round joints properly in the fragment
 shader. To be able to do this, we need to know from within the fragment shader
 if a given fragment is inside the joint area or not. This requires a specific
 parameterization that relies on having a different tesselation with 4×n
-vertices instead of 2×n. I won't explain all the details here but only provide
-the final result that you can found in `geom-path.py
+vertices instead of 2×n. I won't explain all the details here, but only provide
+the final result that you can find in `geom-path.py
 <code/chapter-09/geom_path.py>`_.
 
 If you look at the sources, you'll see I'm using a geometry shader, which is a
