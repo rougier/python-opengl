@@ -73,7 +73,7 @@ the better) and the homogeneity of the triangles (we prefer to have triangles
 that have more or less the same size and to not have any degenerated triangle).
 
 In our case, we want to render a square and we need to find the proper
-triangulation (which is not unique as illustrated on the figure). Since we want
+triangulation (which is not unique as illustrated in the figure). Since we want
 to minimize the number of triangles, we'll use the 2 triangles solution that
 requires only 4 (shared) vertices corresponding to the four corners of the
 quad. However, you can see from the figure that we could have used different
@@ -110,7 +110,7 @@ GL Primitives
 Ok, now things are getting serious because we need to actually tell OpenGL what
 to do with the vertices, i.e. how to render them? What do they describe in terms
 of geometrical primitives? This is quite an important topic since this will
-determine how fragments will actually be generated as illustrated on the image
+determine how fragments will actually be generated as illustrated in the image
 below:
 
 
@@ -151,12 +151,12 @@ choice, because a triangle offers the possibility of having a nice and intuitive
 interpolation of any point that is inside the triangle. If you look back at
 the graphic pipeline as it has been introduced in the `Modern OpenGL`_ section,
 you can see that the rasterisation requires for OpenGL to generate fragments
-inside the triangle but also to interpolate values (colors on the figure). One
+inside the triangle but also to interpolate values (colors in the figure). One
 of the legitimate questions to be solved is then: if I have a triangle
 (V₁,V₂,V₃), each summit vertex having (for example) a different color, what is
 the color of a fragment `p` inside the triangle? The answer is `barycentric
 interpolation <https://en.wikibooks.org/wiki/GLSL_Programming/Rasterization>`_
-as illustrated on the figure on the right.
+as illustrated in the figure on the right.
 
 More precisely, for any point p inside a triangle `A = (V₁,V₂,V₃)`, we consider
 triangles:

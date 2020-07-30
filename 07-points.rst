@@ -38,7 +38,7 @@ primitive that displays a quad that is always facing the camera
 dimension, even though we'll use this primitive to draw discs and circles in
 the next section. The size of the quad must be specified within the vertex
 shader using the `gl_PointSize` variable (note that the size is expressed in
-pixels). As shown on the figure, the result is quite ugly.
+pixels). As shown in the figure, the result is quite ugly.
 
 .. code:: python
 
@@ -173,7 +173,7 @@ Last, we setup our python program to display some discs:
    Circles positionned vertically with a 0.2 pixel increase.
    See `circles-aligned.py <code/chapter-07/circles-aligned.py>`_
    
-You can see the result on the image on the right. Not only the discs are
+You can see the result in the image on the right. Not only the discs are
 properly antialiased, but they are also positionned at the subpixel level. In
 the image on the right, each disc is actually vertically shifted upward by 0.2
 pixels compared to its left neightbour. However, you cannot see any artefacts
@@ -280,7 +280,7 @@ Flat sphere
    A lit sphere
    
 If you look closely at a sphere, you'll see that that the projected shape on
-screen is actually a disc as shown on the figure on the right. This is actually
+screen is actually a disc as shown in the figure on the right. This is actually
 true independently of the viewpoint and we can take advantage of it. A long
 time ago (with the fixed pipeline), rendering a sphere meant tesselating the
 sphere with a large number of triangles. The larger the number of triangles,
@@ -336,7 +336,7 @@ coordinate is maximal in the center and null on the border.
 
 We're ready to simulate lighting on our disc using the `Phong model
 <https://en.wikipedia.org/wiki/Phong_reflection_model>`_. I won't give all the
-detail now because we'll see that later. However, as you can see on the source
+detail now because we'll see that later. However, as you can see in the source
 below, this is quite easy and the result is flawless.
 
 .. figure:: images/chapter-07/sphere-3.png
@@ -380,7 +380,7 @@ True sphere
    A bunch of fake spheres.
 
 We can use this technique to display several "spheres" having different sizes
-and positions as shown on the figure on the right. This can be used to
+and positions as shown in the figure on the right. This can be used to
 represent molecules for examples. Howewer, we have a problem with sphere
 intersecting each other. If you look closely the figure, you might have notices
 that no sphere intersect any sphere. This is due to the depth testing of the
@@ -419,7 +419,7 @@ the `gl_FragDepth` variable (that must be between 0 and 1):
        gl_FragColor = vec4(max(diffuse*color, specular*vec3(1.0)), 1.0);
    }
 
-You can see on the figures that the spheres now intersect each other correctly.
+You can see in the figures that the spheres now intersect each other correctly.
    
 
 Exercises
@@ -436,7 +436,7 @@ Tiny discs
    Disc spiral
 
 Adapting the shader from the "Dots, discs, circles" section, try to write a
-script to draw discs on a spiral as displayed on the figure on the right. Be
+script to draw discs on a spiral as displayed in the figure on the right. Be
 careful with small discs, especially when the radius is less than one pixel. In
 such case, you'll have to find a convincing way to suggest the size of the
 disc...

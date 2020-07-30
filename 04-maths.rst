@@ -67,7 +67,7 @@ and default value of 1 for all the `w` such that our new point set is now
 point `(x,w)` in projective space corresponds to the point `x/w` (if `w` ≠ 0)
 in our unidimensional Euclidean space. From this conversion, we can see
 immediately that there exists actually an infinite set of homogenous coordinates
-that correspond to a single Cartesian coordinate as illustrated on the figure.
+that correspond to a single Cartesian coordinate as illustrated in the figure.
 
 .. figure:: images/chapter-04/1D-Projection.png
    :figwidth: 100%
@@ -85,7 +85,7 @@ that correspond to a single Cartesian coordinate as illustrated on the figure.
 Projections
 +++++++++++
 
-We are now ready to project our point set onto the screen. As shown on the
+We are now ready to project our point set onto the screen. As shown in the
 figure above, we can use an orthographic (all rays are parallel) or a linear
 projection (rays originate from the camera point and hit the screen, passing
 through points to be projected). For these two projections, results are similar
@@ -96,7 +96,7 @@ homogenous coordinates make sense. For this (arbitrary) projection, we decided
 that the further the point is from the origin, the further away from the
 origin its projection will be. To do that, we measure the distance of the point
 to the origin and we add this distance to its `w` value before projecting it
-(this corresponds to the black circles on the figure) using the linear
+(this corresponds to the black circles in the figure) using the linear
 projection. It is to be noted that this new projection does not conserve the
 distance relationship and if we consider the set of projected points `[P(-1.0),
 P(-0.5), P(0.0), P(+0.5), P(+1.0)]`, we have `║P(-1.0)-P(-0.5)]║ >
@@ -359,8 +359,8 @@ For example, here is a translation matrix as returned by the
                                                      ↑   ↑   ↑
                                                      13  14  15
 
-So this means you would use this translation on the left when uploaded to the
-GPU, but you would use on the right with Python/NumPy:
+So this means you would use the translation on the left when uploading to the
+GPU, but you would use that on the right with Python/NumPy:
 
 .. code:: python
 
@@ -377,8 +377,8 @@ Projections
 In order to define a projection, we need to specify first what do we want
 to view, that is, we need to define a viewing volume such that any object
 within the volume (even partially) will be rendered while objects outside
-won't. On the image below, the yellow and red spheres are within the volume
-while the green one is not and does not appear on the projection.
+won't. In the image below, the yellow and red spheres are within the volume
+while the green one is not and does not appear in the projection.
 
 .. image:: images/chapter-04/projection.png
    :width: 100%
@@ -386,7 +386,7 @@ while the green one is not and does not appear on the projection.
 There exist many different ways to project a 3D volume onto a 2D screen but
 we'll only use the `perspective projection`_ (distant objects appear smaller)
 and the `orthographic projection`_ which is a parallel projection (distant
-objects have the same size as closer ones) as illustrated on the image
+objects have the same size as closer ones) as illustrated in the image
 above. Until now (previous section), we have been using implicitly an
 orthographic projection in the z=0 plane.
 
