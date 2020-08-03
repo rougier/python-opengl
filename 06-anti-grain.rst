@@ -55,7 +55,7 @@ circle (center and radius), the rasterizer examines the center of each pixel to
 determine if it falls inside or outside the shape. The result is illustrated on
 the right part of the figure. Even if the center of a pixel is very close but
 outside of the circle, it is not painted as it is shown for the thicker square
-on the figure. More generally, without anti-aliasing, a pixel will be only on
+in the figure. More generally, without anti-aliasing, a pixel will be only on
 (inside) or off (outside), leading to very hard jagged edges and a very
 approximate shape for small sizes as well.
 
@@ -82,7 +82,7 @@ Sample based methods
 One of the simplest method to remove aliasing consists of using several
 samples to estimate the final color of a fragment. Instead of only considering
 the center of the pixel, one case use several samples over the whole surface of
-a pixel in order to have a better estimate as shown on the figure on the
+a pixel in order to have a better estimate as shown in the figure on the
 right. A fragment that was previously considered outside, based on its center
 only, can now be considered half inside / half outside. This multi-sampling
 helps to attenuate the jagged edges we've seen in the previous section. In the
@@ -160,7 +160,7 @@ Coverage methods
    Rendering of a disc using exact coverage anti-aliasing.
 
 Another approach for anti-aliasing is to compute the exact coverage of a shape
-over each pixel surface as shown on the figure on the right. To do so, we need
+over each pixel surface as shown in the figure on the right. To do so, we need
 of course to know precisely the shape we want to display and where it is
 located in order to compute the coverage of the shape onto the pixel grid. In
 the figure, this corresponds to the grey areas that give us direct access to the

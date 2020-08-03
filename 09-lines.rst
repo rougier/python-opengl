@@ -448,8 +448,8 @@ the same primitives:
        program.draw(gl.GL_LINE_STRIP_ADJACENCY_EXT, I)
 
 
-I won't further describe the method that is a bit complicated but you can all
-the details in the provided demo script. See the caption of the image below.
+I won't describe this method further as it is a bit complicated, but you can see
+all the details in the provided demo script. See the caption of the image below.
        
 .. figure:: images/chapter-09/stars.png
    :figwidth: 100%
@@ -472,8 +472,8 @@ Bézier curves
 
    Bézier demo from the `antigrain geometry library <http://antigrain.com/>`_
 
-There is a huge litterature on Bézier curves and a huge litterature on GPU
-Bézier curves as well (+ lot of patents). I won't explain everything here
+There is a huge literature on Bézier curves and a huge literature on GPU
+Bézier curves as well (+ lots of patents). I won't explain everything here
 because it would require a whole book and I'm not sure I understand every
 aspect anyway. If you're interested in the topic, you can have a look at `A
 Primer on Bézier curves <https://pomax.github.io/bezierinfo>`_ by Mike
@@ -484,7 +484,7 @@ a search using the "Bézier" or "bezier" keyword (I even commited `one
 
 For the time being, we'll use an approximation of Bézier curves using an
 `adaptive subdivision <http://antigrain.com/research/adaptive_bezier/>`_ as
-designed by Maxim Shemarev (and translated in Python by me, see `curves.py
+designed by Maxim Shemarev (and translated to Python by me, see `curves.py
 <code/chapter-09/curves.py>`_). You can see in the images below that this
 method provides a very good approximation in a reasonable number of segments
 (third figure on the right).
@@ -561,7 +561,7 @@ Simple dotted pattern
    `linestrip-dotted.py <code/chapter-09/linestrip-dotted.py>`_.
 
 Rendering a simple dotted pattern is surprinsingly simple. If you look at the
-fragmen code from the smooth line sections, the computation of the signed
+fragment code from the smooth line sections, the computation of the signed
 distance reads:
 
 .. code:: glsl
@@ -579,7 +579,7 @@ distance reads:
    ...
        
 We can slightly change this code in order to compute the signed distance to
-discs whose centers area spread over the whole. Do you remember that we took
+discs whose centers' areas spread over the whole. Do you remember that we took
 care of computing the line curvilinear coordinate? Having centers spread along
 this line is then just a matter of a modulo.
 
@@ -611,13 +611,13 @@ this line is then just a matter of a modulo.
    `linestrip-spaded.py <code/chapter-09/linestrip-spaded.py>`_.
 
 The animation is obtained by slowly increasing the phase that makes all dot
-centers to move along the lines.
+centers move along the lines.
 
 By the way, you may have noticed that I've been using the simplest marker I
 could think of (disc) for the example above. But we could have used any of the
 marker from the previous chapter actually. For example, on the figure on the
 right, I use the spade marker and I've added a fading at line start and end to
-prevent the sudden apparition/disparition of a marker.
+prevent the sudden apparition/disapparition of a marker.
    
 
 Arbitrary dash patterns                                                        
@@ -630,7 +630,7 @@ explaining how this can be done. If you want to know more, just read See
 "`Shader-based Antialiased Dashed Stroke Polylines
 <http://jcgt.org/published/0002/02/08/>`_" for a full explanation as well as
 `Python implementation <http://jcgt.org/published/0002/02/08/code.zip>`_. The
-result is illustrated on the movies below.
+result is illustrated in the movies below.
 
 .. figure:: movies/chapter-09/stars.mp4
    :loop:
@@ -779,7 +779,7 @@ applying the full transformation, we'll restict it to the model transformation
 (i.e. no view nor projection) resulting in a normal vector where the `z`
 coordinate indicates if the shape is orienting towards the camera. Then,
 depending on this, we can modulate the thickness or the color of the line as
-shown on the figure on the right. In this example, we modify the thickness in
+shown in the figure on the right. In this example, we modify the thickness in
 the vertex shader and the color in the fragment shader.
 
 
@@ -833,7 +833,7 @@ Variable thickness
 We've seen in the `Smooth lines`_ section how to render smooth lines using
 bevel joints. The thickness of the resulting line was (implicitly)
 constant. How would you transform the shader to have a varying thickness as
-illustrated on the figure on the right?
+illustrated in the figure on the right?
 
 Solution:
 `linestrip-varying-thickness.py <code/chapter-09/linestrip-varying-thickness.py>`_

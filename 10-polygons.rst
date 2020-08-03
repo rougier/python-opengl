@@ -27,7 +27,7 @@ To know if a given polygon is concave or convex, it is rather easy. Convex
 polygons have all their diagonals contained inside, while it is not true for
 concave polygons, i.e. you can find two summits such that when you connect
 them, the segment is outside the polygon. Another test is to find a straight
-line that cross a concave polygon at more than two points as shown on the
+line that cross a concave polygon at more than two points as shown in the
 figure above with the red lines.
 
 
@@ -60,7 +60,7 @@ render the polygon using the `gl.GL_TRIANGLE_FAN` primitives:
        window.clear()
        polygon.draw(gl.GL_TRIANGLE_FAN)
 
-You can see on the figures below that it is better to use only the convex hull
+You can see in the figures below that it is better to use only the convex hull
 points to compute the triangulation. You can also check that all other points
 are actually inside the polygon area.
 
@@ -100,7 +100,7 @@ Concave polygons
 For concave polygons, we could consider the two aforementionned cases where
 points are either ordered and describe the contour of the polygon or points are
 unordered and spread randomly onto the 2d plane. However, for the latter case,
-things become more difficult because the solution is not unique as shown on the
+things become more difficult because the solution is not unique as shown in the
 figure below.
 
 .. figure:: images/chapter-10/concave-hull.png
@@ -139,7 +139,7 @@ library but there are others:
 
 
  
-On the image on the right, we've parsed (see `svg.py
+In the image on the right, we've parsed (see `svg.py
 <code/chapter-10/svg.py>`_) the firefox icon SVG path and tesselated the Bézier
 curves into line segments. Then we have triangulated the resulting path and
 obtained the displayed triangulation using `gl.GL_TRIANGLES`. See `firefox.py
@@ -352,7 +352,7 @@ Antialiasing
 
 As you have noticed, the polygon we've renderered so far are not antialised
 (because we've been using only raw triangles). While it might be possible to
-write a specific shader to take car of antiliasing on the border, it is far
+write a specific shader to take care of antialiasing on the border, it is far
 more easier to draw an antialiased polygon in two steps. First, we draw the
 interio of the polygon and then, we render a half-line on the contour. We need
 a half-line because we do not want the line to cover the already rendered

@@ -146,7 +146,7 @@ Markers
    Some example of markers constructed using CSG. See below for corresponding
    GLSL code.
 
-As illustrated on the right figure creating markers is merely a matter of
+As illustrated in the figure on the right, creating markers is merely a matter of
 imagination. Try to think of a precise shape and see how you can decompose it
 in terms of constructive solid geometry. I've put a collection of such markers
 in the (open access) article `Antialiased 2D Grid, Marker, and Arrow Shaders
@@ -336,7 +336,7 @@ Arrows
 
 Arrows are a bit different from markers because they are made of a body, which
 is a line basically, and a head. Most of the difficulty lies in the head
-definition that may vary a lot depending on the type the arrow. For example,
+definition that may vary a lot depending on the type of arrow. For example,
 the stealth arrow shader reads:
 
 .. code:: glsl
@@ -495,8 +495,8 @@ If you run the code below, you should obtain the image on the right.
    image = Image.fromarray((Z*255).astype(np.ubyte))
    image.save("firefox-sdf.png")
    
-Even though the logo is barely recognisable on the resulting image, it carries
-nonetheless the necessary information to compute the distance to the border
+Even though the logo is barely recognisable in the resulting image, it nonetheless
+carries the necessary information to compute the distance to the border
 from within the shader. When the texture will be read inside the fragment
 shader, we'll subtract 0.5 from the texture value (texture value are
 normalized, hence the 0.5) to obtain the actual signed distance field. You're
@@ -556,7 +556,7 @@ Quiver plot
 
 Now that we know how to draw arrows, we can make a quiver plot very easily. The
 obvious solution would be to draw n arrows using 2×n triangles (since one arrow
-is two triangle). However, if your arrows are evenly spaced as on the figure on
+is two triangle). However, if your arrows are evenly spaced as in the figure on
 the right, there is a smarter solution using only two triangles.
 
 Solution: `quiver.py <code/chapter-08/quiver.py>`_
