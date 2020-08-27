@@ -44,7 +44,7 @@ that are outside this range will be discarded or clipped (i.e. won't be visible
 on screen). This is called Normalized Device Coordinates, or NDC for short.
 This is something you cannot change because it is part of the OpenGL API and
 implemented in your hardware (GPU). Consequently, even if you intend to render
-the whole universe, you'll have utlimately to fit it into this small volume.
+the whole universe, you'll have ultimately to fit it into this small volume.
 
 The second important fact to know is that **x** coordinates increase from left
 to right and **y** coordinates increase from bottom to top. For this latter
