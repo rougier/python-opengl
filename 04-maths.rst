@@ -35,7 +35,7 @@ this is the reason why we will use homogeneous coordinates that describe
 coordinates in a four-dimensional projective space (that includes the Euclidean
 space). We'll see in the next section that this allows us to express linear
 transformations (rotation, scaling), affine transformations (translations) and
-projection using 4×4 matrices. Homogeneous coordinatess are tightly linked with
+projection using 4×4 matrices. Homogeneous coordinates are tightly linked with
 regular 3D coordinates with the noticeable difference that they require a
 fourth `w` coordinate that corresponds to the fourth dimension, let's call it
 the projective dimension. In order to explain it, we'll use a 1-dimensional
