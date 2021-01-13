@@ -457,7 +457,7 @@ all the details in the provided demo script. See the caption of the image below.
    Figure
 
    Different line joints using a geometry shader. See
-   `geom-path.py <code/chapter-09/geom_path.py>`_.
+   `geom-path.py <code/chapter-09/geom-path.py>`_.
 
 
 
