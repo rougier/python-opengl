@@ -32,7 +32,7 @@ is that there are a lot of tutorials online that still use this fixed pipeline
 and because most of them were written before modern GL, they're not even aware
 (and cannot) that they use a deprecated API.
 
-How to know if a tutorial address the fixed pipeline ? It's relatively
+How to know if a tutorial address the fixed pipeline? It's relatively
 easy. It'll contain GL commands such as:
 
 .. code::
@@ -172,11 +172,23 @@ The graphic pipeline
 
 If you want to understand modern OpenGL, you have to understand the graphic
 pipeline and shaders. Shaders are pieces of program (using a C-like language)
-that are built onto the GPU and executed during the rendering
-pipeline. Depending on the nature of the shaders (there are many types
-depending on the version of OpenGL you're using), they will act at different
-stage of the rendering pipeline. To simplify this tutorial, we'll use only
-**vertex** and **fragment** shaders as shown below:
+that are built onto the GPU and executed during the rendering pipeline. To
+create the entire program in a single environment, we will write the shaders
+as strings in the midst of our Python script and later pass them to the GPU:
+
+.. code:: python
+
+   shader1 = """
+      //shader1 programmed in GLSL
+   """
+   shader2 = """
+      //shader2 programmed in GLSL
+   """
+
+Depending on the nature of the shaders (there are many types depending on the
+version of OpenGL you're using), they will act at different stages of the
+rendering pipeline. To simplify this tutorial, we'll use only **vertex** and
+**fragment** shaders as shown below:
 
 .. image:: images/chapter-02/gl-pipeline.png
    :width: 100%
@@ -205,9 +217,9 @@ while a minimal fragment shader would be:
 These two shaders are not very useful because the first shader will always
 output the null vertex (`gl_Position` is a special variable) while the second
 will only output the black color for any fragment (`gl_FragColor` is also a
-special variable). We'll see later how to make them to do more useful things.
+special variable). We'll see later how to make them do more useful things.
 
-One question remains: when are those shaders executed exactly ? The vertex
+One question remains: when are those shaders executed exactly? The vertex
 shader is executed for each vertex that is given to the rendering pipeline
 (we'll see excatly what that means later) and the fragment shader is
 executed on each fragment (= pixel) that is generated after the vertex
@@ -218,7 +230,7 @@ executed 21 times, once for each fragment.
 Buffers
 +++++++
 
-The next question is thus where do those vertices comes from ? The idea of
+The next question is thus where do those vertices comes from? The idea of
 modern GL is that vertices are stored on the CPU and need to be uploaded to
 the GPU before rendering. The way to do that is to build buffers on the CPU
 and to send these buffers onto the GPU. If your data does not change, no need
@@ -226,7 +238,7 @@ to upload them again. That is the big difference with the previous fixed
 pipeline where data were uploaded at each rendering call (only display lists
 were built into GPU memory).
 
-But what is the structure of a vertex ? OpenGL does not assume anything about
+But what is the structure of a vertex? OpenGL does not assume anything about
 your vertex structure and you're free to use as much information you may need
 for each vertex. The only condition is that all vertices from a buffer have the
 same structure (possibly with different content). This, again, is a big
@@ -286,7 +298,7 @@ This vertex shader now expects a vertex to possess 2 attributes, one named
 if we labeled the first attribute `position`, this attribute is not yet bound
 to the actual `position` in the numpy array. We'll need to do it explicitly
 at some point in our program and there is no magic that will bind the numpy
-array field to the right attribute, you'll have to do it yourself, but we'll
+array field to the right attribute; you'll have to do it yourself, but we'll
 see that later.
 
 The second type of information we can feed the vertex shader is the **uniform**
@@ -332,11 +344,11 @@ and then in the fragment shader, we write:
        gl_FragColor = v_color;
    }
 
-The question is what is the value of `v_color` inside the fragment shader ?
+The question is what is the value of `v_color` inside the fragment shader?
 If you look at the figure that introduced the gl pipeline, we have 3 vertices
-and 21 fragments. What is the color of each individual fragment ?
+and 21 fragments. What is the color of each individual fragment?
 
-The answer is *the interpolation of all 3 vertices color*. This interpolation
+The answer is *the interpolation of all 3 vertices' color*. This interpolation
 is made using the distance of the fragment to each individual vertex. This is a
 very important concept to understand. Any varying value is interpolated between
 the vertices that compose the elementary item (mostly, line or triangle).
