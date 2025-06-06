@@ -45,10 +45,10 @@ void main() {
     vec2 t1 = normalize(screen_next.xy - screen_curr.xy);
     vec2 n1 = vec2(-t1.y, t1.x);
     v_uv = vec2(uv.x, uv.y*w);
-    if (prev.xy == curr.xy) {
+    if (prev.xyz == curr.xyz) {
         v_uv.x = -w;
         position = screen_curr.xy - w*t1 + uv.y*w*n1;
-    } else if (curr.xy == next.xy) {
+    } else if (curr.xyz == next.xyz) {
         v_uv.x = linelength+w;
         position = screen_curr.xy + w*t0 + uv.y*w*n0;
     } else {
